@@ -1,0 +1,73 @@
+<div class="container-fluid"> <!-- container fluid -->
+  <div class="row">
+    <div class="center-form panel col-md-offset-3 col-md-6">
+      <div class="panel-body">
+        <h1 class="text-center">Registrati</h1>
+
+        <span class="sr-only">Benvenuto nel <span lang="en">form</span> di autenticazione all'applicativo.</span>
+
+        <!-- RegisterCtrl -->
+        <form method="post" data-ng-controller="RegisterCtrl as rc" data-ng-submit="rc.register()" name="registerForm"> <!-- form login -->
+
+          <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.userName.$invalid && registerForm.userName.$dirty }"> <!-- input username -->
+            <label class="sr-only" for="input-username" lang="en">User name</label>
+            <input id="input-username" class="form-control input-lg" type="text" name="userName" ng-model="rc.credentials.username" placeholder="User Name" required autofocus>
+            <span class="glyphicon glyphicon-user form-control-feedback" title="icona di un mezzo busto di uomo come immagine per identificare l'utente"></span>
+
+            <div class="help-block text-danger" data-ng-if="registerForm.userName.$invalid && registerForm.userName.$dirty" data-ng-messages="registerForm.userName.$error">
+              <div data-ng-message="required">Devi inserire lo <span lang="en">username</span>.</div>
+            </div>
+          </div> <!-- end input username -->
+
+          <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.email.$invalid && registerForm.email.$dirty }"> <!-- input email --> <!-- TODO: controllo sui campi non funzionante -->
+            <label class="sr-only" for="input-email" lang="en">Email</label>
+            <input id="input-email" class="form-control input-lg"
+                   type="email" name="email" data-ng-model="lc.credentials.mail" placeholder="Email"
+                   required
+                   data-ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" >
+
+            <span class="glyphicon glyphicon-envelope form-control-feedback" title="icona di una busta di una lettera"></span>
+
+            <div class="help-block text-danger" data-ng-if="registerForm.email.$dirty" data-ng-messages="registerForm.email.$error">
+              <div data-ng-message="required">Your email address is required.</div>
+              <div data-ng-message="pattern">Your email address is invalid.</div>
+            </div>
+          </div> <!-- end input email -->
+
+
+          <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.password.$invalid && registerForm.password.$dirty }"> <!-- input password -->
+            <label class="sr-only" for="input-pwd" lang="en">Password</label>
+            <input id="input-pwd" class="form-control input-lg" type="password" name="password"
+                   data-ng-model="lc.credentials.pwd" placeholder="Password"
+                   required autofocus>
+            <span class="ti-key form-control-feedback" title="icona di una chiave"></span>
+
+            <div class="help-block text-danger" data-ng-if="registerForm.password.$dirty" data-ng-messages="registerForm.password.$error">
+              <div data-ng-message="required">Password necessaria.</div>
+            </div>
+          </div> <!-- end input password -->
+
+          <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.confirmPassword.$invalid && registerForm.confirmPassword.$dirty }"> <!-- input confirm password -->
+            <label class="sr-only" for="input-confirm-pwd">Conferma <span lang="en">Password</span></label>
+            <input id="input-confirm-pwd" class="form-control input-lg" type="password" name="confirmPassword"
+                   data-ng-model="lc.credentials.confirmPwd" placeholder="Conferma Password"
+                   required autofocus password-match>
+            <span class="ti-key form-control-feedback" title="icona di una chiave"></span>
+
+            <div class="help-block text-danger" data-ng-if="registerForm.confirmPassword.$dirty" data-ng-messages="registerForm.confirmPassword.$error">
+              <div data-ng-message="compareTo">La password deve combaciare.</div>
+            </div>
+          </div> <!-- end input confirm password -->
+
+          <button type="submit" data-ng-disabled="registerForm.$invalid" class="btn btn-lg btn-block btn-success">Registrati</button>
+
+          <br />
+          <p class="text-center text-muted">Hai già un <span lang="en">account</span>? <a data-ui-sref="login">Accedi</a></p>
+
+        </form> <!-- end login form -->
+        <!-- end RegisterCtrl -->
+      </div>
+    </div>
+  </div>
+</div> <!-- end container fluid -->
+

@@ -11,3 +11,8 @@ Thumbs.db
 *.log
 *.aux
 *.synctex.gz
+
+# ignorare i file delle librerie/framework e dei moduli di node
+client/bower_components
+client/node_modules
+client/dist

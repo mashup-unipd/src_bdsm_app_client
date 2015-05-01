@@ -1,0 +1,35 @@
+<div class="container-fluid"> <!-- container fluid -->
+  <div class="row">
+    <div class="center-form panel col-md-offset-3 col-md-6">
+      <div class="panel-body">
+        <h1 class="text-center" lang="en">Login</h1>
+
+        <span class="sr-only">Benvenuto nel <span lang="en">form</span> di autenticazione all'applicativo.</span>
+
+        <!-- LoginCtrl -->
+        <form method="post" data-ng-controller="LoginCtrl as lc" data-ng-submit="lc.login(lc.credentials)" name="loginForm"> <!-- form login -->
+
+          <div class="form-group has-feedback"> <!-- input email -->
+            <label class="sr-only" for="input-email" lang="en">Email</label>
+            <input id="input-email" class="form-control input-lg" type="email" data-ng-model="lc.credentials.email" placeholder="Email" required autofocus>
+            <span class="glyphicon glyphicon-envelope form-control-feedback" title="icona di una busta di una lettera"></span>
+          </div> <!-- end input email -->
+
+          <div class="form-group has-feedback"> <!-- input password -->
+            <label class="sr-only" for="input-pwd" lang="en">Password</label>
+            <input id="input-pwd" class="form-control input-lg" type="password" data-ng-model="lc.credentials.pwd" placeholder="Password" required autofocus>
+            <span class="ti-key form-control-feedback" title="icona di una chiave"></span>
+          </div> <!-- end input password -->
+
+          <button type="submit" data-ng-disabled="loginForm.$invalid" class="btn btn-lg btn-block btn-success" lang="en">Log in</button>
+
+          <br />
+          <p class="text-center text-muted">Non hai ancora un <span lang="en">account</span>? <a data-ui-sref="register">Registrati</a></p>
+
+        </form> <!-- end login form -->
+        <!-- end LoginCtrl -->
+      </div>
+    </div>
+  </div>
+</div> <!-- end container fluid -->
+
