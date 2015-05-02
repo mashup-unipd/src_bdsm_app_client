@@ -1,10 +1,10 @@
-## SB Admin v2.0 rewritten in AngularJS
+## BDSM App: client
 
-[![Join the chat at https://gitter.im/start-angular/sb-admin-angular](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/start-angular/sb-admin-angular?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+Questo package contiene la struttura del front-end dell'applicazione.
 
-This project is a port of the famous Free Admin Bootstrap Theme [SB Admin v2.0](http://startbootstrap.com/template-overviews/sb-admin-2/) to Angular Theme.
+Per la veste grafica si è preso spunto dal template [SB Admin v2.0](http://startbootstrap.com/template-overviews/sb-admin-2/)
 
-Find out more [Free Angular Themes at StartAngular.com](http://www.startangular.com/).
+Si è scelto però di utilizzare [Free Angular Themes at StartAngular.com](http://www.startangular.com/) come struttura di base, in quanto è già stato fatto un porting del template precedentemente citato in AngularJS.
 
 ## Installation
 1. Clone this project or Download that ZIP file
