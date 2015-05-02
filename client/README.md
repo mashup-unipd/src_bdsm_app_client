@@ -6,7 +6,7 @@ Per la veste grafica si è preso spunto dal template [SB Admin v2.0](http://star
 
 Si è scelto però di utilizzare [Free Angular Themes at StartAngular.com](http://www.startangular.com/) come struttura di base, in quanto è già stato fatto un porting del template precedentemente citato in AngularJS.
 
-## Installation
+## Installazione
 1. Clone this project or Download that ZIP file
 2. Make sure you have [bower](http://bower.io/), [grunt-cli](https://www.npmjs.com/package/grunt-cli) and  [npm](https://www.npmjs.org/) installed globally
 3. On the command prompt run the following commands
@@ -15,10 +15,12 @@ Si è scelto però di utilizzare [Free Angular Themes at StartAngular.com](http:
 - `npm start` - a shortcut for `grunt serve`
 - `npm run dist` - a shortcut for `grunt serve:dist` to minify the files for deployment
 
-## Roadmap
 
-- Add sample AJAX calls and make the directives more modular
+## Moduli esterni utilizzati
 
-### Automation tools
+- TODO
+- TODO
+
+### Strumenti di automazione
 
 - [Grunt](http://gruntjs.com/)
