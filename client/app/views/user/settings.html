@@ -1,0 +1,84 @@
+<div class="page-header">
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Impostazioni generali del profilo</h1>
+        </div>
+    </div>
+</div> <!-- ./page-header -->
+
+<div class="container-fluid">
+    <div class="center-form panel col-md-12">
+
+        <form class="form-container" id="settings-form" data-role="form"
+              data-ng-controller="SettingsCtrl as sc" data-ng-submit="sc.saveEdit()">
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="username-setting" class="control-label col-md-4" lang="en">Username</label>
+                    <p class="col-md-2">
+                        <a class="pointer" data-ng-click="editUsername=false">Modifica</a>
+                    </p>
+                    <div class="col-xs-10 col-sm-8 col-md-4 input-group">
+                        <input class="form-control input-sm" id="username-setting" type="text"
+                               data-ng-model="sc.username" data-ng-disabled="editUsername" data-ng-init="editUsername=true">
+                        <span class="glyphicon glyphicon-user form-control-feedback" title="icona di un mezzo busto di uomo come immagine per identificare l'utente"></span>
+                    </div> <!-- /username -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="mail-setting" class="control-label col-md-4" lang="en">Email</label>
+                    <p class="col-md-2">
+                        <a class="pointer" data-ng-click="editMail=false">Modifica</a>
+                    </p>
+                    <div class="col-xs-12 col-sm-9 col-md-6 input-group">
+                        <input class="form-control input-sm" id="mail-setting" type="email"
+                               data-ng-model="sc.email" data-ng-disabled="editMail" data-ng-init="editMail=true">
+                        <span class="glyphicon glyphicon-envelope form-control-feedback" title="icona di una busta di una lettera"></span>
+                    </div> <!-- /email -->
+                </div>
+            </div>
+
+            <div class="row">
+                <label>IMPOSTA NUOVA <span lang="en">PASSWORD</span></label>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="old-password-setting" class="control-label col-md-4" lang="en">Vecchia password</label>
+                    <div class="col-xs-10 col-sm-8 col-md-4 col-md-offset-2">
+                        <input class="form-control input-sm" id="old-password-setting" type="text">
+                    </div> <!-- /old-password -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="new-password-setting" class="control-label col-md-4">Nuova password</label>
+                    <div class="col-xs-10 col-sm-8 col-md-4 col-md-offset-2">
+                        <input class="form-control input-sm" id="new-password-setting" type="text">
+                    </div> <!-- /new-password -->
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="form-group">
+                    <label for="confirm-password-setting" class="control-label col-md-4">Conferma nuova password</label>
+                    <div class="col-xs-10 col-sm-8 col-md-4 col-md-offset-2">
+                        <input class="form-control input-sm" id="confirm-password-setting" type="text">
+                    </div> <!-- /confirm-password -->
+                </div>
+            </div>
+
+            <br />
+            <div class="row">
+                <div class="col-md-3">
+                    <button class="btn btn-md btn-block btn-success" type="submit">Salva modifiche</button>
+                </div>
+            </div>
+
+
+        </form> <!-- /#settings-form -->
+    </div>
+</div> <!-- ./container-fluid -->

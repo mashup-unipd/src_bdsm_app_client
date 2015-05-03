@@ -1,13 +1,14 @@
 'use strict';
 /**
  * @ngdoc function
- * @name sbAdminApp.controller:MainCtrl
+ * @name sbAdminApp.controller:FavouritesCtrl
  * @description
- * # MainCtrl
+ * # FavouritesCtrl
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('ChartCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+  .controller('FavouritesCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
+
     $scope.line = {
 	    labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 	    series: ['Series A', 'Series B'],
@@ -66,4 +67,5 @@ angular.module('sbAdminApp')
     	    'Pie' : 'PolarArea';
 		}
     };
+
 }]);

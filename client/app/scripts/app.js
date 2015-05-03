@@ -1,145 +1,37 @@
-'use strict';
-/**
- * @ngdoc overview
- * @name sbAdminApp
- * @description
- * # sbAdminApp
- *
- * Main module of the application.
- */
-angular
-  .module('sbAdminApp', [
-    'oc.lazyLoad',
-    'ui.router',
-    'ui.bootstrap',
-    'angular-loading-bar'
-  ])
-  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
-    
-    $ocLazyLoadProvider.config({
-      debug: false,
-      events: true
-    });
+(function(){
+    'use strict';
 
-    $urlRouterProvider.otherwise('/dashboard/home');
+    /**
+     * Name: app.js
+     * Author: Tesser Paolo
+     * Mail: p.tesser921@gmail.com or tesser.paolo@mashup-unipd.it
+     * Desc: modulo che gestisce il modulo principale dell'applicazione a cui vengono iniettati i diversi moduli utili
+     *       per fare funzionare l'applicativo
+     *
+     * Modify
+     * Version  Date        Author          Desc
+     * ==========================================================
+     * 0.0.1    2015-05-03  Tesser Paolo    codifica modulo
+     * -----------------------------------------------------------
+     *
+     */
 
-    $stateProvider
-      .state('dashboard', {
-        url:'/dashboard',
-        templateUrl: 'views/dashboard/main.html',
-        resolve: {
-            loadMyDirectives:function($ocLazyLoad){
-                return $ocLazyLoad.load(
-                {
-                    name:'sbAdminApp',
-                    files:[
-                        'scripts/directives/header/header.js',
-                        'scripts/directives/header/header-notification/header-notification.js',
-                        'scripts/directives/sidebar/sidebar.js',
-                        'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
-                    ]
-                }),
-                $ocLazyLoad.load(
-                {
-                   name:'toggle-switch',
-                   files:['bower_components/angular-toggle-switch/angular-toggle-switch.min.js',
-                          'bower_components/angular-toggle-switch/angular-toggle-switch.css'
-                      ]
-                }),
-                $ocLazyLoad.load(
-                {
-                  name:'ngAnimate',
-                  files:['bower_components/angular-animate/angular-animate.js']
-                }),
-                $ocLazyLoad.load(
-                {
-                  name:'ngCookies',
-                  files:['bower_components/angular-cookies/angular-cookies.js']
-                }),
-                $ocLazyLoad.load(
-                {
-                  name:'ngResource',
-                  files:['bower_components/angular-animate/angular-animate.js']
-                }),
-                $ocLazyLoad.load(
-                {
-                  name:'ngSanitize',
-                  files:['bower_components/angular-sanitize/angular-sanitize.js']
-                }),
-                $ocLazyLoad.load(
-                {
-                  name:'ngTouch',
-                  files:['bower_components/angular-touch/angular-touch.js']
-                });
-            }
-        }
-    })
-      .state('dashboard.home',{
-        url:'/home',
-        controller: 'MainCtrl',
-        templateUrl:'views/dashboard/home.html',
-        resolve: {
-          loadMyFiles:function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name:'sbAdminApp',
-              files:[
-                'scripts/controllers/user/main.ctrl.js',
-                'scripts/directives/notifications/notifications.js',
-                'scripts/directives/dashboard/stats/stats.js'
-              ]
-            });
-          }
-        }
-      })
-      .state('dashboard.form',{
-        templateUrl:'../views/admin/new-recipe.html',
-        url:'/recipe',
-        resolve: {
-            loadMyFiles:function($ocLazyLoad) {
-                return $ocLazyLoad.load({
-                    name:'sbAdminApp',
-                    files:[
-                        'scripts/controllers/admin/insert-recipe.ctrl.js'
-                    ]
-                });
-            }
-        }
-    })
-      .state('login',{
-        templateUrl:'views/public/login.html',
-        url:'/login',
-        resolve: {
-            loadMyFiles:function($ocLazyLoad) {
-                return $ocLazyLoad.load({
-                    name:'sbAdminApp',
-                    files:[
-                        'scripts/controllers/public/login.ctrl.js'
-                    ]
-                });
-            }
-        }
-    })
-      .state('dashboard.chart',{
-        templateUrl:'../views/user/chart.html',
-        url:'/chart',
-        controller:'ChartCtrl',
-        resolve: {
-          loadMyFile:function($ocLazyLoad) {
-            return $ocLazyLoad.load({
-              name:'chart.js',
-              files:[
-                'bower_components/angular-chart.js/dist/angular-chart.min.js',
-                'bower_components/angular-chart.js/dist/angular-chart.css'
-              ]
-            }),
-            $ocLazyLoad.load({
-                name:'sbAdminApp',
-                files:['scripts/controllers/user/favourites.ctrl.js']
-            });
-          }
-        }
-    });
+    /**
+     * @ngdoc overview
+     * @name sbAdminApp
+     * @description
+     * # sbAdminApp
+     *
+     * Main module of the application.
+     */
 
-  }]);
+    angular
+        .module('sbAdminApp', [
+            'oc.lazyLoad', /* modulo che gestisce il caricamento su richiesta dei file js */
+            'ui.router', /* modulo che gestisce il routing delle pagine e dei link dell'applicativo */
+            'ui.bootstrap', /* modulo che gestisce le direttive di bootstrap in Angular */
+            'angular-loading-bar',
+            'app.routes' /* modulo che incapsula tutti i file di routing */
+        ]);
 
-    
+})();
