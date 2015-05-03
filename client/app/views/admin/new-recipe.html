@@ -1,0 +1,85 @@
+<div data-ng-controller="InsertRecipeCtrl as irc">
+
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="row">
+                <h1>Inserimento nuova Recipe</h1>
+            </div>
+        </div>
+    </div> <!-- ./page-header -->
+
+    <div class="container-fluid">
+        <div class="center-form panel col-md-12">
+
+            <div class="row" data-ng-show="irc.insertSuccess">
+                <div class="col-md-12">
+                    <p class="alert-success">Inserimento avvenuto con successo!</p>
+                </div>
+            </div>
+
+            <div class="row" data-ng-show="irc.insertError">
+                <div class="col-md-12">
+                    <p class="alert-danger">Inserimento fallito!</p>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <form  data-role="form" data-ng-submit="irc.insertRecipe()">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label>Titolo Recipe</label>
+                            <input class="form-control" type="text" data-ng-model="titleRecipe" placeholder="Insert title">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="desc-recipe">Descrizione della Recipe</label>
+              <textarea class="form-control" data-ng-model="descRecipe" rows="4" id="desc-recipe"
+                        placeholder="Insert description about this Recipe">
+               </textarea>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="type-recipe">Tipo di Recipe</label>
+                            <select id="type-recipe" class="form-control"
+                                    data-ng-options="category as category.value for category in irc.categories"
+                                    data-ng-model="category.key" data-ng-change="irc.updateTypeMetric()">
+                            </select>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label for="type-node">Tipo di metrica</label>
+                            <select name="type-node" id="type-node" class="form-control">
+                                <!-- TODO: data-ng-repeat su array contenente le opzioni -->
+                                <option value="pagina">Pagina</option>
+                                <option value="evento">Evento</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-5">
+                            <label for="id-nodo">Valore metrica</label>
+                            <input type="text" class="form-control" id="id-nodo" name="id-nodo" placeholder="Valore metrica">
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <button type="submit" class="btn btn-primary">Inserisci Recipe <span class="ti-save"></span></button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+</div>

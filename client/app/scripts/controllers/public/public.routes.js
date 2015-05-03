@@ -2,7 +2,7 @@
   'use strict';
 
   /**
-   * Name: publicRoute.js
+   * Name: public.routes.js
    * Author: Tesser Paolo
    * Mail: p.tesser921@gmail.com
    * Desc: modulo che gestisce il routing più esterno dell'applicazione, differenzia tra utente autenticato e non,

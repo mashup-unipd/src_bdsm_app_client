@@ -2,7 +2,7 @@
   'use strict';
 
   /**
-   * Name: loginCtrl.js
+   * Name: login.ctrl.js
    * Author: Tesser Paolo
    * Mail: p.tesser921@gmail.com
    * Desc: controller che gestisce le operazioni di autenticazione al sistema
@@ -29,7 +29,7 @@
     var vm = this; /* like View Model */
 
     vm.credentials = {
-      email: 'p.tesser921@gmail.com',
+      email: 'info@mashup-unipd.it',
       pwd: ''
     };
 
@@ -40,12 +40,14 @@
      * @param credentials
      */
     function login( credentials ){
-      console.log("OK");
-      console.log("Email: " + credentials.email);
-      console.log("Pwd: " + credentials.pwd);
 
-      $location.path('/dashboard/home');
-      // $stateParams.state('main.home');
+        console.log('OK');
+        console.log('Email: ' + credentials.email);
+        console.log('Pwd: ' + credentials.pwd);
+
+        if (credentials.email === 'info@mashup-unipd.it' && credentials.pwd === 'pwd')
+            $location.path('/dashboard/home');
+
 
     }
 
@@ -54,6 +56,8 @@
 
   LoginCtrl.$inject = ['$stateParams', '$location'];
 
-  angular.module('sbAdminApp').controller('LoginCtrl', LoginCtrl);
+  angular
+      .module('sbAdminApp')
+      .controller('LoginCtrl', LoginCtrl);
 
 })();

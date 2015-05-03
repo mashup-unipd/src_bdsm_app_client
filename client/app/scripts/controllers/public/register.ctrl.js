@@ -2,7 +2,7 @@
   'use strict';
 
   /**
-   * Name: registerCtrl.js
+   * Name: register.ctrl.js
    * Author: Tesser Paolo
    * Mail: p.tesser921@gmail.com
    * Desc: controller che gestisce le operazioni di autenticazione al sistema

@@ -42,8 +42,8 @@ angular
                 $ocLazyLoad.load(
                 {
                    name:'toggle-switch',
-                   files:["bower_components/angular-toggle-switch/angular-toggle-switch.min.js",
-                          "bower_components/angular-toggle-switch/angular-toggle-switch.css"
+                   files:['bower_components/angular-toggle-switch/angular-toggle-switch.min.js',
+                          'bower_components/angular-toggle-switch/angular-toggle-switch.css'
                       ]
                 }),
                 $ocLazyLoad.load(
@@ -70,7 +70,7 @@ angular
                 {
                   name:'ngTouch',
                   files:['bower_components/angular-touch/angular-touch.js']
-                })
+                });
             }
         }
     })
@@ -83,19 +83,27 @@ angular
             return $ocLazyLoad.load({
               name:'sbAdminApp',
               files:[
-              'scripts/controllers/main.js',
-              'scripts/directives/timeline/timeline.js',
-              'scripts/directives/notifications/notifications.js',
-              'scripts/directives/chat/chat.js',
-              'scripts/directives/dashboard/stats/stats.js'
+                'scripts/controllers/user/main.ctrl.js',
+                'scripts/directives/notifications/notifications.js',
+                'scripts/directives/dashboard/stats/stats.js'
               ]
-            })
+            });
           }
         }
       })
       .state('dashboard.form',{
-        templateUrl:'views/form.html',
-        url:'/form'
+        templateUrl:'../views/admin/new-recipe.html',
+        url:'/recipe',
+        resolve: {
+            loadMyFiles:function($ocLazyLoad) {
+                return $ocLazyLoad.load({
+                    name:'sbAdminApp',
+                    files:[
+                        'scripts/controllers/admin/insert-recipe.ctrl.js'
+                    ]
+                });
+            }
+        }
     })
       .state('login',{
         templateUrl:'views/public/login.html',
@@ -105,14 +113,14 @@ angular
                 return $ocLazyLoad.load({
                     name:'sbAdminApp',
                     files:[
-                        'scripts/controllers/public/loginCtrl.js'
+                        'scripts/controllers/public/login.ctrl.js'
                     ]
-                })
+                });
             }
         }
     })
       .state('dashboard.chart',{
-        templateUrl:'views/chart.html',
+        templateUrl:'../views/user/chart.html',
         url:'/chart',
         controller:'ChartCtrl',
         resolve: {
@@ -126,39 +134,12 @@ angular
             }),
             $ocLazyLoad.load({
                 name:'sbAdminApp',
-                files:['scripts/controllers/chartCtrl.js']
-            })
+                files:['scripts/controllers/user/favourites.ctrl.js']
+            });
           }
         }
-    })
-      .state('dashboard.table',{
-        templateUrl:'views/table.html',
-        url:'/table'
-    })
-      .state('dashboard.panels-wells',{
-          templateUrl:'views/ui-elements/panels-wells.html',
-          url:'/panels-wells'
-      })
-      .state('dashboard.buttons',{
-        templateUrl:'views/ui-elements/buttons.html',
-        url:'/buttons'
-    })
-      .state('dashboard.notifications',{
-        templateUrl:'views/ui-elements/notifications.html',
-        url:'/notifications'
-    })
-      .state('dashboard.typography',{
-       templateUrl:'views/ui-elements/typography.html',
-       url:'/typography'
-   })
-      .state('dashboard.icons',{
-       templateUrl:'views/ui-elements/icons.html',
-       url:'/icons'
-   })
-      .state('dashboard.grid',{
-       templateUrl:'views/ui-elements/grid.html',
-       url:'/grid'
-   })
+    });
+
   }]);
 
     

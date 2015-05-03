@@ -113,7 +113,7 @@ module.exports = function (grunt) {
     // Make sure code styles are up to par and there are no obvious mistakes
     jshint: {
       options: {
-        jshintrc: '.jshintrc',
+        jshintrc: 'test/.jshintrc', // Add prefix test/ because there isn't file in current dir
         reporter: require('jshint-stylish')
       },
       all: {
@@ -236,7 +236,7 @@ module.exports = function (grunt) {
       },
       options: {
         mangle:false
-      },
+      }
     },
     // concat: {
     //   dist: {}
@@ -357,10 +357,12 @@ module.exports = function (grunt) {
 
     // Test settings
     karma: {
-      unit: {
-        configFile: 'test/karma.conf.js',
-        singleRun: true
-      }
+        // unit test
+        unit: {
+            configFile: 'test/karma.conf.js',
+            singleRun: true
+        }
+        // add e2e test here
     }
   });
 
