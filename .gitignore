@@ -1,5 +1,6 @@
 # rimuove il tracciamento della cartella nascosta .idea generata dagli IDE della JetBrains
 .idea
+
 # rimuove il tracciamento dei file nascosti .DS_Store, generati dai sistemi OS
 *.DS_Store
 
@@ -16,3 +17,10 @@ Thumbs.db
 client/bower_components
 client/node_modules
 client/dist
+
+# rimuove il tracciamento dei file generati da Python
+*.pyc
+__pycache__
+
+# rimuove il tracciamento della cartella utilizzata per l’ambiente virtuale in Python
+venv
