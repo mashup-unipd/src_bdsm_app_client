@@ -1,11 +1,11 @@
-## BDSM App: codice sorgente
+# BDSM App: codice sorgente
 
 [![wercker status](https://app.wercker.com/status/88234e139902333536cece204bb2a12b/m "wercker status")](https://app.wercker.com/project/bykey/88234e139902333536cece204bb2a12b)
 
 
 ## Scopo del repository
 
-Questo repository ha lo scopo di gestire il versionamento della codice sorgente relativo al prodotto **BDSM App** proposto da **Zing Srl**.
+Questo repository ha lo scopo di gestire il versionamento della codice sorgente relativo al prodotto **BDSM App** (Big Data Social Monitoring) proposto da [Zing Srl](http://www.zing-store.com/it/#index).
 
 ## Gestione del repository
 
