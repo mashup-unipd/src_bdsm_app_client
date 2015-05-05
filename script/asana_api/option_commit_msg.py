@@ -32,8 +32,6 @@ options_cmd = {
 if __name__ == '__main__':
 
     print "Execution script from branch: ", sys.argv[1]
-    # print "List of commit message: "
-    # print sys.argv[2]
 
     list_commit_queue = sys.argv[2].split("END")
     # print list_commit_queue
