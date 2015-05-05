@@ -12,11 +12,9 @@ my_api_asana = my_api.MyAPI()
 
 # FUNCTIONS
 
-
 def fun_complete(id_str):
     id_int = int(id_str)
     my_api_asana.get_asana_api().update_task(id_int, completed=True)
-
 
 def fun_delay(id_str):
     id_int = int(id_str)
@@ -69,4 +67,5 @@ if __name__ == '__main__':
 
     checkout_asana_cmd = ["git", "checkout", "script/asana_api"]
     subprocess.call(checkout_asana_cmd)
+	return
     sys.exit(0)
