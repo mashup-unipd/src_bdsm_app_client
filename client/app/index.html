@@ -13,11 +13,11 @@
     <!-- endbuild -->
     
     <!-- build:css(.tmp) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
-    <link rel="stylesheet" href="styles/sb-admin-2.css">
-    <link rel="stylesheet" href="styles/timeline.css">
-    <link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.min.css">
-    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css">
+    <link rel="stylesheet" href="styles/main.css" type="text/css">
+    <link rel="stylesheet" href="styles/sb-admin-2.css" type="text/css">
+    <link rel="stylesheet" href="styles/timeline.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/metisMenu/dist/metisMenu.min.css" type="text/css">
+    <link rel="stylesheet" href="bower_components/angular-loading-bar/build/loading-bar.min.css" type="text/css">
     <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.min.css" type="text/css">
     <!-- endbuild -->
     
@@ -40,7 +40,16 @@
         <script src="scripts/app.js"></script>
         <script src="scripts/app.routes.js"></script>
         <script src="scripts/controllers/public/public.routes.js"></script>
-        <script src="scripts/controllers/user/settings.routes.js"></script>
+        <!-- user routes -->
+        <script src="scripts/controllers/user/user.routes.js"></script>
+        <script src="scripts/controllers/user/favourites/favourites.routes.js"></script>
+        <script src="scripts/controllers/user/recipe/recipe.routes.js"></script>
+        <script src="scripts/controllers/user/recipe/metrics.routes.js"></script>
+        <script src="scripts/controllers/user/settings/settings.routes.js"></script>
+        <!-- admin routes -->
+        <script src="scripts/controllers/admin/admin.routes.js"></script>
+        <script src="scripts/controllers/admin/recipe_config/insert-recipe.routes.js"></script>
+
         <script src="js/sb-admin-2.js"></script>
     <!-- endbuild -->
 
@@ -65,7 +74,7 @@
 
     </head>
    
-    <body data-ng-app="sbAdminApp">
+    <body data-ng-app="app">
 
     <!-- Add your site or application content here -->
     <div>

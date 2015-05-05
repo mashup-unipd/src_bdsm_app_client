@@ -2,14 +2,32 @@
 
 echo "*** Start: Test pre-push script ***";
 
-# cd client/
-# npm run dist
-# exit(0)
 
 branch=$(git rev-parse --abbrev-ref HEAD)
 list_message=$(git log origin/${branch}..${branch})
 
 echo "*** Esecuzione script option_commit_msg.py ***";
 exec python script/asana_api/option_commit_msg.py ${branch} "${list_message}"
+
+# build del client e inserimento nella repo generatrice del sito web mashup-unipd.github.io
+if [ -d '../mashup-unipd.github.io' ] 
+then
+	if [ ${branch} == 'develop' ]
+	then
+		cd client;
+		grunt build;
+		cd ..;
+		cp -r client/dist/* ../mashup-unipd.github.io/ ;
+		cd ../mashup-unipd.github.io
+		pwd
+		git add -A
+		git commit -m 'Title: [repo] update dist file from src_BDSM_App repository'
+		git push
+	fi
+else
+	echo "ATTENZIONE! Repository mashup-unipd.github.io non presente in locale o avente nome diverso."
+fi
+
+# fine build e inserimento
 
 echo "*** End: Test pre-push script ***";

@@ -2,7 +2,7 @@
     'use strict';
 
     /**
-     * Name: public.routes.js
+     * Name: recipe.routes.js
      * Author: Tesser Paolo
      * Mail: p.tesser921@gmail.com
      * Desc: modulo che gestisce il routing più esterno dell'applicazione, differenzia tra utente autenticato e non,
@@ -11,7 +11,7 @@
      * Modify
      * Version  Date        Author          Desc
      * ==========================================================
-     * 0.0.1    2015-04-04  Tesser Paolo    codifica modulo
+     * 0.0.1    2015-05-04  Tesser Paolo    codifica modulo
      * -----------------------------------------------------------
      *
      */
@@ -20,19 +20,19 @@
      *
      * @param $stateProvider
      */
-    var SettingsConfigRoutes = function($stateProvider) {
+    var RecipeConfigRoutes = function($stateProvider) {
 
         $stateProvider
-            .state('dashboard.settings',{
-                url:'/settings',
-                controller: 'SettingsCtrl',
-                templateUrl:'views/user/settings.html',
+            .state('dashboard.recipe',{
+                url:'/recipe',
+                controller: 'RecipeCtrl',
+                templateUrl:'views/user/recipe.html',
                 resolve: {
                     loadMyFiles: function($ocLazyLoad) {
                         return $ocLazyLoad.load({
-                            name:'sbAdminApp',
+                            name:'app',
                             files:[
-                                'scripts/controllers/user/settings.ctrl.js'
+                                'scripts/controllers/user/recipe/recipe.ctrl.js'
                             ]
                         });
                     }
@@ -42,10 +42,10 @@
 
 
     angular
-        .module('app.settings.routes', [
+        .module('app.recipe.routes', [
             'ui.router'
         ])
 
-        .config(['$stateProvider', SettingsConfigRoutes]);
+        .config(['$stateProvider', RecipeConfigRoutes]);
 
 })();

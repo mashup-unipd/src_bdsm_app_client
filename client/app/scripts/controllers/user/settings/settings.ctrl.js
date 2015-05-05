@@ -38,6 +38,6 @@
 
     SettingsCtrl.$inject = [];
 
-    angular.module('sbAdminApp').controller('SettingsCtrl', SettingsCtrl);
+    angular.module('app').controller('SettingsCtrl', SettingsCtrl);
 
 })();

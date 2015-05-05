@@ -91,7 +91,7 @@
     InsertRecipeCtrl.$inject = []; /* TODO (p.tesser921@gmail.com): inject RecipeInsertModel */
 
     angular
-        .module('sbAdminApp')
+        .module('app')
         .controller('InsertRecipeCtrl', InsertRecipeCtrl);
 
 })();

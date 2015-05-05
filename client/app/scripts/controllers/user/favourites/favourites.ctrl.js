@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name sbAdminApp.controller:FavouritesCtrl
+ * @name app.controller:FavouritesCtrl
  * @description
  * # FavouritesCtrl
- * Controller of the sbAdminApp
+ * Controller of the app
  */
-angular.module('sbAdminApp')
+angular.module('app')
   .controller('FavouritesCtrl', ['$scope', '$timeout', function ($scope, $timeout) {
 
     $scope.line = {

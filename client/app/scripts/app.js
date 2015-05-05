@@ -18,15 +18,15 @@
 
     /**
      * @ngdoc overview
-     * @name sbAdminApp
+     * @name app
      * @description
-     * # sbAdminApp
+     * # app
      *
      * Main module of the application.
      */
 
     angular
-        .module('sbAdminApp', [
+        .module('app', [
             'oc.lazyLoad', /* modulo che gestisce il caricamento su richiesta dei file js */
             'ui.router', /* modulo che gestisce il routing delle pagine e dei link dell'applicativo */
             'ui.bootstrap', /* modulo che gestisce le direttive di bootstrap in Angular */

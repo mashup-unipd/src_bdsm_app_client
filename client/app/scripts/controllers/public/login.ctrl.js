@@ -57,7 +57,7 @@
   LoginCtrl.$inject = ['$stateParams', '$location'];
 
   angular
-      .module('sbAdminApp')
+      .module('app')
       .controller('LoginCtrl', LoginCtrl);
 
 })();

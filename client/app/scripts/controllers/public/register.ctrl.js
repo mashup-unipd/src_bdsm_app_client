@@ -45,6 +45,6 @@
 
   RegisterCtrl.$inject = [];
 
-  angular.module('sbAdminApp').controller('RegisterCtrl', RegisterCtrl);
+  angular.module('app').controller('RegisterCtrl', RegisterCtrl);
 
 })();

@@ -1,0 +1,36 @@
+<div class="page-header">
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Metrics Page</h1>
+        </div>
+    </div>
+</div> <!-- ./page-header -->
+
+<div id="metrics-container" class="container-fluid" data-ng-controller="MetricsCtrl as mc">
+    <tabset>
+
+        <tab data-ng-repeat="type in mc.metricsType" heading="{{ type }}" active="tab.active" disabled="tab.disabled">
+            <div class="panel">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr data-ng-repeat="metric in mc.metricsFb">
+                            <td data-ng-bind="metric.name"></td>
+                            <td><button class="btn btn-primary">Visualizza grafici</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+            </div>
+        </tab>
+
+    </tabset>
+
+</div> <!-- ./container-fluid -->

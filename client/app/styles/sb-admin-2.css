@@ -15,7 +15,7 @@ body {
 #page-wrapper {
     padding: 0 15px;
     min-height: 568px;
-    background-color: #fff;
+    /* background-color: #fff; [remove] for use thet define in main.css */
 }
 
 @media(min-width:768px) {
@@ -132,7 +132,7 @@ body {
         z-index: 1;
         position: absolute;
         width: 250px;
-        margin-top: 51px;
+        /* margin-top: 51px; */
     }
 
     .navbar-top-links .dropdown-messages,
