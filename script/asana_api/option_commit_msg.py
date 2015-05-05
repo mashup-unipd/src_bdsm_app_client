@@ -67,5 +67,4 @@ if __name__ == '__main__':
 
     checkout_asana_cmd = ["git", "checkout", "script/asana_api"]
     subprocess.call(checkout_asana_cmd)
-	return
     sys.exit(0)
