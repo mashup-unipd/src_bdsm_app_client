@@ -51,6 +51,7 @@ La directory **script_repo** serve per gestire gli script che automatizzano part
 4. installate bower e grunt:
 
 	`sudo npm install -g bower`
+
 	`sudo npm install -g grunt-cli`
 5. ora potrete caricare il progetto sul vostro computer scaricandolo dal repository;
 6. da terminale, posizionandosi nella directory client, digitare:
