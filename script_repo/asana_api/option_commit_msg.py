@@ -60,7 +60,7 @@ if __name__ == '__main__':
                                 try:
                                     options_cmd[option_msg_str](id_task_str)
                                 except asana.AsanaException:
-                                    checkout_asana_cmd = ["git", "checkout", "script/asana_api"]
+                                    checkout_asana_cmd = ["git", "checkout", "script_repo/asana_api"]
                                     subprocess.call(checkout_asana_cmd)
 
     checkout_asana_cmd = ["git", "checkout", "script/asana_api"]
