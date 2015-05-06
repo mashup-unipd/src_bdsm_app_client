@@ -1,4 +1,5 @@
 # BDSM App: codice sorgente client
+[![wercker status](https://app.wercker.com/status/01066e918fb09394e3063dcc9edcbca6/m "wercker status")](https://app.wercker.com/project/bykey/01066e918fb09394e3063dcc9edcbca6)
 
 ## Scopo del repository
 
