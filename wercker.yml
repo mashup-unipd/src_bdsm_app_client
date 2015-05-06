@@ -5,12 +5,13 @@ box: wercker/nodejs
 build:
   # The steps that will be executed on build
   steps:
+
+    - script:                                   # [1]
+          name: install grunt-cli
+          code: sudo npm install -g grunt-cli
+
     # A step that executes `npm install` command
     - npm-install
-
-    - script:
-        name: bower install
-        code: bower install
 
     # a step that test print in CI system √
     # - script:
