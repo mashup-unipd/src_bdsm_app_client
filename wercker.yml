@@ -6,13 +6,21 @@ build:
   # The steps that will be executed on build
   steps:
     # A step that executes `npm install` command
-
-    # a step that test print in CI system
     - script:
-        name: test stampa
-        code: echo "Test della stampa"
+        name: npm install
+        code: npm install
 
-    # this assumes that your test suite runs via `grunt test`
+    - script:
+        name: bower install
+        code: bower install
+
+    # a step that test print in CI system √
+    # - script:
+    #    name: test stampa
+    #    code: echo "Test della stampa"
+
+
+    # this assumes that your test suite runs via `grunt test`[x]
     - grunt:
         tasks: test
 
@@ -20,7 +28,7 @@ build:
 
 
     # - script:
-        # make sure that bower is listed in your package.json
+        # make sure that bower is listed in your package.json [x]
         # use `npm install --save bower` to add it.
         # name: bower install
         # code: node_modules/bower/bin/bower install
