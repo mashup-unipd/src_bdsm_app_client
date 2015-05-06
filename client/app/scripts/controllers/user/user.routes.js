@@ -81,7 +81,7 @@
     angular
         .module('app.user.routes', [
             'ui.router',
-            'app.recipe.routes', /* modulo che gestisce il routing delle recipe */
+            'app.user.recipe.routes', /* modulo che gestisce il routing delle recipe */
             'app.metrics.routes', /* modulo che gestisce il routing delle metriche, figlio delle recipe */
             'app.favourites.routes', /* modulo che gestisce il routing dei favourites */
             'app.settings.routes' /* modulo che gestisce il routing delle impostazioni di profilo  */

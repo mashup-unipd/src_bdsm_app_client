@@ -42,7 +42,7 @@
 
 
     angular
-        .module('app.recipe.routes', [
+        .module('app.user.recipe.routes', [
             'ui.router'
         ])
 
