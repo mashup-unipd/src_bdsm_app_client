@@ -7,7 +7,7 @@ branch=$(git rev-parse --abbrev-ref HEAD)
 list_message=$(git log origin/${branch}..${branch})
 
 echo "*** Esecuzione script option_commit_msg.py ***";
-python script/asana_api/option_commit_msg.py ${branch} "${list_message}"
+python script_repo/asana_api/option_commit_msg.py ${branch} "${list_message}"
 
 echo "*** Esecuzione script build and copy client ***";
 # build del client e inserimento nella repo generatrice del sito web mashup-unipd.github.io

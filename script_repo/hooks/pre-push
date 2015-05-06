@@ -1,0 +1,3 @@
+#!/bin/bash
+
+exec script_repo/githooks/pre-push

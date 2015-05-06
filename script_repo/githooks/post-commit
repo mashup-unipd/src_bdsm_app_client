@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "*** Start: Test post-commit script ***";
+
+
+echo "*** End: Test post-commit script ***";
