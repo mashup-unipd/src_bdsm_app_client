@@ -47,7 +47,7 @@
 
 
     angular
-        .module('app.favourites.routes', [
+        .module('app.user.favourites.routes', [
             'ui.router'
         ])
 

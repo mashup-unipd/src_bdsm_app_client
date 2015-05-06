@@ -41,7 +41,7 @@
 
 
     angular
-        .module('app.metrics.routes', [
+        .module('app.user.metrics.routes', [
             'ui.router'
         ])
 

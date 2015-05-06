@@ -42,7 +42,7 @@
 
 
     angular
-        .module('app.settings.routes', [
+        .module('app.user.settings.routes', [
             'ui.router'
         ])
 

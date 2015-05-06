@@ -82,9 +82,9 @@
         .module('app.user.routes', [
             'ui.router',
             'app.user.recipe.routes', /* modulo che gestisce il routing delle recipe */
-            'app.metrics.routes', /* modulo che gestisce il routing delle metriche, figlio delle recipe */
-            'app.favourites.routes', /* modulo che gestisce il routing dei favourites */
-            'app.settings.routes' /* modulo che gestisce il routing delle impostazioni di profilo  */
+            'app.user.metrics.routes', /* modulo che gestisce il routing delle metriche, figlio delle recipe */
+            'app.user.favourites.routes', /* modulo che gestisce il routing dei favourites */
+            'app.user.settings.routes' /* modulo che gestisce il routing delle impostazioni di profilo  */
         ])
 
         .config(['$stateProvider', UserConfigRoutes]);

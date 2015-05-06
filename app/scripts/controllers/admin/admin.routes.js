@@ -28,7 +28,7 @@
     angular
         .module('app.admin.routes', [
             'ui.router',
-            'app.insert-recipe.routes' /* modulo che gestisce */
+            'app.admin.insert-recipe.routes' /* modulo che gestisce */
         ])
 
         .config(['$stateProvider', AdminConfigRoutes]);

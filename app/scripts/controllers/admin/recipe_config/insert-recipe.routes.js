@@ -42,7 +42,7 @@
 
 
     angular
-        .module('app.insert-recipe.routes', [
+        .module('app.admin.insert-recipe.routes', [
             'ui.router'
         ])
 
