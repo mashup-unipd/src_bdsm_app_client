@@ -10,7 +10,7 @@ build:
     - script:
         name: test
         code: echo "test"
-        
+
     - script:
         # make sure that bower is listed in your package.json
         # use `npm install --save bower` to add it.

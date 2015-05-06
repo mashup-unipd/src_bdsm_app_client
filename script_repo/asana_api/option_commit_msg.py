@@ -63,6 +63,6 @@ if __name__ == '__main__':
                                     checkout_asana_cmd = ["git", "checkout", "script_repo/asana_api"]
                                     subprocess.call(checkout_asana_cmd)
 
-    checkout_asana_cmd = ["git", "checkout", "script/asana_api"]
+    checkout_asana_cmd = ["git", "checkout", "script_repo/asana_api"]
     subprocess.call(checkout_asana_cmd)
     sys.exit(0)
