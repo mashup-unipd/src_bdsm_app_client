@@ -15,14 +15,12 @@ if [ -d '../mashup-unipd.github.io' ]
 then
 	if [ ${branch} == 'develop' ]
 	then
-		cd client;
 		grunt build;
-		cd ..;
-		cp -r client/dist/* ../mashup-unipd.github.io/ ;
+		cp -r dist/* ../mashup-unipd.github.io/ ;
 		cd ../mashup-unipd.github.io
 		pwd
 		git add -A
-		git commit -m 'Title: [repo] update dist file from src_BDSM_App repository'
+		git commit -m 'Title: [repo] update dist file from src_BDSM_App_client repository'
 		git push
 	fi
 else
