@@ -6,9 +6,7 @@ build:
   # The steps that will be executed on build
   steps:
     # A step that executes `npm install` command
-    - script:
-        name: npm install
-        code: npm install
+    - npm-install
 
     - script:
         name: bower install
