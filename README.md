@@ -36,28 +36,28 @@ La directory **script_repo** serve per gestire gli script che automatizzano part
 
 1. installare node.js con:
 
-	sudo add-apt-repository ppa:rwky/nodejs
+	`sudo add-apt-repository ppa:rwky/nodejs`
 	
-	sudo apt-get update
+	`sudo apt-get update`
 	
-	sudo apt-get install nodejs
+	`sudo apt-get install nodejs`
 2. installare npm con:
 
-	sudo apt-get install npm
+	`sudo apt-get install npm`
 3. aggiornatelo all'ultima versione
 
-	sudo npm update -g npm
+	`sudo npm update -g npm`
 4. installate bower e grunt:
 
-	sudo npm install -g bower
-	sudo npm install -g grunt-cli
+	`sudo npm install -g bower`
+	`sudo npm install -g grunt-cli`
 5. ora potrete caricare il progetto sul vostro computer scaricandolo dal repository;
 6. da terminale, posizionandosi nella directory client, digitare:
 
-	sudo npm install
+	`sudo npm install`
 7. aggiornare bower e i pacchetti che mancano con:
 
-	bower update
+	`bower update`
 8. scegliete quindi le versioni delle componenti che vi servono ed eseguite il tutto con i comandi visti nella prima lista per l'installazione.
 
 
