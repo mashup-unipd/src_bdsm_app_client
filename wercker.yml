@@ -6,28 +6,27 @@ build:
   # The steps that will be executed on build
   steps:
 
-    - script:                                   # [1]
-          name: install grunt-cli
-          code: sudo npm install -g grunt-cli
+    # a step that executes
+    - script:
+        name: install grunt
+        code: sudo npm install -g grunt-cli
 
-    # A step that executes `npm install` command
-    - npm-install
+    - script:
+        name: install bower
+        code: sudo npm install -g bower
 
-    # a step that test print in CI system √
-    # - script:
-    #    name: test stampa
-    #    code: echo "Test della stampa"
+    - script:
+        name: install npm dependencies
+        code: |
+            mkdir -p $WERCKER_CACHE_DIR/wercker/npm
+            npm config set cache $WERCKER_CACHE_DIR/wercker/npm
+            sudo npm install --save-dev
+
+    - script:
+        name: install bower dependencies
+        code: bower install --config.storage.cache=$WERCKER_CACHE_DIR/werck
 
 
     # this assumes that your test suite runs via `grunt test`[x]
     - grunt:
         tasks: test
-
-
-
-
-    # - script:
-        # make sure that bower is listed in your package.json [x]
-        # use `npm install --save bower` to add it.
-        # name: bower install
-        # code: node_modules/bower/bin/bower install
