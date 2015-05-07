@@ -3,7 +3,7 @@
 
 ## Scopo del repository
 
-Questo repository ha lo scopo di gestire il versionamento della codice sorgente relativo al front-end del prodotto **BDSM App** (Big Data Social Monitoring) proposto da [Zing Srl](http://www.zing-store.com/it/#index).
+Questo repository ha lo scopo di gestire il versionamento della codice sorgente relativo al front-end del prodotto **BDSM App** (Big Data Social Monitoring) proposto da [Zing Srl](http://www.zing-store.com/it/#index). Per il lato back-end fare riferimento alla repository [src_BDSM_App_server](https://github.com/MashUp-UniPD/src_BDSM_App_server).
 
 Per la veste grafica si è preso spunto dal template [SB Admin v2.0](http://startbootstrap.com/template-overviews/sb-admin-2/)
 
@@ -38,9 +38,9 @@ La directory **script_repo** serve per gestire gli script che automatizzano part
 1. installare node.js con:
 
 	`sudo add-apt-repository ppa:rwky/nodejs`
-	
+
 	`sudo apt-get update`
-	
+
 	`sudo apt-get install nodejs`
 2. installare npm con:
 
