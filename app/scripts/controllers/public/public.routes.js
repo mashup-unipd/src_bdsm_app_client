@@ -31,43 +31,15 @@
 
       $urlRouterProvider.otherwise('/recipe');
 
-      $stateProvider
-          .state('login',{
-              templateUrl:'views/public/login.html',
-              url:'/login',
-              resolve: {
-                  loadMyFiles: function($ocLazyLoad) {
-                      return $ocLazyLoad.load({
-                          name:'app',
-                          files:[
-                              'scripts/controllers/public/login.ctrl.js'
-                          ]
-                      });
-                  }
-              }
-          })
-
-          .state('register',{
-              templateUrl:'views/public/register.html',
-              url:'/register',
-              resolve: {
-                  loadMyFiles: function($ocLazyLoad) {
-                      return $ocLazyLoad.load({
-                          name:'app',
-                          files:[
-                              'scripts/controllers/public/register.ctrl.js'
-                          ]
-                      });
-                  }
-              }
-          });
 
     };
 
 
   angular
       .module('app.public.routes', [
-          'ui.router'
+          'ui.router',
+          'app.public.login.routes',
+          'app.public.register.routes'
       ])
 
       .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', PublicConfigRoutes]);
