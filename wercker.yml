@@ -6,15 +6,18 @@ build:
   # The steps that will be executed on build
   steps:
 
-    # a step that executes
+    # a step that install grunt
     - script:
         name: install grunt
         code: sudo npm install -g grunt-cli
 
+    # a step that install bower
     - script:
         name: install bower
         code: sudo npm install -g bower
 
+    # a step that install npm dependencies from package.json file
+    # some of the data is cached so it is faster to build the project later on
     - script:
         name: install npm dependencies
         code: |

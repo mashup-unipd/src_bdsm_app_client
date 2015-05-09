@@ -1,9 +1,9 @@
 {
-  "name": "sb-admin",
+  "name": "mash-app",
   "version": "0.0.0",
   "repository": {
     "type": "git",
-    "url": "https://github.com/start-angular/sb-admin-angular"
+    "url": "https://github.com/MashUp-UniPD/src_BDSM_App_client"
   },
   "dependencies": {},
   "devDependencies": {
