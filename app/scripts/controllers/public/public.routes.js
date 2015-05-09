@@ -67,9 +67,7 @@
 
   angular
       .module('app.public.routes', [
-          'ui.router',
-          'app.user.routes', /* modulo che incapsula i moduli di routing dell'utente normale */
-          'app.admin.routes' /* modulo che incapsula i moduli di routing dell'amministratore */
+          'ui.router'
       ])
 
       .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', PublicConfigRoutes]);

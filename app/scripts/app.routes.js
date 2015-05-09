@@ -1,4 +1,3 @@
-
 (function () {
     'use strict';
 
@@ -17,7 +16,9 @@
 
     angular
         .module('app.routes',[
-            'app.public.routes' /* modulo che gestisce il routing delle pagine accesibili dagli utenti non autenticati */
+            'app.public.routes', /* modulo che incapsula i moduli di routing dell'utente non autenticato */
+            'app.user.routes', /* modulo che incapsula i moduli di routing dell'utente normale */
+            'app.admin.routes' /* modulo che incapsula i moduli di routing dell'amministratore */
         ]);
 
 
