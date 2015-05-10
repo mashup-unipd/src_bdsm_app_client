@@ -1,11 +1,26 @@
-describe('LoginCtrl', function(){
+describe('app', function () {
 
-    beforeEach(angular.mock.module('app'));
+    var $controller;
 
-    it('should have a LoginCtrl controller', function(){
-        // expect(app.LoginCtrl).toBeDefined();
+    beforeEach(function () {
+
+        module('app');
+
+        inject(function (_$controller_) {
+
+            $controller = _$controller_('LoginCtrl');
+
+        });
     });
 
+    //-- spec - test controller
 
+    describe('Controller : LoginCtrl', function () {
+
+        it('should have a LoginCtrl controller', function(){
+            // expect(app.LoginCtrl).toBeDefined();
+        });
+
+    });
 
 });
