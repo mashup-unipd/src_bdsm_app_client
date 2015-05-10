@@ -13,6 +13,8 @@
      * ==========================================================
      * 0.0.1    2015-05-03  Tesser Paolo    codifica modulo
      * -----------------------------------------------------------
+     * 0.0.2    2015-05-08  Tesser Paolo    inserito modulo ng-token-auth
+     * -----------------------------------------------------------
      *
      */
 
@@ -31,6 +33,7 @@
             'ui.router', /* modulo che gestisce il routing delle pagine e dei link dell'applicativo */
             'ui.bootstrap', /* modulo che gestisce le direttive di bootstrap in Angular */
             'angular-loading-bar',
+            'ng-token-auth', /* modulo che gestice i servizi di autenticazione */
             'app.routes' /* modulo che incapsula tutti i file di routing */
         ]);
 
