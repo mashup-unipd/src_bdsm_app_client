@@ -130,58 +130,98 @@ module.exports = function (grunt) {
       }
     },
 
-    // Empties folders to start fresh
-    clean: {
-      dist: {
-        files: [{
-          dot: true,
-          src: [
-            '.tmp',
-            '<%= yeoman.dist %>/{,*/}*',
-            '!<%= yeoman.dist %>/.git*'
-          ]
-        }]
+      // Empties folders to start fresh
+      clean: {
+          dist: {
+            files: [{
+              dot: true,
+              src: [
+                '.tmp',
+                '<%= yeoman.dist %>/{,*/}*',
+                '!<%= yeoman.dist %>/.git*'
+              ]
+            }]
+          },
+          server: '.tmp'
       },
-      server: '.tmp'
-    },
 
-    // Add vendor prefixed styles
-    autoprefixer: {
-      options: {
-        browsers: ['last 1 version']
+       // Add vendor prefixed styles
+      autoprefixer: {
+          options: {
+            browsers: ['last 1 version']
+          },
+          dist: {
+            files: [{
+              expand: true,
+              cwd: '.tmp/styles/',
+              src: '{,*/}*.css',
+              dest: '.tmp/styles/'
+            }]
+          }
       },
-      dist: {
-        files: [{
-          expand: true,
-          cwd: '.tmp/styles/',
-          src: '{,*/}*.css',
-          dest: '.tmp/styles/'
-        }]
-      }
-    },
 
-    // Automatically inject Bower components into the app
-    wiredep: {
-      options: {
-        cwd: '<%= yeoman.app %>'
+      // Automatically inject Bower components into the app
+      wiredep: {
+          options: {
+            cwd: '<%= yeoman.app %>'
+          },
+          app: {
+            src: ['<%= yeoman.app %>/index.html'],
+            ignorePath:  /\.\.\//
+          }
       },
-      app: {
-        src: ['<%= yeoman.app %>/index.html'],
-        ignorePath:  /\.\.\//
-      }
-    },
 
-    // Renames files for browser caching purposes
-    filerev: {
-      dist: {
-        src: [
-          '<%= yeoman.dist %>/scripts/{,*/}*.js',
-          '<%= yeoman.dist %>/styles/{,*/}*.css',
-          '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          '<%= yeoman.dist %>/styles/fonts/*'
-        ]
-      }
-    },
+      // Renames files for browser caching purposes
+      filerev: {
+          dist: {
+            src: [
+              '<%= yeoman.dist %>/scripts/{,*/}*.js',
+              '<%= yeoman.dist %>/styles/{,*/}*.css',
+              '<%= yeoman.dist %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+              '<%= yeoman.dist %>/styles/fonts/*'
+            ]
+          }
+      },
+
+      webdriver: { /* [repo] insert option to init webdriver npm task */
+          options: {
+              command: 'node_modules/protractor/bin/webdriver-manager start'
+          }
+      },
+
+      protractor: {
+          options: {
+              configFile: 'test/protractor.conf.js', // your protractor config file
+              keepAlive: true, // If false, the grunt process stops when the test fails.
+              noColor: false, // If true, protractor will not use colors in its output.
+              args: {
+                  // Arguments passed to the command
+              }
+          },
+          chrome: {
+              options: {
+                  args: {
+                      browser: "chrome"
+                  }
+              }
+          },
+          safari: {
+              options: {
+                  args: {
+                      browser: "safari"
+                  }
+              }
+          },
+          firefox: {
+              options: {
+                  args: {
+                      browser: "firefox"
+                  }
+              }
+          },
+          run: {}
+      },
+
 
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
@@ -362,51 +402,54 @@ module.exports = function (grunt) {
             configFile: 'test/karma.conf.js',
             singleRun: true
         }
-        // add e2e test here
     }
   });
 
 
-  grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
-    if (target === 'dist') {
-      return grunt.task.run(['build', 'connect:dist:keepalive']);
-    }
+    grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+        if (target === 'dist') {
+          return grunt.task.run(['build', 'connect:dist:keepalive']);
+        }
 
-    grunt.task.run([
-      'clean:server',
-      'concurrent:server',
-      'autoprefixer',
-      'connect:livereload',
-      'watch'
+        grunt.task.run([
+          'clean:server',
+          'concurrent:server',
+          'autoprefixer',
+          'connect:livereload',
+          'watch'
+        ]);
+    });
+
+    grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
+        grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
+        grunt.task.run(['serve:' + target]);
+    });
+
+    grunt.registerTask('test', [
+        'clean:server',
+        'concurrent:test',
+        'autoprefixer',
+        'connect:test',
+        'karma',
+        'protractor:run' /* [repo] insert task for launch e2e test when use command 'grunt test' */
     ]);
-  });
 
-  grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
-    grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-    grunt.task.run(['serve:' + target]);
-  });
+    grunt.loadNpmTasks('grunt-protractor-runner'); /* [repo] */
+    grunt.loadNpmTasks('grunt-start-webdriver'); /* [repo] */
 
-  grunt.registerTask('test', [
-    'clean:server',
-    'concurrent:test',
-    'autoprefixer',
-    'connect:test',
-    'karma'
-  ]);
+    grunt.registerTask('build', [
+        'clean:dist',
+        'concurrent:dist',
+        'copy:dist',
+        'cssmin',
+        'ngAnnotate',
+        'uglify',
+        'htmlmin'
+    ]);
 
-  grunt.registerTask('build', [
-    'clean:dist',
-    'concurrent:dist',
-    'copy:dist',
-    'cssmin',
-    'ngAnnotate',
-    'uglify',
-    'htmlmin'
-  ]);
-
-  grunt.registerTask('default', [
-    'newer:jshint',
-    'test',
-    'build'
-  ]);
+    grunt.registerTask('default', [
+        'newer:jshint',
+        'test',
+        'build'
+    ]);
 };
