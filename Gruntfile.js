@@ -185,6 +185,7 @@ module.exports = function (grunt) {
 
       webdriver: { /* [repo] insert option to init webdriver npm task */
           options: {
+              keepAlive : true,
               command: './node_modules/protractor/bin/webdriver-manager start'
           }
       },
