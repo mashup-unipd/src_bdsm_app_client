@@ -16,6 +16,10 @@ build:
         name: install bower
         code: sudo npm install -g bower
 
+    # a step that install and starts Selenium standalone server
+    - steps:
+        - selenium-install
+
     # a step that install npm dependencies from package.json file
     # some of the data is cached so it is faster to build the project later on
     - script:
@@ -28,6 +32,7 @@ build:
     - script:
         name: install bower dependencies
         code: bower install --config.storage.cache=$WERCKER_CACHE_DIR/werck
+
 
 
     # this assumes that your test suite runs via `grunt test`[x]
