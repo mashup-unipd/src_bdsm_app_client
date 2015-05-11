@@ -3,8 +3,8 @@
 
   /**
    * Name: login.ctrl.js
-   * Author: Tesser Paolo
-   * Mail: p.tesser921@gmail.com
+   * Author: MashUp
+   * Mail: info@mashup-unipd.it
    * Desc: controller che gestisce le operazioni di autenticazione al sistema
    *
    * Modify
@@ -17,10 +17,10 @@
 
   /**
    * @ngdoc function
-   * @name clientApp.controller:LoginCtrl
+   * @name app.controller:LoginCtrl
    * @description
    * # LoginCtrl
-   * Controller of the clientApp
+   * Controller of the app
    */
 
   var LoginCtrl = function($stateParams, $location){
