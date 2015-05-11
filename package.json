@@ -46,7 +46,6 @@
     "test": "grunt test",
     "start": "grunt serve",
     "dist": "grunt serve:dist",
-    "install": "node_modules/protractor/bin/webdriver-manager update",
     "postinstall": "bower install"
   }
 }

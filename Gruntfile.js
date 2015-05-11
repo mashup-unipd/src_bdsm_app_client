@@ -189,6 +189,15 @@ module.exports = function (grunt) {
           }
       },
 
+      protractor_webdriver: {
+          start: {
+              options: {
+                  path: 'node_modules/protractor/bin/',
+                  command: 'webdriver-manager start'
+              }
+          }
+      },
+
       protractor: {
           options: {
               configFile: 'test/protractor.conf.js', // your protractor config file
@@ -406,6 +415,9 @@ module.exports = function (grunt) {
   });
 
 
+    grunt.loadNpmTasks('grunt-protractor-runner'); /* [repo] */
+    grunt.loadNpmTasks('grunt-start-webdriver'); /* [repo] */
+
     grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
         if (target === 'dist') {
           return grunt.task.run(['build', 'connect:dist:keepalive']);
@@ -431,11 +443,10 @@ module.exports = function (grunt) {
         'autoprefixer',
         'connect:test',
         'karma',
+        'webdriver',
         'protractor:run' /* [repo] insert task for launch e2e test when use command 'grunt test' */
     ]);
 
-    grunt.loadNpmTasks('grunt-protractor-runner'); /* [repo] */
-    grunt.loadNpmTasks('grunt-start-webdriver'); /* [repo] */
 
     grunt.registerTask('build', [
         'clean:dist',
