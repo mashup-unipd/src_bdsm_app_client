@@ -185,16 +185,7 @@ module.exports = function (grunt) {
 
       webdriver: { /* [repo] insert option to init webdriver npm task */
           options: {
-              command: 'node_modules/protractor/bin/webdriver-manager start'
-          }
-      },
-
-      protractor_webdriver: {
-          start: {
-              options: {
-                  path: 'node_modules/protractor/bin/',
-                  command: 'webdriver-manager start'
-              }
+              command: './node_modules/protractor/bin/webdriver-manager start'
           }
       },
 
