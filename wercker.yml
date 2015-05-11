@@ -33,6 +33,10 @@ build:
         name: update webdriver
         code: ./node_modules/.bin/webdriver-manager update
 
+    - script:
+        name: start webdriver
+        code: ./node_modules/.bin/webdriver-manager start
+
     # this assumes that your test suite runs via `grunt test`[x]
     - grunt:
         tasks: test
