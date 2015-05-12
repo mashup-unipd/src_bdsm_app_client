@@ -341,20 +341,20 @@ module.exports = function (grunt) {
       }
     },
 
-    // Run some tasks in parallel to speed up the build process
-    concurrent: {
-      server: [
-        'copy:styles'
-      ],
-      test: [
-        'copy:styles'
-      ],
-      dist: [
-        'copy:styles',
-        'imagemin',
-        'svgmin'
-      ]
-    },
+      // Run some tasks in parallel to speed up the build process
+      concurrent: {
+          server: [
+            'copy:styles'
+          ],
+          test: [
+            'copy:styles'
+          ],
+          dist: [
+            'copy:styles',
+            'imagemin',
+            'svgmin'
+          ]
+	  },
 
       /* Unit test settings */
       karma: {
@@ -365,26 +365,6 @@ module.exports = function (grunt) {
         }
       },
 
-      /* e2e test settings */
-
-      /* [repo] insert option to init webdriver npm task */
-      /*
-       webdriver: {
-       options: {
-       keepAlive : true,
-       command: './node_modules/protractor/bin/webdriver-manager start'
-       }
-       },
-       */
-
-      /* [repo] */
-      /*
-       seleniumUpdate: {
-       options: {
-       command: './node_modules/protractor/bin/webdriver-manager update'
-       }
-       },
-       */
 
       protractor: {
           options: {
@@ -399,10 +379,6 @@ module.exports = function (grunt) {
       }
 
   });
-
-    // grunt.loadNpmTasks('grunt-start-webdriver'); /* [repo] */
-    // grunt.loadNpmTasks('grunt-protractor-webdriver'); /* [repo] */
-    // grunt.loadNpmTasks('grunt-protractor-runner'); /* [repo] */
 
 
     grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
