@@ -13,7 +13,7 @@
      * ==========================================================
      * 0.0.1    2015-05-04  Tesser Paolo    codifica modulo
      * -----------------------------------------------------------
-     *
+     * 0.0.2	2015-05-12	Tesser Paolo	aggiunti moduli che gestiscono il routing delle pagine dell'admin
      */
 
     /**
@@ -30,7 +30,8 @@
             'ui.router',
             'app.admin.insert-recipe.routes', /* modulo che gestisce il routing dell'inserimento di nuove recipe */
 			'app.admin.users-config.routes', /* modulo che gestisce il routing per la gestione degli utenti */
-			'app.admin.ratings.routes' /* modulo che gestisce il routing per la lista delle recipe */
+			'app.admin.ratings.routes', /* modulo che gestisce il routing per la lista delle recipe */
+			'app.admin.request-list.routes' /* modulo che gestisce il routing per la lista delle richieste di recipe  */
         ])
 
         .config(['$stateProvider', AdminConfigRoutes]);
