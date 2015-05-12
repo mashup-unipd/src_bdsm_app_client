@@ -26,11 +26,6 @@ exports.config = {
         'browserName': 'chrome'
     }],
 
-    /*
-    capabilities:  {
-        'browserName': 'chrome'
-    },
-    */
 
     // A base URL for your application under test. Calls to protractor.get()
     // with relative paths will be prepended with this. 'http://localhost:8000'
