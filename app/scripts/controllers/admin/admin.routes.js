@@ -29,7 +29,8 @@
         .module('app.admin.routes', [
             'ui.router',
             'app.admin.insert-recipe.routes', /* modulo che gestisce il routing dell'inserimento di nuove recipe */
-			'app.admin.users-config.routes' /* modulo che gestisce il routing per la gestione degli utenti */
+			'app.admin.users-config.routes', /* modulo che gestisce il routing per la gestione degli utenti */
+			'app.admin.ratings.routes' /* modulo che gestisce il routing per la lista delle recipe */
         ])
 
         .config(['$stateProvider', AdminConfigRoutes]);
