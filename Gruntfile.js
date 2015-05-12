@@ -183,46 +183,6 @@ module.exports = function (grunt) {
           }
       },
 
-      webdriver: { /* [repo] insert option to init webdriver npm task */
-          options: {
-              keepAlive : true,
-              command: './node_modules/protractor/bin/webdriver-manager start'
-          }
-      },
-
-      protractor: {
-          options: {
-              configFile: 'test/protractor.conf.js', // your protractor config file
-              keepAlive: true, // If false, the grunt process stops when the test fails.
-              noColor: false, // If true, protractor will not use colors in its output.
-              args: {
-                  // Arguments passed to the command
-              }
-          },
-          chrome: {
-              options: {
-                  args: {
-                      browser: "chrome"
-                  }
-              }
-          },
-          safari: {
-              options: {
-                  args: {
-                      browser: "safari"
-                  }
-              }
-          },
-          firefox: {
-              options: {
-                  args: {
-                      browser: "firefox"
-                  }
-              }
-          },
-          run: {}
-      },
-
 
     // Reads HTML for usemin blocks to enable smart builds that automatically
     // concat, minify and revision files. Creates configurations in memory so
@@ -396,19 +356,53 @@ module.exports = function (grunt) {
       ]
     },
 
-    // Test settings
-    karma: {
+      /* Unit test settings */
+      karma: {
         // unit test
         unit: {
             configFile: 'test/karma.conf.js',
             singleRun: true
         }
-    }
+      },
+
+      /* e2e test settings */
+
+      /* [repo] insert option to init webdriver npm task */
+      /*
+       webdriver: {
+       options: {
+       keepAlive : true,
+       command: './node_modules/protractor/bin/webdriver-manager start'
+       }
+       },
+       */
+
+      /* [repo] */
+      /*
+       seleniumUpdate: {
+       options: {
+       command: './node_modules/protractor/bin/webdriver-manager update'
+       }
+       },
+       */
+
+      protractor: {
+          options: {
+              keepAlive: true,
+              configFile: "test/protractor.conf.js",
+              args: {
+                  seleniumServerJar: './node_modules/protractor/selenium/selenium-server-standalone-2.45.0.jar',
+                  chromeDriver: './node_modules/protractor/selenium/chromedriver'
+              }
+          },
+          run: {}
+      }
+
   });
 
     // grunt.loadNpmTasks('grunt-start-webdriver'); /* [repo] */
-    grunt.loadNpmTasks('grunt-protractor-webdriver'); /* [repo] */
-    grunt.loadNpmTasks('grunt-protractor-runner'); /* [repo] */
+    // grunt.loadNpmTasks('grunt-protractor-webdriver'); /* [repo] */
+    // grunt.loadNpmTasks('grunt-protractor-runner'); /* [repo] */
 
 
     grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
@@ -431,19 +425,17 @@ module.exports = function (grunt) {
     });
 
 
-    grunt.registerTask('e2e',[
-        'webdriver',
+    /* [repo] new task for run e2e tests */
+    grunt.registerTask('test-e2e',[
         'protractor:run'
     ]);
 
-    grunt.registerTask('test', [
+    grunt.registerTask('test-unit', [
         'clean:server',
         'concurrent:test',
         'autoprefixer',
         'connect:test',
         'karma'
-        // 'webdriver',
-        // 'protractor:run' /* [repo] insert task for launch e2e test when use command 'grunt test' */
     ]);
 
 

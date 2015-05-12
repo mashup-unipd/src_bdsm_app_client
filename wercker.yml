@@ -36,7 +36,7 @@ build:
 
     # this assumes that your test suite runs via `grunt test`[x]
     - grunt:
-        tasks: test
+        tasks: test-unit
 
-    # - grunt:
-    #    tasks: e2e
+    - grunt:
+        tasks: test-e2e
