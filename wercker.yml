@@ -1,6 +1,11 @@
 # wercker.yml
  
 box: wercker/nodejs
+
+packages:
+    - firefox
+    - chrome
+
 # Build definition
 build:
   # The steps that will be executed on build
@@ -18,6 +23,8 @@ build:
     - install-packages:
         packages: firefox
 
+    - install-packages:
+        packages: chrome
 
     # a step that install grunt
     - script:
