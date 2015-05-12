@@ -332,7 +332,7 @@ module.exports = function (grunt) {
           expand: true,
          cwd: '<%= yeoman.app %>/scripts',
           src: '**/*.js',
-         dest: '<%= yeoman.dist %>/scripts',
+         dest: '<%= yeoman.dist %>/scripts'
         }]
       }
     },
@@ -434,9 +434,9 @@ module.exports = function (grunt) {
         'concurrent:test',
         'autoprefixer',
         'connect:test',
-        'karma',
-        'webdriver',
-        'protractor:run' /* [repo] insert task for launch e2e test when use command 'grunt test' */
+        'karma'
+        // 'webdriver',
+        // 'protractor:run' /* [repo] insert task for launch e2e test when use command 'grunt test' */
     ]);
 
 
