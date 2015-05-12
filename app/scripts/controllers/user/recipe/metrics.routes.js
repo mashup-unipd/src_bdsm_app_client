@@ -41,7 +41,8 @@
 
     angular
         .module('app.user.metrics.routes', [
-            'ui.router'
+            'ui.router',
+			'app.user.metrics.charts.routes'
         ])
 
         .config(['$stateProvider', MetricsConfigRoutes]);
