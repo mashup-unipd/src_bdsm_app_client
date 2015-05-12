@@ -2,21 +2,21 @@
     'use strict';
 
     /**
-     * Name: metrics.ctrl.js
-     * Author: Tesser Paolo
-     * Mail. p.tesser921@gmail.com
+     * Name: app/scripts/controllers/recipe/metrics.ctrl.js
+     * Author: MashUp
+     * Mail. info@mashup-unipd.it
      *
      * Modify
      * Version  Date        Author          Desc
      * ==========================================================
-     * 0.0.1    2015-04-18  Tesser Paolo    creazione modulo
+     * 0.0.1    2015-05-04  Tesser Paolo    codifica modulo
      * -----------------------------------------------------------
      *
      */
 
     /**
      * @ngdoc function
-     * @name nameModule.controller:MetricsCtrl
+     * @name app.controller:MetricsCtrl
      * @description
      * # MetricsCtrl
      * Controller of the app

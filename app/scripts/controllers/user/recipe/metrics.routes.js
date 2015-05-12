@@ -2,11 +2,10 @@
     'use strict';
 
     /**
-     * Name: metrics.routes.js
-     * Author: Tesser Paolo
-     * Mail: p.tesser921@gmail.com
-     * Desc: modulo che gestisce il routing più esterno dell'applicazione, differenzia tra utente autenticato e non,
-     *       inglobando i moduli per gestire tutte le viste degli Utente autenticati e degli amministratori
+     * Name: app/scripts/controllers/recipe/metrics.routes.js
+     * Author: MashUp
+     * Mail: info@mashup-unipd.it
+     * Desc: modulo che gestisce il routing della pagina delle metriche di una Recipe
      *
      * Modify
      * Version  Date        Author          Desc
