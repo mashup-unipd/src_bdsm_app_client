@@ -1,9 +1,9 @@
 (function(){
     'use strict';
     /**
-     * Name: insertRecipeCtrl.js
-     * Author: Tesser Paolo
-     * Mail. p.tesser921@gmail.com
+     * Name: app/scripts/controllers/admin/recipe_config/insert-recipe.ctrl.js
+     * Author: MashUp
+     * Mail. info@mashup-unipd.it
      *
      * Modify
      * Version  Date        Author          Desc
@@ -18,10 +18,10 @@
 
     /**
      * @ngdoc function
-     * @name clientApp.controller:InsertRecipeCtrl
+     * @name app.controller:InsertRecipeCtrl
      * @description
      * # InsertRecipeCtrl
-     * Controller of the clientApp
+     * Controller of the app
      */
 
     /* TODO (p.tesser921@gmail.com): insert RecipeInsertModel as param */
@@ -77,6 +77,7 @@
         }
 
         function updateTypeMetric(){
+
             switch (vm.type){
                 case 'facebook': vm.types = typeFacebook; break;
                 case 'twitter': vm.types = typeTwitter; break;

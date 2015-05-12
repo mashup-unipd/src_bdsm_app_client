@@ -2,11 +2,10 @@
     'use strict';
 
     /**
-     * Name: insert-recipe.routes.js
-     * Author: Tesser Paolo
+     * Name: app/scripts/controllers/admin/recipe_config/insert-recipe.routes.js
+     * Author: MashUp
      * Mail: p.tesser921@gmail.com
-     * Desc: modulo che gestisce il routing più esterno dell'applicazione, differenzia tra utente autenticato e non,
-     *       inglobando i moduli per gestire tutte le viste degli Utente autenticati e degli amministratori
+     * Desc: modulo che gestisce il routing per la pagina di inserimento di nuove Recipe
      *
      * Modify
      * Version  Date        Author          Desc
@@ -20,7 +19,7 @@
      *
      * @param $stateProvider
      */
-    var AdminConfigRoutes = function($stateProvider) {
+    var InsertRecipeRoutes = function($stateProvider) {
 
         $stateProvider
 
@@ -46,6 +45,6 @@
             'ui.router'
         ])
 
-        .config(['$stateProvider', AdminConfigRoutes]);
+        .config(['$stateProvider', InsertRecipeRoutes]);
 
 })();
