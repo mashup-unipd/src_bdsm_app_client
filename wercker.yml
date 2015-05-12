@@ -38,5 +38,5 @@ build:
     - grunt:
         tasks: test
 
-    - grunt:
-        tasks: e2e
+    # - grunt:
+    #    tasks: e2e
