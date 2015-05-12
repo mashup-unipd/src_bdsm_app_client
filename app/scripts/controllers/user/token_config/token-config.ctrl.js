@@ -16,9 +16,9 @@
 
     /**
      * @ngdoc function
-     * @name nameModule.controller:SettingsCtrl
+     * @name app.controller:TokenConfigCtrl
      * @description
-     * # SettingsCtrl
+     * # TokenConfigCtrl
      * Controller of the app
      */
 

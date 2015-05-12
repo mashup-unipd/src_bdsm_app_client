@@ -85,7 +85,8 @@
             'app.user.metrics.routes', /* modulo che gestisce il routing delle metriche, figlio delle recipe */
             'app.user.favourites.routes', /* modulo che gestisce il routing dei favourites */
             'app.user.settings.routes', /* modulo che gestisce il routing delle impostazioni di profilo  */
-            'app.user.token-config.routes'
+            'app.user.token-config.routes', /* modulo che gestisce il routing della pagine che fornisce un token per le API  */
+            'app.user.recipe-request.routes' /* modulo che gestisce il routing della pagina di richiesta di nuove Recipe */
         ])
 
         .config(['$stateProvider', UserConfigRoutes]);
