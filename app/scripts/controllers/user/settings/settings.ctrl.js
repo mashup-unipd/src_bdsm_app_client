@@ -2,14 +2,14 @@
     'use strict';
 
     /**
-     * Name: app/scripts/controller/settings.ctrl.js
-     * Author: Tesser Paolo
-     * Mail. p.tesser921@gmail.com
+     * Name: app/scripts/controller/settings/settings.ctrl.js
+     * Author: MashUp
+     * Mail. info@mashup-unipd.it
      *
      * Modify
      * Version  Date        Author          Desc
      * ==========================================================
-     * 0.0.1    aaaa-mm-dd  Tesser Paolo    description
+     * 0.0.1    2015-05-01  Tesser Paolo    codifica modulo
      * -----------------------------------------------------------
      *
      */
@@ -19,7 +19,7 @@
      * @name nameModule.controller:SettingsCtrl
      * @description
      * # SettingsCtrl
-     * Controller of the clientApp
+     * Controller of the app
      */
 
     var SettingsCtrl = function () {
