@@ -4,7 +4,6 @@ box: wercker/nodejs
 
 packages:
     - firefox
-    - google-chrome
 
 # Build definition
 build:
@@ -22,9 +21,6 @@ build:
 
     - install-packages:
         packages: firefox
-
-    - install-packages:
-        packages: google-chrome
 
     # a step that install grunt
     - script:
