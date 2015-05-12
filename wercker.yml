@@ -34,10 +34,21 @@ build:
         code: ./node_modules/.bin/webdriver-manager update
 
 
+    - script:
+        name: Enable virtual display
+        code: |-
+          # Start xvfb which gives the context an virtual display
+          # which is required for tests that require an GUI
+          export DISPLAY=:99.0
+          start-stop-daemon --start --quiet --pidfile /tmp/xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset
+
+          # Give xvfb time to start. 3 seconds is the default for all xvfb-run commands.
+          sleep 3
+
     # this assumes that your test suite runs via `grunt test`[x]
     - grunt:
         tasks: test-unit
 
     # Error: /pipeline/build/node_modules/protractor/node_modules/selenium-webdriver/lib/atoms/error.js:113
-    # - grunt:
-    #    tasks: test-e2e
+    - grunt:
+        tasks: test-e2e
