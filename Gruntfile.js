@@ -406,9 +406,10 @@ module.exports = function (grunt) {
     }
   });
 
-
+    // grunt.loadNpmTasks('grunt-start-webdriver'); /* [repo] */
+    grunt.loadNpmTasks('grunt-protractor-webdriver'); /* [repo] */
     grunt.loadNpmTasks('grunt-protractor-runner'); /* [repo] */
-    grunt.loadNpmTasks('grunt-start-webdriver'); /* [repo] */
+
 
     grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
         if (target === 'dist') {
@@ -428,6 +429,12 @@ module.exports = function (grunt) {
         grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
         grunt.task.run(['serve:' + target]);
     });
+
+
+    grunt.registerTask('e2e',[
+        'webdriver',
+        'protractor:run'
+    ]);
 
     grunt.registerTask('test', [
         'clean:server',
