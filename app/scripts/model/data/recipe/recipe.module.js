@@ -1,8 +1,8 @@
-(function () {
+(function() {
 	'use strict';
 
 	/**
-	 * Name: app/scripts/model/data/user/user.model.js
+	 * Name: app/scripts/model/data/recipe/recipe.module.js
 	 * Author: MashUp
 	 * Mail. info@mashup-unipd.it
 	 *
@@ -14,7 +14,6 @@
 	 *
 	 */
 
+	angular.module('app.recipe.data.module', [])
 
-
-
-})();
+}());
