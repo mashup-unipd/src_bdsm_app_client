@@ -14,6 +14,6 @@
 	 *
 	 */
 
-	angular.module('app.recipe.data.module', [])
+	angular.module('app.recipe.data.module', []);
 
 }());
