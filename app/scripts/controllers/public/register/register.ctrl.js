@@ -25,7 +25,7 @@
    */
 
   // TODO: insert User model, Auth service as params
-  var RegisterCtrl = function(){
+  var RegisterCtrl = function( $location ){
 
 	  var vm = this;
 
@@ -47,16 +47,27 @@
 	  function register( cred ){
 		  console.log("Inizio procedura di registrazione.");
 
-		  // TODO: check if the two password match
-		  console.log(cred.username);
-		  console.log(cred.mail);
+		  if (cred.pwd === cred.confirmPwd){
 
-		  console.log("Registrazione effettuata con successo!");
+			  console.log(cred.username);
+			  console.log(cred.mail);
+
+			  // TODO: call Auth service
+
+			  console.log("Registrazione effettuata con successo!");
+
+			  $location.path('/login')
+
+		  }else{
+			  vm.matchPwd = true;
+		  }
+
+
     	}
 
   };
 
-  RegisterCtrl.$inject = []; // TODO: inject User model, Auth service
+  RegisterCtrl.$inject = ['$location']; // TODO: inject User model, Auth service
 
   angular.module('app').controller('RegisterCtrl', RegisterCtrl);
 
