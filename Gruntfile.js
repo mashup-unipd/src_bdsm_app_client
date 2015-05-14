@@ -369,7 +369,7 @@ module.exports = function (grunt) {
       protractor: {
           options: {
               keepAlive: true,
-              configFile: "test/protractor.conf.js",
+              configFile: 'test/protractor.conf.js',
               args: {
                   seleniumServerJar: './node_modules/protractor/selenium/selenium-server-standalone-2.45.0.jar',
                   chromeDriver: './node_modules/protractor/selenium/chromedriver'

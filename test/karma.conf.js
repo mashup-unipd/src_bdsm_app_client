@@ -34,7 +34,11 @@ module.exports = function(config) {
         'bower_components/angular-sanitize/angular-sanitize.js',
         'bower_components/angular-touch/angular-touch.js',
 
+
+		// model data
 		'app/scripts/model/data/recipe/recipe.module.js',
+		// model services
+		'app/scripts/model/services/auth/auth.module.js',
 
 		'app/scripts/**/*.js'
     ],
