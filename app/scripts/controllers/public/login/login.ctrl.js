@@ -2,7 +2,7 @@
   'use strict';
 
   /**
-   * Name: login.ctrl.js
+   * Name: app/scripts/controllers/public/login/login.ctrl.js
    * Author: MashUp
    * Mail: info@mashup-unipd.it
    * Desc: controller che gestisce le operazioni di autenticazione al sistema
@@ -23,10 +23,11 @@
    * Controller of the app
    */
 
+  // TODO: insert Auth Service as param
   var LoginCtrl = function($stateParams, $location){
 
-    /* captured 'this' because may change its context */
-    var vm = this; /* like View Model */
+    //captured 'this' because may change its context */
+    var vm = this; // like View Model
 
     vm.credentials = {
       email: 'info@mashup-unipd.it',
@@ -37,7 +38,7 @@
 
     /**
      *
-     * @param credentials
+     * @param credentials : object with credentials about User that want login in the system
      */
     function login( credentials ){
 
@@ -54,7 +55,7 @@
   };
 
 
-  LoginCtrl.$inject = ['$stateParams', '$location'];
+  LoginCtrl.$inject = ['$stateParams', '$location']; // TODO: inject Auth Service
 
   angular
       .module('app')

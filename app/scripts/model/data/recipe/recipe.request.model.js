@@ -9,7 +9,7 @@
 	 * Modify
 	 * Version  Date        Author          Desc
 	 * ==========================================================
-	 * 0.0.1    2015-05-10  Tesser Paolo    codifica modulo
+	 * 0.0.1    2015-05-10  Tesser Paolo    code module
 	 * -----------------------------------------------------------
 	 *
 	 */
@@ -30,25 +30,25 @@
 	RecipeRequestModel.$inject = ['RecipeModel'];
 
 
-	function RecipeRequestModel(RecipeModel){
+	function RecipeRequestModel(){
 
+		/**
+		 *
+		 * @param idUser
+		 * @constructor
+		 */
 		var RecipeRequestModel = function( idUser ){
 			this.idUser = idUser;
 			RecipeModel.apply(this);
 		};
 
-		/* create inheritance */
-		/* reuse the original object prototype */
-		// RecipeRequestModel.prototype = new RecipeModel();
-
-		/* OR */
 
 		RecipeRequestModel.prototype = Object.create(RecipeModel.prototype);
 		RecipeRequestModel.prototype.constructor = RecipeRequestModel;
 
 		/**
 		 *
-		 * @returns {*}
+		 * @returns {*} return the id of the User that created the request for a new recipe
 		 */
 		RecipeRequestModel.prototype.getIdUser = function(){
 			return this.idUser;

@@ -8,7 +8,7 @@
      * Modify
      * Version  Date        Author          Desc
      * ==========================================================
-     * 0.0.1    2015-03-24  Tesser Paolo    codifica modulo
+     * 0.0.1    2015-03-24  Tesser Paolo    code module
      * -----------------------------------------------------------
      * 0.0.2    2015-04-18  Tesser Paolo    refactor code, more encapsulate
      * -----------------------------------------------------------
@@ -24,19 +24,18 @@
      * Controller of the app
      */
 
+	// TODO: need of a service for retrie id of the logged User
     var InsertRecipeCtrl = function( RecipeInsertModel ){
 
         var vm = this;
 
         vm.titleRecipe = '';
         vm.descRecipe = '';
-        vm.types = [];
         vm.type = '';
-
         vm.insertSuccess = false;
         vm.insertError = false;
 
-        /* array delle categorie */
+        // array of the category for a options field in the template view
         vm.categories = [
             {
                 key: 'facebook',
@@ -51,16 +50,50 @@
                 value: 'Instagram'
             }
         ];
-
-        /* array dei tipi di nodo */
-        var typeFacebook = ['evento', 'pagina'];
-        var typeTwitter = ['hashtag', 'pagina'];
-        var typeInstagram = ['hashtag', 'pagina'];
-
-
+		vm.types = [];
         vm.insertRecipe = insertRecipe;
         vm.updateTypeMetric = updateTypeMetric;
 
+		///////////////////
+
+		// array of types of the possible node in a metric's category
+		var typeFacebook = [
+			{
+				key: 'evento',
+				value: 'Evento'
+			},
+			{
+				key: 'pagina',
+				value: 'Pagina'
+			}
+		];
+
+		var typeTwitter = [
+			{
+				key: 'hashtag',
+				value: 'Hashtag'
+			},
+			{
+				key: 'pagina',
+				value: 'Pagina'
+			}
+		];
+		var typeInstagram = [
+			{
+				key: 'hashtag',
+				value: 'Hashtag'
+			},
+			{
+				key: 'pagina',
+				value: 'Pagina'
+			}
+		];
+
+		///////////////////
+
+		/**
+		 * This function create a new Recipe and insert it in the back-end
+		 */
         function insertRecipe(){
 
             var recipe = new RecipeInsertModel('12355458654');
@@ -70,12 +103,19 @@
 
             console.log('Desc Recipe: ' + recipe.descRecipe);
 
+			// set the value of field after a success insert
             vm.titleRecipe = '';
             vm.descRecipe = '';
             vm.insertSuccess = true;
         }
 
-        function updateTypeMetric(){
+		/**
+		 * This function update the option field for type of metric in the insert recipe form,
+		 * @param category : object that contains a key and a value, and we want the key for choose what array choose
+		 */
+        function updateTypeMetric( category ){
+
+			vm.type = category.key.key;
 
             switch (vm.type){
                 case 'facebook': vm.types = typeFacebook; break;
@@ -83,10 +123,11 @@
                 case 'instagram': vm.types = typeInstagram; break;
                 default : vm.types = []
             }
-            // console.log(vm.types);
+
         }
 
     };
+
 
     InsertRecipeCtrl.$inject = ['RecipeInsertModel'];
 

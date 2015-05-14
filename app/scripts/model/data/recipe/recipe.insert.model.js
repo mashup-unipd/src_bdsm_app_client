@@ -9,7 +9,7 @@
 	 * Modify
 	 * Version  Date        Author          Desc
 	 * ==========================================================
-	 * 0.0.1    2015-05-10  Tesser Paolo    codifica modulo
+	 * 0.0.1    2015-05-10  Tesser Paolo    code module
 	 * -----------------------------------------------------------
 	 *
 	 */
@@ -30,29 +30,29 @@
 
 	function RecipeInsertModel(RecipeModel){
 
-			var RecipeInsertModel = function( idAdmin ){
-				this.idAdmin = idAdmin;
-				RecipeModel.apply(this);
-			};
+		/**
+		 *
+		 * @param idAdmin
+		 * @constructor
+		 */
+		 var RecipeInsertModel = function( idAdmin ){
+			this.idAdmin = idAdmin;
+			RecipeModel.apply(this);
+		 };
 
-			/* create inheritance */
-			/* reuse the original object prototype */
-			// RecipeInsertModel.prototype = new RecipeModel();
 
-			/* OR */
+		  RecipeInsertModel.prototype = Object.create(RecipeModel.prototype);
+		  RecipeInsertModel.prototype.constructor = RecipeInsertModel;
 
-			RecipeInsertModel.prototype = Object.create(RecipeModel.prototype);
-			RecipeInsertModel.prototype.constructor = RecipeInsertModel;
+		 /**
+		  *
+		  * @returns {*} return the id of the Admin that created a new recipe
+		  */
+		  RecipeInsertModel.prototype.getIdAdmin = function(){
+			  return this.idAdmin;
+		  };
 
-			/**
-			 *
-			 * @returns {*}
-			 */
-			RecipeInsertModel.prototype.getIdAdmin = function(){
-				return this.idAdmin;
-			};
-
-			return RecipeInsertModel;
+   		  return RecipeInsertModel;
 
 	}
 

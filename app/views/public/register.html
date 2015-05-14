@@ -7,11 +7,11 @@
         <span class="sr-only">Benvenuto nel <span lang="en">form</span> di autenticazione all'applicativo.</span>
 
         <!-- RegisterCtrl -->
-        <form method="post" data-ng-controller="RegisterCtrl as rc" data-ng-submit="rc.register()" name="registerForm"> <!-- form login -->
+        <form name="registerForm" method="post" data-ng-controller="RegisterCtrl as rc" data-ng-submit="rc.register( rc.credentials )"> <!-- form login -->
 
           <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.userName.$invalid && registerForm.userName.$dirty }"> <!-- input username -->
             <label class="sr-only" for="input-username" lang="en">User name</label>
-            <input id="input-username" class="form-control input-lg" type="text" name="userName" ng-model="rc.credentials.username" placeholder="User Name" required autofocus>
+            <input id="input-username" class="form-control input-lg" type="text" name="userName" data-ng-model="rc.credentials.username" placeholder="User Name" required autofocus>
             <span class="glyphicon glyphicon-user form-control-feedback" title="icona di un mezzo busto di uomo come immagine per identificare l'utente"></span>
 
             <div class="help-block text-danger" data-ng-if="registerForm.userName.$invalid && registerForm.userName.$dirty" data-ng-messages="registerForm.userName.$error">
@@ -21,14 +21,15 @@
 
           <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.email.$invalid && registerForm.email.$dirty }"> <!-- input email --> <!-- TODO: controllo sui campi non funzionante -->
             <label class="sr-only" for="input-email" lang="en">Email</label>
-            <input id="input-email" class="form-control input-lg"
-                   type="email" name="email" data-ng-model="lc.credentials.mail" placeholder="Email"
-                   required
-                   data-ng-pattern="/^[A-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/" >
+            <input class="form-control input-lg" id="input-email" name="email" type="email"
+                   data-ng-model="rc.credentials.mail" data-ng-pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"
+                   placeholder="Email" required>
 
             <span class="glyphicon glyphicon-envelope form-control-feedback" title="icona di una busta di una lettera"></span>
 
-            <div class="help-block text-danger" data-ng-if="registerForm.email.$dirty" data-ng-messages="registerForm.email.$error">
+            <div class="help-block text-danger" data-ng-if="registerForm.email.$invalid && registerForm.email.$dirty"
+
+                 data-ng-messages="registerForm.email.$error">
               <div data-ng-message="required">Your email address is required.</div>
               <div data-ng-message="pattern">Your email address is invalid.</div>
             </div>
@@ -37,8 +38,8 @@
 
           <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.password.$invalid && registerForm.password.$dirty }"> <!-- input password -->
             <label class="sr-only" for="input-pwd" lang="en">Password</label>
-            <input id="input-pwd" class="form-control input-lg" type="password" name="password"
-                   data-ng-model="lc.credentials.pwd" placeholder="Password"
+            <input class="form-control input-lg" id="input-pwd" name="password" type="password"
+                   data-ng-model="rc.credentials.pwd" placeholder="Password"
                    required autofocus>
             <span class="ti-key form-control-feedback" title="icona di una chiave"></span>
 
@@ -50,12 +51,12 @@
           <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.confirmPassword.$invalid && registerForm.confirmPassword.$dirty }"> <!-- input confirm password -->
             <label class="sr-only" for="input-confirm-pwd">Conferma <span lang="en">Password</span></label>
             <input id="input-confirm-pwd" class="form-control input-lg" type="password" name="confirmPassword"
-                   data-ng-model="lc.credentials.confirmPwd" placeholder="Conferma Password"
-                   required autofocus password-match>
+                   data-ng-model="rc.credentials.confirmPwd" placeholder="Conferma Password"
+                   required autofocus>
             <span class="ti-key form-control-feedback" title="icona di una chiave"></span>
 
-            <div class="help-block text-danger" data-ng-if="registerForm.confirmPassword.$dirty" data-ng-messages="registerForm.confirmPassword.$error">
-              <div data-ng-message="compareTo">La password deve combaciare.</div>
+            <div class="help-block text-danger" data-ng-if="rc.matchPwd">
+              La password deve combaciare.
             </div>
           </div> <!-- end input confirm password -->
 

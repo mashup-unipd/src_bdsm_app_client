@@ -30,14 +30,13 @@
                 url:'/new-recipe',
                 resolve: {
                     loadMyFiles: function($ocLazyLoad) {
-                        return $ocLazyLoad.load({
-                            name:'app',
-                            files:[
-								'scripts/model/data/recipe/recipe.model.js',
-								'scripts/model/data/recipe/recipe.insert.model',
-                                'scripts/controllers/admin/recipe_config/insert-recipe.ctrl.js'
-                            ]
-                        });
+                        return $ocLazyLoad
+							.load({
+                            	name:'app',
+                            	files:[
+                                	'scripts/controllers/admin/recipe_config/insert-recipe.ctrl.js'
+                            	]
+                        	});
                     }
                 }
             });
