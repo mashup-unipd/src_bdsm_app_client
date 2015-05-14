@@ -24,7 +24,7 @@
      * Controller of the app
      */
 
-	// TODO: need of a service for retrie id of the logged User
+	// TODO: need a service for retrie id of the logged User/Admin
     var InsertRecipeCtrl = function( RecipeInsertModel ){
 
         var vm = this;
@@ -53,6 +53,7 @@
 		vm.types = [];
         vm.insertRecipe = insertRecipe;
         vm.updateTypeMetric = updateTypeMetric;
+		vm.addMetric = addMetric;
 
 		///////////////////
 
@@ -95,12 +96,13 @@
 		 * This function create a new Recipe and insert it in the back-end
 		 */
         function insertRecipe(){
-
+			// TODO: use AdminModel to retrieve necessary data
             var recipe = new RecipeInsertModel('12355458654');
 
             recipe.setTitleRecipe(vm.titleRecipe);
             recipe.setDescRecipe(vm.descRecipe);
 
+			console.log(recipe);
             console.log('Desc Recipe: ' + recipe.descRecipe);
 
 			// set the value of field after a success insert
@@ -108,6 +110,13 @@
             vm.descRecipe = '';
             vm.insertSuccess = true;
         }
+
+
+		function addMetric(){
+			// TODO: insert metric in a local array var, reset the form field and add last metric to a list
+			console.log('Aggiunta metrica');
+
+		}
 
 		/**
 		 * This function update the option field for type of metric in the insert recipe form,

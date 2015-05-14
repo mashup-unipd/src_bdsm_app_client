@@ -64,6 +64,8 @@
 
   RegisterCtrl.$inject = ['$location', 'authService']; // TODO: inject User model
 
-  angular.module('app').controller('RegisterCtrl', RegisterCtrl);
+  angular
+	  .module('app')
+	  .controller('RegisterCtrl', RegisterCtrl);
 
 })();

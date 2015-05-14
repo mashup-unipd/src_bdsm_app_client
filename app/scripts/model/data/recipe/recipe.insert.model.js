@@ -23,7 +23,7 @@
 	 */
 
 
-	function model(RecipeModel){
+	function RecipeInsertModel(RecipeModel){
 
 		/**
 		 *
@@ -51,11 +51,11 @@
 
 	}
 
-	model.$inject = ['RecipeModel'];
+	RecipeInsertModel.$inject = ['RecipeModel'];
 
 	angular
 		.module('app.recipe.data.module')
-		.service('RecipeInsertModel', model);
+		.service('RecipeInsertModel', RecipeInsertModel);
 
 
 })();

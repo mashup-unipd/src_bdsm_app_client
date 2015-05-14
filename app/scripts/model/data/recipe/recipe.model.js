@@ -9,7 +9,7 @@
 	 * Modify
 	 * Version  Date        Author          Desc
 	 * ==========================================================
-	 * 0.0.1    2015-05-10  Tesser Paolo    codifica modulo
+	 * 0.0.1    2015-05-10  Tesser Paolo    code module
 	 * -----------------------------------------------------------
 	 *
 	 */
@@ -22,7 +22,7 @@
 	 * Factory in the app.recipe.data.module
 	 */
 
-	function model() {
+	function RecipeModel(MetricModel) {
 
 			/**
 			 *
@@ -32,6 +32,7 @@
 				// properties of the class
 				this.titleRecipe = '';
 				this.descRecipe = '';
+				this.metrics = [];
 			};
 
 			/**
@@ -50,14 +51,22 @@
 				this.descRecipe = desc;
 			};
 
+			/**
+		 	*
+		 	* @param metrics
+		 	*/
+			RecipeModel.prototype.setMetrics = function(metrics){
+				this.metrics = metrics;
+			};
+
 			return RecipeModel;
 
 	}
 
-	model.$inject = [];
+	RecipeModel.$inject = ['MetricModel'];
 
 	angular
 		.module('app.recipe.data.module')
-		.service('RecipeModel', model);
+		.service('RecipeModel', RecipeModel);
 
 })();
