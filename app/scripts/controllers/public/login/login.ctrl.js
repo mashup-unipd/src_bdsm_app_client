@@ -5,12 +5,12 @@
    * Name: app/scripts/controllers/public/login/login.ctrl.js
    * Author: MashUp
    * Mail: info@mashup-unipd.it
-   * Desc: controller che gestisce le operazioni di autenticazione al sistema
+   * Desc: controller that manage system authentication in the login page
    *
    * Modify
    * Version  Date        Author          Desc
    * ==========================================================
-   * 0.0.1    2015-04-04  Tesser Paolo    codifica modulo
+   * 0.0.1    2015-04-04  Tesser Paolo    code module
    * -----------------------------------------------------------
    *
    */
@@ -26,31 +26,32 @@
   // TODO: insert Auth Service as param
   var LoginCtrl = function($stateParams, $location){
 
-    //captured 'this' because may change its context */
-    var vm = this; // like View Model
+      var vm = this;
 
-    vm.credentials = {
-      email: 'info@mashup-unipd.it',
-      pwd: ''
-    };
+	  vm.credentials = {
+      	email: 'info@mashup-unipd.it',
+      	pwd: ''
+	  };
 
-    vm.login = login;
+	  vm.login = login;
 
-    /**
-     *
-     * @param credentials : object with credentials about User that want login in the system
-     */
-    function login( credentials ){
+	  /////////////////////
 
-        console.log('OK');
-        console.log('Email: ' + credentials.email);
-        console.log('Pwd: ' + credentials.pwd);
+	  /**
+	   * This function check if the User credentials it's correct
+	   * @param cred : object with credentials about User that want login in the system
+	   */
+	  function login( cred ){
+		  console.log('OK');
+		  console.log('Email: ' + cred.email);
+		  console.log('Pwd: ' + cred.pwd);
 
-        if (credentials.email === 'info@mashup-unipd.it' && credentials.pwd === 'pwd')
-            $location.path('/dashboard/home');
+		  // TODO: change with a Auth service call and set User if it's correct
+		  if (cred.email === 'info@mashup-unipd.it' && cred.pwd === 'pwd'){
+			  $location.path('/dashboard/home');
+		  }
 
-
-    }
+	  }
 
   };
 
