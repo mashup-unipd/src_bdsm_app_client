@@ -24,7 +24,7 @@
    */
 
   // TODO: insert Auth Service as param
-  var LoginCtrl = function($stateParams, $location){
+  var LoginCtrl = function($stateParams, $location, authService){
 
       var vm = this;
 
@@ -42,21 +42,16 @@
 	   * @param cred : object with credentials about User that want login in the system
 	   */
 	  function login( cred ){
-		  console.log('OK');
-		  console.log('Email: ' + cred.email);
-		  console.log('Pwd: ' + cred.pwd);
 
-		  // TODO: change with a Auth service call and set User if it's correct
-		  if (cred.email === 'info@mashup-unipd.it' && cred.pwd === 'pwd'){
-			  $location.path('/dashboard/home');
-		  }
+		  // TODO: set User if credentials are correct
+		  authService.login(cred);
 
 	  }
 
   };
 
 
-  LoginCtrl.$inject = ['$stateParams', '$location']; // TODO: inject Auth Service
+  LoginCtrl.$inject = ['$stateParams', '$location', 'authService']; // TODO: inject Auth Service
 
   angular
       .module('app')

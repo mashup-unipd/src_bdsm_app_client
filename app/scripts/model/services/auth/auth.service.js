@@ -53,10 +53,16 @@
 
 		/**
 		 * TODO
+		 * @param credentials
 		 */
 		function register( credentials ){
+
+			// TODO: maybe it's necessary create a new User from data model, maybe not
 			// TODO: use ng-auth
 			// example: $auth.submitRegistration();
+
+			$location.path('/login');
+
 		}
 
 		/**

@@ -21,27 +21,22 @@
 	 * # RecipeModel
 	 * Factory in the app.recipe.data.module
 	 */
-	angular
-		.module('app.recipe.data.module')
-		.factory('RecipeModel', RecipeModel);
 
-
-	function RecipeModel() {
-			// Service logic
+	function model() {
 
 			/**
 			 *
-			 * @constructor
+			 * @constructor : TODO
 			 */
 			var RecipeModel = function(){
-				/* properties of the class */
+				// properties of the class
 				this.titleRecipe = '';
 				this.descRecipe = '';
 			};
 
 			/**
 			 *
-			 * @param title
+			 * @param title : TODO
 			 */
 			RecipeModel.prototype.setTitleRecipe = function(title){
 				this.titleRecipe = title;
@@ -49,7 +44,7 @@
 
 			/**
 			 *
-			 * @param desc
+			 * @param desc : TODO
 			 */
 			RecipeModel.prototype.setDescRecipe = function(desc){
 				this.descRecipe = desc;
@@ -58,5 +53,11 @@
 			return RecipeModel;
 
 	}
+
+	model.$inject = [];
+
+	angular
+		.module('app.recipe.data.module')
+		.service('RecipeModel', model);
 
 })();

@@ -12,7 +12,8 @@
    * ==========================================================
    * 0.0.1    2015-04-06  Tesser Paolo    code module
    * -----------------------------------------------------------
-   *
+   * 0.0.2	  2015-05-13  Tesser Paolo	  insert service for authentication
+   * -----------------------------------------------------------
    */
 
   /**
@@ -24,8 +25,8 @@
    *
    */
 
-  // TODO: insert User model, Auth service as params
-  var RegisterCtrl = function( $location ){
+  // TODO: insert User model as param (maybe not necessaries)
+  var RegisterCtrl = function( $location , authService){
 
 	  var vm = this;
 
@@ -45,20 +46,14 @@
 	   * @param cred : credentials insert by a User not authenticated
 	   */
 	  function register( cred ){
-		  console.log("Inizio procedura di registrazione.");
 
 		  if (cred.pwd === cred.confirmPwd){
 
-			  console.log(cred.username);
-			  console.log(cred.mail);
+			  authService.register(cred);
 
-			  // TODO: call Auth service
+			  // TODO: if it fails do something
 
-			  console.log("Registrazione effettuata con successo!");
-
-			  $location.path('/login')
-
-		  }else{
+		  } else {
 			  vm.matchPwd = true;
 		  }
 
@@ -67,7 +62,7 @@
 
   };
 
-  RegisterCtrl.$inject = ['$location']; // TODO: inject User model, Auth service
+  RegisterCtrl.$inject = ['$location', 'authService']; // TODO: inject User model
 
   angular.module('app').controller('RegisterCtrl', RegisterCtrl);
 

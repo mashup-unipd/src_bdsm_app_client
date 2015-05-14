@@ -22,12 +22,6 @@
 	 * Factory in the app.recipe.data.module
 	 */
 
-	angular
-		.module('app.recipe.data.module')
-		.factory('RecipeRequestModel', RecipeRequestModel);
-
-
-	RecipeRequestModel.$inject = ['RecipeModel'];
 
 
 	function RecipeRequestModel(){
@@ -57,5 +51,12 @@
 		return RecipeRequestModel;
 
 	}
+
+	RecipeRequestModel.$inject = ['RecipeModel'];
+
+	angular
+		.module('app.recipe.data.module')
+		.service('RecipeRequestModel', RecipeRequestModel);
+
 
 })();
