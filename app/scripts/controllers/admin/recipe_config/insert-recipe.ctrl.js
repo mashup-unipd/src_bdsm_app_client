@@ -24,8 +24,7 @@
      * Controller of the app
      */
 
-    /* TODO (p.tesser921@gmail.com): insert RecipeInsertModel as param */
-    var InsertRecipeCtrl = function(){
+    var InsertRecipeCtrl = function( RecipeInsertModel ){
 
         var vm = this;
 
@@ -64,12 +63,12 @@
 
         function insertRecipe(){
 
-            // var recipe = new RecipeInsertModel('12355458654');
+            var recipe = new RecipeInsertModel('12355458654');
 
-            // recipe.setTitleRecipe(vm.titleRecipe);
-            // recipe.setDescRecipe(vm.descRecipe);
+            recipe.setTitleRecipe(vm.titleRecipe);
+            recipe.setDescRecipe(vm.descRecipe);
 
-            // console.log('Desc Recipe: ' + recipe.descRecipe);
+            console.log('Desc Recipe: ' + recipe.descRecipe);
 
             vm.titleRecipe = '';
             vm.descRecipe = '';
@@ -89,7 +88,7 @@
 
     };
 
-    InsertRecipeCtrl.$inject = []; /* TODO (p.tesser921@gmail.com): inject RecipeInsertModel */
+    InsertRecipeCtrl.$inject = ['RecipeInsertModel'];
 
     angular
         .module('app')
