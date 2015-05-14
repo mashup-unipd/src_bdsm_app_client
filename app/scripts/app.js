@@ -33,6 +33,7 @@
             'ui.router', /* modulo che gestisce il routing delle pagine e dei link dell'applicativo */
             'ui.bootstrap', /* modulo che gestisce le direttive di bootstrap in Angular */
             'angular-loading-bar',
+			'ngMessages',
             'ng-token-auth', /* modulo che gestice i servizi di autenticazione */
             'app.routes', /* modulo che incapsula tutti i file di routing */
 			'app.recipe.data.module' /* modulo che incapsula il modello dei dati per le recipe */
