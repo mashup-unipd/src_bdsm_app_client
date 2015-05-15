@@ -45,13 +45,11 @@
 
                     <div id="metrics-container">
 
-                        <!-- TODO: insert a list of the metrics that are add -->
-
                         <div id="metric-container">
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <label for="type-recipe">Tipo di Recipe</label>
-                                    <select id="type-recipe" class="form-control"
+                                    <label for="category">Metrica</label>
+                                    <select class="form-control" id="category"
                                             data-ng-options="category.value for category in irc.categories"
                                             data-ng-model="category.key" data-ng-change="irc.updateTypeMetric(category)">
                                     </select>
@@ -60,7 +58,7 @@
                             <div class="row">
                                 <div class="form-group col-md-4">
                                     <label for="type-node">Tipo di metrica</label>
-                                    <select id="type-node" class="form-control"
+                                    <select class="form-control" id="type-node"
                                             data-ng-options="type.value for type in irc.types"
                                             data-ng-model="type.key">
                                     </select>
@@ -70,13 +68,16 @@
                             <div class="row">
                                 <div class="form-group col-md-5">
                                     <label for="id-nodo">Valore metrica</label>
-                                    <input type="text" class="form-control" id="id-nodo" name="id-nodo" placeholder="Valore metrica">
+                                    <input class="form-control" id="id-nodo" type="text" name="idNodo"
+                                           data-ng-model="irc.valueMetric" placeholder="Valore metrica">
                                 </div>
                             </div>
 
                             <div class="row">
                                 <div class="col-md-5">
-                                    <button class="btn btn-primary" type="button" data-ng-click="irc.addMetric()">
+                                    <button class="btn btn-primary" type="button"
+                                            data-ng-click="irc.addMetric(category.key.key, type.key.key, newRecipeForm.idNodo.$modelValue)"
+                                            data-ng-disabled="">
                                         Nuova metrica <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
@@ -92,6 +93,28 @@
                             </button>
                         </div>
                     </div>
+
+                    <div class="row" id="metrics-add-list">
+                        <div data-ng-repeat="metric in irc.tempMetrics">
+                            <div class="table-responsive">
+                                <table class="table table-hover table-bordered">
+                                    <caption>Metrica aggiunta alla Recipe</caption>
+                                    <thead>
+                                    <tr>
+                                        <th>Opzione</th>
+                                        <th>Valore</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr data-ng-repeat="(key, value) in metric">
+                                        <td data-ng-bind="key"></td>
+                                        <td data-ng-bind="value"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> <!-- #/metrics-add-list -->
 
                 </form>
 

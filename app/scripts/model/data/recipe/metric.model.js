@@ -24,15 +24,21 @@
 
 	function MetricModel() {
 
-		/**
-		 *
-		 * @constructor : TODO
-		 */
-		var MetricModel = function(){
-			// properties of the class
-			// TODO
-		};
 
+		/**
+		 * TODO
+		 * @param metr
+		 * @param type
+		 * @param val
+		 * @constructor
+		 */
+		var MetricModel = function(cat, type, val){
+			// properties of the class
+			this.category = cat;
+			this.typeCategory = type;
+			this.value = val;
+
+		};
 
 
 		return MetricModel;

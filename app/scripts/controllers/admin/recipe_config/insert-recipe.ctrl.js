@@ -25,10 +25,9 @@
      */
 
 	// TODO: need a service for retrie id of the logged User/Admin
-    var InsertRecipeCtrl = function( RecipeInsertModel ){
+    var InsertRecipeCtrl = function( RecipeInsertModel, MetricModel ){
 
         var vm = this;
-		// this.data = {};
 
         vm.titleRecipe = '';
         vm.descRecipe = '';
@@ -52,6 +51,10 @@
             }
         ];
 		vm.types = [];
+		vm.valueMetric = '';
+
+		vm.tempMetrics = []; // array that contains a set of object that figure a metric
+		vm.metrics = []; // array that contains a set of MetricModel object
         vm.insertRecipe = insertRecipe;
         vm.updateTypeMetric = updateTypeMetric;
 		vm.addMetric = addMetric;
@@ -97,25 +100,53 @@
 		 * This function create a new Recipe and insert it in the back-end
 		 */
         function insertRecipe(){
+
 			// TODO: use AdminModel to retrieve necessary data
             var recipe = new RecipeInsertModel('12355458654');
 
             recipe.setTitleRecipe(vm.titleRecipe);
             recipe.setDescRecipe(vm.descRecipe);
 
-			console.log(recipe);
-            console.log('Desc Recipe: ' + recipe.descRecipe);
+			// function map on tempMetrics array that use a function for convert object in MetricModel object
+			vm.metrics = vm.tempMetrics.map(function(obj){
+				return new MetricModel(obj[0], 'hashtag', 'test');
+			});
 
-			// set the value of field after a success insert
+			recipe.setMetrics(vm.metrics);
+
+
+			console.log(recipe);
+
+			// reset values of form's fields after a success insert
             vm.titleRecipe = '';
             vm.descRecipe = '';
+			vm.tempMetrics = [];
+			vm.metrics = [];
             vm.insertSuccess = true;
         }
 
 
-		function addMetric(){
+		/**
+		 * TODO
+		 * @param cat
+		 * @param typeCat
+		 * @param val
+		 */
+		function addMetric(cat, typeCat, val){
 			// TODO: insert metric in a local array var, reset the form field
-			console.log('Aggiunta metrica');
+			// var metric = new MetricModel(cat, typeCat, val);
+
+			var metric = {
+				category: cat,
+				typeCategory: typeCat,
+				value: val
+			};
+
+			vm.tempMetrics.push(metric);
+
+			// reset values of metric's fields after a success insert
+			vm.types = [];
+			vm.valueMetric = '';
 
 		}
 
@@ -139,7 +170,7 @@
     };
 
 
-    InsertRecipeCtrl.$inject = ['RecipeInsertModel'];
+    InsertRecipeCtrl.$inject = ['RecipeInsertModel', 'MetricModel'];
 
     angular
         .module('app')
