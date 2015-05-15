@@ -23,8 +23,7 @@
      * Controller of the app
      */
 
-	// TODO: insert UserModel/Service as param to retrie value for sone fields
-    var SettingsCtrl = function () {
+    var SettingsCtrl = function (authService) {
 
         var vm = this;
 
@@ -45,7 +44,15 @@
 		 */
         function saveEdit(){
             console.log('Modifiche salvate');
-			// TODO: calls service
+
+			if (vm.oldPassword !== '' && vm.newPassword !== '' && vm.confirmNewPassword !== ''){
+
+				if (checkOldPassword()){
+					authService.updateSettingsAccount();
+					// TODO: it could be possible use a function that update only pwd settings if changes
+				}
+
+			}
 
         }
 
@@ -53,8 +60,8 @@
 		 * TODO
 		 */
 		function checkOldPassword( pwdToCheck ){
-			// TODO: calls authService that check if old pwd insert is correct
-
+			// TODO: calls authService that check if old pwd insert is correc
+			return true; // TODO: change with the response from authService
 		}
 
 		/**
@@ -66,7 +73,7 @@
 
     };
 
-    SettingsCtrl.$inject = []; // TODO: inject UserModel/Service
+    SettingsCtrl.$inject = ['authService'];
 
     angular.module('app').controller('SettingsCtrl', SettingsCtrl);
 
