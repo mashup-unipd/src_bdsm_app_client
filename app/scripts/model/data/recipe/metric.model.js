@@ -27,7 +27,7 @@
 
 		/**
 		 * TODO
-		 * @param metr
+		 * @param cat
 		 * @param type
 		 * @param val
 		 * @constructor
@@ -39,7 +39,6 @@
 			this.value = val;
 
 		};
-
 
 		return MetricModel;
 

@@ -12,7 +12,8 @@
      * -----------------------------------------------------------
      * 0.0.2    2015-04-18  Tesser Paolo    refactor code, more encapsulate
      * -----------------------------------------------------------
-     *
+     * 0.0.3	2015-05-13	Tesser Paolo	add MetricModel and use it to add metrics to a Recipe
+	 * -----------------------------------------------------------
      */
 
 
@@ -101,28 +102,44 @@
 		 */
         function insertRecipe(){
 
-			// TODO: use AdminModel to retrieve necessary data
-            var recipe = new RecipeInsertModel('12355458654');
-
-            recipe.setTitleRecipe(vm.titleRecipe);
-            recipe.setDescRecipe(vm.descRecipe);
-
 			// function map on tempMetrics array that use a function for convert object in MetricModel object
+			// TODO (p.tesser921@gmail.com): refactor code
 			vm.metrics = vm.tempMetrics.map(function(obj){
-				return new MetricModel(obj[0], 'hashtag', 'test');
+				var metric;
+				var tempMetricVal = [];
+
+				Object.keys(obj).forEach(function(key){
+					tempMetricVal.push(obj[key]);
+				});
+
+				metric = new MetricModel(tempMetricVal[0], tempMetricVal[1], tempMetricVal[2]);
+
+				return metric;
+
 			});
 
-			recipe.setMetrics(vm.metrics);
+			// if the Admin had insert almost two metrics, he can inserts a new Recipe
+			if (checkMetricsQuantity()){
+				// TODO: use AdminModel to retrieve necessary data
+				var recipe = new RecipeInsertModel('12355458654');
 
+				recipe.setTitleRecipe(vm.titleRecipe);
+				recipe.setDescRecipe(vm.descRecipe);
+				recipe.setMetrics(vm.metrics);
 
-			console.log(recipe);
+				// TODO: must call something like: recipe.save() that calls service to store send and store Recipe in the database
 
-			// reset values of form's fields after a success insert
-            vm.titleRecipe = '';
-            vm.descRecipe = '';
-			vm.tempMetrics = [];
-			vm.metrics = [];
-            vm.insertSuccess = true;
+				// reset values of form's fields after a success insert
+				vm.titleRecipe = '';
+				vm.descRecipe = '';
+				vm.tempMetrics = [];
+				vm.metrics = [];
+				vm.insertSuccess = true;
+
+			} else {
+				console.log("Devi inserire almeno due metriche");
+			}
+
         }
 
 
@@ -133,8 +150,6 @@
 		 * @param val
 		 */
 		function addMetric(cat, typeCat, val){
-			// TODO: insert metric in a local array var, reset the form field
-			// var metric = new MetricModel(cat, typeCat, val);
 
 			var metric = {
 				category: cat,
@@ -166,6 +181,15 @@
             }
 
         }
+
+		/**
+		 * TODO
+		 * @returns {boolean}
+		 */
+		function checkMetricsQuantity(){
+			console.log("ok");
+			return (vm.tempMetrics.length >= 2);
+		}
 
     };
 
