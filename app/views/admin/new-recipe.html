@@ -48,7 +48,7 @@
                         <div id="metric-container">
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <label for="category">Metrica</label>
+                                    <label for="category">Categoria</label>
                                     <select class="form-control" id="category"
                                             data-ng-options="category.value for category in irc.categories"
                                             data-ng-model="category.key" data-ng-change="irc.updateTypeMetric(category)">
@@ -57,7 +57,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <label for="type-node">Tipo di metrica</label>
+                                    <label for="type-node">Tipo di categoria</label>
                                     <select class="form-control" id="type-node"
                                             data-ng-options="type.value for type in irc.types"
                                             data-ng-model="type.key">
@@ -67,7 +67,7 @@
 
                             <div class="row">
                                 <div class="form-group col-md-5">
-                                    <label for="id-nodo">Valore metrica</label>
+                                    <label for="id-nodo">Nome</label>
                                     <input class="form-control" id="id-nodo" type="text" name="idNodo"
                                            data-ng-model="irc.valueMetric" placeholder="Valore metrica">
                                 </div>
@@ -82,6 +82,12 @@
                                     </button>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="help-block text-danger" data-ng-if="irc.metricError">
+                                    Devi inserire almeno due metriche nella Recipe.
+                                </div>
+                            </div>
+
                         </div> <!-- #/metric-container -->
 
                     </div> <!-- #/metric-container -->
