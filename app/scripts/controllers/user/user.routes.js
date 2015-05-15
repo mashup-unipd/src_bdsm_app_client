@@ -11,9 +11,10 @@
      * Modify
      * Version  Date        Author          Desc
      * ==========================================================
-     * 0.0.1    2015-04-04  Tesser Paolo    codifica modulo
+     * 0.0.1    2015-04-04  Tesser Paolo    code module
      * -----------------------------------------------------------
-     *
+     * 0.0.2	2015-05-13	Tesser Paolo	removed module angular-touch that breaks ng-click directive
+	 * -----------------------------------------------------------
      */
 
     /**
@@ -65,11 +66,6 @@
                                 {
                                     name:'ngSanitize',
                                     files:['bower_components/angular-sanitize/angular-sanitize.js']
-                                }),
-                            $ocLazyLoad.load(
-                                {
-                                    name:'ngTouch',
-                                    files:['bower_components/angular-touch/angular-touch.js']
                                 });
                     }
                 }
