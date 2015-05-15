@@ -47,6 +47,7 @@
 	   */
 	  function register( cred ){
 
+		  // TODO: it's possible create a service with this function or something that can be shared with other controllers that do this check
 		  if (cred.pwd === cred.confirmPwd){
 
 			  authService.register(cred);
