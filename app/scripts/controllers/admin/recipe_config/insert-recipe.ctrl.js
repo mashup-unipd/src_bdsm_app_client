@@ -28,6 +28,7 @@
     var InsertRecipeCtrl = function( RecipeInsertModel ){
 
         var vm = this;
+		// this.data = {};
 
         vm.titleRecipe = '';
         vm.descRecipe = '';
@@ -113,7 +114,7 @@
 
 
 		function addMetric(){
-			// TODO: insert metric in a local array var, reset the form field and add last metric to a list
+			// TODO: insert metric in a local array var, reset the form field
 			console.log('Aggiunta metrica');
 
 		}
