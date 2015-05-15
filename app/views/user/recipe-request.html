@@ -1,0 +1,103 @@
+<div data-ng-controller="RecipeRequestCtrl as rrc">
+
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="row">
+                <h1>Richiesta nuova Recipe</h1>
+            </div>
+        </div>
+    </div> <!-- ./page-header -->
+
+    <div class="container-fluid">
+        <div class="center-form panel col-md-12">
+
+            <div class="row" data-ng-show="rrc.insertSuccess">
+                <div class="col-md-12">
+                    <p class="alert-success">Richiesta inviata correttamente!</p>
+                </div>
+            </div>
+
+            <div class="row" data-ng-show="rrc.insertError">
+                <div class="col-md-12">
+                    <p class="alert-danger">Invio richiesta fallito!</p>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <form name="newRecipeForm" method="post" data-role="form" data-ng-submit="rrc.insertRecipe()">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label>Titolo Recipe</label>
+                            <input class="form-control" type="text" data-ng-model="rrc.titleRecipe"
+                                   placeholder="Insert title" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="desc-recipe">Descrizione della Recipe</label>
+                            <textarea class="form-control" data-ng-model="rrc.descRecipe" rows="4" id="desc-recipe"
+                                      placeholder="Insert description about this Recipe">
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div id="metrics-container">
+
+                        <!-- TODO: insert a list of the metrics that are add -->
+
+                        <div id="metric-container">
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="type-recipe">Tipo di Recipe</label>
+                                    <select id="type-recipe" class="form-control"
+                                            data-ng-options="category.value for category in rrc.categories"
+                                            data-ng-model="category.key" data-ng-change="rrc.updateTypeMetric(category)">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="type-node">Tipo di metrica</label>
+                                    <select id="type-node" class="form-control"
+                                            data-ng-options="type.value for type in rrc.types"
+                                            data-ng-model="type.key">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    <label for="id-nodo">Valore metrica</label>
+                                    <input type="text" class="form-control" id="id-nodo" name="id-nodo" placeholder="Valore metrica">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <button class="btn btn-primary" type="button" data-ng-click="rrc.addMetric()">
+                                        Nuova metrica <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div> <!-- #/metric-container -->
+
+                    </div> <!-- #/metric-container -->
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <button class="btn btn-primary" type="submit" data-ng-disabled="newRecipeForm.$invalid" >
+                                Inserisci Recipe <span class="fa fa-save"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+

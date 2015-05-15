@@ -26,7 +26,7 @@
             .state('dashboard.recipe-request',{
                 url:'/recipe-request',
                 controller: 'RecipeRequestCtrl',
-                templateUrl:'views/user/token-config.html',
+                templateUrl:'views/user/recipe-request.html',
                 resolve: {
                     loadMyFiles: function($ocLazyLoad) {
                         return $ocLazyLoad.load({
