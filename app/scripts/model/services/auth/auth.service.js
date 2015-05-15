@@ -30,7 +30,8 @@
 		var factory = {
 			login: login,
 			register: register,
-			isLogged: isLogged
+			isLogged: isLogged,
+			updateSettingsAccount: updateSettingsAccount
 		};
 
 		return factory;
@@ -73,6 +74,13 @@
 			// example: $auth.validateUser();
 		}
 
+		/**
+		 * TODO
+		 */
+		function updateSettingsAccount(){
+			// TODO: use ng-auth
+			// example: $auth.updateAccount();
+		}
 	}
 
 	authService.$inject = ['$location', '$auth'];
