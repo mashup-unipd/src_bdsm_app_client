@@ -26,6 +26,7 @@
 
         var vm = this;
 
+		vm.titleRecipe = $stateParams.title;
 		vm.metricsType = getMetricTypes();
         vm.metricsFb = getMetricsList('facebook');
 		vm.metricsTw = getMetricsList('twitter');
