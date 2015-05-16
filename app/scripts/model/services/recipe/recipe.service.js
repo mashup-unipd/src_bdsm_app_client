@@ -88,7 +88,7 @@
 				case 'facebook': metricsList = [
 					{
 						name: 'NikeOfficial',
-						type: 'page'
+						type: 'page',
 					},
 					{
 						name: 'NikeStore',

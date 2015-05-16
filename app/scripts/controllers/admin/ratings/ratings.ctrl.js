@@ -23,13 +23,25 @@
 	 */
 
 	/* TODO (p.tesser921@gmail.com): insert service for list of recipe with the rate as param */
-	var RatingsCtrl = function(){
+	var RatingsCtrl = function(recipeAdminService){
 
 		var vm = this;
 
+		vm.listRecipes = getListOfRecipes();
+
+		///////////////
+
+		/**
+		 * TODO
+		 */
+		function getListOfRecipes(){
+			return recipeAdminService.getRecipesListAll();
+		}
+
+
 	};
 
-	RatingsCtrl.$inject = []; /* TODO (p.tesser921@gmail.com): inject service for list of recipe with the rate  */
+	RatingsCtrl.$inject = ['recipeAdminService']; /* TODO (p.tesser921@gmail.com): inject service for list of recipe with the rate  */
 
 	angular
 		.module('app')

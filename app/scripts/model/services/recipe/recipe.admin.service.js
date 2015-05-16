@@ -27,7 +27,7 @@
 	function recipeAdminService(){
 
 		var factory = {
-			// TODO: insert public function
+			getRecipesListAll: getRecipesListAll
 		};
 
 		return factory;
@@ -35,6 +35,44 @@
 		///////////////
 
 		// TODO: implemente private and public functions
+		/**
+		 * TODO
+		 * @returns {*}
+		 */
+		function getRecipesListAll(){
+
+			var recipesList = [
+				{
+					idRecipe: '10',
+					titleRecipe: 'SportNike',
+					descRecipe: 'Questa recipe contiene i trend relativi alla Nike',
+					ratings: 4.43
+				},
+				{
+					idRecipe: '11',
+					titleRecipe: 'StarWars',
+					descRecipe: 'Questa recipe contiene i trend relativi a StarWars',
+					ratings: 7.27
+				},
+				{
+					idRecipe: '12',
+					titleRecipe: 'Boobies',
+					descRecipe: 'Questa recipe contiene i trend relativi alle migliori tette',
+					ratings: 15.55
+				},
+				{
+					idRecipe: '13',
+					titleRecipe: 'Bear',
+					descRecipe: 'Questa recipe contiene i trend relativi alle migliori birre',
+					ratings: 10.50
+				}
+			];
+
+			// TODO: check managerDataService or call back-end API
+
+			return recipesList;
+
+		}
 
 	}
 
