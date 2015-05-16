@@ -39,7 +39,11 @@
       .module('app.public.routes', [
           'ui.router',
           'app.public.login.routes',
-          'app.public.register.routes'
+          'app.public.register.routes',
+          'app.public.about.routes',
+          'app.public.api-docs.routes'
+
+
       ])
 
       .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', PublicConfigRoutes]);
