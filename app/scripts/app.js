@@ -11,11 +11,13 @@
      * Modify
      * Version  Date        Author          Desc
      * ==========================================================
-     * 0.0.1    2015-05-03  Tesser Paolo    codifica modulo
+     * 0.0.1    2015-05-03  Tesser Paolo    code module
      * -----------------------------------------------------------
-     * 0.0.2    2015-05-08  Tesser Paolo    inserito modulo ng-token-auth
+     * 0.0.2    2015-05-08  Tesser Paolo    insert module ng-token-auth
      * -----------------------------------------------------------
-     *
+     * 0.0.3	2015-05-14	Tesser Paolo	insert module for user and admin services
+	 * -----------------------------------------------------------
+	 *
      */
 
     /**
@@ -38,8 +40,9 @@
 
 			'app.routes', // modulo che incapsula tutti i file di routing
 			'app.recipe.data.module', // modulo che incapsula il modello dei dati per le recipe
-			'app.auth.services.module' // modulo che incapsula i servizi di autenticazione
+			'app.auth.services.module', // modulo che incapsula i servizi di autenticazione
+			'app.user.services.module' // modulo che incapsula i servizi disponibili all'utente e all'amministratore
 
-        ]);
+		]);
 
 })();
