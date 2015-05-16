@@ -26,6 +26,19 @@
 
         var vm = this;
 
+        vm.restServices = [
+            {
+                req: "recipes/{recipe_id}/metrics",
+                type: 'GET',
+                desc: 'Get the list a recipe\'s metrics'
+            },
+            {
+                req: "recipes/{recipe_id}/metrics",
+                type: 'GET',
+                desc: 'Ottieni tutte le metriche contenute in una ricetta'
+
+            }
+        ];
 
     };
 

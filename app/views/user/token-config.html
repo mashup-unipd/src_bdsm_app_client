@@ -1,21 +1,28 @@
+<div class="page-header">
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Token Management</h1>
+        </div>
+    </div>
+</div> <!-- ./page-header -->
+
 <div class="container-fluid"> <!-- container fluid -->
     <div class="row">
-        <div class="center-form panel col-md-offset-3 col-md-6">
+        <div class="panel panel-default">
             <div class="panel-body">
-                <h1 class="text-center">Gestione <span lang="en">token</span></h1>
 
-                <span class="sr-only">Da questa pagina puoi richiedere un <span lang="en">token</span> per l'utilizzo delle nostre <span lang="en">API.</span></span>
+                <span class="sr-only">From this page you can request a token to access our APIs.</span>
 
                 <!-- TokenConfigCtrl -->
                 <form name="getTokenForm" method="post" data-ng-controller="TokenConfigCtrl as tcc" data-ng-submit="tcc.getToken" >
 
 
                     <button type="submit" class="btn btn-lg btn-block btn-success">
-                        Ottieni il tuo <span lang="en">token</span>!
+                        Get your token!
                     </button>
 
                     <br />
-                    <p class="text-center text-info" data-ng-disabled="tcc.nessunToken"> Il tuo token è: </p>
+                    <p class="text-center text-info" data-ng-disabled="tcc.nessunToken"> Your token is: </p>
 
                 </form>
                 <!-- end LoginCtrl -->

@@ -6,14 +6,14 @@
     </div>
 </div> <!-- ./page-header -->
 
-<div class="container-fluid">
+<div class="container-fluid" data-ng-controller="ApiDocsCtrl as ac">
 
     <div class="col-md-offset-1 col-md-10" >
 
         <div class="panel panel-default">
             <div class="panel-body text-center text-muted">
                 <p>REST REST REST REST<br/>
-                Yell the world this manifest<br/>
+                Show the world this manifest<br/>
                 Leave those people, they're obsessed<br/>
                 With the services called REST<br/>
                 REST REST REST REST</p>
@@ -23,10 +23,10 @@
             </div>
         </div>
 
-        <div class="panel panel-default">
-            <div class="panel-heading">/recipes/<em>{recipe-id}</em>/metrics</div>
+        <div class="panel panel-default" data-ng-repeat="service in ac.restServices">
+            <div class="panel-heading" data-ng-bind="service.type +':  '+ service.req"></div>
             <div class="panel-body">
-                <p>Restituisce la liste delle metriche di una ricetta</p>
+                <p data-ng-bind="service.desc"></p>
             </div>
         </div>
 
