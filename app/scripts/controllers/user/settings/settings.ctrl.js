@@ -41,7 +41,7 @@
 
 
 		/**
-		 * TODO
+		 * This function saves the account's modifies with a call to authService
 		 */
         function saveEdit(){
             console.log('Modifiche salvate');
@@ -58,7 +58,7 @@
         }
 
 		/**
-		 * TODO
+		 * This function checks if old password is correct with a call to authService
 		 */
 		function checkOldPassword( pwdToCheck ){
 			// TODO: calls authService that check if old pwd insert is correc
@@ -66,12 +66,15 @@
 		}
 
 		/**
-		 * TODO
+		 * This function checks if new password insert match with confirm new password
+		 * @returns {bool} : true if new password it's equal to confirm new password else false
 		 */
 		function matchNewPassword(){
-
+			return true; // TODO: change with some of logic
 		}
 
+
+		// TODO: function to check if user had modify some fields and so it's necessaty enabled save button
     };
 
     SettingsCtrl.$inject = ['authService'];
