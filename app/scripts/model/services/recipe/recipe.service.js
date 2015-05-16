@@ -28,7 +28,8 @@
 
 		var factory = {
 			getRecipesList: getRecipesList,
-			getMetricsList: getMetricsList
+			getMetricsList: getMetricsList,
+			getMetricType: getMetricType
 		};
 
 		return factory;
@@ -43,7 +44,28 @@
 		 */
 		function getRecipesList(){
 
-			var recipesList = '';
+			var recipesList = [
+				{
+					idRecipe: '10',
+					titleRecipe: 'SportNike',
+					descRecipe: 'Questa recipe contiene i trend relativi alla Nike'
+				},
+				{
+					idRecipe: '11',
+					titleRecipe: 'StarWars',
+					descRecipe: 'Questa recipe contiene i trend relativi a StarWars'
+				},
+				{
+					idRecipe: '12',
+					titleRecipe: 'Boobies',
+					descRecipe: 'Questa recipe contiene i trend relativi alle migliori tette'
+				},
+				{
+					idRecipe: '13',
+					titleRecipe: 'Bear',
+					descRecipe: 'Questa recipe contiene i trend relativi alle migliori birre'
+				}
+			];
 
 			// TODO: check managerDataService or call back-end API
 
@@ -54,12 +76,78 @@
 		/**
 		 * TODO
 		 * @param idRecipe
+		 * @param typeCategory
 		 * @returns {*}
 		 */
-		function getMetricsList( idRecipe ){
+		function getMetricsList( idRecipe, typeCategory ){
+
 			var metricsList = '';
 
+			// TODO: call back-end API, now we are using a stub
+			switch(typeCategory){
+				case 'facebook': metricsList = [
+					{
+						name: 'NikeOfficial',
+						type: 'page'
+					},
+					{
+						name: 'NikeStore',
+						type: 'page'
+					},
+					{
+						name: 'OpenStoreBarcelona',
+						type: 'event'
+					}
+				]; break;
+				case 'twitter': metricsList = [
+					{
+						name: '#gonike',
+						type: 'hashtag'
+					},
+					{
+						name: 'nike',
+						type: 'page'
+					}
+				]; break;
+				case 'instagram': metricsList = [
+					{
+						name: '#playnike',
+						type: 'hashtag'
+					},
+					{
+						name: 'nike_official',
+						type: 'page'
+					}
+				]; break;
+
+				default: metricsList = []; break;
+			}
+
 			return metricsList;
+		}
+
+		/**
+		 * TODO
+		 * @returns {*}
+		 */
+		function getMetricType(){
+
+			var type = [
+				{
+					key: 'facebook',
+					value: 'Facebook'
+				},
+				{
+					key: 'twitter',
+					value: 'Twitter'
+				},
+				{
+					key: 'instagram',
+					value: 'Instagram'
+				}
+			];
+
+			return type;
 		}
 
 	}
@@ -69,7 +157,7 @@
 
 	angular
 		.module('app.recipe.services.module')
-		.factory('userService', recipeService);
+		.factory('recipeService', recipeService);
 
 
 })();

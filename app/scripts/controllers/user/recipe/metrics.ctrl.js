@@ -9,7 +9,7 @@
      * Modify
      * Version  Date        Author          Desc
      * ==========================================================
-     * 0.0.1    2015-05-04  Tesser Paolo    codifica modulo
+     * 0.0.1    2015-05-04  Tesser Paolo    code module
      * -----------------------------------------------------------
      *
      */
@@ -22,22 +22,38 @@
      * Controller of the app
      */
 
-    var MetricsCtrl = function () {
+    var MetricsCtrl = function (recipeService) {
 
         var vm = this;
-        vm.metricsType = ['Facebook', 'Twitter', 'Instagram'];
 
-        vm.metricsFb = [
-            {
-                name: 'NikeOfficial'
-            },
-            {
-                name: 'NikeStore'
-            }
-        ];
+		vm.metricsType = getMetricTypes();
+        vm.metricsFb = getMetricsList('facebook');
+		vm.metricsTw = getMetricsList('twitter');
+		vm.metricsIg = getMetricsList('instagram');
+
+
+		////////////////
+
+		/**
+		 * TODO
+		 * @returns {*}
+		 */
+		function getMetricTypes(){
+			return recipeService.getMetricType();
+		}
+
+		/**
+		 * TODO
+		 * @param typeCategory
+		 * @returns {*}
+		 */
+		function getMetricsList(typeCategory){
+			return recipeService.getMetricsList(42, typeCategory)
+		}
+
     };
 
-    MetricsCtrl.$inject = [];
+    MetricsCtrl.$inject = ['recipeService'];
 
     angular.module('app').controller('MetricsCtrl', MetricsCtrl);
 

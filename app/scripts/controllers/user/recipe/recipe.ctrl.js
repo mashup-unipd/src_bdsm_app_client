@@ -11,19 +11,20 @@
      * ==========================================================
      * 0.0.1    2015-05-04  Tesser Paolo    code module
      * -----------------------------------------------------------
-     *
+     * 0.0.2	2015-05-14	Tesser Paolo	insert service for recipe
+	 * -----------------------------------------------------------
+	 *
      */
 
     /**
      * @ngdoc function
-     * @name app.controller:NameCtrl
+     * @name app.controller:RecipeCtrl
      * @description
      * # RecipeCtrl
      * Controller of the app
      */
 
-	// TODO: insert recipeService as param
-    var RecipeCtrl = function () {
+    var RecipeCtrl = function (recipeService) {
 
         var vm = this;
 
@@ -32,32 +33,13 @@
 
 		////////////////
 
+		/**
+		 * This function retries recipes from service and return it
+		 * @returns {*} : array of recipes object
+		 */
 		function getListOfRecipes(){
 
-			var list = [
-				{
-					idRecipe: '10',
-					titleRecipe: 'SportNike',
-					descRecipe: 'Questa recipe contiene i trend relativi alla Nike'
-				},
-				{
-					idRecipe: '11',
-					titleRecipe: 'StarWars',
-					descRecipe: 'Questa recipe contiene i trend relativi a StarWars'
-				},
-				{
-					idRecipe: '12',
-					titleRecipe: 'Boobies',
-					descRecipe: 'Questa recipe contiene i trend relativi alle migliori tette'
-				},
-				{
-					idRecipe: '13',
-					titleRecipe: 'Bear',
-					descRecipe: 'Questa recipe contiene i trend relativi alle migliori birre'
-				}
-			];
-
-
+			var list = recipeService.getRecipesList();
 
 			return list;
 
@@ -65,7 +47,7 @@
 
     };
 
-    RecipeCtrl.$inject = []; // TODO: inject recipeService as param
+    RecipeCtrl.$inject = ['recipeService'];
 
     angular
 		.module('app')
