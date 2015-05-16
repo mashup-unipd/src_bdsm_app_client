@@ -41,8 +41,8 @@
 			'app.routes', // modulo che incapsula tutti i file di routing
 			'app.recipe.data.module', // modulo che incapsula il modello dei dati per le recipe
 			'app.auth.services.module', // modulo che incapsula i servizi di autenticazione
-			'app.user.services.module' // modulo che incapsula i servizi disponibili all'utente e all'amministratore
-
+			'app.user.services.module', // modulo che incapsula i servizi disponibili all'utente e all'amministratore
+			'app.recipe.services.module' // modulo che incapusula i servizi per gestire le recipe
 		]);
 
 })();

@@ -39,6 +39,7 @@ module.exports = function(config) {
 		// model services
 		'app/scripts/model/services/auth/auth.services.module.js',
 		'app/scripts/model/services/user/user.services.module.js',
+		'app/scripts/model/services/recipe/recipe.services.module.js',
 
 		'app/scripts/**/*.js'
     ],

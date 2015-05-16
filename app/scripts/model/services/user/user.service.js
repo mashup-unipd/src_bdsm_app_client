@@ -19,7 +19,7 @@
 	 * @ngdoc service
 	 * @name app.user.services.module.userService
 	 * @description
-	 * # AuthService
+	 * # userService
 	 * Factory in the app.user.services.module
 	 */
 

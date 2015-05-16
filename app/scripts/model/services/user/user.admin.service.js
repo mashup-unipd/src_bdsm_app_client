@@ -19,7 +19,7 @@
 	 * @ngdoc service
 	 * @name app.user.services.module.userService
 	 * @description
-	 * # AuthService
+	 * # userAdminService
 	 * Factory in the app.user.services.module
 	 */
 
@@ -43,7 +43,7 @@
 
 	angular
 		.module('app.auth.services.module')
-		.factory('userService', userAdminService);
+		.factory('userAdminService', userAdminService);
 
 
 })();
