@@ -1,7 +1,7 @@
 (function(){
 	'use strict';
 	/**
-	 * Name: app/scripts/model/services/auth/auth.module.js
+	 * Name: app/scripts/model/services/auth/auth.services.module.js
 	 * Author: MashUp
 	 * Mail. info@mashup-unipd.it
 	 *
