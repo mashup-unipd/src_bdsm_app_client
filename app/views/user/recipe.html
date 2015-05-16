@@ -1,75 +1,32 @@
 <div class="page-header">
     <div class="container-fluid">
         <div class="row">
-            <h1>Lista delle Recipe</h1>
+            <h1>List of the Recipes</h1>
         </div>
     </div>
 </div> <!-- ./page-header -->
 
-<div class="container-fluid" id="recipes-container">
-    <div class="row">
-        <div class="col-lg-6 col-sm-12" >
-            <div class="panel panel-default">
-                <div class="panel-heading">Sport Nike</div>
-                <div class="panel-body">
-                    <p>Questa recipe contiene i trend relativi alla Nike</p>
-                    <div class="col-xs-6 col-md-6">
-                        <button class="btn btn-primary" data-ui-sref="dashboard.metrics">Visualizza</button>
-                    </div>
-                    <div class="col-xs-6 col-md-6">
-                        <button class="btn btn-primary" data-ui-sref="dashboard.compare">Confronta</button>
+<div class="container-fluid" id="recipes-container" data-ng-controller="RecipeCtrl as rc">
+
+    <div data-ng-repeat="list in rc.listRecipes">
+
+            <!-- TODO: insert a row each two recipe -->
+
+            <div class="col-lg-6 col-sm-12" >
+                <div class="panel panel-default">
+                    <div class="panel-heading" data-ng-bind="list.titleRecipe"></div>
+                    <div class="panel-body">
+                        <p data-ng-bind="list.descRecipe"></p>
+                        <div class="col-xs-6 col-md-6">
+                            <button class="btn btn-primary" data-ui-sref="dashboard.metrics">Show metrics</button>
+                        </div>
+                        <div class="col-xs-6 col-md-6">
+                            <button class="btn btn-primary" data-ui-sref="dashboard.compare">Compare metrics</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="col-lg-6 col-sm-12" >
-            <div class="panel panel-default">
-                <div class="panel-heading">Sport Nike</div>
-                <div class="panel-body">
-                    <p>Questa recipe contiene i trend relativi alla Nike</p>
-                    <div class="col-xs-6 col-md-6">
-                        <button class="btn btn-primary" data-ui-sref="dashboard.metrics">Visualizza</button>
-                    </div>
-                    <div class="col-xs-6 col-md-6">
-                        <button class="btn btn-primary" data-ui-sref="dashboard.compare">Confronta</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div> <!-- ./row -->
-
-    <div class="row">
-        <div class="col-lg-6 col-sm-12" >
-            <div class="panel panel-default">
-                <div class="panel-heading">Sport Nike</div>
-                <div class="panel-body">
-                    <p>Questa recipe contiene i trend relativi alla Nike</p>
-                    <div class="col-xs-6 col-md-6">
-                        <button class="btn btn-primary" data-ui-sref="dashboard.metrics">Visualizza</button>
-                    </div>
-                    <div class="col-xs-6 col-md-6">
-                        <button class="btn btn-primary" data-ui-sref="dashboard.compare">Confronta</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-lg-6 col-sm-12" >
-            <div class="panel panel-default">
-                <div class="panel-heading">Sport Nike</div>
-                <div class="panel-body">
-                    <p>Questa recipe contiene i trend relativi alla Nike</p>
-                    <div class="col-xs-6 col-md-6">
-                        <button class="btn btn-primary" data-ui-sref="dashboard.metrics">Visualizza</button>
-                    </div>
-                    <div class="col-xs-6 col-md-6">
-                        <button class="btn btn-primary" data-ui-sref="dashboard.compare">Confronta</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> <!-- ./row -->
+    </div>
 
 </div> <!-- ./container-fluid -->
