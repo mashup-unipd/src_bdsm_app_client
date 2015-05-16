@@ -15,6 +15,9 @@ if [ -d '../mashup-unipd.github.io' ]
 then
 	if [ ${branch} == 'develop' ]
 	then
+		cd ../mashup-unipd.github.io
+		git pull
+		cd ../src_BDSM_App_client
 		grunt build;
 		cp -r dist/* ../mashup-unipd.github.io/ ;
 		cd ../mashup-unipd.github.io
