@@ -1,0 +1,26 @@
+<div class="page-header">
+    <div class="container-fluid">
+        <div class="row">
+            <h1>Users Management</h1>
+        </div>
+    </div>
+</div> <!-- ./page-header -->
+
+<div class="container-fluid" data-ng-controller="UsersConfigCtrl as uc">
+
+    <div>
+
+        <div class="panel panel-default" data-ng-repeat="user in uc.usersList">
+            <div class="panel-heading"><span class="label label-primary" data-ng-bind="user.type"></span> <span data-ng-bind="user.mail"></span></div>
+            <div class="panel-body">
+                <div class="col-xs-6 col-md-6">
+                    <button class="btn btn-primary">Edit permissions</button>
+                </div>
+                <div class="col-xs-6 col-md-6">
+                    <button class="btn btn-primary">Delete</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div> <!-- ./container-fluid -->

@@ -25,7 +25,6 @@
         $stateProvider
             .state('dashboard.recipe',{
                 url:'/recipe',
-                controller: 'RecipeCtrl',
                 templateUrl:'views/user/recipe.html',
                 resolve: {
                     loadMyFiles: function($ocLazyLoad) {

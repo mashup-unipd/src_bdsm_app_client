@@ -27,6 +27,16 @@
 
 		var vm = this;
 
+		vm.usersList = [
+			{
+				mail: 'info@mashup.unipd.it',
+				type: 'Admin'
+			},
+			{
+				mail: 'facoch42@gmail.com',
+				type: 'User'
+			}
+		];
 	};
 
 	UsersConfigCtrl.$inject = []; /* TODO (p.tesser921@gmail.com): inject UserService */
