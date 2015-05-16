@@ -10,9 +10,11 @@
      * Modify
      * Version  Date        Author          Desc
      * ==========================================================
-     * 0.0.1    2015-05-04  Tesser Paolo    codifica modulo
+     * 0.0.1    2015-05-04  Tesser Paolo    code module
      * -----------------------------------------------------------
-     *
+     * 0.0.2	2015-05-14	Tesser Paolo	add param title to url
+	 * -----------------------------------------------------------
+	 *
      */
 
     /**
@@ -24,7 +26,9 @@
         $stateProvider
 
             .state('dashboard.metrics',{
+				url: 'recipe/:title',
                 templateUrl:'views/user/metrics.html',
+				controller: 'MetricsCtrl',
                 resolve: {
                     loadMyFiles: function($ocLazyLoad) {
                         return $ocLazyLoad.load({

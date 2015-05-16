@@ -1,12 +1,20 @@
 <div class="page-header">
     <div class="container-fluid">
         <div class="row">
-            <h1>List of the metrics for NomeRecipe Recipe</h1>
+            <h1>List of the metrics for <span da Recipe</h1>
         </div>
     </div>
 </div> <!-- ./page-header -->
 
 <div id="metrics-container" class="container-fluid" data-ng-controller="MetricsCtrl as mc">
+
+    <div class="row">
+        <ol class="breadcrumb">
+            <li><a data-ui-sref="dashboard.recipe">Recipe</a></li>
+            <li class="active">Metrics</li>
+        </ol>
+    </div>
+
     <tabset>
 
         <tab data-ng-repeat="type in mc.metricsType" heading="{{ type.value }}" active="tab.active" disable="tab.disable">
@@ -21,6 +29,7 @@
                                 <th></th>
                             </tr>
                         </thead>
+
                         <tbody>
                             <tr data-ng-repeat="metric in mc.metricsFb">
                                 <td data-ng-bind="metric.name"></td>

@@ -22,7 +22,7 @@
      * Controller of the app
      */
 
-    var MetricsCtrl = function (recipeService) {
+    var MetricsCtrl = function (recipeService, $stateParams) {
 
         var vm = this;
 
@@ -53,7 +53,7 @@
 
     };
 
-    MetricsCtrl.$inject = ['recipeService'];
+    MetricsCtrl.$inject = ['recipeService', '$stateParams'];
 
     angular.module('app').controller('MetricsCtrl', MetricsCtrl);
 

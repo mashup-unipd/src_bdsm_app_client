@@ -18,7 +18,7 @@
                     <div class="panel-body">
                         <p data-ng-bind="list.descRecipe"></p>
                         <div class="col-xs-6 col-md-6">
-                            <button class="btn btn-primary" data-ui-sref="dashboard.metrics">Show metrics</button>
+                            <button class="btn btn-primary" data-ui-sref="dashboard.metrics({id: list.idRecipe, title: list.titleRecipe})">Show metrics</button>
                         </div>
                         <div class="col-xs-6 col-md-6">
                             <button class="btn btn-primary" data-ui-sref="dashboard.compare">Compare metrics</button>
