@@ -23,22 +23,31 @@
 	 * Factory in the app.user.services.module
 	 */
 
-
+	// TODO: insert managerDataService as param and maybe UserModel
 	function userService(){
 
 		var factory = {
-			// TODO: insert public function
+			getFavourites: getFavourites
 		};
 
 		return factory;
 
 		///////////////
 
-		// TODO: implemente private and public functions
+		// TODO: implement private and public functions
+
+		/**
+		 *
+		 * @param idUser
+		 */
+		function getFavourites( idUser ){
+
+			// TODO: it musts returns an array of object
+		}
 	}
 
 
-	userService.$inject = [];
+	userService.$inject = []; // TODO: inject managerDataService and maybe UserModel
 
 	angular
 		.module('app.auth.services.module')

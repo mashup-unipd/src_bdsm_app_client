@@ -27,7 +27,8 @@
 	function userAdminService(){
 
 		var factory = {
-			// TODO: insert public function
+			getListOfUsers: getListOfUsers,
+			getListOfRecipesRequest: getListOfRecipesRequest
 		};
 
 		return factory;
@@ -35,6 +36,21 @@
 		///////////////
 
 		// TODO: implemente private and public functions
+
+		/**
+		 * TODO
+		 */
+		function getListOfUsers(){
+
+
+		}
+
+		/**
+		 * TODO
+		 */
+		function getListOfRecipesRequest(){
+
+		}
 
 	}
 

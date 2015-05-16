@@ -23,22 +23,49 @@
 	 * Factory in the app.recipe.services.module
 	 */
 
-
+	// TODO: insert managerDataService as param and maybe RecipeModel
 	function recipeService(){
 
 		var factory = {
-			// TODO: insert public function
+			getRecipesList: getRecipesList,
+			getMetricsList: getMetricsList
 		};
 
 		return factory;
 
 		///////////////
 
-		// TODO: implemente private and public functions
+		// TODO: implement private and public functions
+
+		/**
+		 * TODO
+		 * @returns {*}
+		 */
+		function getRecipesList(){
+
+			var recipesList = '';
+
+			// TODO: check managerDataService or call back-end API
+
+			return recipesList;
+
+		}
+
+		/**
+		 * TODO
+		 * @param idRecipe
+		 * @returns {*}
+		 */
+		function getMetricsList( idRecipe ){
+			var metricsList = '';
+
+			return metricsList;
+		}
+
 	}
 
 
-	recipeService.$inject = [];
+	recipeService.$inject = []; // TODO: inject managerDataService and maybe RecipeModel
 
 	angular
 		.module('app.recipe.services.module')
