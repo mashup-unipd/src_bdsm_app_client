@@ -1,7 +1,7 @@
 <div class="page-header">
     <div class="container-fluid">
         <div class="row">
-            <h1>List of the metrics for <span da Recipe</h1>
+            <h1>List of the metrics for <span></span> da Recipe</h1>
         </div>
     </div>
 </div> <!-- ./page-header -->
@@ -31,11 +31,13 @@
                         </thead>
 
                         <tbody>
+
                             <tr data-ng-repeat="metric in mc.metricsFb">
                                 <td data-ng-bind="metric.name"></td>
                                 <td data-ng-bind="metric.type"></td>
                                 <td><button class="btn btn-primary" data-ui-sref="dashboard.metrics.charts">Show charts</button></td>
                             </tr>
+
                         </tbody>
                     </table>
                 </div>
