@@ -3,7 +3,7 @@
     <div class="page-header">
         <div class="container-fluid">
             <div class="row">
-                <h1>Inserimento nuova Recipe</h1>
+                <h1>Insert new recipe</h1>
             </div>
         </div>
     </div> <!-- ./page-header -->
@@ -13,13 +13,13 @@
 
             <div class="row" data-ng-show="irc.insertSuccess">
                 <div class="col-md-12">
-                    <p class="alert-success">Inserimento avvenuto con successo!</p>
+                    <p class="alert-success">Success insert!</p>
                 </div>
             </div>
 
             <div class="row" data-ng-show="irc.insertError">
                 <div class="col-md-12">
-                    <p class="alert-danger">Inserimento fallito!</p>
+                    <p class="alert-danger">Failed to insert!</p>
                 </div>
             </div>
 
@@ -28,7 +28,7 @@
                 <form name="newRecipeForm" method="post" data-role="form" data-ng-submit="irc.insertRecipe()">
                     <div class="row">
                         <div class="form-group col-md-4">
-                            <label>Titolo Recipe</label>
+                            <label>Recipe's title</label>
                             <input class="form-control" type="text" data-ng-model="irc.titleRecipe"
                                    placeholder="Insert title" required>
                         </div>
@@ -36,7 +36,7 @@
 
                     <div class="row">
                         <div class="form-group col-md-8">
-                            <label for="desc-recipe">Descrizione della Recipe</label>
+                            <label for="desc-recipe">Recipe's description</label>
                             <textarea class="form-control" data-ng-model="irc.descRecipe" rows="4" id="desc-recipe"
                                     placeholder="Insert description about this Recipe">
                             </textarea>
@@ -48,7 +48,7 @@
                         <div id="metric-container">
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <label for="category">Categoria</label>
+                                    <label for="category">Category</label>
                                     <select class="form-control" id="category"
                                             data-ng-options="category.value for category in irc.categories"
                                             data-ng-model="category.key" data-ng-change="irc.updateTypeMetric(category)">
@@ -57,7 +57,7 @@
                             </div>
                             <div class="row">
                                 <div class="form-group col-md-4">
-                                    <label for="type-node">Tipo di categoria</label>
+                                    <label for="type-node">Type of category</label>
                                     <select class="form-control" id="type-node"
                                             data-ng-options="type.value for type in irc.types"
                                             data-ng-model="type.key">
@@ -67,7 +67,7 @@
 
                             <div class="row">
                                 <div class="form-group col-md-5">
-                                    <label for="id-nodo">Nome</label>
+                                    <label for="id-nodo">Name</label>
                                     <input class="form-control" id="id-nodo" type="text" name="idNodo"
                                            data-ng-model="irc.valueMetric" placeholder="Valore metrica">
                                 </div>
@@ -78,13 +78,13 @@
                                     <button class="btn btn-primary" type="button"
                                             data-ng-click="irc.addMetric(category.key.key, type.key.key, newRecipeForm.idNodo.$modelValue)"
                                             data-ng-disabled="">
-                                        Nuova metrica <i class="fa fa-plus"></i>
+                                        New metric <i class="fa fa-plus"></i>
                                     </button>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="help-block text-danger" data-ng-if="irc.metricError">
-                                    Devi inserire almeno due metriche nella Recipe.
+                                    You must insert almost two metric.
                                 </div>
                             </div>
 
@@ -95,7 +95,7 @@
                     <div class="row">
                         <div class="col-md-5">
                             <button class="btn btn-primary" type="submit" data-ng-disabled="newRecipeForm.$invalid" >
-                                Inserisci Recipe <span class="fa fa-save"></span>
+                                Insert Recipe <span class="fa fa-save"></span>
                             </button>
                         </div>
                     </div>
@@ -104,11 +104,11 @@
                         <div data-ng-repeat="metric in irc.tempMetrics">
                             <div class="table-responsive">
                                 <table class="table table-hover table-bordered">
-                                    <caption>Metrica aggiunta alla Recipe</caption>
+                                    <caption>Metric added at the Recipe</caption>
                                     <thead>
                                     <tr>
-                                        <th>Opzione</th>
-                                        <th>Valore</th>
+                                        <th>Option</th>
+                                        <th>Value</th>
                                     </tr>
                                     </thead>
                                     <tbody>
