@@ -8,11 +8,10 @@
 
 <div class="container-fluid" id="recipes-container" data-ng-controller="RatingsCtrl as rc">
 
-    <div data-ng-repeat="list in rc.listRecipes">
+    <div class="row">
+    <div class="col-lg-6 col-sm-12" data-ng-repeat="list in rc.listRecipes">
 
-        <!-- TODO: insert a row each two recipe -->
-
-        <div class="col-lg-6 col-sm-12" >
+        <div>
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <span data-ng-bind="list.titleRecipe"></span>
@@ -25,6 +24,6 @@
         </div>
 
     </div>
-
+    </div>
 
 </div> <!-- ./container-fluid -->
