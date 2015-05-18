@@ -2,7 +2,7 @@
     'use strict';
 
     /**
-     * Name: app/scripts/controller/settings/settings.ctrl.js
+     * Name: app/scripts/controllers/user/settings/settings.ctrl.js
      * Author: MashUp
      * Mail. info@mashup-unipd.it
      *

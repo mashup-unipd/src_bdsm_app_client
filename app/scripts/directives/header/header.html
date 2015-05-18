@@ -1,4 +1,6 @@
-<nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+<nav class="navbar navbar-default navbar-static-top"
+     role="navigation" data-ng-controller="MenuSecondCtrl as msc"
+     style="margin-bottom: 0">
     <div class="navbar-header">
 
         <button type="button" data-ng-init="navCollapsed = true" data-ng-click="navCollapsed = !navCollapsed" class="navbar-toggle">
@@ -7,12 +9,47 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
+
         <a class="navbar-brand" data-ui-sref="dashboard.recipe">MashApp</a>
 
         <header-notification></header-notification>
+    </div> <!-- ./navbar-header -->
+
+
+    <div class="navbar-default sidebar" data-role="navigation">
+        <div collapse="navCollapsed" class="sidebar-nav navbar-collapse">
+            <ul class="nav in" id="side-menu">
+
+                <sidebar-search></sidebar-search>
+
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="dashboard.recipe" data-ng-click="navCollapsed = true"><i class="fa fa-dashboard fa-fw"></i> Recipe</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="dashboard.favourites" data-ng-click="navCollapsed = true"><i class="fa fa-star fa-fw"></i> Favourites<span></span></a>
+                </li>
+
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="dashboard.recipe-request" data-ng-click="navCollapsed = true"><i class="fa fa-location-arrow fa-fw"></i> Recipe Request</a>
+                </li>
+
+                <li class="divider"></li>
+
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="dashboard.new-recipe" data-ng-click="navCollapsed = true"><i class="fa fa-edit fa-fw"></i> New Recipe</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="dashboard.request-list" data-ng-click="navCollapsed = true"><i class="fa fa-filter fa-fw"></i> List Request</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="dashboard.ratings" data-ng-click="navCollapsed = true"><i class="fa fa-thumbs-o-up fa-fw"></i> Recipes Ratings</a>
+                </li>
+                <li data-ui-sref-active="active">
+                    <a data-ui-sref="dashboard.users-config" data-ng-click="navCollapsed = true"><i class="fa fa-users fa-fw"></i> Users Config</a>
+                </li>
+            </ul>
+            <!-- /.nav in -->
+        </div>
+        <!-- /.sidebar-collapse -->
     </div>
-    <!-- /.navbar-header -->
-
-
-    <sidebar></sidebar>
 </nav>

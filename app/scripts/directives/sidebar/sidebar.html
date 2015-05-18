@@ -1,11 +1,11 @@
 <div class="navbar-default sidebar" data-role="navigation">
     <div collapse="navCollapsed" class="sidebar-nav navbar-collapse">
         <ul class="nav in" id="side-menu">
-
+            <span></span>
             <sidebar-search></sidebar-search>
 
             <li data-ui-sref-active="active">
-                <a data-ui-sref="dashboard.recipe"><i class="fa fa-dashboard fa-fw"></i> Recipe</a>
+                <a data-ui-sref="dashboard.recipe" data-ng-click="navCollapsed = true"><i class="fa fa-dashboard fa-fw"></i> Recipe</a>
             </li>
             <li data-ui-sref-active="active">
                 <a data-ui-sref="dashboard.favourites"><i class="fa fa-star fa-fw"></i> Favourites<span></span></a>
