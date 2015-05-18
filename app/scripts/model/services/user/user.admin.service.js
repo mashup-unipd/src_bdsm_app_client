@@ -27,8 +27,7 @@
 	function userAdminService(){
 
 		var factory = {
-			getListOfUsers: getListOfUsers,
-			getListOfRecipesRequest: getListOfRecipesRequest
+			getListOfUsers: getListOfUsers
 		};
 
 		return factory;
@@ -42,13 +41,19 @@
 		 */
 		function getListOfUsers(){
 
+			// TODO: now it's a stub, change with a back-end API call (GET)
+			var list = [
+				{
+					mail: 'info@mashup.unipd.it',
+					type: 'Admin'
+				},
+				{
+					mail: 'facoch42@gmail.com',
+					type: 'User'
+				}
+			];
 
-		}
-
-		/**
-		 * TODO
-		 */
-		function getListOfRecipesRequest(){
+			return list;
 
 		}
 

@@ -27,7 +27,8 @@
 	function userService(){
 
 		var factory = {
-			getFavourites: getFavourites
+			getFavourites: getFavourites,
+			addFavourite: addFavourite
 		};
 
 		return factory;
@@ -37,12 +38,22 @@
 		// TODO: implement private and public functions
 
 		/**
-		 *
+		 * TODO
+		 * TODO (test):
 		 * @param idUser
 		 */
 		function getFavourites( idUser ){
 
 			// TODO: it musts returns an array of object
+		}
+
+		/**
+		 * TODO: add some params to identify the type of graph that's we want save
+		 * TODO (test):
+		 * @param idUser
+		 */
+		function addFavourite( idUser ){
+
 		}
 	}
 

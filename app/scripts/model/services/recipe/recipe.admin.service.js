@@ -31,6 +31,7 @@
 
 		var factory = {
 			getRecipesListAll: getRecipesListAll,
+			getListOfRecipesRequest: getListOfRecipesRequest,
 			createRecipe: createRecipe,
 			setRecipeRating: setRecipeRating
 		};
@@ -42,40 +43,65 @@
 		/**
 		 * This function retries all recipes from back-end
 		 * TODO (test):
-		 * @returns {*} : list of all recipes
+		 * @returns {*[]} : list of all recipes
 		 */
 		function getRecipesListAll(){
 
+			// TODO: check managerDataService or call back-end API (GET)
 			var recipesList = [
 				{
 					idRecipe: '10',
 					titleRecipe: 'SportNike',
 					descRecipe: 'Questa recipe contiene i trend relativi alla Nike',
-					ratings: 4.43
+					ratings: 2.11
 				},
 				{
 					idRecipe: '11',
 					titleRecipe: 'StarWars',
 					descRecipe: 'Questa recipe contiene i trend relativi a StarWars',
-					ratings: 7.27
+					ratings: 4.80
 				},
 				{
 					idRecipe: '12',
 					titleRecipe: 'Boobies',
 					descRecipe: 'Questa recipe contiene i trend relativi alle migliori tette',
-					ratings: 15.55
+					ratings: 5.00
 				},
 				{
 					idRecipe: '13',
 					titleRecipe: 'Bear',
 					descRecipe: 'Questa recipe contiene i trend relativi alle migliori birre',
-					ratings: 10.50
+					ratings: 4.50
 				}
 			];
 
-			// TODO: check managerDataService or call back-end API (GET)
-
 			return recipesList;
+
+		}
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 * @returns {*[]}
+		 */
+		function getListOfRecipesRequest(){
+
+			var requestList = [
+				{
+					idRequestRecipe: 42,
+					titleRecipe: 'AdidasSport',
+					descRecipe: 'Recipe about Adidas trends',
+					emailUser: 'p.tesser921@gmail.com'
+				},
+				{
+					idRequestRecipe: 43,
+					titleRecipe: 'AdidasSport',
+					descRecipe: 'Recipe about Adidas trends',
+					emailUser: 'dav.santucci@zing.com'
+				}
+			];
+
+			return requestList;
 
 		}
 

@@ -8,7 +8,7 @@
 	 * Modify
 	 * Version  Date        Author          Desc
 	 * ==========================================================
-	 * 0.0.1    2015-05-10  Tesser Paolo    codifica modulo
+	 * 0.0.1    2015-05-10  Tesser Paolo    code module
 	 * -----------------------------------------------------------
 	 *
 	 */
@@ -22,14 +22,48 @@
 	 * Controller of the app
 	 */
 
-	/* TODO (p.tesser921@gmail.com): insert service that gives the list of the recipe request as param */
-	var RequestListCtrl = function(){
+
+	var RequestListCtrl = function(recipeAdminService){
 
 		var vm = this;
 
+		vm.requestList = getRequestList();
+		vm.discardRequest = discardRequest;
+		vm.approvedRequest = approveRequest;
+
+		////////////////
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 * @returns {*}
+		 */
+		function getRequestList(){
+			return recipeAdminService.getListOfRecipesRequest();
+		}
+
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 * @param idReqRecipe
+		 */
+		function discardRequest( idReqRecipe ){
+			console.log(idReqRecipe);
+		}
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 * @param idReqRecipe
+		 */
+		function approveRequest( idReqRecipe ){
+			console.log(idReqRecipe);
+		}
+
 	};
 
-	RequestListCtrl.$inject = []; /* TODO (p.tesser921@gmail.com): inject service that gives the list of the recipe request  */
+	RequestListCtrl.$inject = ['recipeAdminService'];
 
 	angular
 		.module('app')

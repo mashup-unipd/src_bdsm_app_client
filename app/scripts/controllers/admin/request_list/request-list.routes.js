@@ -24,7 +24,7 @@
 		$stateProvider
 
 			.state('dashboard.request-list',{
-				templateUrl: 'views/admin/request-list.html',
+				templateUrl: '../../../../views/admin/recipe-request-list.html',
 				url: '/request-list',
 				resolve: {
 					loadMyFiles: function($ocLazyLoad) {
