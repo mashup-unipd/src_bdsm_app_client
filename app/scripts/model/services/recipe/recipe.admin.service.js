@@ -12,6 +12,9 @@
 	 * ==========================================================
 	 * 0.0.1    2015-05-14  Tesser Paolo    code module
 	 * -----------------------------------------------------------
+	 * 0.0.2	2015-05-15	Tesser Paolo	insert function to create and modify data from back-end
+	 * -----------------------------------------------------------
+	 *
 	 *
 	 */
 
@@ -27,17 +30,19 @@
 	function recipeAdminService(){
 
 		var factory = {
-			getRecipesListAll: getRecipesListAll
+			getRecipesListAll: getRecipesListAll,
+			createRecipe: createRecipe,
+			setRecipeRating: setRecipeRating
 		};
 
 		return factory;
 
 		///////////////
 
-		// TODO: implemente private and public functions
 		/**
-		 * TODO
-		 * @returns {*}
+		 * This function retries all recipes from back-end
+		 * TODO (test):
+		 * @returns {*} : list of all recipes
 		 */
 		function getRecipesListAll(){
 
@@ -68,10 +73,28 @@
 				}
 			];
 
-			// TODO: check managerDataService or call back-end API
+			// TODO: check managerDataService or call back-end API (GET)
 
 			return recipesList;
 
+		}
+
+		/**
+		 * This function inserts a new recipe created in the back-end
+		 * TODO (test):
+		 * @param recipe : recipe to insert
+		 */
+		function createRecipe( recipe ){
+			// TODO: call back-end API (POST)
+		}
+
+		/**
+		 * This function sets the rating's value gives from a User to a Recipe
+		 * TODO (test):
+		 * @param idRecipe
+		 */
+		function setRecipeRating( idRecipe ){
+			// TODO: call back-end API (POST)
 		}
 
 	}

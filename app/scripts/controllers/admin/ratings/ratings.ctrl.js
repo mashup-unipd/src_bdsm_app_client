@@ -22,7 +22,6 @@
 	 * Controller of the app
 	 */
 
-	/* TODO (p.tesser921@gmail.com): insert service for list of recipe with the rate as param */
 	var RatingsCtrl = function(recipeAdminService){
 
 		var vm = this;
@@ -41,7 +40,7 @@
 
 	};
 
-	RatingsCtrl.$inject = ['recipeAdminService']; /* TODO (p.tesser921@gmail.com): inject service for list of recipe with the rate  */
+	RatingsCtrl.$inject = ['recipeAdminService'];
 
 	angular
 		.module('app')

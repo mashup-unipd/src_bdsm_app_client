@@ -29,18 +29,19 @@
 		var factory = {
 			getRecipesList: getRecipesList,
 			getMetricsList: getMetricsList,
-			getMetricType: getMetricType
+			getMetricType: getMetricType,
+			createRecipeRequest: createRecipeRequest
 		};
 
 		return factory;
 
 		///////////////
 
-		// TODO: implement private and public functions
 
 		/**
-		 * TODO
-		 * @returns {*}
+		 * This function retries all recipes from back-end
+		 * TODO (test):
+		 * @returns {*} : list of all recipes
 		 */
 		function getRecipesList(){
 
@@ -74,21 +75,22 @@
 		}
 
 		/**
-		 * TODO
-		 * @param idRecipe
-		 * @param typeCategory
-		 * @returns {*}
+		 * This function retries all metrics contains in a determinate recipe
+		 * TODO (test):
+		 * @param idRecipe : id of the recipe that we want get all metrics
+		 * @param typeCategory : type of the category that we want the metrics
+		 * @returns {*} : list of metrics objects
 		 */
 		function getMetricsList( idRecipe, typeCategory ){
 
-			var metricsList = '';
+			var metricsList = [];
 
 			// TODO: call back-end API, now we are using a stub
 			switch(typeCategory){
 				case 'facebook': metricsList = [
 					{
 						name: 'NikeOfficial',
-						type: 'page',
+						type: 'page'
 					},
 					{
 						name: 'NikeStore',
@@ -127,8 +129,9 @@
 		}
 
 		/**
-		 * TODO
-		 * @returns {*}
+		 * This function retries all metrics type
+		 * TODO (test):
+		 * @returns {*} : list of type objects
 		 */
 		function getMetricType(){
 
@@ -148,6 +151,16 @@
 			];
 
 			return type;
+		}
+
+
+		/**
+		 * This function inserts a new recipe request created in the back-end
+		 * TODO (test):
+		 * @param recipeReq : recipe request to insert
+		 */
+		function createRecipeRequest( recipeReq ){
+			// TODO
 		}
 
 	}
