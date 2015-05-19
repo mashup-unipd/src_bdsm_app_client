@@ -22,7 +22,7 @@
      * Controller of the app
      */
 
-    var ApiDocsCtrl = function () {
+    var ApiDocsCtrl = function ($http ,dataManagerService) {
 
         var vm = this;
 
@@ -40,9 +40,11 @@
             }
         ];
 
+
+
     };
 
-    ApiDocsCtrl.$inject = [];
+    ApiDocsCtrl.$inject = ['$http','dataManagerService'];
 
     angular.module('app').controller('ApiDocsCtrl', ApiDocsCtrl);
 

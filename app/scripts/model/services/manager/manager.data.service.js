@@ -14,6 +14,8 @@
      * -----------------------------------------------------------
      * 0.0.2    2015-05-18  Carnovalini Filippo    coded with stub calls
      * -----------------------------------------------------------
+     * 0.0.3    2015-05-19  Carnovalini Filippo    corrected minor flaws
+     * -----------------------------------------------------------
      *
      */
 
@@ -62,37 +64,27 @@
             var apiCall;
             var localCall;
 
-            if (typeof restTime === 'undefined') {
+            if (typeof restTime === 'undefined' || restTime < Date.now()-10800000) {
+            // non è trovato o sono passate più di tre ore
                 localStorage.setItem('time/' + restCall, Date.now());
-                apiCall = 'JSON foo data';        // TODO: call actual APIs
+                apiCall = Date.now();        // TODO: call actual APIs
                 localStorage.setItem('data/' + restCall, apiCall);
                 restData=apiCall;
             } else {
-				// sono passate più di tre ore (il momento della chiamata più tre ore è inferiore al (è prima del) momento attuale)
-                if (restTime + 10800000 <= Date.now()) {
-                    localStorage.setItem('time/'+restCall, Date.now());
+                // i dati sono freschi
+                localCall = localStorage.getItem('data/' + restCall);
+                if (typeof localCall === 'undefined'){   // per qualche ragione il record è andato perso anche se c'è la entry della data
                     apiCall = 'JSON foo data';	// TODO: call actual APIs
                     localStorage.setItem('data/' + restCall, apiCall);
-                    restData=apiCall;	// casistica uguale a quella precedente, potenzialmente unibili
+                    restData = apiCall;
                 } else {
-					// i dati sono freschi
-                    localCall = localStorage.getItem('data/' + restCall);
-
-                    if (typeof restData === 'undefined'){
-                        apiCall = 'JSON foo data';	// TODO: call actual APIs
-                        localStorage.setItem('data/' + restCall, apiCall);
-                        restData = apiCall;
-                    } else {
-                        restData = localCall;
-                    }
+                    restData = localCall;   // il dato locale è valido e viene restituito
                 }
             }
 
             return restData;
 
         }
-
-
     }
 
     dataManagerService.$inject = [];
