@@ -171,6 +171,10 @@ h2 {
 
 
 /* OVERRIDE BOOTSTRAP ***************/
+.container-fluid{
+    padding: 0;
+}
+
 .btn-primary{
     background-color: #5E84AA;
     border-color: #5E84AA;
