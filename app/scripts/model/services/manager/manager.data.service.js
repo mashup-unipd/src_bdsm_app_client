@@ -58,29 +58,32 @@
 
 
             var restData;
-            var restTime = localStorage.getItem('time/'+restCall);
+            var restTime = localStorage.getItem('time/' + restCall);
             var apiCall;
             var localCall;
 
             if (typeof restTime === 'undefined') {
-                localStorage.setItem('time/'+restCall, Date.now());
-                apiCall="JSON foo data";        // TODO: call actual APIs
-                localStorage.setItem('data/'+restCall, apiCall);
+                localStorage.setItem('time/' + restCall, Date.now());
+                apiCall = 'JSON foo data';        // TODO: call actual APIs
+                localStorage.setItem('data/' + restCall, apiCall);
                 restData=apiCall;
-            }else{
-                if (restTime+10800000 <= Date.now()) {//sono passate più di tre ore (il momento della chiamata più tre ore è inferiore al (è prima del) momento attuale)
+            } else {
+				// sono passate più di tre ore (il momento della chiamata più tre ore è inferiore al (è prima del) momento attuale)
+                if (restTime + 10800000 <= Date.now()) {
                     localStorage.setItem('time/'+restCall, Date.now());
-                    apiCall="JSON foo data";        // TODO: call actual APIs
-                    localStorage.setItem('data/'+restCall, apiCall);
-                    restData=apiCall;                   //Casistica uguale a quella precedente, potenzialmente unibili
-                } else{ // i dati sono freschi
-                    localCall=localStorage.getItem('data/'+restCall);
+                    apiCall = 'JSON foo data';	// TODO: call actual APIs
+                    localStorage.setItem('data/' + restCall, apiCall);
+                    restData=apiCall;	// casistica uguale a quella precedente, potenzialmente unibili
+                } else {
+					// i dati sono freschi
+                    localCall = localStorage.getItem('data/' + restCall);
+
                     if (typeof restData === 'undefined'){
-                        apiCall="JSON foo data";        // TODO: call actual APIs
-                        localStorage.setItem('data/'+restCall, apiCall);
-                        restData=apiCall;
+                        apiCall = 'JSON foo data';	// TODO: call actual APIs
+                        localStorage.setItem('data/' + restCall, apiCall);
+                        restData = apiCall;
                     } else {
-                        restData= localCall;
+                        restData = localCall;
                     }
                 }
             }
@@ -91,7 +94,6 @@
 
 
     }
-
 
     dataManagerService.$inject = [];
 
