@@ -226,7 +226,8 @@ h2 {
 
 /* RECIPE PAGE **********************/
 #recipes-container .col-md-6{
-    padding: 1em;
+    padding: 0.4em;
+    text-align: center;
 }
 
 #recipe-container{
@@ -242,16 +243,12 @@ h2 {
     font-size: 1em;
 }
 
-#recipe-container
-    .col-lg-6.noleftpad
-{
-    padding-left: 0;
+#recipe-container .noleftpad {
+    padding-left: 0 !important;
 }
 
-#recipe-container
-    .col-lg-6.noleftpad
-{
-    padding-right: 0;
+#recipe-container .norightpad {
+    padding-right: 0 !important;
 }
 /*
 #recipe-container
@@ -294,12 +291,20 @@ h2 {
 
 /************************************/
 
+/* RECIPE REQUEST PAGE **********************/
+#recipes-request-container .col-xs-12{
+    padding: 0.4em;
+    text-align: center;
+}
+
+/************************************/
+
 
 @media screen and (min-width: 992px) {
 
     /* RECIPE PAGE **********************/
     #recipes-container .col-md-6{
-        padding: 1em;
+        padding: 0.4em;
         width: 48%;
     }
 
@@ -374,9 +379,20 @@ h2 {
 
     /************************************/
 
-    /* FOOTER ***************************/
+
+    /* RECIPE PAGE *****************/
+    #recipe-container .noleftpad {
+        padding-left: 0 !important;
+    }
+
+    #recipe-container .norightpad {
+        padding-right: 0 !important;
+    }
     /************************************/
 
+
+    /* FOOTER ***************************/
+    /************************************/
 
 
     /* OVERRIDE BOOTSTRAP ***************/
