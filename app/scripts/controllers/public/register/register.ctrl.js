@@ -38,6 +38,7 @@
 	  };
 	  vm.matchPwd = false;
 	  vm.register = register;
+	  vm.checkMatchPwd = checkMatchPwd;
 
 	  /////////////////
 

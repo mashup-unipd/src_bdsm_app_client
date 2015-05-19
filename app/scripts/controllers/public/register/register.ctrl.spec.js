@@ -33,7 +33,7 @@ describe('Controller: RegisterCtrl', function() {
 	});
 
 	beforeEach(function(){
-		$controller('RegisterCtrl as vm', {
+		$controller('RegisterCtrl as rc', {
 			$scope: scope
 		});
 	});
@@ -45,27 +45,27 @@ describe('Controller: RegisterCtrl', function() {
 
 	it('should new password and confirm new password match', function(){
 
-		var validPwd = [{
+		var validPwd = {
 			pwd: 'test',
-			confirm: 'test'
-		}];
+			confirmPwd: 'test'
+		};
 
-		// var valid = scope.vm.checkMatchPwd(validPwd.pwd, validPwd.confirm);
+		var valid = scope.rc.checkMatchPwd(validPwd.pwd, validPwd.confirmPwd);
 
-		// expect(valid).toBeTruthy();
+		expect(valid).toBeTruthy();
 
 	});
 
 	it('should new password and confirm new password doesn\'t match', function(){
 
-		var invalidPwd = [{
+		var invalidPwd = {
 			pwd: 'test',
-			confirm: 'testfail'
-		}];
+			confirmPwd: 'testfail'
+		};
 
-		// var invalid = scope.vm.checkMatchPwd(invalidPwd.pwd, invalidPwd.confirm);
+		var invalid = scope.rc.checkMatchPwd(invalidPwd.pwd, invalidPwd.confirmPwd);
 
-		// expect(invalid).toBeFalsy();
+		expect(invalid).toBeFalsy();
 
 	});
 
