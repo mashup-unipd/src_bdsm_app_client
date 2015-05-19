@@ -23,13 +23,12 @@
    * Controller of the app
    */
 
-  // TODO: insert Auth Service as param
-  var LoginCtrl = function($stateParams, $location, authService){
+  var LoginCtrl = function(authService){
 
       var vm = this;
 
 	  vm.credentials = {
-      	email: 'info@mashup-unipd.it',
+      	email: 'info@mashup-unipd.it', // TODO: remove
       	pwd: ''
 	  };
 
@@ -51,7 +50,7 @@
   };
 
 
-  LoginCtrl.$inject = ['$stateParams', '$location', 'authService']; // TODO: inject Auth Service
+  LoginCtrl.$inject = ['authService'];
 
   angular
       .module('app')

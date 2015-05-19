@@ -1,13 +1,13 @@
 /**
- * Name: login.ctrl.spec.js
+ * Name: app/scripts/controllers/public/login/login.ctrl.spec.js
  * Author: MashUp
  * Mail: info@mashup-unipd.it
- * Desc: test di unità sul controller che gestisce le operazioni di autenticazione al sistema
+ * Desc: unit test to the controller that manage the authentication
  *
  * Modify
  * Version  Date        Author          Desc
  * ==========================================================
- * 0.0.1    2015-04-04  Tesser Paolo    codifica modulo
+ * 0.0.1    2015-04-04  Tesser Paolo    code module
  * -----------------------------------------------------------
  *
  */
@@ -22,7 +22,7 @@ describe('Controller: LoginCtrl', function() {
 
         angular.mock.module('app');
 
-        inject(function (_$controller_) {
+        angular.mock.inject(function (_$controller_) {
 
             $controller = _$controller_('LoginCtrl');
 

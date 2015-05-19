@@ -47,8 +47,7 @@
 	   */
 	  function register( cred ){
 
-		  // TODO: it's possible create a service with this function or something that can be shared with other controllers that do this check
-		  if (cred.pwd === cred.confirmPwd){
+		  if (checkMatchPwd(cred.pwd, cred.confirmPwd)){
 
 			  authService.register(cred);
 
@@ -58,8 +57,18 @@
 			  vm.matchPwd = true;
 		  }
 
-
     	}
+
+	  /**
+	   * TODO: it's possible create a service with this function or something that can be shared with other controllers that do this check
+	   * This function check if the value new password match with confirm new password
+	   * @param newPwd : new password that User want change
+	   * @parama confirmNewPwd : new password that it's used
+	   * @returns {boolean} : true if newPwd match confirmNewPwd, else false
+	   */
+	  function checkMatchPwd(newPwd, confirmNewPwd){
+		  return newPwd === confirmNewPwd;
+	  }
 
   };
 
