@@ -25,9 +25,10 @@ describe('Controller: RegisterCtrl', function() {
 	});
 
 	beforeEach(function(){
-		angular.mock.inject(function (_$rootScope_, _$controller_) {
+		angular.mock.inject(function (_$rootScope_, _$controller_, _$location_) {
 			$rootScope = _$rootScope_;
 			$controller = _$controller_;
+			// location = _$location_;
 			scope = $rootScope.$new()
 		});
 	});
@@ -69,5 +70,28 @@ describe('Controller: RegisterCtrl', function() {
 
 	});
 
+
+	it('should correct register redirect to login page', function(){
+
+		var cred = {
+			username: 'MashUp',
+			mail: 'info@mashup-unipd.it',
+			pwd: 'GruppoSWE2014',
+			confirmPwd: 'GruppoSWE2014'
+		};
+
+		console.log(cred);
+
+		// scope.rc.register(cred);
+
+		// var path = $location.path;
+
+		// expect(path).toHaveBeenCalledWith('/login');
+
+	});
+
+	it ('should incorrect register stay to register page', function(){
+		// TODO: like above test
+	});
 
 });
