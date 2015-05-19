@@ -9,7 +9,7 @@
 	 * Modify
 	 * Version  Date        Author          Desc
 	 * ==========================================================
-	 * 0.0.1    2015-05-12  Tesser Paolo    codifica modulo
+	 * 0.0.1    2015-05-12  Tesser Paolo    code module
 	 * -----------------------------------------------------------
 	 *
 	 */
@@ -25,6 +25,7 @@
 	var ChartsCtrl = function () {
 
 		var vm = this;
+
 		vm.line = {
 			labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July'],
 			series: ['Series A', 'Series B'],
