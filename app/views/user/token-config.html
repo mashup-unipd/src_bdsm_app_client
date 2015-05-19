@@ -14,15 +14,24 @@
                 <span class="sr-only">From this page you can request a token to access our APIs.</span>
 
                 <!-- TokenConfigCtrl -->
-                <form name="getTokenForm" method="post" data-ng-controller="TokenConfigCtrl as tcc" data-ng-submit="tcc.getToken" >
+                <form name="getTokenForm" method="post"
+                      data-ng-controller="TokenConfigCtrl as tcc" data-ng-submit="tcc.getAccessToken()" >
 
-
-                    <button type="submit" class="btn btn-lg btn-block btn-success">
-                        Get your token!
-                    </button>
+                    <div data-ng-if="tcc.accessToken !== '' ">
+                        <button type="submit" class="btn btn-lg btn-block btn-success"
+                                data-ng-click="tcc.deleteAccessToken()">
+                            Delete your token!
+                        </button>
+                    </div>
+                    <div data-ng-if="tcc.accessToken === ''">
+                        <button type="submit" class="btn btn-lg btn-block btn-success"
+                                data-ng-click="tcc.getAccessToken()">
+                            Get your token!
+                        </button>
+                    </div>
 
                     <br />
-                    <p class="text-center text-info" data-ng-disabled="tcc.nessunToken"> Your token is: </p>
+                    <p class="text-center text-info"> Your token is: <span data-ng-bind="tcc.accessToken"></span></p>
 
                 </form>
                 <!-- end LoginCtrl -->
