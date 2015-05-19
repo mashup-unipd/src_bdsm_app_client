@@ -18,6 +18,7 @@ describe('Controller: RegisterCtrl', function() {
 
 	var $rootScope;
 	var $controller;
+	var $location;
 	var scope;
 
 	beforeEach(function () {
@@ -28,7 +29,7 @@ describe('Controller: RegisterCtrl', function() {
 		angular.mock.inject(function (_$rootScope_, _$controller_, _$location_) {
 			$rootScope = _$rootScope_;
 			$controller = _$controller_;
-			// location = _$location_;
+			$location = _$location_;
 			scope = $rootScope.$new()
 		});
 	});
@@ -82,11 +83,11 @@ describe('Controller: RegisterCtrl', function() {
 
 		console.log(cred);
 
-		// scope.rc.register(cred);
+		scope.rc.register(cred);
 
 		// var path = $location.path;
-
-		// expect(path).toHaveBeenCalledWith('/login');
+		// console.log(path);
+		// expect(path).toBe('/login');
 
 	});
 
