@@ -15,7 +15,7 @@
 
 	angular
 		.module('app.user.services.module', [
-
+			'app.manager.data.services.module'
 		]);
 
 })();

@@ -25,8 +25,7 @@
 	 * Factory in the app.user.services.module
 	 */
 
-	// TODO: insert managerDataService as param and maybe UserModel
-	function userService($http){
+	function userService(dataManagerService){
 
 		var factory = {
 			getFavourites: getFavourites,
@@ -38,6 +37,7 @@
 		return factory;
 
 		///////////////
+
 
 		/**
 		 * TODO
@@ -80,7 +80,7 @@
 	}
 
 
-	userService.$inject = ['$http']; // TODO: inject managerDataService and maybe UserModel
+	userService.$inject = ['dataManagerService']; // TODO: inject managerDataService and maybe UserModel
 
 	angular
 		.module('app.user.services.module')

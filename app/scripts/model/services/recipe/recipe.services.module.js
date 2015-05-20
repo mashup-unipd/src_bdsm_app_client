@@ -15,7 +15,7 @@
 
 	angular
 		.module('app.recipe.services.module', [
-
+			'app.manager.data.services.module'
 		]);
 
 })();

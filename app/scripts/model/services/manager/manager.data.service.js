@@ -49,13 +49,21 @@
     function dataManagerService($http){
 
         var factory = {
-            getRestCall: getRestCall
+            getRestCall: getRestCall,
+			postRestCall: postRestCall,
+			putRestCall: putRestCall,
+			deleteRestCall: deleteRestCall
         };
 
         return factory;
 
         ///////////////
 
+		/**
+		 * TODO
+		 * @param restCall
+		 * @returns {*}
+		 */
         function getRestCall(restCall){
 
             var restData;
@@ -88,7 +96,39 @@
             return restData;
 
         }
+
+		/**
+		 * TODO
+		 * @param restCall
+		 * @param value
+		 */
+		function postRestCall(restCall, value){
+
+
+		}
+
+		/**
+		 * TODO
+		 * @param restCall
+		 * @param value
+		 */
+		function putRestCall(restCall, value){
+
+
+		}
+
+		/**
+		 * TODO
+		 * @param restCall
+		 * @param value
+		 */
+		function deleteRestCall(restCall, value){
+
+
+		}
     }
+
+
 
     dataManagerService.$inject = ['$http'];
 

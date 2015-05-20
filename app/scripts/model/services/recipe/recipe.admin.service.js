@@ -27,7 +27,7 @@
 	 */
 
 
-	function recipeAdminService(){
+	function recipeAdminService(dataManagerService){
 
 		var factory = {
 			getRecipesListAll: getRecipesListAll,
@@ -126,7 +126,7 @@
 	}
 
 
-	recipeAdminService.$inject = [];
+	recipeAdminService.$inject = ['dataManagerService'];
 
 	angular
 		.module('app.recipe.services.module')

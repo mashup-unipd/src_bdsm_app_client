@@ -23,8 +23,8 @@
 	 * Factory in the app.recipe.services.module
 	 */
 
-	// TODO: insert managerDataService as param and maybe RecipeModel
-	function recipeService(){
+	// TODO: maybe insert RecipeModel as param
+	function recipeService(dataManagerService){
 
 		var factory = {
 			getRecipesList: getRecipesList,
@@ -214,7 +214,7 @@
 	}
 
 
-	recipeService.$inject = []; // TODO: inject managerDataService and maybe RecipeModel
+	recipeService.$inject = ['dataManagerService']; // TODO: inject maybe RecipeModel
 
 	angular
 		.module('app.recipe.services.module')

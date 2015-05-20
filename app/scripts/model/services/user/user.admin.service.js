@@ -24,7 +24,7 @@
 	 */
 
 
-	function userAdminService(){
+	function userAdminService(dataManagerService){
 
 		var factory = {
 			getListOfUsers: getListOfUsers,
@@ -83,7 +83,7 @@
 	}
 
 
-	userAdminService.$inject = [];
+	userAdminService.$inject = ['dataManagerService'];
 
 	angular
 		.module('app.user.services.module')
