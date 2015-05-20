@@ -41,7 +41,7 @@
 		 * @returns {*}
 		 */
 		function getUsers(){
-			console.log(userAdminService.getListOfUsers().items);
+			console.log(userAdminService.getListOfUsers());
 			return userAdminService.getListOfUsers();
 		}
 

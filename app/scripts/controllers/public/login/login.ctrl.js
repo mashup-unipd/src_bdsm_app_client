@@ -41,10 +41,8 @@
 	   * @param cred : object with credentials about User that want login in the system
 	   */
 	  function login( cred ){
-
 		  // TODO: set User if credentials are correct
 		  authService.login(cred);
-
 	  }
 
   };
