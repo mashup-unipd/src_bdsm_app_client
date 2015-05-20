@@ -72,7 +72,7 @@ describe('Controller: RegisterCtrl', function() {
 	});
 
 
-	it('should correct register redirect to login page', function(){
+	it('should correct register return true', function(){
 
 		var cred = {
 			username: 'MashUp',
@@ -87,7 +87,7 @@ describe('Controller: RegisterCtrl', function() {
 
 	});
 
-	it ('should incorrect register stay to register page', function(){
+	it ('should incorrect register return false', function(){
 		// TODO: like above test
 
 		var invalidCred = [

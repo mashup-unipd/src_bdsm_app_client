@@ -7,34 +7,38 @@
  * Modify
  * Version  Date        Author          Desc
  * ==========================================================
- * 0.0.1    2015-04-04  Tesser Paolo    code module
+ * 0.0.1    2015-05-15  Tesser Paolo    code module
  * -----------------------------------------------------------
  *
  */
 
 
 describe('Controller: LoginCtrl', function() {
-    'use strict';
+	'use strict';
 
-    var $controller;
+	var $controller;
 
-    beforeEach(function () {
+	beforeEach(function () {
 
-        angular.mock.module('app');
+		angular.mock.module('app');
 
-        angular.mock.inject(function (_$controller_) {
+		angular.mock.inject(function (_$controller_) {
 
-            $controller = _$controller_('LoginCtrl');
+			$controller = _$controller_('LoginCtrl');
 
-        });
-    });
+		});
+	});
 
-    it('should have a LoginCtrl controller', function () {
-        expect($controller).toBeDefined();
-    });
+	it('should have a LoginCtrl controller', function () {
+		expect($controller).toBeDefined();
+	});
 
-    it('should login function redirect to home', function(){
-        /* TODO */
-    });
+	it('should correct login return true', function(){
+		// TODO
+	});
 
+
+	it('should incorrect login return false', function(){
+		// TODO
+	});
 });

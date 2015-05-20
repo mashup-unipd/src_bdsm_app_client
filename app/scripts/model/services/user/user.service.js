@@ -25,8 +25,7 @@
 	 * Factory in the app.user.services.module
 	 */
 
-	// TODO: insert managerDataService as param and maybe UserModel
-	function userService(){
+	function userService(dataManagerService){
 
 		var factory = {
 			getFavourites: getFavourites,
@@ -38,6 +37,7 @@
 		return factory;
 
 		///////////////
+
 
 		/**
 		 * TODO
@@ -66,7 +66,7 @@
 		 * @return {String} : access token returned
 		 */
 		function getAccessToken( idUser ){
-			var token = '32325346267542524';
+			var token = idUser + '32325346267542524';
 			return token;
 		}
 
@@ -80,10 +80,10 @@
 	}
 
 
-	userService.$inject = []; // TODO: inject managerDataService and maybe UserModel
+	userService.$inject = ['dataManagerService']; // TODO: inject managerDataService and maybe UserModel
 
 	angular
-		.module('app.auth.services.module')
+		.module('app.user.services.module')
 		.factory('userService', userService);
 
 

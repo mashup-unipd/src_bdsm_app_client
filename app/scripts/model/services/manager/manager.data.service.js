@@ -46,18 +46,25 @@
 * */
 
 
-    function dataManagerService(){
+    function dataManagerService($http){
 
         var factory = {
-            getRestCall: getRestCall
+            getRestCall: getRestCall,
+			postRestCall: postRestCall,
+			putRestCall: putRestCall,
+			deleteRestCall: deleteRestCall
         };
 
         return factory;
 
         ///////////////
 
+		/**
+		 * TODO
+		 * @param restCall
+		 * @returns {*}
+		 */
         function getRestCall(restCall){
-
 
             var restData;
             var restTime = localStorage.getItem('time/' + restCall);
@@ -65,29 +72,65 @@
             var localCall;
 
             if (typeof restTime === 'undefined' || restTime < Date.now()-10800000) {
-            // non è trovato o sono passate più di tre ore
+
+            	// non è trovato o sono passate più di tre ore
                 localStorage.setItem('time/' + restCall, Date.now());
                 apiCall = Date.now();        // TODO: call actual APIs
                 localStorage.setItem('data/' + restCall, apiCall);
-                restData=apiCall;
+                restData = apiCall;
+
             } else {
                 // i dati sono freschi
                 localCall = localStorage.getItem('data/' + restCall);
+
                 if (typeof localCall === 'undefined'){   // per qualche ragione il record è andato perso anche se c'è la entry della data
                     apiCall = 'JSON foo data';	// TODO: call actual APIs
                     localStorage.setItem('data/' + restCall, apiCall);
                     restData = apiCall;
                 } else {
-                    restData = localCall;   // il dato locale è valido e viene restituito
+					// il dato locale è valido e viene restituito
+                    restData = localCall;
                 }
             }
 
             return restData;
 
         }
+
+		/**
+		 * TODO
+		 * @param restCall
+		 * @param value
+		 */
+		function postRestCall(restCall, value){
+
+
+		}
+
+		/**
+		 * TODO
+		 * @param restCall
+		 * @param value
+		 */
+		function putRestCall(restCall, value){
+
+
+		}
+
+		/**
+		 * TODO
+		 * @param restCall
+		 * @param value
+		 */
+		function deleteRestCall(restCall, value){
+
+
+		}
     }
 
-    dataManagerService.$inject = [];
+
+
+    dataManagerService.$inject = ['$http'];
 
     angular
         .module('app.manager.data.services.module')

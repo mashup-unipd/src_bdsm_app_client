@@ -25,8 +25,7 @@
    *
    */
 
-  // TODO: insert User model as param (maybe not necessaries)
-  var RegisterCtrl = function( $location , authService){
+  var RegisterCtrl = function(authService){
 
 	  var vm = this;
 
@@ -64,7 +63,7 @@
 	   * TODO: it's possible create a service with this function or something that can be shared with other controllers that do this check
 	   * This function check if the value new password match with confirm new password
 	   * @param newPwd : new password that User want change
-	   * @parama confirmNewPwd : new password that it's used
+	   * @param confirmNewPwd : new password that it's used
 	   * @returns {boolean} : true if newPwd match confirmNewPwd, else false
 	   */
 	  function checkMatchPwd(newPwd, confirmNewPwd){
@@ -73,7 +72,7 @@
 
   };
 
-  RegisterCtrl.$inject = ['$location', 'authService']; // TODO: inject User model
+  RegisterCtrl.$inject = ['authService'];
 
   angular
 	  .module('app')
