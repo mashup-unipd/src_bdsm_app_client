@@ -70,6 +70,11 @@
 			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
 			var url = basePath + restCall; // url to use to call back-end API in $http
 
+			var configRequestHttp = {
+				method: 'GET',
+				responseType: 'json'
+			};
+
 			var deferred = $q.defer();
 
 			var restData;
@@ -77,45 +82,54 @@
             var apiCall;
             var localCall;
 
+
+
             if (typeof restTime === 'undefined' || restTime < Date.now() - 10800000) {
 
             	// non è trovato o sono passate più di tre ore
                 localStorage.setItem('time/' + restCall, Date.now());
 
-				var config = {
-					method: 'GET',
-					responseType: 'json'
-				};
-
-				$http.get(url, config)
+				$http.get(url, configRequestHttp)
 					.success(function(data){
 						deferred.resolve(data);
 					})
 					.error(function(data, status) {
-						console.error('Response error', status, data);
+						deferred.reject(status);
 					});
 
                 apiCall = deferred.promise;
 
-				localStorage.setItem('data/' + restCall, apiCall);
-
-				restData = apiCall;
-				console.log(restData);
+				apiCall
+					.then(function(data){
+						restData = data.items;
+						localStorage.setItem('data/' + restCall, restData);
+					}, function(error){
+						return error;
+					});
 
             } else {
                 // i dati sono freschi
                 localCall = localStorage.getItem('data/' + restCall);
 
-                if (typeof localCall === 'undefined'){   // per qualche ragione il record è andato perso anche se c'è la entry della data
+				// per qualche ragione il record è andato perso anche se c'è la entry della data
+                if (typeof localCall === 'undefined'){
 
-					apiCall = 'JSON foo data';	// TODO: call actual APIs
+					$http.get(url, configRequestHttp)
+						.success(function(data){
+							deferred.resolve(data);
+						})
+						.error(function(data, status) {
+							console.error('Response error', status, data);
+						});
+
+					apiCall = deferred.promise;
 
 					localStorage.setItem('data/' + restCall, apiCall);
 
 					restData = apiCall;
 
                 } else {
-					// il dato locale è valido e viene restituito
+					// local data is valid and returns it
                     restData = localCall;
                 }
             }

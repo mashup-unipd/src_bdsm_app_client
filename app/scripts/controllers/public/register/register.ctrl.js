@@ -48,9 +48,7 @@
 	  function register( cred ){
 
 		  if (checkMatchPwd(cred.pwd, cred.confirmPwd)){
-
 			  authService.register(cred);
-
 			  // TODO: if it fails do something
 
 		  } else {
