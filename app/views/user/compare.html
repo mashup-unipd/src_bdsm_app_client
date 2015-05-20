@@ -15,7 +15,7 @@
         </ol>
     </div>
 
-    <div id="metrics-container">
+    <form name="compareForm" method="post" data-role="form" data-ng-submit="cc.generate()">
 
         <div id="metric-container">
             <div class="row">
@@ -23,7 +23,8 @@
                     <label for="category">Category</label>
                     <select class="form-control" id="category"
                             data-ng-options="category.value for category in cc.categories"
-                            data-ng-model="category.key" data-ng-change="cc.updateTypeMetric(category)">
+                            data-ng-model="category.key" data-ng-change="cc.updateTypeMetric(category)"
+                            data-ng-disabled="cc.oneInserted" required>
                     </select>
                 </div>
             </div>
@@ -32,7 +33,8 @@
                     <label for="type-node">Metric type</label>
                     <select class="form-control" id="type-node"
                             data-ng-options="type.value for type in cc.types"
-                            data-ng-model="type.key" data-ng-change="cc.updateMetrics(cc.type,type)">
+                            data-ng-model="type.key" data-ng-change="cc.updateMetrics(cc.type,type)"
+                            data-ng-disabled="cc.oneInserted" required>
                     </select>
                 </div>
             </div>
@@ -42,7 +44,7 @@
                     <label for="metrics">Metrics</label>
                     <select class="form-control" id="metrics"
                             data-ng-options="metric.name for metric in cc.metrics"
-                            data-ng-model="metric.key">
+                            data-ng-model="metric.key" required>
                     </select>
                 </div>
             </div>
@@ -50,20 +52,59 @@
             <div class="row">
                 <div class="col-md-5">
                     <button class="btn btn-primary" type="button"
-                            data-ng-click="cc.addMetric(category.key.key, type.key.key, TODO)"
-                            data-ng-disabled="">
+                            data-ng-click="cc.addMetric(category.key.key, type.key.key, metric.key.name)"
+                            data-ng-disabled="cc.maxReached || compareForm.$invalid">
                         Add metric <i class="fa fa-plus"></i>
                     </button>
                 </div>
             </div>
             <div class="row">
-                <div class="help-block text-danger" data-ng-if="cc.metricError">
+                <div class="help-block text-danger" data-ng-if="cc.notEnough">
                     You have to insert at least two metrics.
+                </div>
+            </div>
+            <div class="row">
+                <div class="help-block text-danger" data-ng-if="cc.maxReached">
+                    You have inserted the maximum amount of metrics allowed.
+                </div>
+            </div>
+            <div class="row">
+                <div class="help-block text-danger">
+
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5">
+                    <button class="btn btn-primary" type="submit" data-ng-disabled="cc.notEnough" >
+                        Generate Charts <span class="fa fa-save"></span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="row" id="metrics-add-list">
+                <div data-ng-repeat="metric in cc.tempMetrics">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered">
+                            <caption>Metric added to compare</caption>
+                            <thead>
+                            <tr>
+                                <th>Option</th>
+                                <th>Value</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr data-ng-repeat="(key, value) in metric">
+                                <td data-ng-bind="key"></td>
+                                <td data-ng-bind="value"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
 
         </div> <!-- #/metric-container -->
 
-    </div>
+    </form>
 
 </div> <!-- ./container-fluid -->

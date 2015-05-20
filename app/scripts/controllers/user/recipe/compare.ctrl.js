@@ -31,14 +31,15 @@
         vm.titleRecipe = $stateParams.title;
         vm.metricsType = getMetricTypes();
 
+        vm.oneInserted = false;
+        vm.maxReached = false;
+        vm.notEnough= true;
+
         vm.type='';  //  category chosen in the combobox
         vm.types = [];
 
-        vm.metric='';
+        vm.metric=''; //  metric chosen in the combobox
         vm.metrics=[];
-
-
-        vm.valueMetric = '';
 
         vm.tempMetrics = []; // array that contains a set of object that figure a metric
         vm.updateTypeMetric = updateTypeMetric;
@@ -129,10 +130,10 @@
 
             vm.tempMetrics.push(metric);
 
-            // reset values of metric's fields after a success insert
-            vm.types = [];
-            vm.valueMetric = '';
-            vm.metricError = false;
+            // once one metric is inserted, the user can't change the category or the type anymore
+            vm.oneInserted = true;
+            if(vm.tempMetrics.length == 2) {vm.notEnough = false;}
+            if(vm.tempMetrics.length == 3) {vm.maxReached = true;}
         }
 
         /**
