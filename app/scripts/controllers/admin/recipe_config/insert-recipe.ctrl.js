@@ -66,12 +66,12 @@
 		// array of types of the possible node in a metric's category
 		var typeFacebook = [
 			{
-				key: 'evento',
-				value: 'Evento'
+				key: 'event',
+				value: 'Event'
 			},
 			{
-				key: 'pagina',
-				value: 'Pagina'
+				key: 'page',
+				value: 'Page'
 			}
 		];
 
@@ -81,8 +81,8 @@
 				value: 'Hashtag'
 			},
 			{
-				key: 'pagina',
-				value: 'Pagina'
+				key: 'page',
+				value: 'Page'
 			}
 		];
 		var typeInstagram = [
@@ -91,8 +91,8 @@
 				value: 'Hashtag'
 			},
 			{
-				key: 'pagina',
-				value: 'Pagina'
+				key: 'page',
+				value: 'Page'
 			}
 		];
 
@@ -188,7 +188,7 @@
         }
 
 		/**
-		 * This function checks if there are almost two metrics in the Recipe
+		 * This function checks if there are at least two metrics in the Recipe
 		 * @returns {boolean} true if there are almost two else false
 		 */
 		function checkMetricsQuantity(){

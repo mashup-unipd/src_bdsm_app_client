@@ -24,6 +24,7 @@
         $stateProvider
 
             .state('dashboard.compare',{
+                url: 'recipe/compare/:title',
                 templateUrl:'views/user/compare.html',
                 resolve: {
                     loadMyFiles: function($ocLazyLoad) {

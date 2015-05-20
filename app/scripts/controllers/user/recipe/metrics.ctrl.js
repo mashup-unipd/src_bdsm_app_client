@@ -52,6 +52,7 @@
 			return recipeService.getMetricsList(42, typeCategory)
 		}
 
+
     };
 
     MetricsCtrl.$inject = ['recipeService', '$stateParams'];

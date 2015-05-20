@@ -29,6 +29,7 @@
 		var factory = {
 			getRecipesList: getRecipesList,
 			getMetricsList: getMetricsList,
+			getMetricsListType: getMetricsListType,
 			getMetricType: getMetricType,
 			createRecipeRequest: createRecipeRequest
 		};
@@ -121,6 +122,53 @@
 						type: 'page'
 					}
 				]; break;
+
+				default: metricsList = []; break;
+			}
+
+			return metricsList;
+		}
+
+		function getMetricsListType( idRecipe, typeCategory, typeMetric  ){
+
+			var metricsList = [];
+
+			// TODO: call back-end API, now we are using a stub
+			switch(typeCategory){
+				case 'facebook': if(typeMetric=="page"){metricsList = [
+					{
+						name: 'NikeOfficial',
+						type: 'page'
+					},
+					{
+						name: 'NikeStore',
+						type: 'page'
+					}];}else{metricsList = [
+					{
+						name: 'OpenStoreBarcelona',
+						type: 'event'
+					}
+				];} break;
+				case 'twitter': if(typeMetric=="hashtag"){metricsList = [
+					{
+						name: '#gonike',
+						type: 'hashtag'
+					}]}else{metricsList = [
+					{
+						name: 'nike',
+						type: 'page'
+					}
+				];} break;
+				case 'instagram': if(typeMetric=="hashtag"){metricsList = [
+					{
+						name: '#playnike',
+						type: 'hashtag'
+					}]}else{metricsList = [
+					{
+						name: 'nike_official',
+						type: 'page'
+					}
+				]; }break;
 
 				default: metricsList = []; break;
 			}
