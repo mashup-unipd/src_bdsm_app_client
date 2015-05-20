@@ -27,14 +27,15 @@
 	function userAdminService(){
 
 		var factory = {
-			getListOfUsers: getListOfUsers
+			getListOfUsers: getListOfUsers,
+			editUserPermissions: editUserPermissions,
+			deleteUserAccount: deleteUserAccount
 		};
 
 		return factory;
 
 		///////////////
 
-		// TODO: implemente private and public functions
 
 		/**
 		 * TODO
@@ -44,16 +45,38 @@
 			// TODO: now it's a stub, change with a back-end API call (GET)
 			var list = [
 				{
+					id: '12345678894436',
 					mail: 'info@mashup.unipd.it',
 					type: 'Admin'
 				},
 				{
+					id: '123453462494436',
 					mail: 'facoch42@gmail.com',
 					type: 'User'
 				}
 			];
 
 			return list;
+
+		}
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 * @param idUser : id of the User that we want change account permissions
+		 */
+		function editUserPermissions( idUser ){
+			// TODO
+		}
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 * @param idUser : id of the User that we want delete account
+		 */
+		function deleteUserAccount( idUser ){
+			console.log('Account ' + idUser + ' rimosso');
+			// TODO change with a back-end API call (DELETE)
 
 		}
 

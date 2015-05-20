@@ -12,6 +12,7 @@
 	 * -----------------------------------------------------------
 	 * 0.0.2	2015-05-14	Tesser Paolo	insert and inject service for user
 	 * -----------------------------------------------------------
+	 *
 	 */
 
 
@@ -30,7 +31,7 @@
 		vm.usersList = getUsers();
 
 		vm.editPermissions = editPermissions;
-		vm.deleteAccount = deleteAccount;
+		vm.deleteAccount = deleteUserAccount;
 
 		///////////////////
 
@@ -47,7 +48,7 @@
 		 * TODO
 		 * TODO (test):
 		 */
-		function editPermissions(){
+		function editPermissions( idUser ){
 			// TODO: call a back-end API (PUT)
 		}
 
@@ -55,8 +56,9 @@
 		 * TODO
 		 * TODO (test):
 		 */
-		function deleteAccount(){
-			// TODO: call a back-end API (POST)
+		function deleteUserAccount( idUser ){
+			userAdminService.deleteUserAccount(idUser);
+
 		}
 
 	};
