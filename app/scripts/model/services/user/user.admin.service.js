@@ -86,7 +86,7 @@
 	userAdminService.$inject = [];
 
 	angular
-		.module('app.auth.services.module')
+		.module('app.user.services.module')
 		.factory('userAdminService', userAdminService);
 
 

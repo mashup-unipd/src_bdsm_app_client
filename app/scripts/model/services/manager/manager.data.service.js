@@ -46,7 +46,7 @@
 * */
 
 
-    function dataManagerService(){
+    function dataManagerService($http){
 
         var factory = {
             getRestCall: getRestCall
@@ -58,27 +58,30 @@
 
         function getRestCall(restCall){
 
-
             var restData;
             var restTime = localStorage.getItem('time/' + restCall);
             var apiCall;
             var localCall;
 
             if (typeof restTime === 'undefined' || restTime < Date.now()-10800000) {
-            // non è trovato o sono passate più di tre ore
+
+            	// non è trovato o sono passate più di tre ore
                 localStorage.setItem('time/' + restCall, Date.now());
                 apiCall = Date.now();        // TODO: call actual APIs
                 localStorage.setItem('data/' + restCall, apiCall);
-                restData=apiCall;
+                restData = apiCall;
+
             } else {
                 // i dati sono freschi
                 localCall = localStorage.getItem('data/' + restCall);
+
                 if (typeof localCall === 'undefined'){   // per qualche ragione il record è andato perso anche se c'è la entry della data
                     apiCall = 'JSON foo data';	// TODO: call actual APIs
                     localStorage.setItem('data/' + restCall, apiCall);
                     restData = apiCall;
                 } else {
-                    restData = localCall;   // il dato locale è valido e viene restituito
+					// il dato locale è valido e viene restituito
+                    restData = localCall;
                 }
             }
 
@@ -87,7 +90,7 @@
         }
     }
 
-    dataManagerService.$inject = [];
+    dataManagerService.$inject = ['$http'];
 
     angular
         .module('app.manager.data.services.module')
