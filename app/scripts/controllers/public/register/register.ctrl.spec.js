@@ -18,7 +18,7 @@ describe('Controller: RegisterCtrl', function() {
 
 	var $rootScope;
 	var $controller;
-	var $location;
+	var $location; // not necessary
 	var scope;
 
 	beforeEach(function () {
@@ -29,7 +29,7 @@ describe('Controller: RegisterCtrl', function() {
 		angular.mock.inject(function (_$rootScope_, _$controller_, _$location_) {
 			$rootScope = _$rootScope_;
 			$controller = _$controller_;
-			$location = _$location_;
+			$location = _$location_; // not necessary
 			scope = $rootScope.$new()
 		});
 	});
@@ -83,16 +83,31 @@ describe('Controller: RegisterCtrl', function() {
 
 		console.log(cred);
 
-		scope.rc.register(cred);
-
-		// var path = $location.path;
-		// console.log(path);
-		// expect(path).toBe('/login');
+		// TODO: not test location because it's prefers test it in e2e, but if return true to an API call
 
 	});
 
 	it ('should incorrect register stay to register page', function(){
 		// TODO: like above test
+
+		var invalidCred = [
+			{
+				username: '',
+				mail: 'info@mashup-unipd.it',
+				pwd: 'GruppoSWE2014',
+				confirmPwd: 'GruppoSWE2014'
+			},
+			{
+				username: 'MashUp',
+				mail: '',
+				pwd: 'GruppoSWE2014',
+				confirmPwd: 'GruppoSWE2014'
+			}
+		];
+
+		console.log(invalidCred);
+
+
 	});
 
 });
