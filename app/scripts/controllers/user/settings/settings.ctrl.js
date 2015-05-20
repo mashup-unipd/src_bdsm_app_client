@@ -49,7 +49,12 @@
 			if (vm.oldPassword !== '' && vm.newPassword !== '' && vm.confirmNewPassword !== ''){
 
 				if (checkOldPassword()){
-					authService.updateSettingsAccount();
+					var credToChange = {
+						email: vm.newPassword,
+						username: vm.email
+					};
+
+					authService.updateSettingsAccount(credToChange);
 					// TODO: it could be possible use a function that update only pwd settings if changes
 				}
 
@@ -61,7 +66,7 @@
 		 * This function checks if old password is correct with a call to authService
 		 */
 		function checkOldPassword( pwdToCheck ){
-			// TODO: calls authService that check if old pwd insert is correc
+			// TODO: calls authService that check if old pwd insert is correct
 			return true; // TODO: change with the response from authService
 		}
 

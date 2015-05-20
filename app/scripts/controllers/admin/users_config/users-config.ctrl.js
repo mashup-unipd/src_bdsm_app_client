@@ -41,6 +41,7 @@
 		 * @returns {*}
 		 */
 		function getUsers(){
+			console.log(userAdminService.getListOfUsers().items);
 			return userAdminService.getListOfUsers();
 		}
 
@@ -49,7 +50,7 @@
 		 * TODO (test):
 		 */
 		function editPermissions( idUser ){
-			// TODO: call a back-end API (PUT)
+			userAdminService.editUserPermissions(idUser);
 		}
 
 		/**

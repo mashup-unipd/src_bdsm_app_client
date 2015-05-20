@@ -41,23 +41,7 @@
 		 * TODO
 		 */
 		function getListOfUsers(){
-
-			// TODO: now it's a stub, change with a back-end API call (GET)
-			var list = [
-				{
-					id: '12345678894436',
-					mail: 'info@mashup.unipd.it',
-					type: 'Admin'
-				},
-				{
-					id: '123453462494436',
-					mail: 'facoch42@gmail.com',
-					type: 'User'
-				}
-			];
-
-			return list;
-
+			return dataManagerService.getRestCall('users');
 		}
 
 		/**
@@ -66,7 +50,8 @@
 		 * @param idUser : id of the User that we want change account permissions
 		 */
 		function editUserPermissions( idUser ){
-			// TODO
+			console.log('Permessi modificati per l\'account' + idUser);
+			// TODO change with a back-end API call (PUT)
 		}
 
 		/**

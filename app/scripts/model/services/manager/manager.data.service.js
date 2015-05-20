@@ -46,7 +46,7 @@
 * */
 
 
-    function dataManagerService($http){
+    function dataManagerService($http, $q){
 
         var factory = {
             getRestCall: getRestCall,
@@ -59,34 +59,61 @@
 
         ///////////////
 
+
 		/**
 		 * TODO
 		 * @param restCall
 		 * @returns {*}
 		 */
-        function getRestCall(restCall){
+        function getRestCall( restCall ){
 
-            var restData;
+			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
+			var url = basePath + restCall; // url to use to call back-end API in $http
+
+			var deferred = $q.defer();
+
+			var restData;
             var restTime = localStorage.getItem('time/' + restCall);
             var apiCall;
             var localCall;
 
-            if (typeof restTime === 'undefined' || restTime < Date.now()-10800000) {
+            if (typeof restTime === 'undefined' || restTime < Date.now() - 10800000) {
 
             	// non è trovato o sono passate più di tre ore
                 localStorage.setItem('time/' + restCall, Date.now());
-                apiCall = Date.now();        // TODO: call actual APIs
-                localStorage.setItem('data/' + restCall, apiCall);
-                restData = apiCall;
+
+				var config = {
+					method: 'GET',
+					responseType: 'json'
+				};
+
+				$http.get(url, config)
+					.success(function(data){
+						deferred.resolve(data);
+					})
+					.error(function(data, status) {
+						console.error('Response error', status, data);
+					});
+
+                apiCall = deferred.promise;
+
+				localStorage.setItem('data/' + restCall, apiCall);
+
+				restData = apiCall;
+				console.log(restData);
 
             } else {
                 // i dati sono freschi
                 localCall = localStorage.getItem('data/' + restCall);
 
                 if (typeof localCall === 'undefined'){   // per qualche ragione il record è andato perso anche se c'è la entry della data
-                    apiCall = 'JSON foo data';	// TODO: call actual APIs
-                    localStorage.setItem('data/' + restCall, apiCall);
-                    restData = apiCall;
+
+					apiCall = 'JSON foo data';	// TODO: call actual APIs
+
+					localStorage.setItem('data/' + restCall, apiCall);
+
+					restData = apiCall;
+
                 } else {
 					// il dato locale è valido e viene restituito
                     restData = localCall;
@@ -103,8 +130,10 @@
 		 * @param value
 		 */
 		function postRestCall(restCall, value){
+			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
+			var url = basePath + restCall; // url to use to call back-end API in $http
 
-
+			console.log(url);
 		}
 
 		/**
@@ -113,8 +142,10 @@
 		 * @param value
 		 */
 		function putRestCall(restCall, value){
+			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
+			var url = basePath + restCall; // url to use to call back-end API in $http
 
-
+			console.log(url);
 		}
 
 		/**
@@ -123,14 +154,16 @@
 		 * @param value
 		 */
 		function deleteRestCall(restCall, value){
+			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
+			var url = basePath + restCall; // url to use to call back-end API in $http
 
-
+			console.log(url);
 		}
     }
 
 
 
-    dataManagerService.$inject = ['$http'];
+    dataManagerService.$inject = ['$http', '$q'];
 
     angular
         .module('app.manager.data.services.module')

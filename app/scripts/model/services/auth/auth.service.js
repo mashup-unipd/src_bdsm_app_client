@@ -76,10 +76,10 @@
 
 		/**
 		 * TODO
+		 * @param credToChange
 		 */
-		function updateSettingsAccount(){
-			// TODO: use ng-auth
-			// example: $auth.updateAccount();
+		function updateSettingsAccount(credToChange){
+			// $auth.updateAccount(credToChange);
 		}
 	}
 
