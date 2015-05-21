@@ -41,7 +41,7 @@
 
     }
 
-    dataManagerService.$inject = [];
+    chartCreatorService.$inject = [];
 
     angular
         .module('app.chart.creator.services.module')
