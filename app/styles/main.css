@@ -299,6 +299,14 @@ h2 {
 
 /************************************/
 
+/* USERS CONFIG PAGE **********************/
+#users-config-container .col-xs-12{
+    padding: 0.4em;
+    text-align: center;
+}
+
+/************************************/
+
 
 @media screen and (min-width: 992px) {
 
