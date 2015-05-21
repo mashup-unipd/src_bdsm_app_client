@@ -36,6 +36,7 @@
             'ui.bootstrap', // modulo che gestisce le direttive di bootstrap in Angular
             'angular-loading-bar',
 			'ngMessages',
+			'LocalStorageModule',
             // 'ng-token-auth', // modulo che gestice i servizi di autenticazione
 
 			'app.routes', // modulo che incapsula tutti i file di routing

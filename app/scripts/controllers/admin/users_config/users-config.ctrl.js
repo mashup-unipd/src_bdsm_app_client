@@ -43,22 +43,15 @@
 		function getUsers(){
 
 			var listUsers = userAdminService.getListOfUsers();
-			console.log(listUsers);
 
-			if (typeof listUsers.then === 'undefined'){
-				listUsers.forEach(function(element){
-					vm.usersList.push(element);
-				});
-			} else {
-				// it's a promise
-				listUsers
-					.then(function(data){
-						var arrayUsers = data.items;
-						arrayUsers.forEach(function(element){
-							vm.usersList.push(element);
-						});
+			// it's a promise
+			listUsers
+				.then(function(data){
+					var arrayUsers = data.items;
+					arrayUsers.forEach(function(element){
+						vm.usersList.push(element);
 					});
-			}
+				});
 
 		}
 
@@ -79,8 +72,7 @@
 		 */
 		function deleteUserAccount( idUser, index ){
 			userAdminService.deleteUserAccount(idUser);
-			// vm.usersList
-
+			// remove item from array
 		}
 
 	};
