@@ -8,11 +8,13 @@
 	 * Mail. info@mashup-unipd.it
 	 *
 	 * Modify
-	 * Version  Date        Author          Desc
+	 * Version  Date        Author          		Desc
 	 * ==========================================================
-	 * 0.0.1    2015-05-14  Tesser Paolo    code module
+	 * 0.0.1    2015-05-14  Tesser Paolo    		code module
 	 * -----------------------------------------------------------
-	 *
+	 * 0.0.2	2015-05-16	Carnovalini Filippo		insert function getMetricsListType for compare ctrl
+	 * -----------------------------------------------------------
+	 * 
 	 */
 
 	/**
@@ -23,7 +25,7 @@
 	 * Factory in the app.recipe.services.module
 	 */
 
-	// TODO: maybe insert RecipeModel as param
+
 	function recipeService(dataManagerService){
 
 		var factory = {
@@ -31,7 +33,8 @@
 			getMetricsList: getMetricsList,
 			getMetricsListType: getMetricsListType,
 			getMetricType: getMetricType,
-			createRecipeRequest: createRecipeRequest
+			createRecipeRequest: createRecipeRequest,
+			getMetricTypeNode: getMetricTypeNode
 		};
 
 		return factory;
@@ -102,6 +105,13 @@
 			return metricsList;
 		}
 
+		/**
+		 * TODO
+		 * @param idRecipe
+		 * @param typeCategory
+		 * @param typeMetric
+		 * @returns {Array}
+		 */
 		function getMetricsListType( idRecipe, typeCategory, typeMetric  ){
 
 			var metricsList = [];
@@ -152,11 +162,11 @@
 		/**
 		 * This function retries all metrics type
 		 * TODO (test):
-		 * @returns {*} : list of type objects
+		 * @returns {*} : array of type objects
 		 */
 		function getMetricType(){
 
-			var type = [
+			return [
 				{
 					key: 'facebook',
 					value: 'Facebook'
@@ -171,9 +181,54 @@
 				}
 			];
 
-			return type;
 		}
 
+
+		function getMetricTypeNode(typeMetric){
+			var typeToReturn;
+
+			// array of types of the possible node in a metric's category
+			var typeFacebook = [
+				{
+					key: 'event',
+					value: 'Event'
+				},
+				{
+					key: 'page',
+					value: 'Page'
+				}
+			];
+
+			var typeTwitter = [
+				{
+					key: 'hashtag',
+					value: 'Hashtag'
+				},
+				{
+					key: 'page',
+					value: 'Page'
+				}
+			];
+			var typeInstagram = [
+				{
+					key: 'hashtag',
+					value: 'Hashtag'
+				},
+				{
+					key: 'page',
+					value: 'Page'
+				}
+			];
+
+			switch (typeMetric){
+				case 'facebook': typeToReturn = typeFacebook; break;
+				case 'twitter': typeToReturn =  typeTwitter; break;
+				case 'instagram': typeToReturn = typeInstagram; break;
+				default : typeToReturn = []
+			}
+
+			return typeToReturn;
+		}
 
 		/**
 		 * This function inserts a new recipe request created in the back-end
@@ -184,10 +239,13 @@
 			// TODO
 		}
 
+		/////////////
+
+
 	}
 
 
-	recipeService.$inject = ['dataManagerService']; // TODO: inject maybe RecipeModel
+	recipeService.$inject = ['dataManagerService'];
 
 	angular
 		.module('app.recipe.services.module')
