@@ -27,7 +27,8 @@
 
 		var vm = this;
 
-		vm.requestList = getRequestList();
+		vm.requestList = [];
+		getRequestList();
 		vm.discardRequest = discardRequest;
 		vm.approvedRequest = approveRequest;
 
@@ -39,7 +40,10 @@
 		 * @returns {*}
 		 */
 		function getRequestList(){
-			return recipeAdminService.getListOfRecipesRequest();
+			var arrayRequest = recipeAdminService.getListOfRecipesRequest();
+			arrayRequest.forEach(function(element){
+				vm.requestList.push(element);
+			});
 		}
 
 

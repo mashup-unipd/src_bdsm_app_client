@@ -41,32 +41,45 @@
 		 * @returns {*}
 		 */
 		function getUsers(){
-			var listUsersPromise = userAdminService.getListOfUsers();
 
-			listUsersPromise
-				.then(function(data){
-					var arrayUsers = data.items;
-					arrayUsers.forEach(function(element){
-						vm.usersList.push(element);
-					});
+			var listUsers = userAdminService.getListOfUsers();
+			console.log(listUsers);
+
+			if (typeof listUsers.then === 'undefined'){
+				listUsers.forEach(function(element){
+					vm.usersList.push(element);
 				});
+			} else {
+				// it's a promise
+				listUsers
+					.then(function(data){
+						var arrayUsers = data.items;
+						arrayUsers.forEach(function(element){
+							vm.usersList.push(element);
+						});
+					});
+			}
 
 		}
 
 		/**
-		 * TODO
-		 * TODO (test):
+		 *
+		 * @param idUser
+		 * @param permission
 		 */
-		function editPermissions( idUser ){
+		function editPermissions( idUser, permission ){
 			userAdminService.editUserPermissions(idUser);
+			console.log('Changed permission for a ' + permission);
 		}
 
 		/**
-		 * TODO
-		 * TODO (test):
+		 *
+		 * @param idUser
+		 * @param index
 		 */
-		function deleteUserAccount( idUser ){
+		function deleteUserAccount( idUser, index ){
 			userAdminService.deleteUserAccount(idUser);
+			// vm.usersList
 
 		}
 

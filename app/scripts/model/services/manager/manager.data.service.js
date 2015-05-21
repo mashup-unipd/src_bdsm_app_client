@@ -47,7 +47,7 @@
 			// search and take entry if it's setted from localStorage
             var restTime = localStorage.getItem('time/' + restCall);
             var apiCallPromise;
-            var localCallPromise;
+            var localCallData;
 
 
             if (typeof restTime === 'undefined' || restTime < Date.now() - 10800000) {
@@ -55,29 +55,37 @@
             	// no entry it's founded or time is expired
                 localStorage.setItem('time/' + restCall, Date.now());
 
-                apiCallPromise = httpRequest(url);
-
-				// set new entry in localStorage to save promise returned from a http call
-				localStorage.setItem('data/' + restCall, apiCallPromise);
+                apiCallPromise = httpGetRequest(url);
+				apiCallPromise
+					.then(function(data){
+						var arrayData = data.items;
+						// set new entry in localStorage to save data returned from a http call
+						localStorage.setItem('data/' + restCall, arrayData);
+					});
 
             } else {
                 // i dati sono freschi
-                localCallPromise = localStorage.getItem('data/' + restCall);
+                localCallData = localStorage.getItem('data/' + restCall);
 
 				// per qualche ragione il record è andato perso anche se c'è la entry della data
-                if (typeof localCallPromise === 'undefined'){
+                if (typeof localCallData === 'undefined'){
 
-					apiCallPromise = httpRequest(url);
-
-					localStorage.setItem('data/' + restCall, apiCallPromise);
+					apiCallPromise = httpGetRequest(url);
+					apiCallPromise
+						.then(function(data){
+							var arrayData = data.items;
+							// set new entry in localStorage to save data returned from a http call
+							localStorage.setItem('data/' + restCall, arrayData);
+						});
 
 
                 } else {
 					// local data is valid and returns it
-                    apiCallPromise = localCallPromise;
+                    apiCallPromise = localCallData;
                 }
             }
 
+			// this can be a promise or an array of object
             return apiCallPromise;
 
         }
@@ -124,7 +132,7 @@
 		 * @param url
 		 * @returns {*}
 		 */
-		function httpRequest(url){
+		function httpGetRequest(url){
 
 			var deferred = $q.defer();
 

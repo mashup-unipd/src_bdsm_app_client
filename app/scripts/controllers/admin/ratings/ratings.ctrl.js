@@ -26,15 +26,20 @@
 
 		var vm = this;
 
-		vm.listRecipes = getListOfRecipes();
+		vm.listRecipes = [];
+		getListOfRecipes(); // active function for retry all recipe when ctrl is loaded
 
 		///////////////
 
 		/**
-		 * TODO
+		 * This function retries the list of Recipe with them rating
+		 * TODO: data from a STUB
 		 */
 		function getListOfRecipes(){
-			return recipeAdminService.getRecipesListAll();
+			var arrayRecipes = recipeAdminService.getRecipesListAll();
+			arrayRecipes.forEach(function(element){
+				vm.listRecipes.push(element);
+			});
 		}
 
 
