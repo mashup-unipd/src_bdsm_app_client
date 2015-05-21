@@ -28,7 +28,8 @@
 
         var vm = this;
 
-		vm.listRecipes = getListOfRecipes();
+		vm.listRecipes = [];
+		getListOfRecipes();
 
 
 		////////////////
@@ -39,9 +40,16 @@
 		 */
 		function getListOfRecipes(){
 
-			var list = recipeService.getRecipesList();
+			var listRecipes = recipeService.getRecipesList();
 
-			return list;
+			// it's a promise
+			listRecipes
+				.then(function(data){
+					var arrayUsers = data.items;
+					arrayUsers.forEach(function(element){
+						vm.listRecipes.push(element);
+					});
+				});
 
 		}
 

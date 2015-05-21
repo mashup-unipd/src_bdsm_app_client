@@ -45,34 +45,7 @@
 		 * @returns {*} : list of all recipes
 		 */
 		function getRecipesList(){
-
-			var recipesList = [
-				{
-					idRecipe: '10',
-					titleRecipe: 'SportNike',
-					descRecipe: 'Questa recipe contiene i trend relativi alla Nike'
-				},
-				{
-					idRecipe: '11',
-					titleRecipe: 'StarWars',
-					descRecipe: 'Questa recipe contiene i trend relativi a StarWars'
-				},
-				{
-					idRecipe: '12',
-					titleRecipe: 'Boobies',
-					descRecipe: 'Questa recipe contiene i trend relativi alle migliori tette'
-				},
-				{
-					idRecipe: '13',
-					titleRecipe: 'Bear',
-					descRecipe: 'Questa recipe contiene i trend relativi alle migliori birre'
-				}
-			];
-
-			// TODO: check managerDataService or call back-end API
-
-			return recipesList;
-
+			return dataManagerService.getRestCall('recipes');
 		}
 
 		/**

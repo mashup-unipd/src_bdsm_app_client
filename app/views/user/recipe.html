@@ -16,14 +16,14 @@
             <div data-ng-switch-when="false">
                 <div class="col-lg-6 col-sm-12 norightpad" >
                     <div class="panel panel-default">
-                        <div class="panel-heading" data-ng-bind="list.titleRecipe"></div>
+                        <div class="panel-heading" data-ng-bind="list.title"></div>
                         <div class="panel-body">
-                            <p data-ng-bind="list.descRecipe"></p>
+                            <p data-ng-bind="list.descr"></p>
                             <div class="col-xs-12 col-md-6">
-                                <button class="btn btn-primary" data-ui-sref="dashboard.metrics({id: list.idRecipe, title: list.titleRecipe})">Show metrics</button>
+                                <button class="btn btn-primary" data-ui-sref="dashboard.metrics({id: list.id, title: list.title})">Show metrics</button>
                             </div>
                             <div class="col-xs-12 col-md-6">
-                                <button class="btn btn-primary" data-ui-sref="dashboard.compare({id: list.idRecipe, title: list.titleRecipe})">Compare metrics</button>
+                                <button class="btn btn-primary" data-ui-sref="dashboard.compare({id: list.id, title: list.title})">Compare metrics</button>
                             </div>
                         </div>
                     </div>
@@ -33,14 +33,14 @@
             <div data-ng-switch-when="true">
                 <div class="noleftpad col-lg-6 col-sm-12" >
                     <div class="panel panel-default">
-                        <div class="panel-heading" data-ng-bind="list.titleRecipe"></div>
+                        <div class="panel-heading" data-ng-bind="list.title"></div>
                         <div class="panel-body">
-                            <p data-ng-bind="list.descRecipe"></p>
+                            <p data-ng-bind="list.descr"></p>
                             <div class="col-xs-12 col-md-6">
-                                <button class="btn btn-primary" data-ui-sref="dashboard.metrics({id: list.idRecipe, title: list.titleRecipe})">Show metrics</button>
+                                <button class="btn btn-primary" data-ui-sref="dashboard.metrics({id: list.id, title: list.title})">Show metrics</button>
                             </div>
                             <div class="col-xs-12 col-md-6">
-                                <button class="btn btn-primary" data-ui-sref="dashboard.compare({id: list.idRecipe, title: list.titleRecipe})">Compare metrics</button>
+                                <button class="btn btn-primary" data-ui-sref="dashboard.compare({id: list.id, title: list.title})">Compare metrics</button>
                             </div>
                         </div>
                     </div>
