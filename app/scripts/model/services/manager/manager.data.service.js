@@ -20,7 +20,7 @@
      */
 
 
-    function dataManagerService($http, $q){
+    function dataManagerService($http, $q, localStorageService){
 
         var factory = {
             getRestCall: getRestCall,
@@ -33,7 +33,6 @@
 
         ///////////////
 
-
 		/**
 		 * TODO
 		 * @param restCall
@@ -44,48 +43,55 @@
 			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
 			var url = basePath + restCall; // url to use to call back-end API in $http
 
-			// search and take entry if it's setted from localStorage
-            var restTime = localStorage.getItem('time/' + restCall);
-            var apiCallPromise;
+			// search and take entry if it's setted from localStorageService
+            var restTime = getLocalItem('time/' + restCall);
+
+			var apiCallPromise;
+
             var localCallData;
 
-
+			// no entry it's founded entry or time is expired
             if (typeof restTime === 'undefined' || restTime < Date.now() - 10800000) {
 
-            	// no entry it's founded or time is expired
-                localStorage.setItem('time/' + restCall, Date.now());
+                setLocalItem('time/' + restCall, Date.now());
 
                 apiCallPromise = httpGetRequest(url);
 				apiCallPromise
 					.then(function(data){
-						var arrayData = data.items;
+						// create an object with 'items' property because in the controller we return a promise that use 'items' to read data
+						var arrayData = {
+							items: data.items
+						};
 						// set new entry in localStorage to save data returned from a http call
-						localStorage.setItem('data/' + restCall, arrayData);
+						setLocalItem('data/' + restCall, arrayData);
 					});
+
 
             } else {
                 // i dati sono freschi
-                localCallData = localStorage.getItem('data/' + restCall);
+                localCallData = getLocalItem('data/' + restCall);
 
-				// per qualche ragione il record è andato perso anche se c'è la entry della data
+				// if data record was loosed even if there is time record
                 if (typeof localCallData === 'undefined'){
 
 					apiCallPromise = httpGetRequest(url);
 					apiCallPromise
 						.then(function(data){
-							var arrayData = data.items;
+							// create an object with 'items' property because in the controller we return a promise that use 'items' to read data
+							var arrayData = {
+								items: data.items
+							};
 							// set new entry in localStorage to save data returned from a http call
-							localStorage.setItem('data/' + restCall, arrayData);
+							setLocalItem('data/' + restCall, arrayData);
 						});
 
 
                 } else {
-					// local data is valid and returns it
-                    apiCallPromise = localCallData;
+					// local data is valid and returns it as a promise
+                    apiCallPromise = $q.when(localCallData);
                 }
             }
 
-			// this can be a promise or an array of object
             return apiCallPromise;
 
         }
@@ -127,6 +133,10 @@
 		}
 
 
+
+
+		/////////////// Private functions
+
 		/**
 		 * TODO
 		 * @param url
@@ -152,11 +162,28 @@
 			return deferred.promise;
 		}
 
+		/**
+		 * TODO
+		 * @param key
+		 * @returns {*}
+		 */
+		function getLocalItem(key){
+			return localStorageService.get(key);
+		}
+
+		/**
+		 * TODO
+		 * @param key
+		 * @param value
+		 */
+		function setLocalItem(key, value){
+			localStorageService.set(key, value);
+		}
     }
 
 
 
-    dataManagerService.$inject = ['$http', '$q'];
+    dataManagerService.$inject = ['$http', '$q', 'localStorageService'];
 
     angular
         .module('app.manager.data.services.module')
