@@ -12,20 +12,26 @@
         <div class="col-lg-6 col-sm-12" data-ng-repeat="user in uc.usersList">
             <div class="panel panel-default" >
                 <div class="panel-heading"><span class="label label-primary" data-ng-bind="user.permission"></span> <span data-ng-bind="user.email"></span></div>
-               <div class="panel-body">
+                <div class="panel-body">
                     <div data-ng-if="user.permission === 'user'">
                         <div class="col-xs-12 col-md-3 col-lg-5">
-                            <button class="btn btn-primary">Change to Admin</button>
+                            <button class="btn btn-primary"
+                                    data-ng-click="uc.editPermissions(user.access_token, $index, 'admin')">
+                                Change to Admin
+                            </button>
                         </div>
                     </div>
                     <div data-ng-if="user.permission === 'admin'">
                         <div class="col-xs-12 col-md-3 col-lg-5">
-                            <button class="btn btn-primary">Change to User</button>
+                            <button class="btn btn-primary"
+                                    data-ng-click="uc.editPermissions(user.access_token, $index, 'user')">
+                                Change to User
+                            </button>
                         </div>
                     </div>
 
                     <div class="col-xs-12 col-md-3 col-lg-5">
-                        <button class="btn btn-primary" data-ng-click="uc.deleteAccount(user.access_token, user.$index)">Delete</button>
+                        <button class="btn btn-primary" data-ng-click="uc.deleteAccount(user.access_token, $index)">Delete</button>
                     </div>
                 </div>
             </div>

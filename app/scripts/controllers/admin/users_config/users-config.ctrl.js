@@ -56,23 +56,30 @@
 		}
 
 		/**
-		 *
+		 * TODO
 		 * @param idUser
+		 * @param index
 		 * @param permission
 		 */
-		function editPermissions( idUser, permission ){
+		function editPermissions( idUser, index, permission ){
 			userAdminService.editUserPermissions(idUser);
-			console.log('Changed permission for a ' + permission);
+			console.log('Changed permission in ' + permission);
+			// change permission for user in the controller user array
+			vm.usersList[index].permission = permission;
 		}
 
 		/**
-		 *
+		 * TODO
 		 * @param idUser
 		 * @param index
 		 */
 		function deleteUserAccount( idUser, index ){
 			userAdminService.deleteUserAccount(idUser);
-			// remove item from array
+
+			// remove user in the controller user array
+			vm.usersList.splice(index, 1);
+
+
 		}
 
 	};
