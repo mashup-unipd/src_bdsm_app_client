@@ -41,7 +41,7 @@
 		 * TODO
 		 */
 		function getListOfUsers(){
-			console.log(dataManagerService.getRestCall('users'));
+			return dataManagerService.getRestCall('users');
 		}
 
 		/**

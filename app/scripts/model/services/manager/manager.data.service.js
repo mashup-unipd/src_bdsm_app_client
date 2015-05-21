@@ -19,32 +19,6 @@
      *
      */
 
-/*
-* Appunti riguardo al data manger:
-* Ogni chiamata rest lo invoca.
-* Lui cerca nel localstorage una entry chiamata time/{chiamataRest}.
-* Se non la trova:
-*   -Crea una entry chiamata time/{chiamataRest} contenente il tempo attuale
-*   -Chiama gli endpoints
-*   -Modifica/Aggiunge (in teoria aggiunge) una entry chiamata data/{chiamataRest} contenente il risultato della chiamata
-*   -Restituisce il risultato della chiamata
-* Se la trova:
-*   -Controlla che la data salvata sia più recente di tot ore o no
-*   Se non lo è:
-*       -La aggiorna con il tempo attuale
-*       -Chiama gli endpoints
-*       -Modifica/aggiunge (in teoria modifica) una entry chiamata data/{chiamataRest} contenente il risultato della chiamata
-*       -Restituisce il risultato della chiamata
-*   Se lo è:
-*       -Cerca una entry chiamata data/{chiamataRest}
-*       Se non la trova:
-*          -Chiama gli endpoints
-*          -Aggiunge una entry chiamata data/{chiamataRest} contenente il risultato della chiamata
-*          -Restituisce il risultato della chiamata
-*       Se la trova:
-*           -Restituisce il contenuto della entry
-* */
-
 
     function dataManagerService($http, $q){
 
@@ -70,71 +44,41 @@
 			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
 			var url = basePath + restCall; // url to use to call back-end API in $http
 
-			var configRequestHttp = {
-				method: 'GET',
-				responseType: 'json'
-			};
-
-			var deferred = $q.defer();
-
-			var restData;
+			// search and take entry if it's setted from localStorage
             var restTime = localStorage.getItem('time/' + restCall);
-            var apiCall;
-            var localCall;
-
+            var apiCallPromise;
+            var localCallPromise;
 
 
             if (typeof restTime === 'undefined' || restTime < Date.now() - 10800000) {
 
-            	// non è trovato o sono passate più di tre ore
+            	// no entry it's founded or time is expired
                 localStorage.setItem('time/' + restCall, Date.now());
 
-				$http.get(url, configRequestHttp)
-					.success(function(data){
-						deferred.resolve(data);
-					})
-					.error(function(data, status) {
-						deferred.reject(status);
-					});
+                apiCallPromise = httpRequest(url);
 
-                apiCall = deferred.promise;
-
-				apiCall
-					.then(function(data){
-						restData = data.items;
-						localStorage.setItem('data/' + restCall, restData);
-					}, function(error){
-						return error;
-					});
+				// set new entry in localStorage to save promise returned from a http call
+				localStorage.setItem('data/' + restCall, apiCallPromise);
 
             } else {
                 // i dati sono freschi
-                localCall = localStorage.getItem('data/' + restCall);
+                localCallPromise = localStorage.getItem('data/' + restCall);
 
 				// per qualche ragione il record è andato perso anche se c'è la entry della data
-                if (typeof localCall === 'undefined'){
+                if (typeof localCallPromise === 'undefined'){
 
-					$http.get(url, configRequestHttp)
-						.success(function(data){
-							deferred.resolve(data);
-						})
-						.error(function(data, status) {
-							console.error('Response error', status, data);
-						});
+					apiCallPromise = httpRequest(url);
 
-					apiCall = deferred.promise;
+					localStorage.setItem('data/' + restCall, apiCallPromise);
 
-					localStorage.setItem('data/' + restCall, apiCall);
-
-					restData = apiCall;
 
                 } else {
 					// local data is valid and returns it
-                    restData = localCall;
+                    apiCallPromise = localCallPromise;
                 }
             }
 
-            return restData;
+            return apiCallPromise;
 
         }
 
@@ -173,6 +117,33 @@
 
 			console.log(url);
 		}
+
+
+		/**
+		 * TODO
+		 * @param url
+		 * @returns {*}
+		 */
+		function httpRequest(url){
+
+			var deferred = $q.defer();
+
+			var configRequestHttp = {
+				method: 'GET',
+				responseType: 'json'
+			};
+
+			$http.get(url, configRequestHttp)
+				.success(function(data){
+					deferred.resolve(data);
+				})
+				.error(function(data, status) {
+					deferred.reject(status);
+				});
+
+			return deferred.promise;
+		}
+
     }
 
 

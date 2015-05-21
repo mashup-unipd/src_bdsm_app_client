@@ -24,12 +24,12 @@
 	 * Controller of the app
 	 */
 
-	var UsersConfigCtrl = function(userAdminService){
+	var UsersConfigCtrl = function(userAdminService, $q){
 
 		var vm = this;
 
-		vm.usersList = getUsers();
-
+		vm.usersList = [];
+		getUsers(); // active function for retry all users when ctrl is loaded
 		vm.editPermissions = editPermissions;
 		vm.deleteAccount = deleteUserAccount;
 
@@ -41,8 +41,16 @@
 		 * @returns {*}
 		 */
 		function getUsers(){
-			console.log(userAdminService.getListOfUsers());
-			return userAdminService.getListOfUsers();
+			var listUsersPromise = userAdminService.getListOfUsers();
+
+			listUsersPromise
+				.then(function(data){
+					var arrayUsers = data.items;
+					arrayUsers.forEach(function(element){
+						vm.usersList.push(element);
+					});
+				});
+
 		}
 
 		/**
@@ -64,7 +72,7 @@
 
 	};
 
-	UsersConfigCtrl.$inject = ['userAdminService'];
+	UsersConfigCtrl.$inject = ['userAdminService', '$q'];
 
 	angular
 		.module('app')
