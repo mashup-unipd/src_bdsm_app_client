@@ -27,7 +27,7 @@
 
             .state('dashboard', {
                 abstract: true,
-                templateUrl: 'views/user/main.html',
+                templateUrl: '../../../views/user/home.html',
                 resolve: {
                     loadMyFiles: function($ocLazyLoad){
                         return $ocLazyLoad.load(
