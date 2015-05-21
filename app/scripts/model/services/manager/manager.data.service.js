@@ -18,33 +18,7 @@
      * -----------------------------------------------------------
      *
      */
-
-/*
-* Appunti riguardo al data manger:
-* Ogni chiamata rest lo invoca.
-* Lui cerca nel localstorage una entry chiamata time/{chiamataRest}.
-* Se non la trova:
-*   -Crea una entry chiamata time/{chiamataRest} contenente il tempo attuale
-*   -Chiama gli endpoints
-*   -Modifica/Aggiunge (in teoria aggiunge) una entry chiamata data/{chiamataRest} contenente il risultato della chiamata
-*   -Restituisce il risultato della chiamata
-* Se la trova:
-*   -Controlla che la data salvata sia più recente di tot ore o no
-*   Se non lo è:
-*       -La aggiorna con il tempo attuale
-*       -Chiama gli endpoints
-*       -Modifica/aggiunge (in teoria modifica) una entry chiamata data/{chiamataRest} contenente il risultato della chiamata
-*       -Restituisce il risultato della chiamata
-*   Se lo è:
-*       -Cerca una entry chiamata data/{chiamataRest}
-*       Se non la trova:
-*          -Chiama gli endpoints
-*          -Aggiunge una entry chiamata data/{chiamataRest} contenente il risultato della chiamata
-*          -Restituisce il risultato della chiamata
-*       Se la trova:
-*           -Restituisce il contenuto della entry
-* */
-
+	
 
     function dataManagerService($http, $q){
 
@@ -103,6 +77,7 @@
 					.then(function(data){
 						restData = data.items;
 						localStorage.setItem('data/' + restCall, restData);
+						return restData;
 					}, function(error){
 						return error;
 					});
