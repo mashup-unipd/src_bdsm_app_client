@@ -93,6 +93,7 @@
 				vm.descRecipe = '';
 				vm.tempMetrics = [];
 				vm.metrics = [];
+
 				vm.insertSuccess = true;
 				vm.metricError = false;
 
@@ -126,6 +127,7 @@
 				vm.tempMetrics.push(metric);
 
 				// reset values of metric's fields after a success insert
+				vm.categories = recipeService.getMetricType();
 				vm.types = [];
 				vm.valueMetric = undefined;
 				vm.metricQuantityError = false;
