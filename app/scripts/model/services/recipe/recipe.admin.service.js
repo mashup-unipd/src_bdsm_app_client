@@ -48,7 +48,7 @@
 		function getRecipesListAll(){
 
 			// TODO: check managerDataService or call back-end API (GET)
-			var recipesList = [
+			return [
 				{
 					idRecipe: '10',
 					titleRecipe: 'SportNike',
@@ -75,7 +75,6 @@
 				}
 			];
 
-			return recipesList;
 
 		}
 
@@ -86,7 +85,7 @@
 		 */
 		function getListOfRecipesRequest(){
 
-			var requestList = [
+			return [
 				{
 					idRequestRecipe: 42,
 					titleRecipe: 'AdidasSport',
@@ -101,8 +100,6 @@
 				}
 			];
 
-			return requestList;
-
 		}
 
 		/**
@@ -111,7 +108,7 @@
 		 * @param recipe : recipe to insert
 		 */
 		function createRecipe( recipe ){
-			// TODO: call back-end API (POST)
+			return dataManagerService.postRestCall('recipes', recipe);
 		}
 
 		/**

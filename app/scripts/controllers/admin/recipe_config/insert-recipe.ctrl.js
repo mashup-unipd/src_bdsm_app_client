@@ -86,7 +86,28 @@
 				recipe.setMetrics(vm.metrics);
 
 				console.log(recipe);
-				// TODO: must call something like: recipe.save() that calls service to store send and store Recipe in the database
+
+				var value = {
+					'id': '125354634643777534',
+					'title': 'TestRecipe',
+					'desc': 'Questa è la descrizione della recipe di prova',
+					'metrics': [
+						{
+							'category': 'facebook',
+							'typeCategory': 'page',
+							'value': 'TestPageOfficial'
+						},
+						{
+							'category': 'facebook',
+							'typeCategory': 'event',
+							'value': 'TestEventiSpringParty'
+						}
+					],
+					'idAdmin': '352324643657457'
+
+				};
+
+				recipeAdminService.createRecipe(value);
 
 				// reset values of form's fields after a success insert
 				vm.titleRecipe = '';
