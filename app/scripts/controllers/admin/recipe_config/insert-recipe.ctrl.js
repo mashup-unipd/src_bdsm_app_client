@@ -26,7 +26,7 @@
      */
 
 	// TODO: need a service for retrie id of the logged User/Admin
-    var InsertRecipeCtrl = function( RecipeInsertModel, MetricModel ){
+    var InsertRecipeCtrl = function( recipeService, recipeAdminService, RecipeInsertModel, MetricModel){
 
         var vm = this;
 
@@ -35,68 +35,23 @@
         vm.type = ''; // type of the category choose in the combobox
         vm.insertSuccess = false;
         vm.insertError = false;
-		vm.metricError = false;
+		vm.metricQuantityError = false;
 
         // array of the categories for a combobox field in the template view
-        vm.categories = [
-            {
-                key: 'facebook',
-                value: 'Facebook'
-            },
-            {
-                key: 'twitter',
-                value: 'Twitter'
-            },
-            {
-                key: 'instagram',
-                value: 'Instagram'
-            }
-        ];
+        vm.categories = recipeService.getMetricType();
 		vm.types = [];
 		vm.valueMetric = '';
 
 		vm.tempMetrics = []; // array that contains a set of object that figure a metric
 		vm.metrics = []; // array that contains a set of MetricModel object
+
+
         vm.insertRecipe = insertRecipe;
         vm.updateTypeMetric = updateTypeMetric;
 		vm.addMetric = addMetric;
 
 		///////////////////
 
-		// array of types of the possible node in a metric's category
-		var typeFacebook = [
-			{
-				key: 'event',
-				value: 'Event'
-			},
-			{
-				key: 'page',
-				value: 'Page'
-			}
-		];
-
-		var typeTwitter = [
-			{
-				key: 'hashtag',
-				value: 'Hashtag'
-			},
-			{
-				key: 'page',
-				value: 'Page'
-			}
-		];
-		var typeInstagram = [
-			{
-				key: 'hashtag',
-				value: 'Hashtag'
-			},
-			{
-				key: 'page',
-				value: 'Page'
-			}
-		];
-
-		///////////////////
 
 		/**
 		 * This function create a new Recipe and insert it in the back-end
@@ -130,6 +85,7 @@
 				recipe.setDescRecipe(vm.descRecipe);
 				recipe.setMetrics(vm.metrics);
 
+				console.log(recipe);
 				// TODO: must call something like: recipe.save() that calls service to store send and store Recipe in the database
 
 				// reset values of form's fields after a success insert
@@ -137,6 +93,7 @@
 				vm.descRecipe = '';
 				vm.tempMetrics = [];
 				vm.metrics = [];
+
 				vm.insertSuccess = true;
 				vm.metricError = false;
 
@@ -156,18 +113,28 @@
 		 */
 		function addMetric(cat, typeCat, val){
 
-			var metric = {
-				category: cat,
-				typeCategory: typeCat,
-				value: val
-			};
+			if (cat ===  undefined || typeCat === undefined || val === undefined){
+				// TODO: code with some error
+				console.log('Valori mancanti per inserire la metrica');
+			} else {
+				// all fields are not empty, so it's possible insert the metric
+				var metric = {
+					category: cat,
+					typeCategory: typeCat,
+					value: val
+				};
 
-			vm.tempMetrics.push(metric);
+				vm.tempMetrics.push(metric);
 
-			// reset values of metric's fields after a success insert
-			vm.types = [];
-			vm.valueMetric = '';
-			vm.metricError = false;
+				// reset values of metric's fields after a success insert
+				vm.categories = recipeService.getMetricType();
+				vm.types = [];
+				vm.valueMetric = undefined;
+				vm.metricQuantityError = false;
+			}
+
+
+
 		}
 
 		/**
@@ -175,16 +142,8 @@
 		 * @param category : object that contains a key and a value, and we want the key for choose what array choose
 		 */
         function updateTypeMetric( category ){
-
 			vm.type = category.key.key;
-
-            switch (vm.type){
-                case 'facebook': vm.types = typeFacebook; break;
-                case 'twitter': vm.types = typeTwitter; break;
-                case 'instagram': vm.types = typeInstagram; break;
-                default : vm.types = []
-            }
-
+			vm.types = recipeService.getMetricTypeNode(vm.type);
         }
 
 		/**
@@ -192,14 +151,14 @@
 		 * @returns {boolean} true if there are almost two else false
 		 */
 		function checkMetricsQuantity(){
-			vm.metricError = true;
+			vm.metricQuantityError = true;
 			return (vm.tempMetrics.length >= 2);
 		}
 
     };
 
 
-    InsertRecipeCtrl.$inject = ['RecipeInsertModel', 'MetricModel'];
+    InsertRecipeCtrl.$inject = ['recipeService', 'recipeAdminService', 'RecipeInsertModel', 'MetricModel'];
 
     angular
         .module('app')

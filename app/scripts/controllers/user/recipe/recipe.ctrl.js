@@ -36,7 +36,7 @@
 
 		/**
 		 * This function retries recipes from service and return it
-		 * @returns {*} : array of recipes object
+		 *
 		 */
 		function getListOfRecipes(){
 

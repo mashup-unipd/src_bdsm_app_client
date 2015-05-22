@@ -105,6 +105,8 @@
 			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
 			var url = basePath + restCall; // url to use to call back-end API in $http
 
+			// here in then status of a promise, we must edit or delete the element from the datastore
+
 			console.log(url);
 		}
 
@@ -148,7 +150,8 @@
 
 			var configRequestHttp = {
 				method: 'GET',
-				responseType: 'json'
+				responseType: 'json',
+				timeout: 2000
 			};
 
 			$http.get(url, configRequestHttp)
