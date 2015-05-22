@@ -102,11 +102,14 @@
 							'typeCategory': 'event',
 							'value': 'TestEventiSpringParty'
 						}
-					],
+					]
 
 				};
 
-				recipeAdminService.createRecipe(value);
+				// recipeAdminService.createRecipe(value);
+
+				var json = JSON.stringify(recipe);
+				console.log(JSON.parse(json));
 
 				// reset values of form's fields after a success insert
 				vm.titleRecipe = '';
