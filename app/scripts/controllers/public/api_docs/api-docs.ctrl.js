@@ -22,29 +22,17 @@
      * Controller of the app
      */
 
-    var ApiDocsCtrl = function ($http ,dataManagerService) {
+    var ApiDocsCtrl = function ($http ,ApiDocsModel) {
 
         var vm = this;
 
-        vm.restServices = [
-            {
-                req: "recipes/{recipe_id}/metrics",
-                type: 'GET',
-                desc: 'Get the list a recipe\'s metrics'
-            },
-            {
-                req: "recipes/{recipe_id}/metrics",
-                type: 'GET',
-                desc: 'Ottieni tutte le metriche contenute in una ricetta'
-
-            }
-        ];
+        vm.restServices = ApiDocsModel;
 
 
 
     };
 
-    ApiDocsCtrl.$inject = ['$http','dataManagerService'];
+    ApiDocsCtrl.$inject = ['$http','ApiDocsModel'];
 
     angular.module('app').controller('ApiDocsCtrl', ApiDocsCtrl);
 

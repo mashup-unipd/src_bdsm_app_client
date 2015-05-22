@@ -22,14 +22,14 @@
      * Controller of the app
      */
 
-    var TokenConfigCtrl = function (userService) {
+    var TokenConfigCtrl = function (userService,ApiDocsModel) {
 
         var vm = this;
 
         vm.accessToken = ''; // TODO: search if token it's just associated to a User
 		vm.getAccessToken = getAccessToken;
 		vm.deleteAccessToken = deleteAccessToken;
-
+		vm.restServices=ApiDocsModel;
 		//////////////
 
 		var idUser = '355464364634634'; // TODO: retries with a service or in localStorage
@@ -51,9 +51,11 @@
 			userService.deleteAccessToken(idUser);
 			vm.accessToken = '';
 		}
+
+
     };
 
-    TokenConfigCtrl.$inject = ['userService'];
+    TokenConfigCtrl.$inject = ['userService','ApiDocsModel'];
 
     angular
 		.module('app')
