@@ -16,7 +16,9 @@
      * -----------------------------------------------------------
      * 0.0.3    2015-05-19  Carnovalini Filippo    corrected minor flaws
      * -----------------------------------------------------------
-     *
+     * 0.0.4	2015-05-20	Tesser Paolo		   implement real call with $http and $q service
+	 * -----------------------------------------------------------
+	 *
      */
 
 
@@ -34,9 +36,9 @@
         ///////////////
 
 		/**
-		 * TODO
-		 * @param restCall
-		 * @returns {*}
+		 * This function calls an http get request to retryTODO
+		 * @param restCall : collection to add at the end of the base path for do a real call
+		 * @returns {*} :
 		 */
         function getRestCall( restCall ){
 
@@ -98,9 +100,10 @@
         }
 
 		/**
-		 * TODO
-		 * @param restCall
-		 * @param value
+		 * This function calls an http post request that it pass value receved from recipeAdminService and send them at the back-end
+		 * @param restCall : collection to add at the end of the base path for do a real call
+		 * @param value : data to send at the back-end
+		 * @return {*} : promise that will be solve when request going to success or reject
 		 */
 		function postRestCall(restCall, value){
 			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
@@ -119,7 +122,7 @@
 		}
 
 		/**
-		 * TODO
+		 * TODO: implement
 		 * @param restCall
 		 * @param value
 		 */
@@ -131,7 +134,7 @@
 		}
 
 		/**
-		 * TODO
+		 * TODO: implement
 		 * @param restCall
 		 * @param value
 		 */
@@ -174,7 +177,7 @@
 		}
 
 		/**
-		 * TODO
+		 * This function TODO
 		 * @param url
 		 * @param value
 		 * @returns {*}

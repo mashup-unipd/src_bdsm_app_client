@@ -103,7 +103,6 @@
 							'value': 'TestEventiSpringParty'
 						}
 					],
-					'idAdmin': '352324643657457'
 
 				};
 
