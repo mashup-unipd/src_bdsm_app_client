@@ -34,7 +34,25 @@
                     <p class="text-center text-info"> Your token is: <span data-ng-bind="tcc.accessToken"></span></p>
 
                 </form>
-                <!-- end LoginCtrl -->
+                <!-- end TokenConfigCtrl -->
+            </div>
+        </div>
+    </div>
+
+    <div class="page-header">
+        <div class="container-fluid">
+            <div class="row">
+                <h1>Available REST services</h1>
+            </div>
+        </div>
+    </div>
+
+
+    <div ng-controller="TokenConfigCtrl as tcc">
+        <div class="panel panel-default" data-ng-repeat="service in tcc.restServices">
+            <div class="panel-heading"><span class="label label-primary" data-ng-bind="service.type"></span> <code data-ng-bind="'~/' + service.req"></code></div>
+            <div class="panel-body">
+                <p data-ng-bind="service.desc"></p>
             </div>
         </div>
     </div>
