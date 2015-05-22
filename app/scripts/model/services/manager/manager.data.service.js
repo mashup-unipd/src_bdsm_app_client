@@ -105,10 +105,17 @@
 		function postRestCall(restCall, value){
 			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
 			var url = basePath + restCall; // url to use to call back-end API in $http
-
+			var apiCallPromise;
 			// here in then status of a promise, we must edit or delete the element from the datastore
 
-			console.log(url);
+
+			apiCallPromise = httpPostRequest(url, value);
+			apiCallPromise
+				.then(function(data){
+					console.log('Response: ' + data);
+				});
+
+			return apiCallPromise;
 		}
 
 		/**
@@ -138,7 +145,7 @@
 
 
 
-		/////////////// Private functions
+		/////////////// Private http functions
 
 		/**
 		 * TODO
@@ -165,6 +172,35 @@
 
 			return deferred.promise;
 		}
+
+		/**
+		 * TODO
+		 * @param url
+		 * @param value
+		 * @returns {*}
+		 */
+		function httpPostRequest(url, value){
+			var deferred = $q.defer();
+
+			var configRequestHttp = {
+				method: 'POST',
+				responseType: 'json',
+				timeout: 2000
+			};
+
+			$http.post(url, value, configRequestHttp)
+				.success(function(data){
+					deferred.resolve(data);
+				})
+				.error(function(data, status) {
+					deferred.reject(status);
+				});
+
+			return deferred.promise;
+		}
+
+
+		/////////////// Private localStorage functions
 
 		/**
 		 * TODO
