@@ -30,8 +30,8 @@
 			 */
 			var RecipeModel = function(){
 				// properties of the class
-				this.titleRecipe = '';
-				this.descRecipe = '';
+				this.title = '';
+				this.desc = '';
 				this.metrics = [];
 			};
 
@@ -40,7 +40,7 @@
 			 * @param title : TODO
 			 */
 			RecipeModel.prototype.setTitleRecipe = function(title){
-				this.titleRecipe = title;
+				this.title = title;
 			};
 
 			/**
@@ -48,7 +48,7 @@
 			 * @param desc : TODO
 			 */
 			RecipeModel.prototype.setDescRecipe = function(desc){
-				this.descRecipe = desc;
+				this.desc = desc;
 			};
 
 			/**

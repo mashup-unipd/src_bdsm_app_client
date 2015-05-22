@@ -31,7 +31,7 @@
 		 * @constructor
 		 */
 		 var RecipeInsertModel = function( idAdmin ){
-			this.idAdmin = idAdmin;
+			this.admin_id = idAdmin;
 			RecipeModel.apply(this);
 		 };
 
@@ -44,7 +44,7 @@
 		  * @returns {*} return the id of the Admin that created a new recipe
 		  */
 		  RecipeInsertModel.prototype.getIdAdmin = function(){
-			  return this.idAdmin;
+			  return this.admin_id;
 		  };
 
    		  return RecipeInsertModel;

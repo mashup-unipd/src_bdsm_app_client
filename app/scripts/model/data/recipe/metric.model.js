@@ -34,9 +34,10 @@
 		 */
 		var MetricModel = function(cat, type, val){
 			// properties of the class
+			this.id = val;
 			this.category = cat;
-			this.typeCategory = type;
-			this.value = val;
+			this.category_type = type;
+
 
 		};
 

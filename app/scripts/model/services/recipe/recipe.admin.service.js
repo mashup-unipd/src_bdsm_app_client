@@ -41,8 +41,9 @@
 		///////////////
 
 		/**
-		 * This function retries all recipes from back-end
-		 * TODO (test):
+		 * TODO: Stub
+		 * This function retries all recipes from back-end and returns them in a promise
+		 * TODO (test): should return a promise
 		 * @returns {*[]} : list of all recipes
 		 */
 		function getRecipesListAll(){
@@ -79,8 +80,9 @@
 		}
 
 		/**
-		 * TODO
-		 * TODO (test):
+		 * TODO: Stub
+		 * This function retries all recipes request from back-end and returns them in a promise
+		 * TODO (test): should return a promise
 		 * @returns {*[]}
 		 */
 		function getListOfRecipesRequest(){
@@ -104,7 +106,7 @@
 
 		/**
 		 * This function inserts a new recipe created in the back-end
-		 * TODO (test):
+		 * TODO (test): should return a promise
 		 * @param recipe : recipe to insert
 		 */
 		function createRecipe( recipe ){
@@ -112,8 +114,9 @@
 		}
 
 		/**
+		 *
 		 * This function sets the rating's value gives from a User to a Recipe
-		 * TODO (test):
+		 * TODO (test): should return a promise
 		 * @param idRecipe
 		 */
 		function setRecipeRating( idRecipe ){

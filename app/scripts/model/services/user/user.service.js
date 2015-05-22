@@ -60,8 +60,9 @@
 		}
 
 		/**
+		 * TODO: Stub
 		 * This function retries an access token generates from the back-end application
-		 * TODO (test):
+		 * TODO (test): should return a promise
 		 * @param idUser : id of the user that we want obtained an access token
 		 * @return {String} : access token returned
 		 */
@@ -72,6 +73,7 @@
 
 		/**
 		 * This function deletes an access token from the back-end application
+		 * TODO (test): should return a promise
 		 * @param idUser : id of the user that we want deleted an access token
 		 */
 		function deleteAccessToken( idUser ){

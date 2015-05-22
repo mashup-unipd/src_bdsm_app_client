@@ -64,7 +64,7 @@
 				var metric;
 				var tempMetricVal = [];
 
-				// pass every value in the object and save them in a temporary array
+				// pass every value in the object and save them singolary in a temporary array
 				Object.keys(obj).forEach(function(key){
 					tempMetricVal.push(obj[key]);
 				});
@@ -85,31 +85,18 @@
 				recipe.setDescRecipe(vm.descRecipe);
 				recipe.setMetrics(vm.metrics);
 
-				console.log(recipe);
 
 				var value = {
-					'id': '125354634643777534',
-					'title': 'TestRecipe',
-					'desc': 'Questa è la descrizione della recipe di prova',
-					'metrics': [
-						{
-							'category': 'facebook',
-							'typeCategory': 'page',
-							'value': 'TestPageOfficial'
-						},
-						{
-							'category': 'facebook',
-							'typeCategory': 'event',
-							'value': 'TestEventiSpringParty'
-						}
-					]
-
+					'title': vm.titleRecipe,
+					'desc': vm.descRecipe,
+					'admin_id': '352324643657457',
+					'metrics': vm.metrics
 				};
 
-				// recipeAdminService.createRecipe(value);
+				recipeAdminService.createRecipe(value);
 
-				var json = JSON.stringify(recipe);
-				console.log(JSON.parse(json));
+				// var json = JSON.stringify(recipe);
+				// console.log(JSON.parse(json));
 
 				// reset values of form's fields after a success insert
 				vm.titleRecipe = '';
@@ -137,16 +124,17 @@
 		function addMetric(cat, typeCat, val){
 
 			if (cat ===  undefined || typeCat === undefined || val === undefined){
-				// TODO: code with some error
+				// TODO: code with some UI error
 				console.log('Valori mancanti per inserire la metrica');
 			} else {
 				// all fields are not empty, so it's possible insert the metric
 				var metric = {
 					category: cat,
-					typeCategory: typeCat,
+					category_type: typeCat,
 					value: val
 				};
 
+				// insert metrics in a temporary array
 				vm.tempMetrics.push(metric);
 
 				// reset values of metric's fields after a success insert
