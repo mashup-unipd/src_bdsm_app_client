@@ -53,7 +53,6 @@
 			// no entry it's founded entry or time is expired
             if (typeof restTime === 'undefined' || restTime < Date.now() - 10800000) {
 
-                setLocalItem('time/' + restCall, Date.now());
 
                 apiCallPromise = httpGetRequest(url);
 				apiCallPromise
@@ -64,6 +63,8 @@
 						};
 						// set new entry in localStorage to save data returned from a http call
 						setLocalItem('data/' + restCall, arrayData);
+						setLocalItem('time/' + restCall, Date.now());
+
 					});
 
 
