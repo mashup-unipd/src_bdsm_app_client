@@ -14,7 +14,7 @@
 	 * -----------------------------------------------------------
 	 * 0.0.2	2015-05-16	Carnovalini Filippo		insert function getMetricsListType for compare ctrl
 	 * -----------------------------------------------------------
-	 * 
+	 *
 	 */
 
 	/**
@@ -198,7 +198,6 @@
 					value: 'Page'
 				}
 			];
-
 			var typeTwitter = [
 				{
 					key: 'hashtag',
@@ -236,10 +235,9 @@
 		 * @param recipeReq : recipe request to insert
 		 */
 		function createRecipeRequest( recipeReq ){
-			// TODO
+			// TODO: call POST API to back-end
 		}
 
-		/////////////
 
 
 	}

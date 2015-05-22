@@ -52,6 +52,7 @@
 		function editUserPermissions( idUser ){
 			console.log('Permessi modificati per l\'account' + idUser);
 			// TODO change with a back-end API call (PUT)
+			// here return in a promise
 		}
 
 		/**
