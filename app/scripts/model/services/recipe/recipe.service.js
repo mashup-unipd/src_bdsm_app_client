@@ -44,7 +44,7 @@
 
 		/**
 		 * This function retries all recipes from back-end
-		 * TODO (test):
+		 * TODO (test): should return a promise
 		 * @returns {*} : list of all recipes
 		 */
 		function getRecipesList(){
@@ -53,7 +53,7 @@
 
 		/**
 		 * This function retries all metrics contains in a determinate recipe
-		 * TODO (test):
+		 * TODO (test): should return a promise
 		 * @param idRecipe : id of the recipe that we want get all metrics
 		 * @param typeCategory : type of the category that we want the metrics
 		 * @returns {*} : list of metrics objects

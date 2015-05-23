@@ -38,7 +38,8 @@
 
 
 		/**
-		 * TODO
+		 * This function
+		 * TODO (test): should return a promise
 		 */
 		function getListOfUsers(){
 			return dataManagerService.getRestCall('users');
@@ -46,7 +47,7 @@
 
 		/**
 		 * TODO
-		 * TODO (test):
+		 * TODO (test): should return a promise
 		 * @param idUser : id of the User that we want change account permissions
 		 */
 		function editUserPermissions( idUser ){
@@ -57,7 +58,7 @@
 
 		/**
 		 * TODO
-		 * TODO (test):
+		 * TODO (test): should return a promise
 		 * @param idUser : id of the User that we want delete account
 		 */
 		function deleteUserAccount( idUser ){

@@ -62,7 +62,13 @@
 		 * @param permission
 		 */
 		function editPermissions( idUser, index, permission ){
-			userAdminService.editUserPermissions(idUser);
+			/*
+			userAdminService.editUserPermissions(idUser)
+				.then(function(){
+					// TODO: insert next lines in this space
+				});
+			*/
+
 			console.log('Changed permission in ' + permission);
 			// change permission for user in the controller user array
 			vm.usersList[index].permission = permission;
@@ -74,7 +80,12 @@
 		 * @param index
 		 */
 		function deleteUserAccount( idUser, index ){
-			userAdminService.deleteUserAccount(idUser);
+			/*
+			userAdminService.deleteUserAccount(idUser)
+				.then(function(){
+					// TODO: insert next lines in this space
+				});
+			*/
 
 			// remove user in the controller user array
 			vm.usersList.splice(index, 1);

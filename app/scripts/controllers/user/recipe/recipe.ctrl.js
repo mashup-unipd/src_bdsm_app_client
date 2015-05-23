@@ -36,7 +36,7 @@
 
 		/**
 		 * This function retries recipes from service and return it
-		 *
+		 * TODO (test): should add elements to listRecipes if call is going to success, else the array should be empty
 		 */
 		function getListOfRecipes(){
 
