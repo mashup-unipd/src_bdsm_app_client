@@ -26,7 +26,7 @@
      */
 
 	// TODO: need a service for retrie id of the logged User/Admin
-    var InsertRecipeCtrl = function( recipeService, recipeAdminService, RecipeInsertModel, MetricModel){
+    var InsertRecipeCtrl = function( recipeService, recipeAdminService){
 
         var vm = this;
 
@@ -79,13 +79,8 @@
 			// if the Admin had insert almost two metrics, he can inserts a new Recipe
 			if (checkMetricsQuantity()){
 				// TODO: use AdminModel or authService to retrieve necessary data, maybe it's possible do this thing with the token stored in local
-				var recipe = new RecipeInsertModel('12355458654');
 
-				recipe.setTitleRecipe(vm.titleRecipe);
-				recipe.setDescRecipe(vm.descRecipe);
-				recipe.setMetrics(vm.metrics);
-
-
+				// create an object that rappresents a recipe request
 				var value = {
 					'title': vm.titleRecipe,
 					'desc': vm.descRecipe,
@@ -95,9 +90,7 @@
 
 				recipeAdminService.createRecipe(value);
 
-				// var json = JSON.stringify(recipe);
-				// console.log(JSON.parse(json));
-
+				
 				// reset values of form's fields after a success insert
 				vm.titleRecipe = '';
 				vm.descRecipe = '';
