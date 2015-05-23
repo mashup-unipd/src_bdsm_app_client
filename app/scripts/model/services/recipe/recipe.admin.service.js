@@ -33,7 +33,9 @@
 			getRecipesListAll: getRecipesListAll,
 			getListOfRecipesRequest: getListOfRecipesRequest,
 			createRecipe: createRecipe,
-			setRecipeRating: setRecipeRating
+			setRecipeRating: setRecipeRating,
+			discardRecipeRequest: discardRecipeRequest,
+			approveRecipeRequest: approveRecipeRequest
 		};
 
 		return factory;
@@ -120,6 +122,21 @@
 		 * @param idRecipe
 		 */
 		function setRecipeRating( idRecipe ){
+			// TODO: call back-end API (POST)
+		}
+
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 * @param idRecipeRequest
+		 */
+		function discardRecipeRequest(idRecipeRequest){
+			// TODO: call back-end API (DELETE)
+		}
+
+
+		function approveRecipeRequest(idRecipeRequest){
 			// TODO: call back-end API (POST)
 		}
 

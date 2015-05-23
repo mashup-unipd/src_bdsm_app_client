@@ -72,17 +72,18 @@
 					'metrics': vm.metrics
 				};
 
-				recipeAdminService.createRecipe(value);
+				recipeAdminService.createRecipe(value)
+					.then(function(){
+						// reset values of form's fields after a success insert
+						vm.titleRecipe = '';
+						vm.descRecipe = '';
+						vm.tempMetrics = [];
+						vm.metrics = [];
 
+						vm.insertSuccess = true;
+						vm.metricError = false;
+					});
 
-				// reset values of form's fields after a success insert
-				vm.titleRecipe = '';
-				vm.descRecipe = '';
-				vm.tempMetrics = [];
-				vm.metrics = [];
-
-				vm.insertSuccess = true;
-				vm.metricError = false;
 
 			} else {
 				console.log("Devi inserire almeno due metriche");

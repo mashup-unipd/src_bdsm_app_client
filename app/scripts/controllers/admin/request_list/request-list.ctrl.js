@@ -53,7 +53,11 @@
 		 * @param idReqRecipe
 		 */
 		function discardRequest( idReqRecipe ){
-			console.log(idReqRecipe);
+			recipeAdminService.discardRecipeRequest(idReqRecipe)
+				.then(function(){
+					// TODO
+					console.log(idReqRecipe);
+				});
 		}
 
 		/**
@@ -62,7 +66,11 @@
 		 * @param idReqRecipe
 		 */
 		function approveRequest( idReqRecipe ){
-			console.log(idReqRecipe);
+			recipeAdminService.approveRecipeRequest(idReqRecipe)
+				.then(function(){
+					// TODO
+					console.log(idReqRecipe);
+				});
 		}
 
 	};
