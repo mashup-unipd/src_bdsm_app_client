@@ -58,23 +58,7 @@
 		 */
         function insertRecipe(){
 
-			// function map on tempMetrics array that use a function for convert object in MetricModel object
-			// TODO (p.tesser921@gmail.com): refactor code
-			vm.metrics = vm.tempMetrics.map(function(obj){
-				var metric;
-				var tempMetricVal = [];
-
-				// pass every value in the object and save them singolary in a temporary array
-				Object.keys(obj).forEach(function(key){
-					tempMetricVal.push(obj[key]);
-				});
-
-				// this it's possible because we know the structure of the object
-				metric = new MetricModel(tempMetricVal[0], tempMetricVal[1], tempMetricVal[2]);
-
-				return metric;
-
-			});
+			vm.metrics = vm.tempMetrics;
 
 			// if the Admin had insert almost two metrics, he can inserts a new Recipe
 			if (checkMetricsQuantity()){
@@ -90,7 +74,7 @@
 
 				recipeAdminService.createRecipe(value);
 
-				
+
 				// reset values of form's fields after a success insert
 				vm.titleRecipe = '';
 				vm.descRecipe = '';
@@ -122,9 +106,9 @@
 			} else {
 				// all fields are not empty, so it's possible insert the metric
 				var metric = {
+					id: val,
 					category: cat,
-					category_type: typeCat,
-					value: val
+					category_type: typeCat
 				};
 
 				// insert metrics in a temporary array

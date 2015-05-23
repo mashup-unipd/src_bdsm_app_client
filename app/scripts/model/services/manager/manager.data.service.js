@@ -115,7 +115,16 @@
 			apiCallPromise = httpPostRequest(url, value);
 			apiCallPromise
 				.then(function(data){
-					console.log('Response: ' + data);
+					var key = 'data/' + restCall;
+					// takes old local value without add and save it in a temporary array
+					var tempVal = getLocalItem(key);
+					// remove local old from localStorage
+					removeLocalItem(key);
+					// add new value to the temporary array
+					tempVal.items.push(value);
+					// storage new temporary array in the localStorage
+					setLocalItem(key, tempVal);
+
 				});
 
 			return apiCallPromise;
@@ -221,6 +230,14 @@
 		 */
 		function setLocalItem(key, value){
 			localStorageService.set(key, value);
+		}
+
+		/**
+		 *
+		 * @param key
+		 */
+		function removeLocalItem(key){
+			localStorageService.remove(key);
 		}
     }
 
