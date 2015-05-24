@@ -55,6 +55,7 @@
 
 		/**
 		 * This function create a new Recipe and insert it in the back-end
+		 * TODO (test): should reset value after a successful insert
 		 */
         function insertRecipe(){
 
@@ -95,6 +96,8 @@
 		/**
 		 * This function create a local object with the value of a metric
 		 * and insert it in a temporary array that stores all locals metric object
+		 * TODO (test): should metrics array must be length +1 after a successful insert
+		 * TODO (test): should metrics array must be length as previous after a fail insert
 		 * @param cat : category of the metric
 		 * @param typeCat : type of the category
 		 * @param val : value of the category
@@ -127,7 +130,8 @@
 		}
 
 		/**
-		 * This function update the option field for type of metric in the insert recipe form,
+		 * This function update the option field for type of metric in the insert recipe form
+		 * TODO (test): should types array must be length like the number of the array returned from service
 		 * @param category : object that contains a key and a value, and we want the key for choose what array choose
 		 */
         function updateTypeMetric( category ){
@@ -137,6 +141,7 @@
 
 		/**
 		 * This function checks if there are at least two metrics in the Recipe
+		 * TODO (test): should return true if metrics array is length 2 or more, else false
 		 * @returns {boolean} true if there are almost two else false
 		 */
 		function checkMetricsQuantity(){

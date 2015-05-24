@@ -37,8 +37,7 @@
 
 		/**
 		 * This function retries all users from a user service
-		 * TODO (test):
-		 * @returns {*}
+		 * TODO (test): should usersList array must be empty if there aren't users, else it must be length
 		 */
 		function getUsers(){
 
@@ -57,25 +56,27 @@
 
 		/**
 		 * TODO
+		 * TODO (test): should value in the usersList array must be modify after this method
 		 * @param idUser
 		 * @param index
 		 * @param permission
 		 */
 		function editPermissions( idUser, index, permission ){
 			/*
-			userAdminService.editUserPermissions(idUser)
+			userAdminService.editUserPermissions(idUser, permission)
 				.then(function(){
 					// TODO: insert next lines in this space
 				});
 			*/
 
-			console.log('Changed permission in ' + permission);
+			console.log('Changed permission in ' + permission + ' for ' + idUser + ' user.');
 			// change permission for user in the controller user array
 			vm.usersList[index].permission = permission;
 		}
 
 		/**
 		 * TODO
+		 * TODO (test): should usersList array must be length -1 after this method
 		 * @param idUser
 		 * @param index
 		 */
@@ -87,6 +88,7 @@
 				});
 			*/
 
+			console.log('Delete account for ' + idUser + ' user.');
 			// remove user in the controller user array
 			vm.usersList.splice(index, 1);
 

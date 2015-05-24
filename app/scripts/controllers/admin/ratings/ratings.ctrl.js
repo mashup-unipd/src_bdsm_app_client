@@ -8,7 +8,7 @@
 	 * Modify
 	 * Version  Date        Author          Desc
 	 * ==========================================================
-	 * 0.0.1    2015-05-10  Tesser Paolo    codifica modulo
+	 * 0.0.1    2015-05-10  Tesser Paolo    code module
 	 * -----------------------------------------------------------
 	 *
 	 */
@@ -32,8 +32,10 @@
 		///////////////
 
 		/**
-		 * This function retries the list of Recipe with them rating
 		 * TODO: data from a STUB
+		 * TODO (test): should array listRecipes must be empty if there aren't recipes with a rating, else it must be length
+		 * This function retries the list of Recipe with them rating
+		 *
 		 */
 		function getListOfRecipes(){
 			var arrayRecipes = recipeAdminService.getRecipesListAll();
