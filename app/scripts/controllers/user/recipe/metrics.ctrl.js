@@ -37,6 +37,7 @@
 
 		/**
 		 * TODO
+		 * TODO (test): should return a promise
 		 * @returns {*}
 		 */
 		function getMetricTypes(){

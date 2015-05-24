@@ -28,7 +28,7 @@
       var vm = this;
 
 	  vm.credentials = {
-      	email: 'info@mashup-unipd.it', // TODO: remove
+      	email: '',
       	pwd: ''
 	  };
 

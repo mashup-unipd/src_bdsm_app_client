@@ -58,14 +58,15 @@
     	}
 
 	  /**
-	   * TODO: it's possible create a service with this function or something that can be shared with other controllers that do this check
+	   *
 	   * This function check if the value new password match with confirm new password
-	   * @param newPwd : new password that User want change
-	   * @param confirmNewPwd : new password that it's used
-	   * @returns {boolean} : true if newPwd match confirmNewPwd, else false
+	   * TODO (test): should return true if passwords matches, else false. Test with a successful example and with a bad example
+	   * @param pwd : password that new User wants
+	   * @param confirmPwd : password that confirm prec password
+	   * @returns {boolean} : true if pwd match confirmPwd, else false
 	   */
-	  function checkMatchPwd(newPwd, confirmNewPwd){
-		  return newPwd === confirmNewPwd;
+	  function checkMatchPwd(pwd, confirmPwd){
+		  return pwd === confirmPwd;
 	  }
 
   };

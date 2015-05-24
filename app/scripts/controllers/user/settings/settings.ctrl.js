@@ -28,54 +28,77 @@
 
         var vm = this;
 
-        vm.username = 'mashup';
-        vm.email = 'info@mashup-unipd.it';
-		vm.oldPassword = '';
-		vm.newPassword = '';
-		vm.confirmNewPassword = '';
+		vm.settings = {
+			username: 'mashup',
+			email: 'info@mashup-unipd.it',
+			oldPassword: '',
+			newPassword: '',
+			confirmNewPassword: ''
+		};
+
 
         vm.saveEdit = saveEdit;
 		vm.matchNewPassword = matchNewPassword;
 
 		/////////////////
 
+		// store values before something change, to check then if User done a modifies
+		var oldSettings = {
+			username: 'mashup',
+			email: 'info@mashup-unipd.it',
+			oldPassword: '',
+			newPassword: '',
+			confirmNewPassword: ''
+		};
 
 		/**
 		 * This function saves the account's modifies with a call to authService
+		 * TODO (test): should
+		 * @param settings
+		 *
 		 */
-        function saveEdit(){
-            console.log('Modifiche salvate');
+        function saveEdit(settings){
 
-			if (vm.oldPassword !== '' && vm.newPassword !== '' && vm.confirmNewPassword !== ''){
 
-				if (checkOldPassword()){
-					var credToChange = {
-						email: vm.newPassword,
-						username: vm.email
-					};
+			if (checkModifyFields(settings)){
+				var credToChange = {
+					email: vm.newPassword,
+					username: vm.email
+				};
 
-					authService.updateSettingsAccount(credToChange);
-					// TODO: it could be possible use a function that update only pwd settings if changes
-				}
-
+				authService.updateSettingsAccount(credToChange);
+				console.log('Modifiche salvate');
 			}
 
         }
 
 		/**
 		 * This function checks if old password is correct with a call to authService
+		 * TODO (test):
+		 * @param settings
+		 * @return {bool}
 		 */
-		function checkOldPassword( pwdToCheck ){
-			// TODO: calls authService that check if old pwd insert is correct
-			return true; // TODO: change with the response from authService
+		function checkModifyFields( settings ){
+
+			if (settings.oldPassword !== '' || settings.newPassword !== '' || settings.confirmNewPassword !== '' || settings.username !== oldSettings.username
+				|| settings.email !== oldSettings.email){
+
+				// TODO
+				return true;
+
+			} else {
+				return false;
+			}
+
 		}
 
 		/**
 		 * This function checks if new password insert match with confirm new password
+		 * TODO (test): should return true if passwords matches, else false. Test with a successful example and with a bad example
 		 * @returns {bool} : true if new password it's equal to confirm new password else false
 		 */
-		function matchNewPassword(){
-			return true; // TODO: change with some of logic
+		function matchNewPassword(newPwd, newConfirmPwd){
+			return newPwd === newConfirmPwd;
 		}
 
 

@@ -28,8 +28,6 @@
 
         vm.restServices = ApiDocsModel;
 
-
-
     };
 
     ApiDocsCtrl.$inject = ['$http','ApiDocsModel'];

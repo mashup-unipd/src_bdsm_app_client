@@ -10,7 +10,7 @@
     <div class="center-form panel col-md-12">
 
         <form class="form-container" id="settings-form" data-role="form"
-              data-ng-controller="SettingsCtrl as sc" data-ng-submit="sc.saveEdit()">
+              data-ng-controller="SettingsCtrl as sc" data-ng-submit="sc.saveEdit(sc.settings)">
 
             <div class="row">
                 <div class="form-group">
@@ -20,7 +20,7 @@
                     </p>
                     <div class="col-xs-10 col-sm-8 col-md-4 input-group">
                         <input class="form-control input-sm" id="username-setting" type="text"
-                               data-ng-model="sc.username" data-ng-disabled="editUsername" data-ng-init="editUsername=true">
+                               data-ng-model="sc.settings.username" data-ng-disabled="editUsername" data-ng-init="editUsername=true">
                         <span class="glyphicon glyphicon-user form-control-feedback" title="icona di un mezzo busto di uomo come immagine per identificare l'utente"></span>
                     </div> <!-- /username -->
                 </div>
@@ -34,7 +34,7 @@
                     </p>
                     <div class="col-xs-12 col-sm-9 col-md-6 input-group">
                         <input class="form-control input-sm" id="mail-setting" type="email"
-                               data-ng-model="sc.email" data-ng-disabled="editMail" data-ng-init="editMail=true">
+                               data-ng-model="sc.settings.email" data-ng-disabled="editMail" data-ng-init="editMail=true">
                         <span class="glyphicon glyphicon-envelope form-control-feedback" title="icona di una busta di una lettera"></span>
                     </div> <!-- /email -->
                 </div>
