@@ -17,34 +17,34 @@
 
     <tabset>
 
-        <tab data-ng-repeat="type in mc.metricsType" heading="{{ type.value }}" active="tab.active" disable="tab.disable">
+            <tab data-ng-repeat="type in mc.metricsType" heading="{{ type.value }}" active="tab.active" disable="tab.disable">
 
-            <div class="panel">
-                <div class="table-responsive">
-                    <table class="table">
-                        <thead>
+                <div class="panel">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
                             <tr>
                                 <th>Name</th>
                                 <th>Type</th>
                                 <th></th>
                             </tr>
-                        </thead>
+                            </thead>
 
-                        <tbody>
+                            <tbody>
+                                <tr data-ng-repeat="metric in mc.metrics">
+                                    <td data-ng-if="metric.category === type.key" data-ng-bind="metric.name"></td>
+                                    <td data-ng-if="metric.category === type.key" data-ng-bind="metric.type_category"></td>
+                                    <td data-ng-if="metric.category === type.key">
+                                        <button class="btn btn-primary" data-ui-sref="dashboard.charts">Show charts</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
 
-                            <tr data-ng-repeat="metric in mc.metricsFb">
-                                <td data-ng-bind="metric.name"></td>
-                                <td data-ng-bind="metric.type"></td>
-                                <td><button class="btn btn-primary" data-ui-sref="dashboard.metrics.charts">Show charts</button></td>
-                            </tr>
-
-                        </tbody>
-                    </table>
                 </div>
 
-            </div>
-
-        </tab>
+            </tab>
 
     </tabset>
 

@@ -55,52 +55,48 @@
 		 * This function retries all metrics contains in a determinate recipe
 		 * TODO (test): should return a promise
 		 * @param idRecipe : id of the recipe that we want get all metrics
-		 * @param typeCategory : type of the category that we want the metrics
 		 * @returns {*} : list of metrics objects
 		 */
-		function getMetricsList( idRecipe, typeCategory ){
+		function getMetricsList( idRecipe ){
 
-			var metricsList = [];
+			var metricsList = [
+				{
+					category: 'facebook',
+					name: 'NikeOfficial',
+					type_category: 'page'
+				},
+				{
+					category: 'facebook',
+					name: 'NikeStore',
+					type_category: 'page'
+				},
+				{
+					category: 'facebook',
+					name: 'OpenStoreBarcelona',
+					type_category: 'event'
+				},
+				{
+					category: 'twitter',
+					name: '#gonike',
+					type_category: 'hashtag'
+				},
+				{
+					category: 'twitter',
+					name: 'nike',
+					type_category: 'page'
+				},
+				{
+					category: 'instagram',
+					name: '#playnike',
+					type_category: 'hashtag'
+				},
+				{
+					category: 'instagram',
+					name: 'nike_official',
+					type_category: 'page'
+				}
 
-			// TODO: call back-end API, now we are using a stub
-			switch(typeCategory){
-				case 'facebook': metricsList = [
-					{
-						name: 'NikeOfficial',
-						type: 'page'
-					},
-					{
-						name: 'NikeStore',
-						type: 'page'
-					},
-					{
-						name: 'OpenStoreBarcelona',
-						type: 'event'
-					}
-				]; break;
-				case 'twitter': metricsList = [
-					{
-						name: '#gonike',
-						type: 'hashtag'
-					},
-					{
-						name: 'nike',
-						type: 'page'
-					}
-				]; break;
-				case 'instagram': metricsList = [
-					{
-						name: '#playnike',
-						type: 'hashtag'
-					},
-					{
-						name: 'nike_official',
-						type: 'page'
-					}
-				]; break;
-
-				default: metricsList = []; break;
-			}
+			];
 
 			return metricsList;
 		}

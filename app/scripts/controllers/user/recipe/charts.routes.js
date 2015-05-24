@@ -23,7 +23,7 @@
 
 		$stateProvider
 
-			.state('dashboard.metrics.charts',{
+			.state('dashboard.charts',{
 				templateUrl:'views/user/charts.html',
 				resolve: {
 					loadMyFiles: function($ocLazyLoad) {

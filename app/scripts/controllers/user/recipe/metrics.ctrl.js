@@ -28,16 +28,14 @@
 
 		vm.titleRecipe = $stateParams.title;
 		vm.metricsType = getMetricTypes();
-        vm.metricsFb = getMetricsList('facebook');
-		vm.metricsTw = getMetricsList('twitter');
-		vm.metricsIg = getMetricsList('instagram');
+        vm.metrics = getMetricsList();
 
 
 		////////////////
 
 		/**
 		 * TODO
-		 * TODO (test): should return a promise
+		 * TODO (test): should
 		 * @returns {*}
 		 */
 		function getMetricTypes(){
@@ -46,11 +44,11 @@
 
 		/**
 		 * TODO
-		 * @param typeCategory
+		 * TODO (test): should
 		 * @returns {*}
 		 */
-		function getMetricsList(typeCategory){
-			return recipeService.getMetricsList(42, typeCategory)
+		function getMetricsList(){
+			return recipeService.getMetricsList(42)
 		}
 
 
