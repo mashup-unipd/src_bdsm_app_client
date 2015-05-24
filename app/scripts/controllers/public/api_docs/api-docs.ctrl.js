@@ -16,21 +16,25 @@
 
     /**
      * @ngdoc function
-     * @name app.controller:AboutCtrl
+     * @name app.controller:ApiDocsCtrl
      * @description
-     * # AboutCtrl
+     * # ApiDocsCtrl
      * Controller of the app
      */
 
-    var ApiDocsCtrl = function ($http ,ApiDocsModel) {
+    var ApiDocsCtrl = function (ApiDocsModel) {
 
         var vm = this;
 
-        vm.restServices = ApiDocsModel;
+        var getRestServices= function(){
+            return ApiDocsModel;
+        };
+
+        vm.restServices = getRestServices();
 
     };
 
-    ApiDocsCtrl.$inject = ['$http','ApiDocsModel'];
+    ApiDocsCtrl.$inject = ['ApiDocsModel'];
 
     angular.module('app').controller('ApiDocsCtrl', ApiDocsCtrl);
 

@@ -65,7 +65,7 @@
 			if (checkMetricsQuantity()){
 				// TODO: use AdminModel or authService to retrieve necessary data, maybe it's possible do this thing with the token stored in local
 
-				// create an object that rappresents a recipe request
+				// create an object that represents a recipe request
 				var value = {
 					'title': vm.titleRecipe,
 					'desc': vm.descRecipe,

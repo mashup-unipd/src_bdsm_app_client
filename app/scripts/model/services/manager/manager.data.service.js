@@ -36,7 +36,8 @@
         ///////////////
 
 		/**
-		 * This function calls an http get request to retryTODO
+		 * This function calls an http get request to retry
+		 * TODO
 		 * @param restCall : collection to add at the end of the base path for do a real call
 		 * @returns {*} :
 		 */
