@@ -60,6 +60,7 @@
 		function getMetricsList( idRecipe ){
 
 			var idRecipeStrip = String(idRecipe);
+			// must replace white space with particular character of escaping
 			idRecipeStrip.replace(/\s+/g, '%20');
 
 			return dataManagerService.getRestCall('recipes/' + idRecipeStrip);

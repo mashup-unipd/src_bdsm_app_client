@@ -33,13 +33,13 @@
 
         vm.oneInserted = false;
         vm.maxReached = false;
-        vm.notEnough= true;
+        vm.notEnough = true;
 
-        vm.type='';  //  category chosen in the combobox
+        vm.type = '';  //  category chosen in the combobox
         vm.types = [];
 
-        vm.metric=''; //  metric chosen in the combobox
-        vm.metrics=[];
+        vm.metric = ''; //  metric chosen in the combobox
+        vm.metrics = [];
 
         vm.tempMetrics = []; // array that contains a set of object that figure a metric
         vm.updateTypeMetric = updateTypeMetric;
@@ -47,75 +47,25 @@
         vm.addMetric = addMetric;
 
         // array of the categories for a combobox field in the template view
-        vm.categories = [
-            {
-                key: 'facebook',
-                value: 'Facebook'
-            },
-            {
-                key: 'twitter',
-                value: 'Twitter'
-            },
-            {
-                key: 'instagram',
-                value: 'Instagram'
-            }
-        ];
+        vm.categories = recipeService.getMetricType();
 
         ////////////////
 
         /**
          * TODO
+		 * TODO (test):
          * @returns {*}
          */
         function getMetricTypes(){
             return recipeService.getMetricType();
         }
 
-        /**
-         * TODO
-         * @param typeCategory
-         * @returns {*}
-         */
-
-
-        // array of types of the possible node in a metric's category
-        var typeFacebook = [
-            {
-                key: 'event',
-                value: 'Event'
-            },
-            {
-                key: 'page',
-                value: 'Page'
-            }
-        ];
-
-        var typeTwitter = [
-            {
-                key: 'hashtag',
-                value: 'Hashtag'
-            },
-            {
-                key: 'page',
-                value: 'Page'
-            }
-        ];
-        var typeInstagram = [
-            {
-                key: 'hashtag',
-                value: 'Hashtag'
-            },
-            {
-                key: 'page',
-                value: 'Page'
-            }
-        ];
 
 
         /**
          * This function create a local object with the value of a metric
          * and insert it in a temporary array that stores all locals metric object
+		 * TODO (test):
          * @param cat : category of the metric
          * @param typeCat : type of the category
          * @param val : value of the category
@@ -137,26 +87,23 @@
         }
 
         /**
-         * This function update the option field for type of metric in the insert recipe form,
+         * This function update the option field for type of metric in the insert recipe form
+		 * TODO (test):
          * @param category : object that contains a key and a value, and we want the key for choose what array choose
          */
         function updateTypeMetric( category ){
-
             vm.type = category.key.key;
-
-            switch (vm.type){
-                case 'facebook': vm.types = typeFacebook; break;
-                case 'twitter': vm.types = typeTwitter; break;
-                case 'instagram': vm.types = typeInstagram; break;
-                default : vm.types = []
-            }
-
+			vm.types = recipeService.getMetricTypeNode(vm.type);
         }
 
+		/**
+		 * TODO
+		 * TODO (test):
+		 * @param category
+		 * @param type
+		 */
         function updateMetrics( category,type ){
-
             vm.metrics=recipeService.getMetricsListType(42,category,type.key.key);
-
 
         }
 
