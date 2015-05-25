@@ -33,7 +33,7 @@
                     <label for="type-node">Metric type</label>
                     <select class="form-control" id="type-node"
                             data-ng-options="type.value for type in cc.types"
-                            data-ng-model="type.key" data-ng-change="cc.updateMetrics(cc.type,type)"
+                            data-ng-model="type.key" data-ng-change="cc.updateMetrics(cc.type, type.key.key)"
                             data-ng-disabled="cc.oneInserted" required>
                     </select>
                 </div>
@@ -43,7 +43,7 @@
                 <div class="form-group col-md-4">
                     <label for="metrics">Metrics</label>
                     <select class="form-control" id="metrics"
-                            data-ng-options="metric.name for metric in cc.metrics"
+                            data-ng-options="metric.id for metric in cc.metrics"
                             data-ng-model="metric.key" required>
                     </select>
                 </div>

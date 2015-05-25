@@ -67,60 +67,7 @@
 
 		}
 
-		/**
-		 * TODO
-		 * @param idRecipe
-		 * @param typeCategory
-		 * @param typeMetric
-		 * @returns {Array}
-		 */
-		function getMetricsListType( idRecipe, typeCategory, typeMetric  ){
-
-			var metricsList = [];
-
-			// TODO: call back-end API, now we are using a stub
-			switch(typeCategory){
-				case 'facebook': if(typeMetric=="page"){metricsList = [
-					{
-						name: 'NikeOfficial',
-						type: 'page'
-					},
-					{
-						name: 'NikeStore',
-						type: 'page'
-					}];}else{metricsList = [
-					{
-						name: 'OpenStoreBarcelona',
-						type: 'event'
-					}
-				];} break;
-				case 'twitter': if(typeMetric=="hashtag"){metricsList = [
-					{
-						name: '#gonike',
-						type: 'hashtag'
-					}]}else{metricsList = [
-					{
-						name: 'nike',
-						type: 'page'
-					}
-				];} break;
-				case 'instagram': if(typeMetric=="hashtag"){metricsList = [
-					{
-						name: '#playnike',
-						type: 'hashtag'
-					}]}else{metricsList = [
-					{
-						name: 'nike_official',
-						type: 'page'
-					}
-				]; }break;
-
-				default: metricsList = []; break;
-			}
-
-			return metricsList;
-		}
-
+		
 		/**
 		 * This function retries all metrics type
 		 * TODO (test):

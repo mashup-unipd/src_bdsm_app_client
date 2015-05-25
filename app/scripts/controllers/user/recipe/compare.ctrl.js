@@ -102,8 +102,18 @@
 		 * @param category
 		 * @param type
 		 */
-        function updateMetrics( category,type ){
-            vm.metrics=recipeService.getMetricsListType(42,category,type.key.key);
+        function updateMetrics( category, type ){
+
+            recipeService.getMetricsList($stateParams.title)
+				.then(function(data){
+					var arrayMetrics = data.metrics;
+					arrayMetrics.forEach(function(element){
+						if(element.category === category && element.category_type === type){
+							vm.metrics.push(element);
+						}
+					});
+
+				});
 
         }
 
