@@ -15,24 +15,29 @@
      *
      */
 
-    function chartCreatorService(){
+    function chartCreatorService($sce){
 
+
+        var id=0;
         var factory = {
             chartGeneration: chartGeneration,
             dataFormat: dataFormat
 
         };
 
+
         return factory;
 
         ///////////////
 
+
         function chartGeneration(data,info){
 
-            //to generate always different ids simply uses a timestamp
-            var id= Date.now();
+            //to generate always different ids
+            id++;
 
-            var result='<canvas id="g'+id + 'Canvas"></canvas>';
+
+            var result='<canvas id="g'+id + 'Canvas" width="600" height="400"></canvas>';
 
             //TODO call data Format
             var dataFormatResult = '\n<script>\n' +
@@ -51,8 +56,8 @@
 
 
             return {
-                desc: "Likes on the page over time (montly)",
-                data: result
+                desc: "Likes on the page over time (monthly)",
+                data: $sce.trustAsHtml(result)
             };
 
         }
@@ -65,7 +70,7 @@
 
     }
 
-    chartCreatorService.$inject = [];
+    chartCreatorService.$inject = ['$sce'];
 
     angular
         .module('app.chart.creator.services.module')

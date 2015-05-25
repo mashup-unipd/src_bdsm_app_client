@@ -25,6 +25,11 @@
 
 			.state('dashboard.charts',{
 				templateUrl:'views/user/charts.html',
+				url:'/charts/:cat/:type/:metric/:metric2/:metric3',
+				params: {
+					metric2: "",
+					metric3: ""
+				},
 				resolve: {
 					loadMyFiles: function($ocLazyLoad) {
 						return $ocLazyLoad.load({
