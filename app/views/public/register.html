@@ -55,10 +55,22 @@
                    required autofocus>
             <span class="ti-key form-control-feedback" title="key icon"></span>
 
-            <div class="help-block text-danger" data-ng-if="rc.matchPwd">
-              The password doesn't match.
-            </div>
+              <div class="help-block text-danger" data-ng-if="registerForm.confirmPassword.$dirty" data-ng-messages="registerForm.confirmPassword.$error">
+                  <div data-ng-message="required">The confirm password is required.</div>
+              </div>
           </div> <!-- end input confirm password -->
+
+            <div class="help-block text-danger has-error" data-ng-if="rc.matchPwd">
+                <p class="text-danger has-error">The password doesn't match.</p>
+            </div>
+
+            <div class="help-block text-success" data-ng-if="rc.registerSuccess">
+                Successful register operation. You should go to <a data-ui-sref="login">login page</a> to access in the system.
+            </div>
+
+            <div class="help-block text-success has-error" data-ng-if="rc.registerError">
+                Error during register operation.
+            </div>
 
           <button type="submit" data-ng-disabled="registerForm.$invalid" class="btn btn-lg btn-block btn-success">Register</button>
 

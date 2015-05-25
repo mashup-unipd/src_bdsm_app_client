@@ -36,6 +36,9 @@
 		  pwd_repeat: ''
 	  };
 	  vm.matchPwd = false;
+	  vm.registerSuccess = false;
+	  vm.registerError = false;
+
 	  vm.register = register;
 	  vm.checkMatchPwd = checkMatchPwd;
 
@@ -52,9 +55,20 @@
 
 			  authService.register(cred)
 				  .then(function(resp){
+					  vm.registerSuccess = true;
+					  // reset values in the form's fields
+					  vm.credentials = {
+						  username: '',
+						  email: '',
+						  pwd: '',
+						  pwd_repeat: ''
+					  };
+
 					  console.log('Successfull register: ' + resp);
+
 				  })
 				  .catch(function(resp){
+					  vm.registerError = true;
 					  console.log('Successfull register: ' + resp);
 				  });
 		  } else {
