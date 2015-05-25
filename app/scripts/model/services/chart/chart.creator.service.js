@@ -18,7 +18,6 @@
     function chartCreatorService($sce){
 
 
-        var id=0;
         var factory = {
             chartGeneration: chartGeneration,
             dataFormat: dataFormat
@@ -33,8 +32,8 @@
 
         function chartGeneration(data,info){
 
-            //to generate always different ids
-            id++;
+            //to generate always different ids simply uses a timestamp (also adds a random part in the case two ids are generated in the same millisecond)
+            var id= (Date.now().toString() + Math.ceil(Math.random()*1000));
 
 
             var result='<canvas id="g'+id + 'Canvas" width="600" height="400"></canvas>';
