@@ -55,26 +55,14 @@
 				{
 					idRecipe: '10',
 					titleRecipe: 'SportNike',
-					descRecipe: 'Questa recipe contiene i trend relativi alla Nike',
+					descRecipe: 'Recipe about Sport Nike trends',
 					ratings: 2.11
 				},
 				{
 					idRecipe: '11',
 					titleRecipe: 'StarWars',
-					descRecipe: 'Questa recipe contiene i trend relativi a StarWars',
+					descRecipe: 'Recipe about StarWars trends in Italy',
 					ratings: 4.80
-				},
-				{
-					idRecipe: '12',
-					titleRecipe: 'Boobies',
-					descRecipe: 'Questa recipe contiene i trend relativi alle migliori tette',
-					ratings: 5.00
-				},
-				{
-					idRecipe: '13',
-					titleRecipe: 'Bear',
-					descRecipe: 'Questa recipe contiene i trend relativi alle migliori birre',
-					ratings: 4.50
 				}
 			];
 
@@ -92,14 +80,14 @@
 			return [
 				{
 					idRequestRecipe: 42,
-					titleRecipe: 'AdidasSport',
+					titleRecipe: 'Adidas Sport',
 					descRecipe: 'Recipe about Adidas trends',
 					emailUser: 'p.tesser921@gmail.com'
 				},
 				{
 					idRequestRecipe: 43,
-					titleRecipe: 'AdidasSport',
-					descRecipe: 'Recipe about Adidas trends',
+					titleRecipe: 'H-farm Zing',
+					descRecipe: 'Recipe about Zing trends',
 					emailUser: 'dav.santucci@zing.com'
 				}
 			];

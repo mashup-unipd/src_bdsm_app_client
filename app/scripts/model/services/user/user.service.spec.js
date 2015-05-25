@@ -18,7 +18,7 @@ describe('Service: userService', function() {
 
 	beforeEach(function () {
 
-		angular.mock.module('app.auth.services.module');
+		angular.mock.module('app.user.services.module');
 
 		angular.mock.inject(function () {
 
