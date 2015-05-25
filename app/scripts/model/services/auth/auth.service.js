@@ -30,6 +30,7 @@
 		var factory = {
 			login: login,
 			register: register,
+			deleteAccount: deleteAccount,
 			isLogged: isLogged,
 			updateSettingsAccount: updateSettingsAccount
 		};
@@ -58,12 +59,16 @@
 		 */
 		function register( credentials ){
 
-			// TODO: maybe it's necessary create a new User from data model, maybe not
-			// TODO: use ng-auth
-			// example: $auth.submitRegistration();
+			var registerCallPromise = $auth.submitRegistration(credentials);
 
+			return registerCallPromise;
+
+		}
+
+
+		function deleteAccount(){
+			console.log('Deleted');
 			$location.path('/login');
-
 		}
 
 		/**
@@ -81,6 +86,7 @@
 		function updateSettingsAccount(credToChange){
 			// $auth.updateAccount(credToChange);
 		}
+
 	}
 
 	authService.$inject = ['$location', '$auth'];

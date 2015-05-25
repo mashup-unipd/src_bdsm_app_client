@@ -22,7 +22,7 @@
           <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.email.$invalid && registerForm.email.$dirty }"> <!-- input email --> <!-- TODO: controllo sui campi non funzionante -->
             <label class="sr-only" for="input-email" lang="en">Email</label>
             <input class="form-control input-lg" id="input-email" name="email" type="email"
-                   data-ng-model="rc.credentials.mail" data-ng-pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"
+                   data-ng-model="rc.credentials.email" data-ng-pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"
                    placeholder="Email" required>
 
             <span class="glyphicon glyphicon-envelope form-control-feedback" title="envelope icon"></span>
@@ -51,7 +51,7 @@
           <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.confirmPassword.$invalid && registerForm.confirmPassword.$dirty }"> <!-- input confirm password -->
             <label class="sr-only" for="input-confirm-pwd">Confirm password</label>
             <input id="input-confirm-pwd" class="form-control input-lg" type="password" name="confirmPassword"
-                   data-ng-model="rc.credentials.confirmPwd" placeholder="Confirm Password"
+                   data-ng-model="rc.credentials.pwd_repeat" placeholder="Confirm Password"
                    required autofocus>
             <span class="ti-key form-control-feedback" title="key icon"></span>
 

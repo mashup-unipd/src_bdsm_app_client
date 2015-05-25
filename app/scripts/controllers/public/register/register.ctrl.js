@@ -31,9 +31,9 @@
 
 	  vm.credentials = {
 		  username: '',
-		  mail: '',
+		  email: '',
 		  pwd: '',
-		  confirmPwd: ''
+		  pwd_repeat: ''
 	  };
 	  vm.matchPwd = false;
 	  vm.register = register;
@@ -47,10 +47,15 @@
 	   */
 	  function register( cred ){
 
-		  if (checkMatchPwd(cred.pwd, cred.confirmPwd)){
-			  authService.register(cred);
-			  // TODO: if it fails do something
+		  if (checkMatchPwd(cred.pwd, cred.pwd_repeat)){
 
+			  authService.register(cred)
+				  .then(function(resp){
+					  console.log('Successfull register: ' + resp);
+				  })
+				  .catch(function(resp){
+					  console.log('Successfull register: ' + resp);
+				  });
 		  } else {
 			  vm.matchPwd = true;
 		  }

@@ -29,7 +29,7 @@
 			apiUrl:                  'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0',
 			tokenValidationPath:     '/auth/validate_token',
 			signOutUrl:              '/auth/sign_out',
-			emailRegistrationPath:   '/auth',
+			emailRegistrationPath:   '/users',
 			accountUpdatePath:       '/users',
 			accountDeletePath:       '/auth',
 			confirmationSuccessUrl:  window.location.href,

@@ -38,6 +38,7 @@
 
 
         vm.saveEdit = saveEdit;
+		vm.deleteAccount = deleteAccount;
 		vm.matchNewPassword = matchNewPassword;
 
 		/////////////////
@@ -71,6 +72,14 @@
 			}
 
         }
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 */
+		function deleteAccount(){
+			authService.deleteAccount();
+		}
 
 		/**
 		 * This function checks if old password is correct with a call to authService
