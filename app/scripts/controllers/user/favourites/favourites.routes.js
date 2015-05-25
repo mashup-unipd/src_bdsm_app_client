@@ -36,7 +36,7 @@
                                 'bower_components/angular-chart.js/dist/angular-chart.css'
                             ]
                         }),
-                            $ocLazyLoad.load({
+							$ocLazyLoad.load({
                                 name:'app',
                                 files:['scripts/controllers/user/favourites/favourites.ctrl.js']
                             });
