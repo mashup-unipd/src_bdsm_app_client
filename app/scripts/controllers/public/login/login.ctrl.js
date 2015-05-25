@@ -38,6 +38,7 @@
 
 	  /**
 	   * This function check if the User credentials it's correct
+	   * TODO (test): should execute going to success, credentials must be empty
 	   * @param cred : object with credentials about User that want login in the system
 	   */
 	  function login( cred ){

@@ -26,11 +26,18 @@
 
         var vm = this;
 
-        var getRestServices= function(){
-            return ApiDocsModel;
-        };
+		vm.restServices = getRestServices();
 
-        vm.restServices = getRestServices();
+
+		/**
+		 * TODO (test): should attribute restServices must be not empty and has a determinate format
+		 * @returns {*}
+		 */
+        function getRestServices(){
+            return ApiDocsModel;
+        }
+
+
 
     };
 

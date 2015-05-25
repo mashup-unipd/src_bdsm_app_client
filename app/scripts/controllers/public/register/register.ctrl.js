@@ -43,6 +43,7 @@
 
 	  /**
 	   * This function check the value passed and call Auth service to register a new User
+	   * TODO (test):
 	   * @param cred : credentials insert by a User not authenticated
 	   */
 	  function register( cred ){
