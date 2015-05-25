@@ -31,7 +31,6 @@
 		var factory = {
 			getRecipesList: getRecipesList,
 			getMetricsList: getMetricsList,
-			getMetricsListType: getMetricsListType,
 			getMetricType: getMetricType,
 			createRecipeRequest: createRecipeRequest,
 			getMetricTypeNode: getMetricTypeNode
@@ -67,7 +66,7 @@
 
 		}
 
-		
+
 		/**
 		 * This function retries all metrics type
 		 * TODO (test):
