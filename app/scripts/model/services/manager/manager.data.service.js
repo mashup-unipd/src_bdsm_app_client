@@ -62,7 +62,7 @@
 					.then(function(data){
 						// create an object with 'items' property because in the controller we return a promise that use 'items' to read data
 						var arrayData = {
-							items: data.items
+							items: data
 						};
 						// set new entry in localStorage to save data returned from a http call
 						setLocalItem('data/' + restCall, arrayData);
@@ -83,7 +83,7 @@
 						.then(function(data){
 							// create an object with 'items' property because in the controller we return a promise that use 'items' to read data
 							var arrayData = {
-								items: data.items
+								items: data
 							};
 							// set new entry in localStorage to save data returned from a http call
 							setLocalItem('data/' + restCall, arrayData);
@@ -92,7 +92,7 @@
 
                 } else {
 					// local data is valid and returns it as a promise
-                    apiCallPromise = $q.when(localCallData);
+                    apiCallPromise = $q.when(localCallData.items);
                 }
             }
 

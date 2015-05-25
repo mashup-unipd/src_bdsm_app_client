@@ -32,8 +32,8 @@
 
                             <tbody>
                                 <tr data-ng-repeat="metric in mc.metrics">
-                                    <td data-ng-if="metric.category === type.key" data-ng-bind="metric.name"></td>
-                                    <td data-ng-if="metric.category === type.key" data-ng-bind="metric.type_category"></td>
+                                    <td data-ng-if="metric.category === type.key" data-ng-bind="metric.id"></td>
+                                    <td data-ng-if="metric.category === type.key" data-ng-bind="metric.category_type"></td>
                                     <td data-ng-if="metric.category === type.key">
                                         <button class="btn btn-primary" data-ui-sref="dashboard.charts">Show charts</button>
                                     </td>

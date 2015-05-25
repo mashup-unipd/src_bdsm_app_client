@@ -28,7 +28,8 @@
 
 		vm.titleRecipe = $stateParams.title;
 		vm.metricsType = getMetricTypes();
-        vm.metrics = getMetricsList();
+        vm.metrics = [];
+		getMetricsList();
 
 
 		////////////////
@@ -48,7 +49,13 @@
 		 * @returns {*}
 		 */
 		function getMetricsList(){
-			return recipeService.getMetricsList(42)
+			recipeService.getMetricsList($stateParams.title)
+				.then(function(data){
+					var arrayMetrics = data.metrics;
+					arrayMetrics.forEach(function(element){
+						vm.metrics.push(element);
+					});
+				});
 		}
 
 

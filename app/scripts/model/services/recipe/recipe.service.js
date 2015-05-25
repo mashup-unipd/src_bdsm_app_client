@@ -59,46 +59,11 @@
 		 */
 		function getMetricsList( idRecipe ){
 
-			var metricsList = [
-				{
-					category: 'facebook',
-					name: 'NikeOfficial',
-					type_category: 'page'
-				},
-				{
-					category: 'facebook',
-					name: 'NikeStore',
-					type_category: 'page'
-				},
-				{
-					category: 'facebook',
-					name: 'OpenStoreBarcelona',
-					type_category: 'event'
-				},
-				{
-					category: 'twitter',
-					name: '#gonike',
-					type_category: 'hashtag'
-				},
-				{
-					category: 'twitter',
-					name: 'nike',
-					type_category: 'page'
-				},
-				{
-					category: 'instagram',
-					name: '#playnike',
-					type_category: 'hashtag'
-				},
-				{
-					category: 'instagram',
-					name: 'nike_official',
-					type_category: 'page'
-				}
+			var idRecipeStrip = String(idRecipe);
+			idRecipeStrip.replace(/\s+/g, '%20');
 
-			];
+			return dataManagerService.getRestCall('recipes/' + idRecipeStrip);
 
-			return metricsList;
 		}
 
 		/**
