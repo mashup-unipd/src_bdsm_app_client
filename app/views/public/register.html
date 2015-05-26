@@ -60,11 +60,12 @@
               </div>
           </div> <!-- end input confirm password -->
 
+            <!-- View messages of error or success -->
             <div class="help-block text-danger has-error" data-ng-if="rc.matchPwd">
                 <p class="text-danger has-error">The password doesn't match.</p>
             </div>
 
-            <div class="help-block text-success" data-ng-if="rc.registerSuccess">
+            <div class="help-block text-success has-success" data-ng-if="rc.registerSuccess">
                 Successful register operation. You should go to <a data-ui-sref="login">login page</a> to access in the system.
             </div>
 
