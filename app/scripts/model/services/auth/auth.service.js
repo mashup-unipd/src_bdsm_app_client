@@ -41,20 +41,33 @@
 
 		/**
 		 * TODO
+		 * TODO (test):
 		 * @param credentials
 		 */
 		function login( credentials ){
-			// TODO: use ng-auth
-			// example: $auth.submitLogin();
 
-			if (credentials.email === 'info@mashup-unipd.it' && credentials.pwd === 'pwd'){
-				$location.path('/recipe');
-			}
+			var loginCallPromise = $auth.submitLogin(credentials);
+
+			loginCallPromise
+				.then(function(resp){
+						console.log(resp);
+						// TODO: change
+						if (resp.oauth_token !== undefined){
+							$location.path('/recipe');
+						}
+
+				})
+				.catch(function(resp){
+
+				});
+
+			return loginCallPromise;
 
 		}
 
 		/**
 		 * TODO
+		 * TODO (test):
 		 * @param credentials
 		 */
 		function register( credentials ){
@@ -73,6 +86,7 @@
 
 		/**
 		 * TODO
+		 * TODO (test):
 		 */
 		function isLogged(){
 			// TODO: use ng-auth

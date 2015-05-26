@@ -10,6 +10,8 @@
 	 * ==========================================================
 	 * 0.0.1    2015-05-13  Tesser Paolo    code module
 	 * -----------------------------------------------------------
+	 * 0.0.2	2015-05-18	Tesser Paolo	change handleLoginResponse (rmeove .data)
+	 * -----------------------------------------------------------
 	 *
 	 */
 
@@ -28,7 +30,7 @@
 		$authProvider.configure({
 			apiUrl:                  'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0',
 			tokenValidationPath:     '/auth/validate_token',
-			signOutUrl:              '/auth/sign_out',
+			signOutUrl:              '/oauth/logout',
 			emailRegistrationPath:   '/users',
 			accountUpdatePath:       '/users',
 			accountDeletePath:       '/auth',
@@ -36,8 +38,8 @@
 			passwordResetPath:       '/auth/password',
 			passwordUpdatePath:      '/auth/password',
 			passwordResetSuccessUrl: window.location.href,
-			emailSignInPath:         '/auth/sign_in',
-			storage:                 'cookies',
+			emailSignInPath:         '/oauth/login',
+			storage:                 'cookies', // localStorage
 			proxyIf:                 function() { return false; },
 			proxyUrl:                '/proxy',
 			authProviderPaths: {
@@ -57,7 +59,7 @@
 				return (parseInt(headers['expiry']) * 1000) || null;
 			},
 			handleLoginResponse: function(response) {
-				return response.data;
+				return response;
 			},
 			handleAccountResponse: function(response) {
 				return response.data;

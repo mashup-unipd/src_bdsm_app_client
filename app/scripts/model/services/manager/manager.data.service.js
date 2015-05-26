@@ -22,7 +22,7 @@
      */
 
 
-    function dataManagerService($http, $q, localStorageService){
+    function dataManagerService($http, $q, localStorageService, api){
 
         var factory = {
             getRestCall: getRestCall,
@@ -43,8 +43,8 @@
 		 */
         function getRestCall( restCall ){
 
-			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
-			var url = basePath + restCall; // url to use to call back-end API in $http
+			// var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
+			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
 
 			// search and take entry if it's setted from localStorageService
             var restTime = getLocalItem('time/' + restCall);
@@ -107,8 +107,8 @@
 		 * @return {*} : promise that will be solve when request going to success or reject
 		 */
 		function postRestCall(restCall, value){
-			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
-			var url = basePath + restCall; // url to use to call back-end API in $http
+			// var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
+			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
 			var apiCallPromise;
 			// here in then status of a promise, we must edit or delete the element from the datastore
 
@@ -137,8 +137,8 @@
 		 * @param value
 		 */
 		function putRestCall(restCall, value){
-			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
-			var url = basePath + restCall; // url to use to call back-end API in $http
+			// var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
+			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
 
 			console.log(url);
 		}
@@ -149,8 +149,8 @@
 		 * @param value
 		 */
 		function deleteRestCall(restCall, value){
-			var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
-			var url = basePath + restCall; // url to use to call back-end API in $http
+			// var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
+			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
 
 			console.log(url);
 		}
@@ -244,7 +244,7 @@
 
 
 
-    dataManagerService.$inject = ['$http', '$q', 'localStorageService'];
+    dataManagerService.$inject = ['$http', '$q', 'localStorageService', 'api'];
 
     angular
         .module('app.manager.data.services.module')

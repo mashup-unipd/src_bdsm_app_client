@@ -43,7 +43,13 @@
 	   */
 	  function login( cred ){
 		  // TODO: set User if credentials are correct
-		  authService.login(cred);
+		  authService.login(cred)
+			  .then(function(resp){
+
+			  })
+			  .catch(function(resp){
+
+			  });
 	  }
 
   };

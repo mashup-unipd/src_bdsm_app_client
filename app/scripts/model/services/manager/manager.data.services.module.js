@@ -19,6 +19,8 @@
 	angular
 		.module('app.manager.data.services.module', [
 
-		]);
-
+		])
+		.constant('api', {
+			API_BASE: 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/'
+		})
 })();
