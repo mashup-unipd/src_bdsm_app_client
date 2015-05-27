@@ -54,7 +54,7 @@
 		  if (checkMatchPwd(cred.pwd, cred.pwd_repeat)){
 
 			  authService.register(cred)
-				  .then(function(resp){
+				  .then(function(){
 					  vm.registerSuccess = true;
 					  // reset values in the form's fields
 					  vm.credentials = {
@@ -64,12 +64,9 @@
 						  pwd_repeat: ''
 					  };
 
-					  console.log('Successfull register: ' + resp);
-
 				  })
-				  .catch(function(resp){
+				  .catch(function(){
 					  vm.registerError = true;
-					  console.log('Successfull register: ' + resp);
 				  });
 		  } else {
 			  vm.matchPwd = true;

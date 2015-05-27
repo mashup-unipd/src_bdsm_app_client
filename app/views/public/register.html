@@ -9,17 +9,17 @@
         <!-- RegisterCtrl -->
         <form name="registerForm" method="post" data-ng-controller="RegisterCtrl as rc" data-ng-submit="rc.register( rc.credentials )"> <!-- form login -->
 
-          <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.userName.$invalid && registerForm.userName.$dirty }"> <!-- input username -->
+          <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.userName.$invalid && registerForm.userName.$dirty && !rc.registerSuccess}"> <!-- input username -->
             <label class="sr-only" for="input-username" lang="en">User name</label>
             <input id="input-username" class="form-control input-lg" type="text" name="userName" data-ng-model="rc.credentials.username" placeholder="Username" required autofocus>
             <span class="glyphicon glyphicon-user form-control-feedback" title="icon of a face to identify the user"></span>
 
-            <div class="help-block text-danger" data-ng-if="registerForm.userName.$invalid && registerForm.userName.$dirty" data-ng-messages="registerForm.userName.$error">
+            <div class="help-block text-danger" data-ng-if="registerForm.userName.$invalid && registerForm.userName.$dirty && !rc.registerSuccess" data-ng-messages="registerForm.userName.$error">
               <div data-ng-message="required">You have to insert the username</div>
             </div>
           </div> <!-- end input username -->
 
-          <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.email.$invalid && registerForm.email.$dirty }"> <!-- input email --> <!-- TODO: controllo sui campi non funzionante -->
+          <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.email.$invalid && registerForm.email.$dirty && !rc.registerSuccess}"> <!-- input email --> <!-- TODO: controllo sui campi non funzionante -->
             <label class="sr-only" for="input-email" lang="en">Email</label>
             <input class="form-control input-lg" id="input-email" name="email" type="email"
                    data-ng-model="rc.credentials.email" data-ng-pattern="/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/"
@@ -27,7 +27,7 @@
 
             <span class="glyphicon glyphicon-envelope form-control-feedback" title="envelope icon"></span>
 
-            <div class="help-block text-danger" data-ng-if="registerForm.email.$invalid && registerForm.email.$dirty"
+            <div class="help-block text-danger" data-ng-if="registerForm.email.$invalid && registerForm.email.$dirty && !rc.registerSuccess"
 
                  data-ng-messages="registerForm.email.$error">
               <div data-ng-message="required">The email address is required.</div>
@@ -36,26 +36,26 @@
           </div> <!-- end input email -->
 
 
-          <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.password.$invalid && registerForm.password.$dirty }"> <!-- input password -->
+          <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.password.$invalid && registerForm.password.$dirty && !rc.registerSuccess }"> <!-- input password -->
             <label class="sr-only" for="input-pwd" lang="en">Password</label>
             <input class="form-control input-lg" id="input-pwd" name="password" type="password"
                    data-ng-model="rc.credentials.pwd" placeholder="Password"
                    required autofocus>
             <span class="ti-key form-control-feedback" title="key icon"></span>
 
-            <div class="help-block text-danger" data-ng-if="registerForm.password.$dirty" data-ng-messages="registerForm.password.$error">
+            <div class="help-block text-danger" data-ng-if="registerForm.password.$dirty && !rc.registerSuccess" data-ng-messages="registerForm.password.$error">
               <div data-ng-message="required">The password is required.</div>
             </div>
           </div> <!-- end input password -->
 
-          <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.confirmPassword.$invalid && registerForm.confirmPassword.$dirty }"> <!-- input confirm password -->
+          <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.confirmPassword.$invalid && registerForm.confirmPassword.$dirty && !rc.registerSuccess }"> <!-- input confirm password -->
             <label class="sr-only" for="input-confirm-pwd">Confirm password</label>
             <input id="input-confirm-pwd" class="form-control input-lg" type="password" name="confirmPassword"
                    data-ng-model="rc.credentials.pwd_repeat" placeholder="Confirm Password"
                    required autofocus>
             <span class="ti-key form-control-feedback" title="key icon"></span>
 
-              <div class="help-block text-danger" data-ng-if="registerForm.confirmPassword.$dirty" data-ng-messages="registerForm.confirmPassword.$error">
+              <div class="help-block text-danger" data-ng-if="registerForm.confirmPassword.$dirty && !rc.registerSuccess" data-ng-messages="registerForm.confirmPassword.$error">
                   <div data-ng-message="required">The confirm password is required.</div>
               </div>
           </div> <!-- end input confirm password -->
@@ -66,11 +66,11 @@
             </div>
 
             <div class="help-block text-success has-success" data-ng-if="rc.registerSuccess">
-                <p>Successful register operation. You should go to <a data-ui-sref="login">login page</a> to access in the system.</p>
+                <p class="bg-success">Successful register operation. You should go to <a data-ui-sref="login">login page</a> to access in the system.</p>
             </div>
 
             <div class="help-block text-success has-error" data-ng-if="rc.registerError">
-                <p>Error during register operation.</p>
+                <p class="bg-error">Error during register operation.</p>
             </div>
 
           <button type="submit" data-ng-disabled="registerForm.$invalid" class="btn btn-lg btn-block btn-success">Register</button>

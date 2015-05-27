@@ -54,7 +54,7 @@
 
 			loginCallPromise
 				.then(function(resp){
-						console.log(resp);
+
 						// TODO: change
 						if (resp.oauth_token !== undefined){
 							// save some account's information

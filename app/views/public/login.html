@@ -23,6 +23,10 @@
             <span class="ti-key form-control-feedback" title="key icon"></span>
           </div> <!-- end input password -->
 
+            <div class="help-block text-danger has-error" data-ng-if="lc.loginError">
+                <p class="bg-danger">Fail login operation.</p>
+            </div>
+
           <button type="submit" data-ng-disabled="loginForm.$invalid" class="btn btn-lg btn-block btn-success" lang="en">
               Log in
           </button>

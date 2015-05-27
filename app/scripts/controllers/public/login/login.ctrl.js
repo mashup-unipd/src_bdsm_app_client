@@ -12,6 +12,8 @@
    * ==========================================================
    * 0.0.1    2015-04-04  Tesser Paolo    code module
    * -----------------------------------------------------------
+   * 0.0.2	  2015-05-10  Tesser Paolo	  insert real function for login operation
+   * -----------------------------------------------------------
    *
    */
 
@@ -31,6 +33,7 @@
       	email: '',
       	pwd: ''
 	  };
+	  vm.loginError = false;
 
 	  vm.login = login;
 
@@ -45,10 +48,10 @@
 		  // TODO: set User if credentials are correct
 		  authService.login(cred)
 			  .then(function(resp){
-
+				  vm.loginError = (resp.oauth_token === undefined);
 			  })
-			  .catch(function(resp){
-
+			  .catch(function(){
+				  vm.loginError = true;
 			  });
 	  }
 
