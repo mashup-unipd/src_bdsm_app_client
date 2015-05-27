@@ -48,7 +48,15 @@
 		  // TODO: set User if credentials are correct
 		  authService.login(cred)
 			  .then(function(resp){
-				  vm.loginError = (resp.oauth_token === undefined);
+				  if (resp.oauth_token === undefined){
+					vm.loginError = true;
+				  } else {
+					  vm.credentials = {
+						  email: '',
+						  pwd: ''
+					  };
+				  }
+
 			  })
 			  .catch(function(){
 				  vm.loginError = true;

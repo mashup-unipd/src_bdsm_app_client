@@ -81,7 +81,7 @@ describe('Controller: RegisterCtrl', function() {
 			confirmPwd: 'GruppoSWE2014'
 		};
 
-		console.log(cred);
+		// console.log(cred);
 
 		// TODO: not test location because it's prefers test it in e2e, but if return true to an API call
 
@@ -105,7 +105,7 @@ describe('Controller: RegisterCtrl', function() {
 			}
 		];
 
-		console.log(invalidCred);
+		// console.log(invalidCred);
 
 
 	});

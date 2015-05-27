@@ -39,7 +39,7 @@
 			passwordUpdatePath:      '/auth/password',
 			passwordResetSuccessUrl: window.location.href,
 			emailSignInPath:         '/oauth/login',
-			storage:                 'cookies', // localStorage
+			storage:                 'localStorage', // cookies
 			proxyIf:                 function() { return false; },
 			proxyUrl:                '/proxy',
 			authProviderPaths: {
