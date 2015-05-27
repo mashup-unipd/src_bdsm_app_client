@@ -1,4 +1,4 @@
-<ul class="nav navbar-top-links navbar-right">
+<ul class="nav navbar-top-links navbar-right" data-ng-controller="HeaderNotificationCtrl as nnc">
     <!-- /.dropdown -->
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown">
@@ -15,7 +15,7 @@
             <li class="divider"></li>
 
             <li>
-                <a data-ui-sref="login"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                <a class="pointer" data-ng-click="nnc.logout()"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
             </li>
         </ul>
         <!-- /.dropdown-user -->

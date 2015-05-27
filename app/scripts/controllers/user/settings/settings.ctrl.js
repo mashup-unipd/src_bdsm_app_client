@@ -29,8 +29,8 @@
         var vm = this;
 
 		vm.settings = {
-			username: 'mashup',
-			email: 'info@mashup-unipd.it',
+			username: authService.getAccountInformation().username,
+			email: authService.getAccountInformation().email,
 			oldPassword: '',
 			newPassword: '',
 			confirmNewPassword: ''
@@ -45,8 +45,8 @@
 
 		// store values before something change, to check then if User done a modifies
 		var oldSettings = {
-			username: 'mashup',
-			email: 'info@mashup-unipd.it',
+			username: authService.getAccountInformation().username,
+			email: authService.getAccountInformation().email,
 			oldPassword: '',
 			newPassword: '',
 			confirmNewPassword: ''

@@ -12,6 +12,8 @@
 	 * ==========================================================
 	 * 0.0.1    2015-05-13  Tesser Paolo    code module
 	 * -----------------------------------------------------------
+	 * 0.0.2	2015-05-18	Tesser Paolo	add logout method
+	 * -----------------------------------------------------------
 	 *
 	 */
 
@@ -24,15 +26,17 @@
 	 */
 
 
-	function authService($location, $auth){
+	function authService($location, $auth, localStorageService){
 
 		// use module reveal pattern when it's not necessary update primitive values
 		var factory = {
 			login: login,
+			logout: logout,
 			register: register,
 			deleteAccount: deleteAccount,
 			isLogged: isLogged,
-			updateSettingsAccount: updateSettingsAccount
+			updateSettingsAccount: updateSettingsAccount,
+			getAccountInformation: getAccountInformation
 		};
 
 		return factory;
@@ -53,6 +57,9 @@
 						console.log(resp);
 						// TODO: change
 						if (resp.oauth_token !== undefined){
+							// save some account's information
+							localStorageService.set('cred', resp);
+							// redirect to Home page
 							$location.path('/recipe');
 						}
 
@@ -78,7 +85,10 @@
 
 		}
 
-
+		/**
+		 * TODO
+		 * TODO (test)
+		 */
 		function deleteAccount(){
 			console.log('Deleted');
 			$location.path('/login');
@@ -101,9 +111,28 @@
 			// $auth.updateAccount(credToChange);
 		}
 
+
+		/**
+		 *
+		 * @returns {*}
+		 */
+		function getAccountInformation(){
+			return localStorageService.get('cred');
+		}
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 */
+		function logout(){
+			// remove all data from localStorage when something exit to the system
+			localStorageService.clearAll();
+			$location.path('/login');
+		}
+
 	}
 
-	authService.$inject = ['$location', '$auth'];
+	authService.$inject = ['$location', '$auth', 'localStorageService'];
 
 	angular
 		.module('app.auth.services.module')

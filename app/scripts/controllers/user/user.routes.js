@@ -37,6 +37,7 @@
 									'scripts/controllers/user/menu_second/menu-second.ctrl.js',
                                     'scripts/directives/header/header.js',
                                     'scripts/directives/header/header-notification/header-notification.js',
+									'scripts/directives/header/header-notification/header-notification.ctrl.js',
                                     'scripts/directives/sidebar/sidebar.js',
                                     'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
                                 ]
