@@ -29,6 +29,8 @@
         var vm = this;
 
 		vm.listRecipes = [];
+
+		// immediatly invoke to retry all Recipes from the database
 		getListOfRecipes();
 
 
@@ -42,7 +44,6 @@
 
 			var listRecipes = recipeService.getRecipesList();
 
-			// it's a promise
 			listRecipes
 				.then(function(data){
 					var arrayUsers = data.items;

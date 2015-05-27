@@ -114,8 +114,7 @@
 			return newPwd === newConfirmPwd;
 		}
 
-
-		// TODO: function to check if user had modify some fields and so it's necessaty enabled save button
+		
     };
 
     SettingsCtrl.$inject = ['authService'];

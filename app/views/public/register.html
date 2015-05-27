@@ -14,7 +14,8 @@
             <input id="input-username" class="form-control input-lg" type="text" name="userName" data-ng-model="rc.credentials.username" placeholder="Username" required autofocus>
             <span class="glyphicon glyphicon-user form-control-feedback" title="icon of a face to identify the user"></span>
 
-            <div class="help-block text-danger" data-ng-if="registerForm.userName.$invalid && registerForm.userName.$dirty && !rc.registerSuccess" data-ng-messages="registerForm.userName.$error">
+            <div class="help-block text-danger"
+                 data-ng-if="registerForm.userName.$invalid && registerForm.userName.$dirty && !rc.registerSuccess" data-ng-messages="registerForm.userName.$error">
               <div data-ng-message="required">You have to insert the username</div>
             </div>
           </div> <!-- end input username -->
@@ -27,8 +28,8 @@
 
             <span class="glyphicon glyphicon-envelope form-control-feedback" title="envelope icon"></span>
 
-            <div class="help-block text-danger" data-ng-if="registerForm.email.$invalid && registerForm.email.$dirty && !rc.registerSuccess"
-
+            <div class="help-block text-danger"
+                 data-ng-if="registerForm.email.$invalid && registerForm.email.$dirty && !rc.registerSuccess"
                  data-ng-messages="registerForm.email.$error">
               <div data-ng-message="required">The email address is required.</div>
               <div data-ng-message="pattern">The email address is invalid.</div>
@@ -43,7 +44,8 @@
                    required autofocus>
             <span class="ti-key form-control-feedback" title="key icon"></span>
 
-            <div class="help-block text-danger" data-ng-if="registerForm.password.$dirty && !rc.registerSuccess" data-ng-messages="registerForm.password.$error">
+            <div class="help-block text-danger"
+                 data-ng-if="registerForm.password.$dirty && !rc.registerSuccess" data-ng-messages="registerForm.password.$error">
               <div data-ng-message="required">The password is required.</div>
             </div>
           </div> <!-- end input password -->
@@ -55,7 +57,8 @@
                    required autofocus>
             <span class="ti-key form-control-feedback" title="key icon"></span>
 
-              <div class="help-block text-danger" data-ng-if="registerForm.confirmPassword.$dirty && !rc.registerSuccess" data-ng-messages="registerForm.confirmPassword.$error">
+              <div class="help-block text-danger"
+                   data-ng-if="registerForm.confirmPassword.$dirty && !rc.registerSuccess" data-ng-messages="registerForm.confirmPassword.$error">
                   <div data-ng-message="required">The confirm password is required.</div>
               </div>
           </div> <!-- end input confirm password -->

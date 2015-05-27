@@ -14,6 +14,9 @@
      * -----------------------------------------------------------
      * 0.0.3	2015-05-13	Tesser Paolo	add MetricModel and use it to add metrics to a Recipe
 	 * -----------------------------------------------------------
+	 * 0.0.4	2015-05-28	Tesser Paolo	add function to remove a metric in the array, before insert it
+	 * -----------------------------------------------------------
+	 *
      */
 
 
@@ -49,6 +52,7 @@
         vm.insertRecipe = insertRecipe;
         vm.updateTypeMetric = updateTypeMetric;
 		vm.addMetric = addMetric;
+		vm.removeMetric = removeMetric;
 
 		///////////////////
 
@@ -126,7 +130,15 @@
 			}
 
 
+		}
 
+		/**
+		 * This function removes an added metric from the temporary array that contains all added metrics
+		 * TODO (test):
+		 * @param indexMetric
+		 */
+		function removeMetric(indexMetric){
+			vm.tempMetrics.splice(indexMetric, 1);
 		}
 
 		/**

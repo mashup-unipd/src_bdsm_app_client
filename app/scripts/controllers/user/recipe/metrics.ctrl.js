@@ -29,6 +29,8 @@
 		vm.titleRecipe = $stateParams.title;
 		vm.metricsType = getMetricTypes();
         vm.metrics = [];
+
+		// immediatly invoke to retry all Metrics for a determinate Recipe
 		getMetricsList();
 
 
@@ -49,6 +51,7 @@
 		 * @returns {*}
 		 */
 		function getMetricsList(){
+
 			recipeService.getMetricsList($stateParams.title)
 				.then(function(data){
 					var arrayMetrics = data.metrics;

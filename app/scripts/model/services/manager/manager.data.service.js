@@ -122,7 +122,7 @@
 					// remove local old from localStorage
 					removeLocalItem(key);
 					// add new value to the temporary array
-					tempVal.items.push(value);
+					tempVal.items.items.push(value);
 					// storage new temporary array in the localStorage
 					setLocalItem(key, tempVal);
 

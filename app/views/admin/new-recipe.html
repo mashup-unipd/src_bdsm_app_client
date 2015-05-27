@@ -102,9 +102,16 @@
 
                     <div class="row" id="metrics-add-list">
                         <div data-ng-repeat="metric in irc.tempMetrics">
+                            <p>Metrics added to the Recipe<p>
+                            <button class="btn" type="button"
+                                    data-ng-click="irc.removeMetric($index)">
+                                Remove metric
+                            </button>
+
                             <div class="table-responsive">
                                 <table class="table table-hover table-bordered">
-                                    <caption>Metric added to the Recipe</caption>
+                                    <caption class="sr-only">Metric added to the Recipe</caption>
+
                                     <thead>
                                     <tr>
                                         <th>Option</th>

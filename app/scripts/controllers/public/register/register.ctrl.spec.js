@@ -30,7 +30,7 @@ describe('Controller: RegisterCtrl', function() {
 			$rootScope = _$rootScope_;
 			$controller = _$controller_;
 			$location = _$location_; // not necessary
-			scope = $rootScope.$new()
+			scope = $rootScope.$new();
 		});
 	});
 

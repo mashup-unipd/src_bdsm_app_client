@@ -10,7 +10,7 @@
 	 * ==========================================================
 	 * 0.0.1    2015-05-13  Tesser Paolo    code module
 	 * -----------------------------------------------------------
-	 * 0.0.2	2015-05-18	Tesser Paolo	change handleLoginResponse (rmeove .data)
+	 * 0.0.2	2015-05-18	Tesser Paolo	change handleLoginResponse (remove .data)
 	 * -----------------------------------------------------------
 	 *
 	 */
