@@ -10,12 +10,12 @@
  */
     var FavouritesCtrl = function(chartCreatorService){
     
-        var vm=this;
+        var vm = this;
 
-    vm.dynamicGraph=chartCreatorService.chartGeneration();
+    vm.dynamicGraph = chartCreatorService.chartGeneration();
 
-    vm.testName=vm.dynamicGraph.desc;
-    vm.testGraph=vm.dynamicGraph.data;
+    vm.testName = vm.dynamicGraph.desc;
+    vm.testGraph = vm.dynamicGraph.data;
 
     };
 

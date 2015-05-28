@@ -61,7 +61,7 @@
                                 }),
                             $ocLazyLoad.load(
                                 {
-                                    name:'ngResource',
+									name:'ngResource',
                                     files:['bower_components/angular-animate/angular-animate.js']
                                 }),
                             $ocLazyLoad.load(
@@ -70,11 +70,11 @@
                                     files:['bower_components/angular-sanitize/angular-sanitize.js']
                                 }),
 							$ocLazyLoad.load({
-								name:'chart.js',
-								files:[
-									'bower_components/angular-chart.js/dist/angular-chart.min.js',
-									'bower_components/angular-chart.js/dist/angular-chart.css'
-								]
+									name:'chart.js',
+									files:[
+										'bower_components/angular-chart.js/dist/angular-chart.min.js',
+										'bower_components/angular-chart.js/dist/angular-chart.css'
+									]
 							});
                     }
                 }

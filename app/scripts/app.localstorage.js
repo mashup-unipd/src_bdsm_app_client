@@ -27,4 +27,5 @@
 				.setStorageType('localStorage');
 		});
 
+
 })();
