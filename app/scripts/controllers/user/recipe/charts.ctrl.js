@@ -32,7 +32,7 @@
 		vm.cat = $stateParams.cat;
 		vm.type = $stateParams.type;
 
-		vm.getGraph=[chartCreatorService.chartGeneration(),chartCreatorService.chartGeneration()];
+		vm.getGraph=[chartCreatorService.chartGeneration()];
 
 
 
