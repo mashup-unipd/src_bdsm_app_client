@@ -68,7 +68,14 @@
                                 {
                                     name:'ngSanitize',
                                     files:['bower_components/angular-sanitize/angular-sanitize.js']
-                                });
+                                }),
+							$ocLazyLoad.load({
+								name:'chart.js',
+								files:[
+									'bower_components/angular-chart.js/dist/angular-chart.min.js',
+									'bower_components/angular-chart.js/dist/angular-chart.css'
+								]
+							});
                     }
                 }
             })
