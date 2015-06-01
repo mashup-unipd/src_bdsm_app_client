@@ -73,6 +73,12 @@ module.exports = function(config) {
       'karma-jasmine'
     ],
 
+	  // branch and statement coverage
+	  coverageReporter : {
+		  type: 'json',
+		  dir: 'coverage'
+	  },
+
     // Continuous Integration mode
     // if true, it capture browsers, run tests and exit
     singleRun: false,
@@ -90,4 +96,6 @@ module.exports = function(config) {
     // URL root prevent conflicts with the site root
     // urlRoot: '_karma_'
   });
+
+
 };
