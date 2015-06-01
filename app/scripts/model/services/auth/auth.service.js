@@ -137,11 +137,11 @@
 		 * TODO (test):
 		 */
 		function logout(){
-			// remove all data from localStorage when something exit to the system
+
 			$auth.signOut()
 
-				.then(function(resp) {
-					// handle success response
+				.then(function() {
+					// remove all data from localStorage when something exit to the system
 					localStorageService.clearAll();
 					$location.path('/login');
 				})
@@ -150,8 +150,6 @@
 					// handle error response
 				});
 
-			// localStorageService.clearAll();
-			// $location.path('/login');
 		}
 
 	}
