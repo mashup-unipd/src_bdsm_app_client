@@ -1,6 +1,8 @@
 <nav class="navbar navbar-default navbar-static-top"
-     role="navigation"
-     style="margin-bottom: 0">
+     data-role="navigation"
+     style="margin-bottom: 0"
+     data-ng-controller="HeaderCtrl as hc">
+
     <div class="navbar-header">
 
         <button type="button" data-ng-init="navCollapsed = true" data-ng-click="navCollapsed = !navCollapsed" class="navbar-toggle">
@@ -33,18 +35,18 @@
                     <a data-ui-sref="dashboard.recipe-request" data-ng-click="navCollapsed = true"><i class="fa fa-location-arrow fa-fw"></i> Recipe Request</a>
                 </li>
 
-                <li class="divider"></li>
+                <li class="divider" data-ng-if="hc.isAdmin"></li>
 
-                <li data-ui-sref-active="active">
+                <li data-ui-sref-active="active" data-ng-if="hc.isAdmin">
                     <a data-ui-sref="dashboard.new-recipe" data-ng-click="navCollapsed = true"><i class="fa fa-edit fa-fw"></i> New Recipe</a>
                 </li>
-                <li data-ui-sref-active="active">
+                <li data-ui-sref-active="active" data-ng-if="hc.isAdmin">
                     <a data-ui-sref="dashboard.request-list" data-ng-click="navCollapsed = true"><i class="fa fa-filter fa-fw"></i> List Request</a>
                 </li>
-                <li data-ui-sref-active="active">
+                <li data-ui-sref-active="active" data-ng-if="hc.isAdmin">
                     <a data-ui-sref="dashboard.ratings" data-ng-click="navCollapsed = true"><i class="fa fa-thumbs-o-up fa-fw"></i> Recipes Ratings</a>
                 </li>
-                <li data-ui-sref-active="active">
+                <li data-ui-sref-active="active" data-ng-if="hc.isAdmin">
                     <a data-ui-sref="dashboard.users-config" data-ng-click="navCollapsed = true"><i class="fa fa-users fa-fw"></i> Users Config</a>
                 </li>
             </ul>

@@ -47,9 +47,11 @@
 	  function login( cred ){
 		  // TODO: set User if credentials are correct
 		  authService.login(cred)
+
 			  .then(function(resp){
+
 				  if (resp.oauth_token === undefined){
-					vm.loginError = true;
+						vm.loginError = true;
 				  } else {
 					  vm.credentials = {
 						  email: '',
@@ -58,6 +60,7 @@
 				  }
 
 			  })
+
 			  .catch(function(){
 				  vm.loginError = true;
 			  });

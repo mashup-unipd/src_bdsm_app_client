@@ -27,7 +27,7 @@ describe('Controller: SettingsCtrl', function() {
 	});
 
 	beforeEach(function(){
-		angular.mock.inject(function (_$controller_, _$rootScope_,_authService_ ) {
+		angular.mock.inject(function (_$controller_, _$rootScope_, _authService_ ) {
 			$rootScope = _$rootScope_;
 			$controller = _$controller_;
 			scope = $rootScope.new();

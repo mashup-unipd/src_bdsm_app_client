@@ -35,6 +35,7 @@
 			register: register,
 			deleteAccount: deleteAccount,
 			isLogged: isLogged,
+			isAdmin: isAdmin,
 			updateSettingsAccount: updateSettingsAccount,
 			getAccountInformation: getAccountInformation
 		};
@@ -44,7 +45,7 @@
 		///////////////
 
 		/**
-		 * TODO
+		 * This function call ng-auth service to submit information about login operation
 		 * TODO (test):
 		 * @param credentials
 		 */
@@ -73,7 +74,7 @@
 		}
 
 		/**
-		 * TODO
+		 * This function call ng-auth service to submit information about registration operation
 		 * TODO (test):
 		 * @param credentials
 		 */
@@ -103,8 +104,18 @@
 			// example: $auth.validateUser();
 		}
 
+
+		/**
+		 *
+		 */
+		function isAdmin(){
+			return localStorageService.get('cred').permission === 'admin'
+
+		}
+
 		/**
 		 * TODO
+		 * TODO (test):
 		 * @param credToChange
 		 */
 		function updateSettingsAccount(credToChange){
@@ -113,7 +124,8 @@
 
 
 		/**
-		 *
+		 * This function retries user's account informations from localStorage
+		 * TODO (test):
 		 * @returns {*}
 		 */
 		function getAccountInformation(){
@@ -121,13 +133,25 @@
 		}
 
 		/**
-		 * TODO
+		 * This function call ng-auth service to remove cookies with access data and localStorage data created
 		 * TODO (test):
 		 */
 		function logout(){
 			// remove all data from localStorage when something exit to the system
-			localStorageService.clearAll();
-			$location.path('/login');
+			$auth.signOut()
+
+				.then(function(resp) {
+					// handle success response
+					localStorageService.clearAll();
+					$location.path('/login');
+				})
+
+				.catch(function(resp) {
+					// handle error response
+				});
+
+			// localStorageService.clearAll();
+			// $location.path('/login');
 		}
 
 	}

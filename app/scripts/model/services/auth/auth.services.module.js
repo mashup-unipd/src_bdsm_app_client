@@ -10,7 +10,7 @@
 	 * ==========================================================
 	 * 0.0.1    2015-05-13  Tesser Paolo    code module
 	 * -----------------------------------------------------------
-	 * 0.0.2	2015-05-18	Tesser Paolo	change handleLoginResponse (remove .data)
+	 * 0.0.2		2015-05-18	Tesser Paolo		change handleLoginResponse (remove .data)
 	 * -----------------------------------------------------------
 	 *
 	 */
@@ -39,7 +39,7 @@
 			passwordUpdatePath:      '/auth/password',
 			passwordResetSuccessUrl: window.location.href,
 			emailSignInPath:         '/oauth/login',
-			storage:                 'localStorage', // cookies
+			storage:                 'cookies', // localStorage
 			proxyIf:                 function() { return false; },
 			proxyUrl:                '/proxy',
 			authProviderPaths: {
