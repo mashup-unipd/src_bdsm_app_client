@@ -18,35 +18,36 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-        'bower_components/angular/angular.js',
-        'bower_components/angular-mocks/angular-mocks.js',
-        'bower_components/oclazyload/dist/ocLazyLoad.js',
-        'bower_components/angular-ui-router/release/angular-ui-router.js',
-        'bower_components/angular-bootstrap/ui-bootstrap.js',
-        'bower_components/angular-loading-bar/build/loading-bar.js',
-		'bower_components/angular-messages/angular-messages.js',
-        'bower_components/angular-animate/angular-animate.js',
-        'bower_components/angular-cookie/angular-cookie.js',
-        'bower_components/ng-token-auth/dist/ng-token-auth.js',
-        'bower_components/angular-cookies/angular-cookies.js',
-        'bower_components/angular-resource/angular-resource.js',
-        'bower_components/angular-route/angular-route.js',
-        'bower_components/angular-sanitize/angular-sanitize.js',
-		'bower_components/angular-local-storage/dist/angular-local-storage.js',
+			'bower_components/angular/angular.js',
+			'bower_components/angular-mocks/angular-mocks.js',
+			'bower_components/oclazyload/dist/ocLazyLoad.js',
+			'bower_components/angular-ui-router/release/angular-ui-router.js',
+			'bower_components/angular-bootstrap/ui-bootstrap.js',
+			'bower_components/angular-loading-bar/build/loading-bar.js',
+			'bower_components/angular-messages/angular-messages.js',
+			'bower_components/angular-animate/angular-animate.js',
+			'bower_components/angular-cookie/angular-cookie.js',
+			'bower_components/ng-token-auth/dist/ng-token-auth.js',
+			'bower_components/angular-cookies/angular-cookies.js',
+			'bower_components/angular-resource/angular-resource.js',
+			'bower_components/angular-route/angular-route.js',
+			'bower_components/angular-sanitize/angular-sanitize.js',
+			'bower_components/angular-local-storage/dist/angular-local-storage.js',
+			'bower_components/angular-google-chart/ng-google-chart.js',
 
 
-		// model data
-		'app/scripts/model/data/recipe/recipe.module.js',
-        'app/scripts/model/data/view_type/view-type.module.js',
-        'app/scripts/model/data/api_docs/api-docs.module.js',
-        // model services
-		'app/scripts/model/services/auth/auth.services.module.js',
-		'app/scripts/model/services/user/user.services.module.js',
-		'app/scripts/model/services/recipe/recipe.services.module.js',
-        'app/scripts/model/services/chart/chart.creator.services.module.js',
-		'app/scripts/model/services/manager/manager.data.services.module.js',
+			// model data
+			'app/scripts/model/data/recipe/recipe.module.js',
+			'app/scripts/model/data/view_type/view-type.module.js',
+			'app/scripts/model/data/api_docs/api-docs.module.js',
+       // model services
+			'app/scripts/model/services/auth/auth.services.module.js',
+			'app/scripts/model/services/user/user.services.module.js',
+			'app/scripts/model/services/recipe/recipe.services.module.js',
+			'app/scripts/model/services/chart/chart.creator.services.module.js',
+			'app/scripts/model/services/manager/manager.data.services.module.js',
 
-		'app/scripts/**/*.js'
+			'app/scripts/**/*.js'
     ],
 
     // list of files / patterns to exclude

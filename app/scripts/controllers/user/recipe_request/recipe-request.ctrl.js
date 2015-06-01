@@ -24,8 +24,7 @@
 
     var RecipeRequestCtrl = function () {
 
-        var vm = this;
-
+			var vm = this;
 
     };
 
