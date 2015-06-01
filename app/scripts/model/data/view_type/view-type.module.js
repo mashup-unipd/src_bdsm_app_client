@@ -2,7 +2,7 @@
 	'use strict';
 
 	/**
-	 * Name: app/scripts/model/data/recipe/recipe.module.js
+	 * Name: app/scripts/model/data/view_type/view-type.module.js
 	 * Author: MashUp
 	 * Mail. info@mashup-unipd.it
 	 *

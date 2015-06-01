@@ -116,7 +116,7 @@
 			}
 		];
 
-			return services;
+		return services;
 
 	}
 
