@@ -13,18 +13,14 @@
  *
  */
 
-// the keyword require returns an object, which references the value of module.exports for a given file
-var AngularLoginPage = require('./login.po.js');
+var AngularLoginPage = function(){
 
+	// TODO: variables that get element from page
 
+	this.get = function(){
+		browser.get('http://mashup-unipd.github.io');
+	}
 
-describe('Login interaction', function() {
+};
 
-    it('should check if redirect works with a correct input ', function() {
-		var angularLoginPage = new AngularLoginPage();
-		angularLoginPage.get();
-
-        /* TODO: refactor */
-
-    });
-});
+module.exports = AngularLoginPage;
