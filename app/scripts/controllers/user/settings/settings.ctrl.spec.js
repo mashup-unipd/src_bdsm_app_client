@@ -15,9 +15,9 @@
 
 describe('Controller: SettingsCtrl', function() {
 	'use strict';
-	/*
-	var $controller;
+
 	var $rootScope;
+	var $controller;
 	var scope;
 	var authService;
 
@@ -27,11 +27,12 @@ describe('Controller: SettingsCtrl', function() {
 	});
 
 	beforeEach(function(){
-		angular.mock.inject(function (_$controller_, _$rootScope_, _authService_ ) {
+		angular.mock.inject(function (_$rootScope_, _$controller_, _authService_ ) {
 			$rootScope = _$rootScope_;
 			$controller = _$controller_;
-			scope = $rootScope.new();
 			authService = _authService_;
+			scope = $rootScope.$new();
+
 		});
 	});
 
@@ -46,6 +47,6 @@ describe('Controller: SettingsCtrl', function() {
 		expect($controller('SettingsCtrl')).toBeDefined();
 	});
 
-	*/
+
 
 });

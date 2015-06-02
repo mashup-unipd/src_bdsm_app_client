@@ -74,38 +74,12 @@ describe('Controller: RegisterCtrl', function() {
 
 	it('should correct register return true', function(){
 
-		var cred = {
-			username: 'MashUp',
-			mail: 'info@mashup-unipd.it',
-			pwd: 'GruppoSWE2014',
-			confirmPwd: 'GruppoSWE2014'
-		};
-
-		// console.log(cred);
-
 		// TODO: not test location because it's prefers test it in e2e, but if return true to an API call
 
 	});
 
 	it ('should incorrect register return false', function(){
 		// TODO: like above test
-
-		var invalidCred = [
-			{
-				username: '',
-				mail: 'info@mashup-unipd.it',
-				pwd: 'GruppoSWE2014',
-				confirmPwd: 'GruppoSWE2014'
-			},
-			{
-				username: 'MashUp',
-				mail: '',
-				pwd: 'GruppoSWE2014',
-				confirmPwd: 'GruppoSWE2014'
-			}
-		];
-
-		// console.log(invalidCred);
 
 
 	});

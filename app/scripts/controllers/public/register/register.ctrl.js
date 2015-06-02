@@ -35,6 +35,7 @@
 		  pwd: '',
 		  pwd_repeat: ''
 	  };
+
 	  vm.matchPwd = false;
 	  vm.registerSuccess = false;
 	  vm.registerError = false;
@@ -54,8 +55,10 @@
 		  if (checkMatchPwd(cred.pwd, cred.pwd_repeat)){
 
 			  authService.register(cred)
-				  .then(function(){
+
+					.then(function(){
 					  vm.registerSuccess = true;
+
 					  // reset values in the form's fields
 					  vm.credentials = {
 						  username: '',
@@ -63,16 +66,17 @@
 						  pwd: '',
 						  pwd_repeat: ''
 					  };
+						vm.matchPwd = false;
 
 				  })
+
 				  .catch(function(){
 					  vm.registerError = true;
 				  });
-		  } else {
-			  vm.matchPwd = true;
+
 		  }
 
-    	}
+    }
 
 	  /**
 	   *
@@ -83,6 +87,8 @@
 	   * @returns {boolean} : true if pwd match confirmPwd, else false
 	   */
 	  function checkMatchPwd(pwd, confirmPwd){
+			// set to true bool if doesn't match
+			vm.matchPwd = pwd !== confirmPwd;
 		  return pwd === confirmPwd;
 	  }
 
