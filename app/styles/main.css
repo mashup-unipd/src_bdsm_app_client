@@ -317,12 +317,18 @@ h2 {
     /* ALL PAGE **********************/
     .noleftpad {
         padding-left: 0 !important;
-        padding-right: 15px; !important;
     }
 
     .norightpad {
         padding-right: 0 !important;
-        padding-left: 15px; !important;
+    }
+
+    .yesleftpad{
+        padding-left: 15px !important;
+    }
+
+    .yesrightpad{
+        padding-right: 15px !important;
     }
 
     /************************************/
