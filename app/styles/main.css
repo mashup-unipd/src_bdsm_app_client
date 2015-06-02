@@ -24,6 +24,10 @@
 * --------------------------------------------------------------
 * 0.0.11  2015-05-16  Tesser Paolo    insert class to manage padding inside main content
 * --------------------------------------------------------------
+* 1.0.1   2015-06-01  Tesser Paolo    insert class and media query for padding
+* --------------------------------------------------------------
+*
+*
 */
 
 /* NORMAL TAG ***********************/
@@ -168,7 +172,20 @@ h2 {
     margin-top: 0.3em;
 }
 
+.noleftpad {
+    padding-left: 0 !important;
+    padding-right: 0;
+}
+
+.norightpad {
+    padding-right: 0 !important;
+    padding-left: 0;
+}
+
+
+
 /************************************/
+
 
 /* FOOTER ***************************/
 /* Custom page footer */
@@ -242,34 +259,20 @@ h2 {
     text-align: center;
 }
 
-#recipe-container{
+#recipes-container{
     height: 180px;
-    padding: 1em;
+    padding: 0;
 }
 
-#recipe-container h1{
+#recipes-container h1{
     font-size: 1.3em;
 }
 
-#recipe-container h2{
+#recipes-container h2{
     font-size: 1em;
 }
 
-#recipe-container .noleftpad {
-    padding-left: 0 !important;
-}
 
-#recipe-container .norightpad {
-    padding-right: 0 !important;
-}
-/*
-#recipe-container
-    .col-sm-12
-{
-    padding-left: 0;
-    padding-right: 0;
-}
-*/
 /************************************/
 
 
@@ -280,17 +283,6 @@ h2 {
 
 #metrics-add-list{
     margin-top: 0.8em;
-}
-
-/************************************/
-
-/* METRICS PAGE *********************/
-#favourites-container div.noleftpad{
-    padding-left: 0;
-}
-
-#favourites-container div.norightpad{
-    padding-right: 0;
 }
 
 /************************************/
@@ -318,6 +310,24 @@ h2 {
 }
 
 /************************************/
+
+
+@media screen and (min-width: 1199px) {
+
+    /* ALL PAGE **********************/
+    .noleftpad {
+        padding-left: 0 !important;
+        padding-right: 15px; !important;
+    }
+
+    .norightpad {
+        padding-right: 0 !important;
+        padding-left: 15px; !important;
+    }
+
+    /************************************/
+
+}
 
 
 @media screen and (min-width: 992px) {
@@ -401,13 +411,7 @@ h2 {
 
 
     /* RECIPE PAGE *****************/
-    #recipe-container .noleftpad {
-        padding-left: 0 !important;
-    }
 
-    #recipe-container .norightpad {
-        padding-right: 0 !important;
-    }
     /************************************/
 
 

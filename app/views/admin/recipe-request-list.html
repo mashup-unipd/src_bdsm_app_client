@@ -22,24 +22,55 @@
     <div class="row">
 
         <div data-ng-repeat="request in rlc.requestList">
-            <div class="col-lg-6 col-sm-12" >
-                <div class="panel panel-default">
-                    <div class="panel-heading" data-ng-bind="request.titleRecipe"></div>
-                    <div class="panel-body">
-                        <p>Request from: <span data-ng-bind="request.emailUser"></span></p>
-                        <p data-ng-bind="request.descRecipe"></p>
-                        <div class="col-xs-12 col-md-4">
-                            <button class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> See Details</button>
-                        </div>
-                        <div class="col-xs-12 col-md-4">
-                            <button class="btn btn-primary" data-ng-click="rlc.discardRequest(request.idRequestRecipe)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Discard</button>
-                        </div>
-                        <div class="col-xs-12 col-md-4">
-                            <button class="btn btn-primary" data-ng-click="rlc.approvedRequest(request.idRequestRecipe)"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Approve</button>
+
+            <!-- TODO: insert a row each two recipe -->
+            <div data-ng-switch="$index % 2 == 0">
+
+                <div data-ng-switch-when="false">
+                    <div class="col-lg-6 col-sm-12 norightpad">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" data-ng-bind="request.titleRecipe"></div>
+                            <div class="panel-body">
+                                <p>Request from: <span data-ng-bind="request.emailUser"></span></p>
+                                <p data-ng-bind="request.descRecipe"></p>
+                                <div class="col-xs-12 col-md-4">
+                                    <button class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> See Details</button>
+                                </div>
+                                <div class="col-xs-12 col-md-4">
+                                    <button class="btn btn-primary" data-ng-click="rlc.discardRequest(request.idRequestRecipe)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Discard</button>
+                                </div>
+                                <div class="col-xs-12 col-md-4">
+                                    <button class="btn btn-primary" data-ng-click="rlc.approvedRequest(request.idRequestRecipe)"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Approve</button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <div data-ng-switch-when="true">
+                    <div class="col-lg-6 col-sm-12 noleftpad">
+                        <div class="panel panel-default">
+                            <div class="panel-heading" data-ng-bind="request.titleRecipe"></div>
+                            <div class="panel-body">
+                                <p>Request from: <span data-ng-bind="request.emailUser"></span></p>
+                                <p data-ng-bind="request.descRecipe"></p>
+                                <div class="col-xs-12 col-md-4">
+                                    <button class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> See Details</button>
+                                </div>
+                                <div class="col-xs-12 col-md-4">
+                                    <button class="btn btn-primary" data-ng-click="rlc.discardRequest(request.idRequestRecipe)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Discard</button>
+                                </div>
+                                <div class="col-xs-12 col-md-4">
+                                    <button class="btn btn-primary" data-ng-click="rlc.approvedRequest(request.idRequestRecipe)"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Approve</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
+
         </div>
 
     </div> <!-- ./row -->

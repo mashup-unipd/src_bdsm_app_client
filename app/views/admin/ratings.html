@@ -21,19 +21,42 @@
     </div>
 
     <div class="row">
-    <div class="col-lg-6 col-sm-12" data-ng-repeat="list in rc.listRecipes">
+    <div data-ng-repeat="list in rc.listRecipes">
+        <!-- TODO: insert a row each two recipe -->
+        <div data-ng-switch="$index % 2 == 0">
 
-        <div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <span data-ng-bind="list.titleRecipe"></span>
-                    <span class="label label-primary pull-right" data-ng-bind="list.ratings">{{list.ratings}}</span>
-                </div>
-                <div class="panel-body">
-                    <p data-ng-bind="list.descRecipe"></p>
+            <div data-ng-switch-when="false">
+                <div class="col-lg-6 col-sm-12 norightpad">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span data-ng-bind="list.titleRecipe"></span>
+                            <span class="label label-primary pull-right" data-ng-bind="list.ratings">{{list.ratings}}</span>
+                        </div>
+                        <div class="panel-body">
+                            <p data-ng-bind="list.descRecipe"></p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <div data-ng-switch-when="true">
+                <div class="noleftpad col-lg-6 col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <span data-ng-bind="list.titleRecipe"></span>
+                            <span class="label label-primary pull-right" data-ng-bind="list.ratings">{{list.ratings}}</span>
+                        </div>
+                        <div class="panel-body">
+                            <p data-ng-bind="list.descRecipe"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
         </div>
+
+
 
     </div>
     </div>
