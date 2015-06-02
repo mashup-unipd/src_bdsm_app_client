@@ -16,22 +16,47 @@
 describe('Controller: ApiDocsCtrl', function() {
 	'use strict';
 
-	var $controller;
+	var $rootScope = undefined;
+	var $controller = undefined;
+	var scope = undefined;
+	var ApiDocsModel = undefined;
 
 	beforeEach(function () {
 
+		// angular.mock.module('app.api-docs.data.module');
 		angular.mock.module('app');
 
-		angular.mock.inject(function (_$controller_) {
 
-			$controller = _$controller_('ApiDocsCtrl');
+		angular.mock.inject(function (_$rootScope_, _$controller_, _ApiDocsModel_) {
+
+
+			ApiDocsModel = _ApiDocsModel_;
+
+			$rootScope = _$rootScope_;
+			$controller = _$controller_;
+			scope = $rootScope.$new();
 
 		});
 	});
 
-	it('should have a ApiDocsCtrl controller', function () {
-		expect($controller).toBeDefined();
+	beforeEach(function(){
+		$controller('ApiDocsCtrl as adc', {
+			$scope: scope,
+			ApiDocsModel: ApiDocsModel
+		});
 	});
 
+
+	it('should have a ApiDocsCtrl controller', function () {
+		expect($controller('ApiDocsCtrl')).toBeDefined();
+	});
+
+	it('should length of the public API\'s list is ', function(){
+		// TODO
+	});
+
+	it('should objects in the list have a determinate format', function(){
+		// TODO
+	});
 
 });

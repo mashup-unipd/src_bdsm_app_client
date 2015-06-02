@@ -19,19 +19,14 @@ describe('Controller: SettingsCtrl', function() {
 	var $rootScope = undefined;
 	var $controller = undefined;
 	var scope = undefined;
-
 	var authService = undefined;
 
 
 
 	beforeEach(function () {
-
 		angular.mock.module('app.auth.services.module');
 		angular.mock.module('app');
-
 	});
-
-
 
 	beforeEach(function(){
 		angular.mock.inject(function (_$rootScope_, _$controller_, _authService_) {
@@ -60,10 +55,11 @@ describe('Controller: SettingsCtrl', function() {
 		});
 	});
 
+
+
 	it('should have a SettingsCtrl controller', function () {
 		expect($controller('SettingsCtrl')).toBeDefined();
 	});
-
 
 	it('should new password and confirm new password match', function(){
 
