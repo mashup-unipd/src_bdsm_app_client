@@ -27,8 +27,10 @@
 	var SettingsCtrl = function (authService) {
 
 		var vm = this;
-		var username = authService.getAccountInformation().username;
-		var email = authService.getAccountInformation().email;
+
+		var cred = authService.getAccountInformation();
+		var username = cred.username;
+		var email = cred.email;
 
 		vm.settings = {
 			username: username,
@@ -46,11 +48,9 @@
 		/////////////////
 
 		// store values before something change, to check then if User done a modifies
-
-
 		var oldSettings = {
-			username: authService.getAccountInformation().username,
-			email: authService.getAccountInformation().email,
+			username: username,
+			email: email,
 			oldPassword: '',
 			newPassword: '',
 			confirmNewPassword: ''
