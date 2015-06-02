@@ -38,16 +38,16 @@
                 <li class="divider" data-ng-if="hc.isAdmin"></li>
 
                 <li data-ui-sref-active="active" data-ng-if="hc.isAdmin">
-                    <a data-ui-sref="dashboard.new-recipe" data-ng-click="navCollapsed = true"><i class="fa fa-edit fa-fw"></i> New Recipe</a>
+                    <a data-ui-sref="dashboard.new-recipe" data-ng-click="$parent.navCollapsed = true"><i class="fa fa-edit fa-fw"></i> New Recipe</a>
                 </li>
                 <li data-ui-sref-active="active" data-ng-if="hc.isAdmin">
-                    <a data-ui-sref="dashboard.request-list" data-ng-click="navCollapsed = true"><i class="fa fa-filter fa-fw"></i> List Request</a>
+                    <a data-ui-sref="dashboard.request-list" data-ng-click="$parent.navCollapsed = true"><i class="fa fa-filter fa-fw"></i> List Request</a>
                 </li>
                 <li data-ui-sref-active="active" data-ng-if="hc.isAdmin">
-                    <a data-ui-sref="dashboard.ratings" data-ng-click="navCollapsed = true"><i class="fa fa-thumbs-o-up fa-fw"></i> Recipes Ratings</a>
+                    <a data-ui-sref="dashboard.ratings" data-ng-click="$parent.navCollapsed = true"><i class="fa fa-thumbs-o-up fa-fw"></i> Recipes Ratings</a>
                 </li>
                 <li data-ui-sref-active="active" data-ng-if="hc.isAdmin">
-                    <a data-ui-sref="dashboard.users-config" data-ng-click="navCollapsed = true"><i class="fa fa-users fa-fw"></i> Users Config</a>
+                    <a data-ui-sref="dashboard.users-config" data-ng-click="$parent.navCollapsed = true"><i class="fa fa-users fa-fw"></i> Users Config</a>
                 </li>
             </ul>
             <!-- /.nav in -->
