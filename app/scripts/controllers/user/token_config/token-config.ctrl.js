@@ -9,9 +9,9 @@
 	 * Modify
 	 * Version  Date        Author          		Desc
 	 * ==========================================================
-	 * 0.0.1    2015-05-08  Tesser Paolo    		code module
+	 * 0.0.1  2015-05-08  Tesser Paolo    		code module
 	 * -----------------------------------------------------------
-	 * 0.0.2	2015-05-15	Carnovalini Filippo		insert model ApiDocs
+	 * 0.0.2	2015-05-15	Carnovalini Filippo	insert model ApiDocs
 	 * -----------------------------------------------------------
 	 *
 	 */
@@ -24,11 +24,11 @@
 	 * Controller of the app
 	 */
 
-	var TokenConfigCtrl = function (userService, ApiDocsModel) {
+	var TokenConfigCtrl = function (authService, userService, ApiDocsModel) {
 
 		var vm = this;
 
-		vm.accessToken = ''; // TODO: search if token it's just associated to a User
+		vm.accessToken = '';
 		checkIfAccessTokenIsAssigned();
 		vm.getAccessToken = getAccessToken;
 		vm.deleteAccessToken = deleteAccessToken;
@@ -36,12 +36,10 @@
 
 		//////////////
 
-		var idUser = '355464364634634'; // TODO: retries with a service or in localStorage
+		var idUser = authService.getAccountInformation().username;
 
 		/**
 		 * This function retries a token from back-end API with a service method
-		 * TODO (test): should accessToken attribute must be not empty if
-		 * TODO (test): should accessToken attribute must be length like descript in Analisi dei Requisiti document
 		 * @return {String} : access token
 		 */
 		function getAccessToken(){
@@ -57,7 +55,6 @@
 
 		/**
 		 * This function delete a token from back-end API with a service method
-		 * TODO (test): should accessToken attribute must be empty after a successful operation
 		 */
 		function deleteAccessToken(){
 			/*
@@ -71,9 +68,7 @@
 		}
 
 		/**
-		 * TODO
-		 * TODO (test): should accessToken attribute must be empty if token has never been generated
-		 * TODO (test): should accessToken attribute mustn't be empty if token has been generated
+		 * This function check if an access token is already created and associated to an user
 		 */
 		function checkIfAccessTokenIsAssigned(){
 			/*
@@ -88,7 +83,7 @@
 
 	};
 
-	TokenConfigCtrl.$inject = ['userService','ApiDocsModel'];
+	TokenConfigCtrl.$inject = ['authService', 'userService','ApiDocsModel'];
 
 	angular
 	.module('app')
