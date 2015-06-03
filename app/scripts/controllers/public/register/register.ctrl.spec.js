@@ -24,6 +24,8 @@ describe('Controller: RegisterCtrl', function() {
 	var authService = undefined;
 	var deferred = undefined;
 
+	//////////////
+
 	beforeEach(function () {
 		angular.mock.module('app');
 	});
@@ -47,6 +49,7 @@ describe('Controller: RegisterCtrl', function() {
 		});
 	});
 
+	//////////////
 
 	it('should have a RegisterCtrl controller', function () {
 		expect($controller('RegisterCtrl')).toBeDefined();
@@ -80,7 +83,6 @@ describe('Controller: RegisterCtrl', function() {
 		expect(scope.sc.matchPwd).toBeTruthy();
 
 	});
-
 
 	it('should correct register set true and change credential\'s fields in empty', function(){
 		var cred = {
