@@ -107,7 +107,6 @@
 
 		/**
 		 * This function checks if new password insert match with confirm new password
-		 * TODO (test): should return true if passwords matches, else false. Test with a successful example and with a bad example
 		 * @returns {bool} : true if new password it's equal to confirm new password else false
 		 */
 		function matchNewPassword(newPwd, newConfirmPwd){
