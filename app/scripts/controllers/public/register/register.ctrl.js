@@ -42,6 +42,8 @@
 
 	  vm.register = register;
 	  vm.checkMatchPwd = checkMatchPwd;
+		vm.checkUsername = checkUsername;
+		vm.checkPwd = checkPwd;
 
 	  /////////////////
 
@@ -91,6 +93,25 @@
 			vm.matchPwd = pwd !== confirmPwd;
 		  return pwd === confirmPwd;
 	  }
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 * @param username
+		 */
+		function checkUsername(username){
+
+		}
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 * @param pwd
+		 */
+		function checkPwd(pwd){
+
+		}
+
 
   };
 
