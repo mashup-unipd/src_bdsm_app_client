@@ -35,7 +35,7 @@
 	 * @returns {*}
 	 */
 		function getRestServices(){
-				return ApiDocsModel;
+				return ApiDocsModel.getRest();
 		}
 
 
