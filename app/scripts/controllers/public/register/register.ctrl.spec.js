@@ -5,9 +5,11 @@
  * Desc: unit test to the controller that manage the registration
  *
  * Modify
- * Version  Date        Author          Desc
+ * Version	Date        Author          Desc
  * ==========================================================
- * 0.0.1    2015-04-05  Tesser Paolo    code test
+ * 0.0.1	2015-04-05  Tesser Paolo    code test
+ * -----------------------------------------------------------
+ * 0.0.2	2015-05-30	Tesser Paolo		test register function with a authService mock
  * -----------------------------------------------------------
  *
  */
@@ -16,30 +18,38 @@
 describe('Controller: RegisterCtrl', function() {
 	'use strict';
 
-	var $rootScope;
-	var $controller;
-	var $location; // not necessary
-	var scope;
+	var $rootScope = undefined;
+	var $controller = undefined;
+	var scope = undefined;
+	var authService = undefined;
+	var deferred = undefined;
+
+	//////////////
 
 	beforeEach(function () {
 		angular.mock.module('app');
 	});
 
 	beforeEach(function(){
-		angular.mock.inject(function (_$rootScope_, _$controller_, _$location_) {
+		angular.mock.inject(function (_$rootScope_, _$controller_, _authService_, _$q_) {
 			$rootScope = _$rootScope_;
 			$controller = _$controller_;
-			$location = _$location_; // not necessary
 			scope = $rootScope.$new();
+
+			deferred = _$q_.defer();
+			authService = _authService_;
+			spyOn(authService, 'register').and.returnValue(deferred.promise);
+
 		});
 	});
 
 	beforeEach(function(){
-		$controller('RegisterCtrl as rc', {
+		$controller('RegisterCtrl as sc', {
 			$scope: scope
 		});
 	});
 
+	//////////////
 
 	it('should have a RegisterCtrl controller', function () {
 		expect($controller('RegisterCtrl')).toBeDefined();
@@ -52,9 +62,11 @@ describe('Controller: RegisterCtrl', function() {
 			confirmPwd: 'test'
 		};
 
-		var valid = scope.rc.checkMatchPwd(validPwd.pwd, validPwd.confirmPwd);
+		var valid = scope.sc.checkMatchPwd(validPwd.pwd, validPwd.confirmPwd);
 
 		expect(valid).toBeTruthy();
+		expect(scope.sc.matchPwd).toBeFalsy();
+
 
 	});
 
@@ -65,48 +77,66 @@ describe('Controller: RegisterCtrl', function() {
 			confirmPwd: 'testfail'
 		};
 
-		var invalid = scope.rc.checkMatchPwd(invalidPwd.pwd, invalidPwd.confirmPwd);
+		var invalid = scope.sc.checkMatchPwd(invalidPwd.pwd, invalidPwd.confirmPwd);
 
 		expect(invalid).toBeFalsy();
+		expect(scope.sc.matchPwd).toBeTruthy();
 
 	});
 
-
-	it('should correct register return true', function(){
-
+	it('should correct register set true and change credential\'s fields in empty', function(){
 		var cred = {
-			username: 'MashUp',
-			mail: 'info@mashup-unipd.it',
-			pwd: 'GruppoSWE2014',
-			confirmPwd: 'GruppoSWE2014'
+			username: 'mashup',
+			email: 'info@mashup-unipd.it',
+			pwd: 'test',
+			pwd_repeat: 'test'
 		};
 
-		// console.log(cred);
+		scope.sc.credentials = cred;
 
-		// TODO: not test location because it's prefers test it in e2e, but if return true to an API call
+		scope.sc.register(cred);
+
+		expect(authService.register).toHaveBeenCalledWith(cred);
+
+		deferred.resolve();
+
+		// This makes sure that all callbacks of promises will be called
+		$rootScope.$digest();
+
+		expect(scope.sc.registerSuccess).toBeTruthy();
+		expect(scope.sc.matchPwd).toBeFalsy();
+
+		expect(scope.sc.credentials.username).toEqual('');
+		expect(scope.sc.credentials.email).toEqual('');
+		expect(scope.sc.credentials.pwd).toEqual('');
+		expect(scope.sc.credentials.pwd_repeat).toEqual('');
 
 	});
 
-	it ('should incorrect register return false', function(){
-		// TODO: like above test
+	it ('should incorrect register set false and not change credential\'s fields', function(){
+		var cred = {
+			username: 'mashup',
+			email: 'info@mashup-unipd.it',
+			pwd: 'test',
+			pwd_repeat: 'testtest'
+		};
 
-		var invalidCred = [
-			{
-				username: '',
-				mail: 'info@mashup-unipd.it',
-				pwd: 'GruppoSWE2014',
-				confirmPwd: 'GruppoSWE2014'
-			},
-			{
-				username: 'MashUp',
-				mail: '',
-				pwd: 'GruppoSWE2014',
-				confirmPwd: 'GruppoSWE2014'
-			}
-		];
+		scope.sc.credentials = cred;
 
-		// console.log(invalidCred);
+		scope.sc.register(cred);
 
+		deferred.resolve();
+
+		// This makes sure that all callbacks of promises will be called
+		$rootScope.$digest();
+
+		expect(scope.sc.registerSuccess).toBeFalsy();
+		expect(scope.sc.matchPwd).toBeTruthy();
+
+		expect(scope.sc.credentials.username).toEqual('mashup');
+		expect(scope.sc.credentials.email).toEqual('info@mashup-unipd.it');
+		expect(scope.sc.credentials.pwd).toEqual('test');
+		expect(scope.sc.credentials.pwd_repeat).toEqual('testtest');
 
 	});
 

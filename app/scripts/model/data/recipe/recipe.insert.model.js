@@ -31,8 +31,8 @@
 		 * @constructor
 		 */
 		 var RecipeInsertModel = function( idAdmin ){
-			this.admin_id = idAdmin;
-			RecipeModel.apply(this);
+				this.admin_id = idAdmin;
+				RecipeModel.apply(this);
 		 };
 
 
@@ -47,7 +47,7 @@
 			  return this.admin_id;
 		  };
 
-   		  return RecipeInsertModel;
+			return RecipeInsertModel;
 
 	}
 

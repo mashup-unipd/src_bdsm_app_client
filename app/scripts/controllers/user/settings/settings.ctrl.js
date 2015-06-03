@@ -1,34 +1,36 @@
 (function () {
-    'use strict';
+	'use strict';
 
-    /**
-     * Name: app/scripts/controllers/user/settings/settings.ctrl.js
-     * Author: MashUp
-     * Mail. info@mashup-unipd.it
-     *
-     * Modify
-     * Version  Date        Author          Desc
-     * ==========================================================
-     * 0.0.1    2015-05-01  Tesser Paolo    code module
-     * -----------------------------------------------------------
-     * 0.0.2	2015-05-13	Tesser Paolo	add function for check pwd
+	/**
+	 * Name: app/scripts/controllers/user/settings/settings.ctrl.js
+	 * Author: MashUp
+	 * Mail. info@mashup-unipd.it
+	 *
+	 * Modify
+	 * Version  Date        Author          Desc
+	 * ==========================================================
+	 * 0.0.1  2015-05-01  Tesser Paolo  code module
+	 * -----------------------------------------------------------
+	 * 0.0.2	2015-05-13	Tesser Paolo	add function for check pwd
 	 * -----------------------------------------------------------
 	 *
-     */
+	 */
 
-    /**
-     * @ngdoc function
-     * @name app.controller:SettingsCtrl
-     * @description
-     * # SettingsCtrl
-     * Controller of the app
-     */
+	/**
+	 * @ngdoc function
+	 * @name app.controller:SettingsCtrl
+	 * @description
+	 * # SettingsCtrl
+	 * Controller of the app
+	 */
 
-    var SettingsCtrl = function (authService) {
+	var SettingsCtrl = function (authService) {
 
-        var vm = this;
-		var username = authService.getAccountInformation().username;
-		var email = authService.getAccountInformation().email;
+		var vm = this;
+
+		var cred = authService.getAccountInformation();
+		var username = cred.username;
+		var email = cred.email;
 
 		vm.settings = {
 			username: username,
@@ -39,18 +41,16 @@
 		};
 
 
-        vm.saveEdit = saveEdit;
+		vm.saveEdit = saveEdit;
 		vm.deleteAccount = deleteAccount;
 		vm.matchNewPassword = matchNewPassword;
 
 		/////////////////
 
 		// store values before something change, to check then if User done a modifies
-
-
 		var oldSettings = {
-			username: authService.getAccountInformation().username,
-			email: authService.getAccountInformation().email,
+			username: username,
+			email: email,
 			oldPassword: '',
 			newPassword: '',
 			confirmNewPassword: ''
@@ -62,7 +62,7 @@
 		 * @param settings
 		 *
 		 */
-        function saveEdit(settings){
+		function saveEdit(settings){
 
 
 			if (checkModifyFields(settings)){
@@ -75,7 +75,7 @@
 				console.log('Modifiche salvate');
 			}
 
-        }
+				}
 
 		/**
 		 * TODO
@@ -107,18 +107,17 @@
 
 		/**
 		 * This function checks if new password insert match with confirm new password
-		 * TODO (test): should return true if passwords matches, else false. Test with a successful example and with a bad example
 		 * @returns {bool} : true if new password it's equal to confirm new password else false
 		 */
 		function matchNewPassword(newPwd, newConfirmPwd){
 			return newPwd === newConfirmPwd;
 		}
 
-		
-    };
 
-    SettingsCtrl.$inject = ['authService'];
+		};
 
-    angular.module('app').controller('SettingsCtrl', SettingsCtrl);
+		SettingsCtrl.$inject = ['authService'];
+
+		angular.module('app').controller('SettingsCtrl', SettingsCtrl);
 
 })();
