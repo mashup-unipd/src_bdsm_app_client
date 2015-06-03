@@ -16,18 +16,24 @@
 describe('Service: userAdminService', function() {
 	'use strict';
 
-	beforeEach(function () {
+	var factory = undefined;
+	var dataManagerService = undefined;
+
+
+	beforeEach(function(){
 
 		angular.mock.module('app.user.services.module');
 
-		angular.mock.inject(function () {
+		angular.mock.inject(function(){
 
 		});
 
-		it('should have userAdminService factory', function(){
-			// TODO
-		});
+	});
 
+	////////////
+
+	it('should have userAdminService factory', function(){
+		// TODO
 	});
 
 });

@@ -24,10 +24,10 @@ describe('Service: recipeService', function() {
 
 		});
 
-		it('should have recipeService factory', function(){
-			// TODO
-		});
+	});
 
+	it('should have recipeService factory', function(){
+		// TODO
 	});
 
 });

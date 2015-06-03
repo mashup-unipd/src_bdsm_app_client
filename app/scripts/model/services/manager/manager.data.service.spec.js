@@ -24,10 +24,12 @@ describe('Service: dataManagerService', function() {
 
 		});
 
-		it('should have dataManagerService factory', function(){
-			// TODO
-		});
+	});
 
+	////////////
+
+	it('should have dataManagerService factory', function(){
+		// TODO
 	});
 
 });

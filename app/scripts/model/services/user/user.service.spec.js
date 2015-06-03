@@ -24,10 +24,12 @@ describe('Service: userService', function() {
 
 		});
 
-		it('should have userService factory', function(){
-			// TODO
-		});
+	});
 
+	////////////
+
+	it('should have userService factory', function(){
+		// TODO
 	});
 
 });
