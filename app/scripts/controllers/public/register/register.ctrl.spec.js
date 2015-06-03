@@ -35,7 +35,7 @@ describe('Controller: RegisterCtrl', function() {
 	});
 
 	beforeEach(function(){
-		$controller('RegisterCtrl as rc', {
+		$controller('RegisterCtrl as sc', {
 			$scope: scope
 		});
 	});
@@ -52,7 +52,7 @@ describe('Controller: RegisterCtrl', function() {
 			confirmPwd: 'test'
 		};
 
-		var valid = scope.rc.checkMatchPwd(validPwd.pwd, validPwd.confirmPwd);
+		var valid = scope.sc.checkMatchPwd(validPwd.pwd, validPwd.confirmPwd);
 
 		expect(valid).toBeTruthy();
 
@@ -65,7 +65,7 @@ describe('Controller: RegisterCtrl', function() {
 			confirmPwd: 'testfail'
 		};
 
-		var invalid = scope.rc.checkMatchPwd(invalidPwd.pwd, invalidPwd.confirmPwd);
+		var invalid = scope.sc.checkMatchPwd(invalidPwd.pwd, invalidPwd.confirmPwd);
 
 		expect(invalid).toBeFalsy();
 

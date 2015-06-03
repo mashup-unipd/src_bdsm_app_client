@@ -3,8 +3,8 @@
 
 	/**
 	 * Name: app/scripts/controller/about/api-docs.ctrl.js
-	 * Author: Carnovalini  Filippo
-	 * Mail. facoch42@gmail.com
+	 * Author: MashUp
+	 * Mail. info@mashup-unipd.it
 	 *
 	 * Modify
 	 * Version  Date        Author          Desc
@@ -26,16 +26,16 @@
 
 		var vm = this;
 
-		vm.restServices = getRestServices();
+		vm.restServices = [];
+		getRestServices();
 
 
-	/**
-	 * This function returns the list of public API, with req, type, desc attributes
-	 * TODO (test): should attribute restServices must be not empty and has a determinate format
-	 * @returns {*}
-	 */
+		/**
+		 * This function returns the list of public API, with req, type, desc attributes
+		 * @returns {*}
+		 */
 		function getRestServices(){
-				return ApiDocsModel.getRest();
+				vm.restServices = ApiDocsModel.getRest();
 		}
 
 
