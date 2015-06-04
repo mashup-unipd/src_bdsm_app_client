@@ -1,39 +1,39 @@
 (function(){
 
-    'use strict';
+	'use strict';
 
-    /**
-     * Name: app/scripts/model/services/manager/manager.data.service.js
-     * Author: Filippo Carnovalini
-     * Mail. carnovalini.filippo@mashup-unipd.it
-     *
-     * Modify
-     * Version  Date        Author          Desc
-     * ==========================================================
-     * 0.0.1    2015-05-18  Carnovalini Filippo    added notes about the module implementation
-     * -----------------------------------------------------------
-     * 0.0.2    2015-05-18  Carnovalini Filippo    coded with stub calls
-     * -----------------------------------------------------------
-     * 0.0.3    2015-05-19  Carnovalini Filippo    corrected minor flaws
-     * -----------------------------------------------------------
-     * 0.0.4	2015-05-20	Tesser Paolo		   implement real call with $http and $q service
+	/**
+	 * Name: app/scripts/model/services/manager/manager.data.service.js
+	 * Author: Filippo Carnovalini
+	 * Mail. carnovalini.filippo@mashup-unipd.it
+	 *
+	 * Modify
+	 * Version  Date        Author          Desc
+	 * ==========================================================
+	 * 0.0.1	2015-05-18  Carnovalini Filippo		added notes about the module implementation
+	 * -----------------------------------------------------------
+	 * 0.0.2	2015-05-18  Carnovalini Filippo   coded with stub calls
+	 * -----------------------------------------------------------
+	 * 0.0.3	2015-05-19  Carnovalini Filippo   corrected minor flaws
+	 * -----------------------------------------------------------
+	 * 0.0.4	2015-05-20	Tesser Paolo		   		implement real call with $http and $q service
 	 * -----------------------------------------------------------
 	 *
-     */
+	 */
 
 
-    function dataManagerService($http, $q, localStorageService, api){
+	function dataManagerService($http, $q, localStorageService, api){
 
-        var factory = {
-            getRestCall: getRestCall,
+		var factory = {
+			getRestCall: getRestCall,
 			postRestCall: postRestCall,
 			putRestCall: putRestCall,
 			deleteRestCall: deleteRestCall
-        };
+		};
 
-        return factory;
+		return factory;
 
-        ///////////////
+		///////////////
 
 		/**
 		 * This function calls an http get request to retry
@@ -41,23 +41,22 @@
 		 * @param restCall : collection to add at the end of the base path for do a real call
 		 * @returns {*} :
 		 */
-        function getRestCall( restCall ){
+		function getRestCall( restCall ){
 
 			// var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
 			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
 
 			// search and take entry if it's setted from localStorageService
-            var restTime = getLocalItem('time/' + restCall);
+			var restTime = getLocalItem('time/' + restCall);
 
 			var apiCallPromise;
 
-            var localCallData;
+			var localCallData;
 
 			// no entry it's founded entry or time is expired
-            if (typeof restTime === 'undefined' || restTime < Date.now() - 10800000) {
+			if (typeof restTime === 'undefined' || restTime < Date.now() - 10800000) {
 
-
-                apiCallPromise = httpGetRequest(url);
+				apiCallPromise = httpGetRequest(url);
 				apiCallPromise
 					.then(function(data){
 						// create an object with 'items' property because in the controller we return a promise that use 'items' to read data
@@ -71,12 +70,12 @@
 					});
 
 
-            } else {
-                // i dati sono freschi
-                localCallData = getLocalItem('data/' + restCall);
+			} else {
+				// i dati sono freschi
+				localCallData = getLocalItem('data/' + restCall);
 
 				// if data record was loosed even if there is time record
-                if (typeof localCallData === 'undefined'){
+				if (typeof localCallData === 'undefined'){
 
 					apiCallPromise = httpGetRequest(url);
 					apiCallPromise
@@ -87,18 +86,18 @@
 							};
 							// set new entry in localStorage to save data returned from a http call
 							setLocalItem('data/' + restCall, arrayData);
-						});
+							});
 
 
-                } else {
+				} else {
 					// local data is valid and returns it as a promise
-                    apiCallPromise = $q.when(localCallData.items);
-                }
-            }
+					apiCallPromise = $q.when(localCallData.items);
+				}
+			}
 
-            return apiCallPromise;
+			return apiCallPromise;
 
-        }
+		}
 
 		/**
 		 * This function calls an http post request that it pass value receved from recipeAdminService and send them at the back-end
@@ -240,15 +239,15 @@
 		function removeLocalItem(key){
 			localStorageService.remove(key);
 		}
-    }
+	}
 
 
 
-    dataManagerService.$inject = ['$http', '$q', 'localStorageService', 'api'];
+	dataManagerService.$inject = ['$http', '$q', 'localStorageService', 'api'];
 
-    angular
-        .module('app.manager.data.services.module')
-        .factory('dataManagerService', dataManagerService);
+	angular
+			.module('app.manager.data.services.module')
+			.factory('dataManagerService', dataManagerService);
 
 
 })();
