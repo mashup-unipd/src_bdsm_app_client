@@ -18,13 +18,19 @@ describe('Service: userAdminService', function() {
 
 	var factory = undefined;
 	var dataManagerService = undefined;
-
+	var deferred = undefined;
 
 	beforeEach(function(){
 
+		angular.mock.module('app'); // insert because it's use to inject service like localStorage
 		angular.mock.module('app.user.services.module');
 
-		angular.mock.inject(function(){
+		angular.mock.inject(function(_userAdminService_, _dataManagerService_, _$q_){
+			factory = _userAdminService_;
+			dataManagerService = _dataManagerService_;
+			deferred = _$q_.defer();
+
+			spyOn(dataManagerService, 'getRestCall').and.returnValue(deferred.promise);
 
 		});
 
@@ -33,6 +39,18 @@ describe('Service: userAdminService', function() {
 	////////////
 
 	it('should have userAdminService factory', function(){
+		// TODO
+	});
+
+	it('should getListOfUsers return a promise', function(){
+		// TODO
+	});
+
+	it('should editUserPermissions return a promise', function(){
+		// TODO
+	});
+
+	it('should deleteUserAccount return a promise', function(){
 		// TODO
 	});
 
