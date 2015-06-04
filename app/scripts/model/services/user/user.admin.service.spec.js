@@ -22,6 +22,7 @@ describe('Service: userAdminService', function() {
 
 	beforeEach(function(){
 
+		// tells Angular and Jasmine that before each test is ran it should load the specified module
 		angular.mock.module('app'); // insert because it's use to inject service like localStorage
 		angular.mock.module('app.user.services.module');
 
@@ -42,16 +43,36 @@ describe('Service: userAdminService', function() {
 		// TODO
 	});
 
+	it('should getListOfUsers is defined and calls dataManagerService', function(){
+		// defined
+		expect(factory.getListOfUsers()).toBeDefined();
+
+		// and calls dataManagerService
+		factory.getListOfUsers();
+		expect(dataManagerService.getRestCall).toHaveBeenCalled();
+
+	});
+
 	it('should getListOfUsers return a promise', function(){
+		var promise = factory.getListOfUsers();
+		expect(promise.then()).toBeDefined();
+	});
+
+	it('should editUserPermissions is defined and calls dataManagerService', function(){
 		// TODO
 	});
 
 	it('should editUserPermissions return a promise', function(){
+		// TODO: like 'it' above
+	});
+
+
+	it('should deleteUserAccount is defined and calls dataManagerService', function(){
 		// TODO
 	});
 
 	it('should deleteUserAccount return a promise', function(){
-		// TODO
+		// TODO: like before 'it' above
 	});
 
 });
