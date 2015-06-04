@@ -1,47 +1,46 @@
 (function(){
-    'use strict';
-    /**
-     * Name: app/scripts/controllers/admin/recipe_config/insert-recipe.ctrl.js
-     * Author: MashUp
-     * Mail. info@mashup-unipd.it
-     *
-     * Modify
-     * Version  Date        Author          Desc
-     * ==========================================================
-     * 0.0.1    2015-03-24  Tesser Paolo    code module
-     * -----------------------------------------------------------
-     * 0.0.2    2015-04-18  Tesser Paolo    refactor code, more encapsulate
-     * -----------------------------------------------------------
-     * 0.0.3	2015-05-13	Tesser Paolo	add MetricModel and use it to add metrics to a Recipe
-	 * -----------------------------------------------------------
-	 * 0.0.4	2015-05-28	Tesser Paolo	add function to remove a metric in the array, before insert it
-	 * -----------------------------------------------------------
+	'use strict';
+	/**
+	 * Name: app/scripts/controllers/admin/recipe_config/insert-recipe.ctrl.js
+	 * Author: MashUp
+	 * Mail. info@mashup-unipd.it
 	 *
-     */
+	 * Modify
+	 * Version  Date        Author          Desc
+	 * ==========================================================
+	 * 0.0.1  2015-03-24  Tesser Paolo  code module
+	 * -----------------------------------------------------------
+	 * 0.0.2  2015-04-18  Tesser Paolo  refactor code, more encapsulate
+	 * -----------------------------------------------------------
+	 * 0.0.3	2015-05-13	Tesser Paolo	add MetricModel and use it to add metrics to a Recipe
+ 	 * -----------------------------------------------------------
+ 	 * 0.0.4	2015-05-28	Tesser Paolo	add function to remove a metric in the array, before insert it
+ 	 * -----------------------------------------------------------
+ 	 *
+	 */
 
-
-    /**
-     * @ngdoc function
-     * @name app.controller:InsertRecipeCtrl
-     * @description
-     * # InsertRecipeCtrl
-     * Controller of the app
-     */
+	/**
+	 * @ngdoc function
+	 * @name app.controller:InsertRecipeCtrl
+	 * @description
+	 * # InsertRecipeCtrl
+	 * Controller of the app
+	 */
 
 	// TODO: need a service for retrie id of the logged User/Admin
-    var InsertRecipeCtrl = function( recipeService, recipeAdminService){
+	var InsertRecipeCtrl = function( recipeService, recipeAdminService){
 
-        var vm = this;
+		var vm = this;
 
-        vm.titleRecipe = '';
-        vm.descRecipe = '';
-        vm.type = ''; // type of the category choose in the combobox
-        vm.insertSuccess = false;
-        vm.insertError = false;
+		vm.titleRecipe = '';
+		vm.descRecipe = '';
+		vm.type = ''; // type of the category choose in the combobox
+		vm.insertSuccess = false;
+		vm.insertError = false;
 		vm.metricQuantityError = false;
 
-        // array of the categories for a combobox field in the template view
-        vm.categories = recipeService.getMetricType();
+		// array of the categories for a combobox field in the template view
+		vm.categories = recipeService.getMetricType();
 		vm.types = [];
 		vm.valueMetric = '';
 
@@ -49,8 +48,8 @@
 		vm.metrics = []; // array that contains a set of MetricModel object
 
 
-        vm.insertRecipe = insertRecipe;
-        vm.updateTypeMetric = updateTypeMetric;
+		vm.insertRecipe = insertRecipe;
+		vm.updateTypeMetric = updateTypeMetric;
 		vm.addMetric = addMetric;
 		vm.removeMetric = removeMetric;
 
@@ -61,7 +60,7 @@
 		 * This function create a new Recipe and insert it in the back-end
 		 * TODO (test): should reset value after a successful insert
 		 */
-        function insertRecipe(){
+		function insertRecipe(){
 
 			vm.metrics = vm.tempMetrics;
 
@@ -94,7 +93,7 @@
 				console.log("Devi inserire almeno due metriche");
 			}
 
-        }
+		}
 
 
 		/**
@@ -146,10 +145,10 @@
 		 * TODO (test): should types array must be length like the number of the array returned from service
 		 * @param category : object that contains a key and a value, and we want the key for choose what array choose
 		 */
-        function updateTypeMetric( category ){
+		function updateTypeMetric( category ){
 			vm.type = category.key.key;
 			vm.types = recipeService.getMetricTypeNode(vm.type);
-        }
+		}
 
 		/**
 		 * This function checks if there are at least two metrics in the Recipe
@@ -161,13 +160,13 @@
 			return (vm.tempMetrics.length >= 2);
 		}
 
-    };
+	};
 
 
-    InsertRecipeCtrl.$inject = ['recipeService', 'recipeAdminService', 'RecipeInsertModel', 'MetricModel'];
+	InsertRecipeCtrl.$inject = ['recipeService', 'recipeAdminService', 'RecipeInsertModel', 'MetricModel'];
 
-    angular
-        .module('app')
-        .controller('InsertRecipeCtrl', InsertRecipeCtrl);
+	angular
+			.module('app')
+			.controller('InsertRecipeCtrl', InsertRecipeCtrl);
 
 })();
