@@ -15,7 +15,7 @@ exports.config = {
 
     // Spec patterns are relative to the location of this config.
     specs: [
-        '../test/e2e/*.e2e.js'
+        '../test/e2e/**/*.e2e.js'
     ],
 
     maxSession: 1,
