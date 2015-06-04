@@ -74,7 +74,6 @@ describe('Service: recipeService', function() {
 	});
 
 	it('should getMetricsList return a promise', function(){
-
 		var promise = factory.getMetricsList(idRecipeCorrect);
 		expect(promise.then()).toBeDefined();
 	});
