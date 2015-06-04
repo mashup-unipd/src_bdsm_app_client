@@ -43,7 +43,6 @@
 
 		/**
 		 * This function retries all recipes from back-end
-		 * TODO (test): should return a promise
 		 * @returns {*} : list of all recipes
 		 */
 		function getRecipesList(){
@@ -52,25 +51,26 @@
 
 		/**
 		 * This function retries all metrics contains in a determinate recipe
-		 * TODO (test): should return a promise
 		 * @param idRecipe : id of the recipe that we want get all metrics
 		 * @returns {*} : list of metrics objects
 		 */
 		function getMetricsList( idRecipe ){
 
 			var idRecipeStrip = String(idRecipe);
-			// must replace white space with particular character of escaping
-			idRecipeStrip.replace(/\s+/g, '%20');
 
-			return dataManagerService.getRestCall('recipes/' + idRecipeStrip);
+			if (idRecipeStrip !== ''){
+				// must replace white space with particular character of escaping
+				idRecipeStrip.replace(/\s+/g, '%20');
+
+				return dataManagerService.getRestCall('recipes/' + idRecipeStrip);
+			}
 
 		}
 
 
 		/**
 		 * This function retries all metrics type
-		 * TODO (test):
-		 * @returns {*} : array of type objects
+		 * @returns {{key: string, value: string}[]} : array of type objects
 		 */
 		function getMetricType(){
 
@@ -88,10 +88,14 @@
 					value: 'Instagram'
 				}
 			];
-e
+
 		}
 
-
+		/**
+		 * This function return a different array of type metric nodes
+		 * @param typeMetric : type of the metric that we want retry possible nodes
+		 * @returns {*} : an array of type metric nodes
+		 */
 		function getMetricTypeNode(typeMetric){
 			var typeToReturn;
 
