@@ -24,13 +24,13 @@
 	 * Controller of the app
 	 */
 
-	var RecipeCtrl = function (recipeService) {
+	var RecipeCtrl = function (recipeService, authService) {
 
 		var vm = this;
 
 		vm.listRecipes = [];
 		vm.getListOfRecipes = getListOfRecipes;
-
+		vm.isAdmin = authService.isAdmin();
 		// immediatly invoke to retry all Recipes from the database
 		getListOfRecipes();
 
@@ -56,7 +56,7 @@
 
 	};
 
-	RecipeCtrl.$inject = ['recipeService'];
+	RecipeCtrl.$inject = ['recipeService', 'authService'];
 
 	angular
 	.module('app')

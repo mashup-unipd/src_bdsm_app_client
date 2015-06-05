@@ -10,56 +10,98 @@
 
     <div data-ng-repeat="list in rc.listRecipes">
 
-        <!-- TODO: insert a row each two recipe -->
-        <div data-ng-switch="$index % 2 == 0">
+        <div data-ng-switch="rc.isAdmin">
+            <div data-ng-switch-when="true">
+                <!-- TODO: insert a row each two recipe -->
+                <div data-ng-switch="$index % 2 == 0">
+
+                    <div data-ng-switch-when="false">
+                        <div class="col-lg-6 col-sm-12 norightpad yesleftpad">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" data-ng-bind="list.title"></div>
+                                <div class="panel-body">
+                                    <p data-ng-bind="list.desc"></p>
+                                    <br />
+                                    <div class="col-xs-12 col-md-4">
+                                        <button class="btn btn-primary" data-ui-sref="dashboard.metrics({id: list.id, title: list.title})">Show metrics</button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4">
+                                        <button class="btn btn-primary" data-ui-sref="dashboard.compare({id: list.id, title: list.title})">Compare metrics</button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4">
+                                        <button class="btn btn-red" data-ui-sref="dashboard.compare({id: list.id, title: list.title})">Delete Recipe</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div data-ng-switch-when="true">
+                        <div class="col-lg-6 col-sm-12 noleftpad yesrightpad">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" data-ng-bind="list.title"></div>
+                                <div class="panel-body">
+                                    <p data-ng-bind="list.desc"></p>
+                                    <br />
+                                    <div class="col-xs-12 col-md-4">
+                                        <button class="btn btn-primary" data-ui-sref="dashboard.metrics({id: list.id, title: list.title})">Show metrics</button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4">
+                                        <button class="btn btn-primary" data-ui-sref="dashboard.compare({id: list.id, title: list.title})">Compare metrics</button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-4">
+                                        <button class="btn btn-red" data-ui-sref="dashboard.compare({id: list.id, title: list.title})">Delete Recipe</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <div data-ng-switch-when="false">
-                <div class="col-lg-6 col-sm-12 norightpad yesleftpad">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" data-ng-bind="list.title"></div>
-                        <div class="panel-body">
-                            <p data-ng-bind="list.desc"></p>
-                            <div class="col-xs-12 col-md-6">
-                                <button class="btn btn-primary" data-ui-sref="dashboard.metrics({id: list.id, title: list.title})">Show metrics</button>
+                <!-- TODO: insert a row each two recipe -->
+                <div data-ng-switch="$index % 2 == 0">
+
+                    <div data-ng-switch-when="false">
+                        <div class="col-lg-6 col-sm-12 norightpad yesleftpad">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" data-ng-bind="list.title"></div>
+                                <div class="panel-body">
+                                    <p data-ng-bind="list.desc"></p>
+                                    <br />
+                                    <div class="col-xs-12 col-md-6">
+                                        <button class="btn btn-primary" data-ui-sref="dashboard.metrics({id: list.id, title: list.title})">Show metrics</button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <button class="btn btn-primary" data-ui-sref="dashboard.compare({id: list.id, title: list.title})">Compare metrics</button>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-xs-12 col-md-6">
-                                <button class="btn btn-primary" data-ui-sref="dashboard.compare({id: list.id, title: list.title})">Compare metrics</button>
+                        </div>
+                    </div>
+
+                    <div data-ng-switch-when="true">
+                        <div class="col-lg-6 col-sm-12 noleftpad yesrightpad">
+                            <div class="panel panel-default">
+                                <div class="panel-heading" data-ng-bind="list.title"></div>
+                                <div class="panel-body">
+                                    <p data-ng-bind="list.desc"></p>
+                                    <br />
+                                    <div class="col-xs-12 col-md-6">
+                                        <button class="btn btn-primary" data-ui-sref="dashboard.metrics({id: list.id, title: list.title})">Show metrics</button>
+                                    </div>
+                                    <div class="col-xs-12 col-md-6">
+                                        <button class="btn btn-primary" data-ui-sref="dashboard.compare({id: list.id, title: list.title})">Compare metrics</button>
+                                    </div>
+                                </div>
                             </div>
-                            <!--
-                            <div class="col-xs-12 col-md-4">
-                                <button class="btn btn-primary" data-ui-sref="dashboard.compare({id: list.id, title: list.title})">Delete Recipe</button>
-                            </div>
-                            -->
                         </div>
                     </div>
                 </div>
             </div>
-
-            <div data-ng-switch-when="true">
-                <div class="col-lg-6 col-sm-12 noleftpad yesrightpad">
-                    <div class="panel panel-default">
-                        <div class="panel-heading" data-ng-bind="list.title"></div>
-                        <div class="panel-body">
-                            <p data-ng-bind="list.desc"></p>
-                            <div class="col-xs-12 col-md-6">
-                                <button class="btn btn-primary" data-ui-sref="dashboard.metrics({id: list.id, title: list.title})">Show metrics</button>
-                            </div>
-                            <div class="col-xs-12 col-md-6">
-                                <button class="btn btn-primary" data-ui-sref="dashboard.compare({id: list.id, title: list.title})">Compare metrics</button>
-                            </div>
-                            <!--
-                            <div class="col-xs-12 col-md-4">
-                                <button class="btn btn-primary" data-ui-sref="dashboard.compare({id: list.id, title: list.title})">Delete Recipe</button>
-                            </div>
-                            -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
-
-
-    </div>
+    </div> <!-- /ng-repeat list -->
 
 </div> <!-- ./container-fluid -->
