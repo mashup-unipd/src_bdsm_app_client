@@ -38,22 +38,9 @@
 
 			var result = '<canvas id="g'+id + 'Canvas" width="600" height="400"></canvas>';
 
-			// TODO call data Format
-			var dataFormatResult =
-				'\n<script>\n' +
-					'var g' +id+ 'Data = {' +
-					'labels : ["January","February","March","April","May"],\n'+
-					'datasets : ['+
-							'{fillColor : "rgba(172,194,132,0.4)",\n' +
-							'strokeColor : "rgba(172,194,132,1)",\n' +
-							'pointColor : "rgba(172,194,132,1)",\n'+
-							'data : [104023,106390,106448,107982,108219]}]};\n'+
-					'var g'+id +'Graph = document.getElementById(\'g'+id+'Canvas\').getContext(\'2d\');\n'+
-					'new Chart(g'+id+'Graph).Line(g'+id+'Data);'+
-				'</script>';
 
-			result += dataFormatResult;
-
+			var format= dataFormat();
+			result += format.replace(/IDPLACEHOLDER/g,id);
 
 			return {
 					desc: "Likes on the page over time (monthly)",
@@ -63,7 +50,19 @@
 		}
 
 		function dataFormat(){
-				// To be implemented in in child classes
+
+				return '\n<script>\n' +
+				'var gIDPLACEHOLDERData = {' +
+				'labels : ["January","February","March","April","May"],\n'+
+				'datasets : ['+
+				'{fillColor : "rgba(172,194,132,0.4)",\n' +
+				'strokeColor : "rgba(172,194,132,1)",\n' +
+				'pointColor : "rgba(172,194,132,1)",\n'+
+				'data : [104023,106390,106448,107982,108219]}]};\n'+
+				'var gIDPLACEHOLDERGraph = document.getElementById(\'gIDPLACEHOLDERCanvas\').getContext(\'2d\');\n'+
+				'new Chart(gIDPLACEHOLDERGraph).Line(gIDPLACEHOLDERData);'+
+				'</script>';
+
 		}
 
 	}
