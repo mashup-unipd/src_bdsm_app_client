@@ -60,15 +60,13 @@
 		}
 
 		/**
-		 * TODO: Stub
 		 * This function retries an access token generates from the back-end application
 		 * TODO (test): should return a promise
 		 * @param idUser : id of the user that we want obtained an access token
 		 * @return {String} : access token returned
 		 */
 		function getAccessToken( idUser ){
-			var token = idUser + '32325346267542524';
-			return token;
+			return dataManagerService.postCredRestCall('users/token/' + idUser);
 		}
 
 		/**
@@ -77,12 +75,12 @@
 		 * @param idUser : id of the user that we want deleted an access token
 		 */
 		function deleteAccessToken( idUser ){
-			// TODO: delete access token with an API calls
+			return dataManagerService.deleteCredRestCall('users/token/' + idUser);
 		}
 	}
 
 
-	userService.$inject = ['dataManagerService']; // TODO: inject managerDataService and maybe UserModel
+	userService.$inject = ['dataManagerService'];
 
 	angular
 		.module('app.user.services.module')
