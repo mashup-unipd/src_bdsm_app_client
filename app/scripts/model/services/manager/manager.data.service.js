@@ -27,8 +27,10 @@
 		var factory = {
 			getRestCall: getRestCall,
 			postRestCall: postRestCall,
+			postCredRestCall: postCredRestCall,
 			putRestCall: putRestCall,
-			deleteRestCall: deleteRestCall
+			deleteRestCall: deleteRestCall,
+			deleteCredRestCall: deleteCredRestCall
 		};
 
 		return factory;
@@ -43,7 +45,6 @@
 		 */
 		function getRestCall( restCall ){
 
-			// var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
 			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
 
 			// search and take entry if it's setted from localStorageService
@@ -106,7 +107,7 @@
 		 * @return {*} : promise that will be solve when request going to success or reject
 		 */
 		function postRestCall(restCall, value){
-			// var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
+
 			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
 			var apiCallPromise;
 			// here in then status of a promise, we must edit or delete the element from the datastore
@@ -115,15 +116,37 @@
 			apiCallPromise = httpPostRequest(url, value);
 			apiCallPromise
 				.then(function(data){
-					var key = 'data/' + restCall;
-					// takes old local value without add and save it in a temporary array
-					var tempVal = getLocalItem(key);
-					// remove local old from localStorage
+
+						var key = 'data/' + restCall;
+						// takes old local value without add and save it in a temporary array
+						var tempVal = getLocalItem(key);
+						// remove local old from localStorage
+						removeLocalItem(key);
+						// add new value to the temporary array
+						tempVal.items.items.push(value);
+						// storage new temporary array in the localStorage
+						setLocalItem(key, tempVal);
+
+				});
+
+			return apiCallPromise;
+		}
+
+		/**
+		 * This function TODO
+		 * @param restCall : collection to add at the end of the base path for do a real call
+		 */
+		function postCredRestCall(restCall){
+			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
+			var apiCallPromise;
+
+			apiCallPromise = httpPostRequest(url, '');
+			apiCallPromise
+				.then(function(data){
+					var key = 'cred';
 					removeLocalItem(key);
-					// add new value to the temporary array
-					tempVal.items.items.push(value);
 					// storage new temporary array in the localStorage
-					setLocalItem(key, tempVal);
+					setLocalItem(key, data);
 
 				});
 
@@ -136,9 +159,7 @@
 		 * @param value
 		 */
 		function putRestCall(restCall, value){
-			// var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
 			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
-
 			console.log(url);
 		}
 
@@ -147,13 +168,31 @@
 		 * @param restCall
 		 * @param value
 		 */
-		function deleteRestCall(restCall, value){
-			// var basePath = 'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/';
+		function deleteRestCall(restCall){
 			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
-
 			console.log(url);
 		}
 
+		/**
+		 * TODO
+		 * @param restCall
+		 */
+		function deleteCredRestCall(restCall){
+			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
+			var apiCallPromise;
+
+			apiCallPromise = httpDeleteRequest(url);
+			apiCallPromise
+				.then(function(data){
+					var key = 'cred';
+					removeLocalItem(key);
+					// storage new temporary array in the localStorage
+					setLocalItem(key, data);
+
+				});
+
+			return apiCallPromise;
+		}
 
 
 
@@ -210,6 +249,31 @@
 
 			return deferred.promise;
 		}
+
+		/**
+		 * This function TODO
+		 * @param url
+		 */
+		function httpDeleteRequest(url){
+			var deferred = $q.defer();
+
+			var configRequestHttp = {
+				method: 'DELETE',
+				responseType: 'json',
+				timeout: 2000
+			};
+
+			$http.delete(url, configRequestHttp)
+				.success(function(data){
+					deferred.resolve(data);
+				})
+				.error(function(data, status) {
+					deferred.reject(status);
+				});
+
+			return deferred.promise;
+		}
+
 
 
 		/////////////// Private localStorage functions

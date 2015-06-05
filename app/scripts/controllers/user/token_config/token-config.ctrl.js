@@ -39,45 +39,34 @@
 		var idUser = authService.getAccountInformation().username;
 
 		/**
-		 * This function retries a token from back-end API with a service method
-		 * @return {String} : access token
+		 * This function retries a token from back-end API with a service method and save it in variables
 		 */
 		function getAccessToken(){
-			/*
+
 			userService.getAccessToken(idUser)
 				.then(function(data){
-					vm.accessToken = data;
+					vm.accessToken = data.access_token;
 				});
-			*/
 
-			vm.accessToken = userService.getAccessToken(idUser);
 		}
 
 		/**
 		 * This function delete a token from back-end API with a service method
 		 */
 		function deleteAccessToken(){
-			/*
+
 			userService.deleteAccessToken(idUser)
 				.then(function(){
 					vm.accessToken = '';
 				});
-			*/
 
-			vm.accessToken = '';
 		}
 
 		/**
 		 * This function check if an access token is already created and associated to an user
 		 */
 		function checkIfAccessTokenIsAssigned(){
-			/*
-			 userService.getAccessToken(idUser)
-				.then(function(data){
-					vm.accessToken = data;
-				});
-			 */
-			vm.accessToken = '';
+			vm.accessToken = authService.getAccountInformation().access_token;
 		}
 
 

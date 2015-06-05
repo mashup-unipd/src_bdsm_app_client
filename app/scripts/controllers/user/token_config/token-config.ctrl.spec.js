@@ -68,6 +68,8 @@ describe('Controller: TokenConfigCtrl', function() {
 			deferred = _$q_.defer();
 			userService = _userService_;
 
+			// spyOn(userService, '')
+
 		});
 	});
 

@@ -60,6 +60,8 @@
 						if (resp.oauth_token !== undefined){
 							// save some account's information
 							localStorageService.set('cred', resp);
+							// save token information
+							localStorageService.set('token', resp.oauth_token);
 							// redirect to Home page
 							$location.path('/recipe');
 						}
