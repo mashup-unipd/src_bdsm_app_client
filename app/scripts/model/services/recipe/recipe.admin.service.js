@@ -10,7 +10,7 @@
 	 * Modify
 	 * Version  Date        Author          Desc
 	 * ==========================================================
-	 * 0.0.1    2015-05-14  Tesser Paolo    code module
+	 * 0.0.1  2015-05-14  Tesser Paolo  code module
 	 * -----------------------------------------------------------
 	 * 0.0.2	2015-05-15	Tesser Paolo	insert function to create and modify data from back-end
 	 * -----------------------------------------------------------
@@ -33,6 +33,7 @@
 			getRecipesListAll: getRecipesListAll,
 			getListOfRecipesRequest: getListOfRecipesRequest,
 			createRecipe: createRecipe,
+			deleteRecipe: deleteRecipe,
 			setRecipeRating: setRecipeRating,
 			discardRecipeRequest: discardRecipeRequest,
 			approveRecipeRequest: approveRecipeRequest
@@ -96,11 +97,19 @@
 
 		/**
 		 * This function inserts a new recipe created in the back-end
-		 * TODO (test): should return a promise
 		 * @param recipe : recipe to insert
 		 */
 		function createRecipe( recipe ){
 			return dataManagerService.postRestCall('recipes', recipe);
+		}
+
+		/**
+		 * This function deletes a recipe in the back-end
+		 * TODO (test): should return a promise
+		 * @param idRecipe : recipe to delete
+		 */
+		function deleteRecipe(idRecipe){
+			// return dataManagerService.deleteRestCall('recipes/' + idRecipe);
 		}
 
 		/**
