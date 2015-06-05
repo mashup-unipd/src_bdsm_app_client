@@ -22,6 +22,7 @@ describe('Controller: RecipeCtrl', function() {
 	var $rootScope = undefined;
 	var scope = undefined;
 	var recipeService = undefined;
+	var authService = undefined;
 	var deferred = undefined;
 
 	////////////////
@@ -32,14 +33,16 @@ describe('Controller: RecipeCtrl', function() {
 	});
 
 	beforeEach(function(){
-		angular.mock.inject(function (_$controller_, _$rootScope_, _$q_, _recipeService_) {
+		angular.mock.inject(function (_$controller_, _$rootScope_, _$q_, _recipeService_, _authService_) {
 			$controller = _$controller_;
 			$rootScope = _$rootScope_;
 			scope = $rootScope.$new();
 			deferred = _$q_.defer();
 			recipeService = _recipeService_;
+			authService = _authService_;
 
 			spyOn(recipeService, 'getRecipesList').and.returnValue(deferred.promise);
+			spyOn(authService, 'isAdmin').and.returnValue(true);
 
 		});
 	});
@@ -109,5 +112,9 @@ describe('Controller: RecipeCtrl', function() {
 		expect(scope.sc.listRecipes.length).toBe(0);
 
 	});
+
+	it('should isAdmin must be true if user is an admin', function(){
+		expect(scope.sc.isAdmin).toBe(true);
+	})
 
 });
