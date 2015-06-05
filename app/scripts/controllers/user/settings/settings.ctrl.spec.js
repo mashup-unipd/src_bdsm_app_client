@@ -21,7 +21,7 @@ describe('Controller: SettingsCtrl', function() {
 	var scope = undefined;
 	var authService = undefined;
 
-
+	////////////////
 
 	beforeEach(function () {
 		angular.mock.module('app.auth.services.module');
@@ -55,7 +55,7 @@ describe('Controller: SettingsCtrl', function() {
 		});
 	});
 
-
+	////////////////
 
 	it('should have a SettingsCtrl controller', function () {
 		expect($controller('SettingsCtrl')).toBeDefined();

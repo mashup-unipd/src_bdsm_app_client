@@ -9,6 +9,8 @@
  * ==========================================================
  * 0.0.1    2015-05-15  Tesser Paolo    code module
  * -----------------------------------------------------------
+ * 0.0.2		2015-06-03	Tesser Paolo		add test with real promise implement
+ * -----------------------------------------------------------
  *
  */
 
@@ -16,22 +18,96 @@
 describe('Controller: RecipeCtrl', function() {
 	'use strict';
 
-	var $controller;
+	var $controller = undefined;
+	var $rootScope = undefined;
+	var scope = undefined;
+	var recipeService = undefined;
+	var deferred = undefined;
+
+	////////////////
 
 	beforeEach(function () {
+		angular.mock.module('app.recipe.services.module');
 		angular.mock.module('app');
 	});
 
 	beforeEach(function(){
-		angular.mock.inject(function (_$controller_) {
+		angular.mock.inject(function (_$controller_, _$rootScope_, _$q_, _recipeService_) {
 			$controller = _$controller_;
+			$rootScope = _$rootScope_;
+			scope = $rootScope.$new();
+			deferred = _$q_.defer();
+			recipeService = _recipeService_;
+
+			spyOn(recipeService, 'getRecipesList').and.returnValue(deferred.promise);
+
 		});
 	});
 
+	beforeEach(function(){
+		$controller('RecipeCtrl as sc', {
+			$scope: scope,
+			recipeService: recipeService
+		});
+	});
+
+	////////////////
 
 	it('should have a RecipeCtrl controller', function () {
 		expect($controller('RecipeCtrl')).toBeDefined();
 	});
 
+	it('should getListOfRecipes is defined and calls recipeService', function(){
+		// defined
+		expect(scope.sc.getListOfRecipes).toBeDefined();
+
+		// and calls recipeService
+		scope.sc.getListOfRecipes();
+		expect(recipeService.getRecipesList).toHaveBeenCalled();
+
+	});
+
+	it('should getListOfRecipes set listRecipes correctly if promise is resolved', function(){
+		var recipes = {
+			items: [
+				{
+					desc: 'Test description',
+					id: '4809889046069248',
+					title: 'Test title'
+				},
+				{
+					desc: 'Test description 2',
+					id: '4809889046069249',
+					title: 'Test title 2'
+				}
+			]
+		};
+
+		deferred.resolve(recipes);
+
+		// This makes sure that all callbacks of promises will be called
+		$rootScope.$digest();
+
+		scope.sc.getListOfRecipes();
+
+		expect(scope.sc.listRecipes.length).toBe(2);
+
+	});
+
+	it('should getListOfRecipes set listRecipes empty if promise is resolved but there aren\'t recipes', function(){
+		var recipes = {
+			items: []
+		};
+
+		deferred.resolve(recipes);
+
+		// This makes sure that all callbacks of promises will be called
+		$rootScope.$digest();
+
+		scope.sc.getListOfRecipes();
+
+		expect(scope.sc.listRecipes.length).toBe(0);
+
+	});
 
 });
