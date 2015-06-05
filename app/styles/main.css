@@ -167,6 +167,14 @@ h2 {
     background-color: #a94442;
 }
 
+.btn-red:hover, .btn-red:active, .btn-red:focus {
+    color: white;
+    background-color: black;
+    outline: none !important;
+}
+
+
+
 .btn-margin{
     margin-bottom: 0.5em;
     margin-top: 0.3em;
