@@ -46,7 +46,6 @@
 
 		/**
 		 * This function call ng-auth service to submit information about login operation
-		 * TODO (test):
 		 * @param credentials
 		 */
 		function login( credentials ){
@@ -77,19 +76,14 @@
 
 		/**
 		 * This function call ng-auth service to submit information about registration operation
-		 * TODO (test):
 		 * @param credentials
 		 */
 		function register( credentials ){
-
-			var registerCallPromise = $auth.submitRegistration(credentials);
-
-			return registerCallPromise;
-
+			return $auth.submitRegistration(credentials);
 		}
 
 		/**
-		 * TODO
+		 * This function TODO
 		 * TODO (test)
 		 */
 		function deleteAccount(){
@@ -98,7 +92,7 @@
 		}
 
 		/**
-		 * TODO
+		 * This function TODO
 		 * TODO (test):
 		 */
 		function isLogged(){
@@ -116,7 +110,7 @@
 		}
 
 		/**
-		 * TODO
+		 * This function TODO
 		 * TODO (test):
 		 * @param credToChange
 		 */
