@@ -9,18 +9,6 @@
 <div class="container-fluid" id="recipes-container" data-ng-controller="RatingsCtrl as rc">
 
     <div class="row">
-        <div class="center-form panel col-md-12 text-danger">
-            <p>Work in progress</p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="center-form panel col-md-12 text-danger">
-            <p>This page shows something thanks to a Stub</p>
-        </div>
-    </div>
-
-    <div class="row">
         <div data-ng-repeat="list in rc.listRecipes">
             <!-- TODO: insert a row each two recipe -->
             <div data-ng-switch="$index % 2 == 0">
@@ -29,11 +17,11 @@
                     <div class="col-lg-6 col-sm-12 norightpad yesleftpad">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <span data-ng-bind="list.titleRecipe"></span>
-                                <span class="label label-primary pull-right" data-ng-bind="list.ratings">{{list.ratings}}</span>
+                                <span data-ng-bind="list.title"></span>
+                                <span class="label label-primary pull-right" data-ng-bind="list.rating">{{list.rating}}</span>
                             </div>
                             <div class="panel-body">
-                                <p data-ng-bind="list.descRecipe"></p>
+                                <p data-ng-bind="list.desc"></p>
                             </div>
                         </div>
                     </div>
@@ -43,11 +31,11 @@
                     <div class="col-lg-6 col-sm-12 noleftpad yesrightpad">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <span data-ng-bind="list.titleRecipe"></span>
-                                <span class="label label-primary pull-right" data-ng-bind="list.ratings">{{list.ratings}}</span>
+                                <span data-ng-bind="list.title"></span>
+                                <span class="label label-primary pull-right" data-ng-bind="list.rating">{{list.rating}}</span>
                             </div>
                             <div class="panel-body">
-                                <p data-ng-bind="list.descRecipe"></p>
+                                <p data-ng-bind="list.desc"></p>
                             </div>
                         </div>
                     </div>

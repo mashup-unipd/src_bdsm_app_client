@@ -32,16 +32,21 @@
 		///////////////
 
 		/**
-		 * TODO: data from a STUB
 		 * TODO (test): should array listRecipes must be empty if there aren't recipes with a rating, else it must be length
 		 * This function retries the list of Recipe with them rating
 		 *
 		 */
 		function getListOfRecipes(){
-			var arrayRecipes = recipeAdminService.getRecipesListAll();
-			arrayRecipes.forEach(function(element){
-				vm.listRecipes.push(element);
-			});
+			var listRecipes = recipeAdminService.getRecipesListAll();
+
+			listRecipes
+				.then(function(data){
+					var arrayUsers = data.items;
+					console.log(arrayUsers);
+					arrayUsers.forEach(function(element){
+						vm.listRecipes.push(element);
+					});
+				});
 		}
 
 
