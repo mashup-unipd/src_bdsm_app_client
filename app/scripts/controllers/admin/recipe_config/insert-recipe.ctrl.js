@@ -27,16 +27,20 @@
 	 * Controller of the app
 	 */
 
-	// TODO: need a service for retrie id of the logged User/Admin
-	var InsertRecipeCtrl = function( recipeService, recipeAdminService){
+	var InsertRecipeCtrl = function( recipeService, recipeAdminService, authService){
 
 		var vm = this;
 
 		vm.titleRecipe = '';
 		vm.descRecipe = '';
 		vm.type = ''; // type of the category choose in the combobox
+		// error/success variables
 		vm.insertSuccess = false;
 		vm.insertError = false;
+		vm.insertMetricSuccess = false;
+		vm.removeMetricSuccess = false;
+		vm.insertMetricEmptyError = false;
+		vm.insertMetricDuplicateError = false;
 		vm.metricQuantityError = false;
 
 		// array of the categories for a combobox field in the template view
@@ -108,8 +112,9 @@
 		function addMetric(cat, typeCat, val){
 
 			if (cat ===  undefined || typeCat === undefined || val === undefined){
-				// TODO: code with some UI error
-				console.log('Valori mancanti per inserire la metrica');
+				vm.insertMetricEmptyError = true;
+				vm.insertMetricSuccess = false;
+				vm.removeMetricSuccess = false;
 			} else {
 				// all fields are not empty, so it's possible insert the metric
 				var metric = {
@@ -125,7 +130,10 @@
 				vm.categories = recipeService.getMetricType();
 				vm.types = [];
 				vm.valueMetric = undefined;
+				vm.insertMetricSuccess = true;
+				vm.insertMetricEmptyError = false;
 				vm.metricQuantityError = false;
+				vm.removeMetricSuccess = false;
 			}
 
 
@@ -138,6 +146,9 @@
 		 */
 		function removeMetric(indexMetric){
 			vm.tempMetrics.splice(indexMetric, 1);
+			vm.removeMetricSuccess = true;
+			vm.insertMetricSuccess = false;
+
 		}
 
 		/**
@@ -163,7 +174,7 @@
 	};
 
 
-	InsertRecipeCtrl.$inject = ['recipeService', 'recipeAdminService', 'RecipeInsertModel', 'MetricModel'];
+	InsertRecipeCtrl.$inject = ['recipeService', 'recipeAdminService', 'authService'];
 
 	angular
 			.module('app')

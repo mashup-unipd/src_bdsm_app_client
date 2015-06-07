@@ -19,7 +19,23 @@
 
             <div class="row" data-ng-show="irc.insertError">
                 <div class="col-md-12">
-                    <p class="alert-danger">Failed to insert!</p>
+                    <p class="alert-danger">Failed to insert recipe!</p>
+                </div>
+            </div>
+
+            <div class="row" data-ng-show="irc.insertMetricSuccess">
+                <div class="col-md-12">
+                    <p class="alert-success">Metric added!</p>
+                </div>
+            </div>
+            <div class="row" data-ng-show="irc.removeMetricSuccess">
+                <div class="col-md-12">
+                    <p class="alert-success">Metric removed!</p>
+                </div>
+            </div>
+            <div class="row" data-ng-show="irc.insertMetricEmptyError">
+                <div class="col-md-12">
+                    <p class="alert-danger">Failed to insert metric. Some field is empty!</p>
                 </div>
             </div>
 
@@ -102,7 +118,7 @@
 
                     <div class="row" id="metrics-add-list">
                         <div data-ng-repeat="metric in irc.tempMetrics">
-                            <p>Metrics added to the Recipe<p>
+                            <p class="sr-only">Metrics added to the Recipe<p>
 
                             <div class="row">
                                 <button class="btn btn-margin btn-red" type="button"
