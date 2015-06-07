@@ -22,7 +22,7 @@
 	 * Controller of the app
 	 */
 
-	var ChartsCtrl = function ($stateParams,chartCreatorService) {
+	var ChartsCtrl = function ($stateParams,lineChartCreatorService) {
 
 		var vm = this;
 
@@ -32,14 +32,14 @@
 		vm.cat = $stateParams.cat;
 		vm.type = $stateParams.type;
 
-		vm.getGraph=[chartCreatorService.chartGeneration()];
+		vm.getGraph=[lineChartCreatorService.chartGeneration()];
 
 
 
 
 	};
 
-	ChartsCtrl.$inject = ['$stateParams','chartCreatorService'];
+	ChartsCtrl.$inject = ['$stateParams','lineChartCreatorService'];
 
 	angular.module('app').controller('ChartsCtrl', ChartsCtrl);
 
