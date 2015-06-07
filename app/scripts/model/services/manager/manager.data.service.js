@@ -38,8 +38,8 @@
 		///////////////
 
 		/**
-		 * This function calls an http get request to retry
-		 * TODO
+		 * This function calls an http get request to retry data from the server or from localStorage
+		 * TODO (test):
 		 * @param restCall : collection to add at the end of the base path for do a real call
 		 * @returns {*} :
 		 */
@@ -102,6 +102,7 @@
 
 		/**
 		 * This function calls an http post request that it pass value receved from recipeAdminService and send them at the back-end
+		 * TODO (test):
 		 * @param restCall : collection to add at the end of the base path for do a real call
 		 * @param value : data to send at the back-end
 		 * @return {*} : promise that will be solve when request going to success or reject
@@ -133,7 +134,8 @@
 		}
 
 		/**
-		 * This function TODO
+		 * This function calls an http post request that it pass value receved from recipeAdminService and send them at the back-end
+		 * TODO (test):
 		 * @param restCall : collection to add at the end of the base path for do a real call
 		 */
 		function postCredRestCall(restCall){
@@ -155,6 +157,7 @@
 
 		/**
 		 * TODO: implement
+		 * TODO (test):
 		 * @param restCall
 		 * @param value
 		 */
@@ -164,17 +167,39 @@
 		}
 
 		/**
-		 * TODO: implement
+		 * This function calls an http delete request
+		 * TODO (test):
 		 * @param restCall
-		 * @param value
+		 * @param id : title of the element to delete
+		 * @param indexElement : index of the element to delete present in the localStorage array
 		 */
-		function deleteRestCall(restCall){
-			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
-			console.log(url);
+		function deleteRestCall(restCall, id, indexElement){
+			var url = api.API_BASE + restCall + '/' + id; // url to use to call back-end API in $http
+			var apiCallPromise;
+			// here in then status of a promise, we must edit or delete the element from the datastore
+
+
+			apiCallPromise = httpDeleteRequest(url);
+			apiCallPromise
+				.then(function(){
+					var key = 'data/' + restCall;
+					// takes old local value without add and save it in a temporary array
+					var tempVal = getLocalItem(key);
+					// remove local old from localStorage
+					removeLocalItem(key);
+					// remove element to the temporary array
+					tempVal.items.items.splice(indexElement, 1);
+					// storage new temporary array in the localStorage
+					setLocalItem(key, tempVal);
+				});
+
+			return apiCallPromise;
+
 		}
 
 		/**
 		 * TODO
+		 * TODO (test):
 		 * @param restCall
 		 */
 		function deleteCredRestCall(restCall){

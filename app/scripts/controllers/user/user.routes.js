@@ -34,6 +34,7 @@
 							{
 								name:'app',
 								files:[
+									'scripts/controllers/admin/recipe_delete/recipe-delete.ctrl.js',
 									'scripts/directives/header/header.js',
 									'scripts/directives/header/header.ctrl.js',
 									'scripts/directives/header/header-notification/header-notification.js',

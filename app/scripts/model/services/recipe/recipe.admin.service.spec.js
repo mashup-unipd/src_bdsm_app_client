@@ -54,6 +54,7 @@ describe('Service: recipeAdminService', function() {
 
 			spyOn(dataManagerService, 'getRestCall').and.returnValue(deferred.promise);
 			spyOn(dataManagerService, 'postRestCall').and.returnValue(deferred.promise);
+			spyOn(dataManagerService, 'deleteRestCall').and.returnValue(deferred.promise);
 
 		});
 
@@ -96,6 +97,14 @@ describe('Service: recipeAdminService', function() {
 	it('should createRecipe return a promise', function(){
 		var promise = factory.createRecipe(recipeCorrect);
 		expect(promise.then()).toBeDefined();
+	});
+
+	it('should deleteRecipe is defined and calls dataManagerService', function(){
+		// TODO
+	});
+
+	it('should deleteRecipe return a promise', function(){
+		// TODO
 	});
 
 	it('should discardRecipeRequest is defined and calls dataManagerService', function(){

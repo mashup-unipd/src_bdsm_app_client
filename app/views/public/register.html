@@ -11,13 +11,20 @@
 
           <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.userName.$invalid && registerForm.userName.$dirty && !rc.registerSuccess}"> <!-- input username -->
             <label class="sr-only" for="input-username" lang="en">User name</label>
-            <input id="input-username" class="form-control input-lg" type="text" name="userName" data-ng-model="rc.credentials.username" placeholder="Username" required autofocus>
-            <span class="glyphicon glyphicon-user form-control-feedback" title="icon of a face to identify the user"></span>
+            <input class="form-control input-lg" id="input-username" type="text" name="userName"
+                   data-ng-model="rc.credentials.username" placeholder="Username"
+                   ng-minlength=4 ng-maxlength=30 required autofocus>
+              <span class="glyphicon glyphicon-user form-control-feedback" title="icon of a face to identify the user"></span>
 
             <div class="help-block text-danger"
-                 data-ng-if="registerForm.userName.$invalid && registerForm.userName.$dirty && !rc.registerSuccess" data-ng-messages="registerForm.userName.$error">
+                 data-ng-if="registerForm.userName.$invalid && registerForm.userName.$dirty && !rc.registerSuccess"
+                 data-ng-messages="registerForm.userName.$error">
               <div data-ng-message="required">You have to insert the username</div>
+              <div data-ng-message="minlength">Your username is too short</div>
+              <div data-ng-message="maxlength">Your username is too long</div>
             </div>
+
+
           </div> <!-- end input username -->
 
           <div class="form-group has-feedback" data-ng-class="{ 'has-error' : registerForm.email.$invalid && registerForm.email.$dirty && !rc.registerSuccess}"> <!-- input email --> <!-- TODO: controllo sui campi non funzionante -->
@@ -41,12 +48,13 @@
             <label class="sr-only" for="input-pwd" lang="en">Password</label>
             <input class="form-control input-lg" id="input-pwd" name="password" type="password"
                    data-ng-model="rc.credentials.pwd" placeholder="Password"
-                   required autofocus>
+                   ng-minlength=6 required autofocus>
             <span class="ti-key form-control-feedback" title="key icon"></span>
 
             <div class="help-block text-danger"
                  data-ng-if="registerForm.password.$dirty && !rc.registerSuccess" data-ng-messages="registerForm.password.$error">
               <div data-ng-message="required">The password is required.</div>
+              <div data-ng-message="minlength">The password is too short</div>
             </div>
           </div> <!-- end input password -->
 
@@ -58,7 +66,8 @@
             <span class="ti-key form-control-feedback" title="key icon"></span>
 
               <div class="help-block text-danger"
-                   data-ng-if="registerForm.confirmPassword.$dirty && !rc.registerSuccess" data-ng-messages="registerForm.confirmPassword.$error">
+                   data-ng-if="registerForm.confirmPassword.$dirty && !rc.registerSuccess"
+                   data-ng-messages="registerForm.confirmPassword.$error">
                   <div data-ng-message="required">The confirm password is required.</div>
               </div>
           </div> <!-- end input confirm password -->

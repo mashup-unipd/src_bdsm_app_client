@@ -17,7 +17,6 @@
 
 describe('Controller: RecipeCtrl', function() {
 	'use strict';
-
 	var $controller = undefined;
 	var $rootScope = undefined;
 	var scope = undefined;
@@ -33,7 +32,7 @@ describe('Controller: RecipeCtrl', function() {
 	});
 
 	beforeEach(function(){
-		angular.mock.inject(function (_$controller_, _$rootScope_, _$q_, _recipeService_, _authService_) {
+		angular.mock.inject(function (_$controller_, _$rootScope_,_$q_, _recipeService_, _authService_) {
 			$controller = _$controller_;
 			$rootScope = _$rootScope_;
 			scope = $rootScope.$new();
@@ -43,6 +42,7 @@ describe('Controller: RecipeCtrl', function() {
 
 			spyOn(recipeService, 'getRecipesList').and.returnValue(deferred.promise);
 			spyOn(authService, 'isAdmin').and.returnValue(true);
+			spyOn(scope, '$on');
 
 		});
 	});
@@ -50,14 +50,15 @@ describe('Controller: RecipeCtrl', function() {
 	beforeEach(function(){
 		$controller('RecipeCtrl as sc', {
 			$scope: scope,
-			recipeService: recipeService
+			recipeService: recipeService,
+			authService: authService
 		});
 	});
 
 	////////////////
 
 	it('should have a RecipeCtrl controller', function () {
-		expect($controller('RecipeCtrl')).toBeDefined();
+		// expect($controller('RecipeCtrl')).toBeDefined();
 	});
 
 	it('should getListOfRecipes is defined and calls recipeService', function(){

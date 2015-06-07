@@ -24,16 +24,27 @@
 	 * Controller of the app
 	 */
 
-	var RecipeCtrl = function (recipeService, authService) {
+	function RecipeCtrl(recipeService, authService, $scope) {
 
 		var vm = this;
 
 		vm.listRecipes = [];
-		vm.getListOfRecipes = getListOfRecipes;
+		vm.deleteRecipeSuccess = false;
 		vm.isAdmin = authService.isAdmin();
+
+
+		vm.getListOfRecipes = getListOfRecipes;
+
 		// immediatly invoke to retry all Recipes from the database
 		getListOfRecipes();
 
+		////////////////
+
+		// when an admin remove a recipe, we must remove the element in the listRecipes array
+		$scope.$on('deleteRecipe', function(event, data){
+			vm.listRecipes.splice(data,1);
+			vm.deleteRecipeSuccess = true;
+		});
 
 		////////////////
 
@@ -54,9 +65,9 @@
 
 		}
 
-	};
+	}
 
-	RecipeCtrl.$inject = ['recipeService', 'authService'];
+	RecipeCtrl.$inject = ['recipeService', 'authService', '$scope'];
 
 	angular
 	.module('app')
