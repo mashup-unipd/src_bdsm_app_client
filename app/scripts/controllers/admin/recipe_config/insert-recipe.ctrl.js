@@ -186,19 +186,21 @@
 		/**
 		 * TODO
 		 * TODO (test):
-		 * @param metric
+		 * @param metric :
+		 * @return {bool} :
 		 */
 		function checkMetricDuplicate(metric){
 			var findMetric = false;
 
 			angular.copy(vm.tempMetrics).forEach(function(element){
-				if (element === metric){
+				if (element.id === metric.id && element.category === metric.category && element.category_type === metric.category_type){
 					findMetric = true;
+
 					vm.insertMetricDuplicateError = true;
+
+					vm.removeMetricSuccess = false;
+					vm.insertMetricSuccess = false;
 				}
-				console.log(metric);
-				console.log(element);
-				console.log('-------------');
 			});
 
 			return findMetric;
