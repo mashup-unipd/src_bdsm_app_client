@@ -8,18 +8,18 @@
  * # FavouritesCtrl
  * Controller of the app
  */
-    var FavouritesCtrl = function(chartCreatorService){
+    var FavouritesCtrl = function(pieChartCreatorService){
     
         var vm = this;
 
-    vm.dynamicGraph = chartCreatorService.chartGeneration();
+    vm.dynamicGraph = pieChartCreatorService.chartGeneration();
 
     vm.testName = vm.dynamicGraph.desc;
     vm.testGraph = vm.dynamicGraph.data;
 
     };
 
-    FavouritesCtrl.$inject = ['chartCreatorService'];
+    FavouritesCtrl.$inject = ['pieChartCreatorService'];
 
     angular.module('app')
         .controller('FavouritesCtrl', FavouritesCtrl);

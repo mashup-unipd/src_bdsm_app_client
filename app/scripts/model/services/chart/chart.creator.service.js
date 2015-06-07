@@ -21,7 +21,6 @@
 		var factory = {
 				chartGeneration: chartGeneration,
 				dataFormat: dataFormat
-
 		};
 
 
@@ -39,7 +38,7 @@
 			var result = '<canvas id="g'+id + 'Canvas" width="600" height="400"></canvas>';
 
 
-			var format= dataFormat();
+			var format= this.dataFormat();
 			result += format.replace(/IDPLACEHOLDER/g,id);
 
 			return {
@@ -48,21 +47,8 @@
 			};
 
 		}
-
 		function dataFormat(){
-
-				return '\n<script>\n' +
-				'var gIDPLACEHOLDERData = {' +
-				'labels : ["January","February","March","April","May"],\n'+
-				'datasets : ['+
-				'{fillColor : "rgba(172,194,132,0.4)",\n' +
-				'strokeColor : "rgba(172,194,132,1)",\n' +
-				'pointColor : "rgba(172,194,132,1)",\n'+
-				'data : [104023,106390,106448,107982,108219]}]};\n'+
-				'var gIDPLACEHOLDERGraph = document.getElementById(\'gIDPLACEHOLDERCanvas\').getContext(\'2d\');\n'+
-				'new Chart(gIDPLACEHOLDERGraph).Line(gIDPLACEHOLDERData);'+
-				'</script>';
-
+				//To be implemented in child services
 		}
 
 	}
