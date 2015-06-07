@@ -113,8 +113,11 @@
 
 			if (cat ===  undefined || typeCat === undefined || val === undefined){
 				vm.insertMetricEmptyError = true;
+
 				vm.insertMetricSuccess = false;
+				vm.insertMetricDuplicateError = false;
 				vm.removeMetricSuccess = false;
+
 			} else {
 				// all fields are not empty, so it's possible insert the metric
 				var metric = {
@@ -123,17 +126,23 @@
 					category_type: typeCat
 				};
 
-				// insert metrics in a temporary array
-				vm.tempMetrics.push(metric);
+				if (!checkMetricDuplicate(metric)){
+					// insert metrics in a temporary array
+					vm.tempMetrics.push(metric);
 
-				// reset values of metric's fields after a success insert
-				vm.categories = recipeService.getMetricType();
-				vm.types = [];
-				vm.valueMetric = undefined;
-				vm.insertMetricSuccess = true;
-				vm.insertMetricEmptyError = false;
-				vm.metricQuantityError = false;
-				vm.removeMetricSuccess = false;
+					// reset values of metric's fields after a success insert
+					vm.categories = recipeService.getMetricType();
+					vm.types = [];
+					vm.valueMetric = undefined;
+					vm.insertMetricSuccess = true;
+
+					vm.insertMetricEmptyError = false;
+					vm.insertMetricDuplicateError = false;
+					vm.metricQuantityError = false;
+					vm.removeMetricSuccess = false;
+
+				}
+
 			}
 
 
@@ -146,8 +155,11 @@
 		 */
 		function removeMetric(indexMetric){
 			vm.tempMetrics.splice(indexMetric, 1);
+
 			vm.removeMetricSuccess = true;
+
 			vm.insertMetricSuccess = false;
+			vm.insertMetricDuplicateError = false;
 
 		}
 
@@ -171,6 +183,26 @@
 			return (vm.tempMetrics.length >= 2);
 		}
 
+		/**
+		 * TODO
+		 * TODO (test):
+		 * @param metric
+		 */
+		function checkMetricDuplicate(metric){
+			var findMetric = false;
+
+			angular.copy(vm.tempMetrics).forEach(function(element){
+				if (element === metric){
+					findMetric = true;
+					vm.insertMetricDuplicateError = true;
+				}
+				console.log(metric);
+				console.log(element);
+				console.log('-------------');
+			});
+
+			return findMetric;
+		}
 	};
 
 

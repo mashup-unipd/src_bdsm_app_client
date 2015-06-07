@@ -16,7 +16,6 @@
                     <p class="alert-success">Recipe added!</p>
                 </div>
             </div>
-
             <div class="row" data-ng-show="irc.insertError">
                 <div class="col-md-12">
                     <p class="alert-danger">Failed to insert recipe!</p>
@@ -36,6 +35,11 @@
             <div class="row" data-ng-show="irc.insertMetricEmptyError">
                 <div class="col-md-12">
                     <p class="alert-danger">Failed to insert metric. Some field is empty!</p>
+                </div>
+            </div>
+            <div class="row" data-ng-show="irc.insertMetricDuplicateError">
+                <div class="col-md-12">
+                    <p class="alert-danger">Failed to insert metric. A same metric is already added!</p>
                 </div>
             </div>
 
