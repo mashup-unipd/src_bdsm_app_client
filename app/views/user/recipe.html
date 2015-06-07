@@ -3,13 +3,18 @@
         <div class="row">
             <h1>Available Recipes</h1>
         </div>
-    </div>
+    </div> <!-- ./container-fluid -->
 </div> <!-- ./page-header -->
 
 <div class="container-fluid" id="recipes-container" data-ng-controller="RecipeCtrl as rc">
 
-    <div data-ng-repeat="list in rc.listRecipes">
+    <div class="row" data-ng-if="rc.isAdmin && rc.deleteRecipeSuccess">
+        <div class="center-form col-md-12">
+            <p class="alert-success">Recipe delete!</p>
+        </div>
+    </div> <!-- ./row -->
 
+    <div data-ng-repeat="list in rc.listRecipes">
         <div data-ng-switch="rc.isAdmin">
             <div data-ng-switch-when="true">
                 <!-- TODO: insert a row each two recipe -->
@@ -30,7 +35,7 @@
                                     </div>
                                     <div data-ng-controller="RecipeDeleteCtrl as rdc">
                                         <div class="col-xs-12 col-md-4">
-                                            <button class="btn btn-red" data-ng-click="rdc.deleteRecipe($parent.list.id)">Delete Recipe</button>
+                                            <button class="btn btn-red" data-ng-click="rdc.deleteRecipe($parent.list.title, $parent.$index)">Delete Recipe</button>
                                         </div>
                                     </div>
                                 </div>
@@ -53,16 +58,15 @@
                                     </div>
                                     <div data-ng-controller="RecipeDeleteCtrl as rdc">
                                         <div class="col-xs-12 col-md-4">
-                                            <button class="btn btn-red" data-ng-click="rdc.deleteRecipe($parent.list.id)">Delete Recipe</button>
+                                            <button class="btn btn-red" data-ng-click="rdc.deleteRecipe($parent.list.title, $parent.$index)">Delete Recipe</button>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-
+                </div> <!-- /ng-switch: $index-->
+            </div> <!-- /ng-switch-when: isAdmin true -->
 
             <div data-ng-switch-when="false">
                 <!-- TODO: insert a row each two recipe -->
@@ -103,9 +107,9 @@
                             </div>
                         </div>
                     </div>
-                </div>
-            </div>
-        </div>
+                </div> <!-- /ng-switch: $index-->
+            </div><!-- /ng-switch-when: isAdmin false -->
+        </div> <!-- /ng-switch: isAdmin -->
     </div> <!-- /ng-repeat list -->
 
 </div> <!-- ./container-fluid -->

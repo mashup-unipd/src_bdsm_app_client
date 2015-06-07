@@ -22,11 +22,13 @@
 	 * Controller of the app
 	 */
 
-	var RecipeDeleteCtrl = function (recipeAdminService) {
+	function RecipeDeleteCtrl(recipeAdminService, $scope) {
 
 		var vm = this;
 
 		vm.deleteRecipe = deleteRecipe;
+
+
 
 		////////////////
 
@@ -34,16 +36,19 @@
 		 * TODO
 		 * @param idRecipe
 		 */
-		function deleteRecipe(idRecipe){
+		function deleteRecipe(idRecipe, index){
+
 			// promise, and it's success deletes recipe in the local variables in parent ctrl and set variables to show success message
-			// recipeAdminService.deleteRecipe(idRecipe);
-			console.log('test ' + idRecipe );
+			recipeAdminService.deleteRecipe(idRecipe, index)
+				.then(function(){
+					$scope.$emit('deleteRecipe', index);
+				});
+
 		}
 
+	}
 
-	};
-
-	RecipeDeleteCtrl.$inject = ['recipeAdminService'];
+	RecipeDeleteCtrl.$inject = ['recipeAdminService', '$scope'];
 
 	angular
 		.module('app')
