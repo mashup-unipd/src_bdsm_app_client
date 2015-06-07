@@ -45,30 +45,12 @@
 		///////////////
 
 		/**
-		 * TODO: [opzionale] Stub
 		 * This function retries all recipes from back-end and returns them in a promise
 		 * TODO (test): should return a promise
 		 * @returns {*[]} : list of all recipes
 		 */
 		function getRecipesListAll(){
-
-			// TODO: check managerDataService or call back-end API (GET)
-			return [
-				{
-					idRecipe: '10',
-					titleRecipe: 'SportNike',
-					descRecipe: 'Recipe about Sport Nike trends',
-					ratings: 2.11
-				},
-				{
-					idRecipe: '11',
-					titleRecipe: 'StarWars',
-					descRecipe: 'Recipe about StarWars trends in Italy',
-					ratings: 4.80
-				}
-			];
-
-
+			return dataManagerService.getRestCall('recipes');
 		}
 
 		/**

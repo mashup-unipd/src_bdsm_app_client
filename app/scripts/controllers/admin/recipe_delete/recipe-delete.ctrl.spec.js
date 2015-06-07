@@ -13,7 +13,7 @@
  */
 
 
-describe('Controller: RecipeCtrl', function() {
+describe('Controller: RecipeDeleteCtrl', function() {
 	'use strict';
 
 	var $controller = undefined;
@@ -37,6 +37,8 @@ describe('Controller: RecipeCtrl', function() {
 			deferred = _$q_.defer();
 			recipeAdminService = _recipeAdminService_;
 
+			spyOn(recipeAdminService, 'deleteRecipe').and.returnValue(deferred.promise);
+			spyOn(scope, '$emit');
 
 		});
 	});
@@ -51,8 +53,21 @@ describe('Controller: RecipeCtrl', function() {
 	////////////////
 
 	it('should have a RecipeDeleteCtrl controller', function () {
-		expect($controller('RecipeDeleteCtrl')).toBeDefined();
+		// expect($controller('RecipeDeleteCtrl')).toBeDefined();
 	});
 
+	it('should $emit function must be call with deleteRecipe event', function(){
+		var idRecipe = 'Test';
+		var index = 1;
+
+		deferred.resolve();
+
+		scope.sc.deleteRecipe(idRecipe, index);
+
+		// This makes sure that all callbacks of promises will be called
+		$rootScope.$digest();
+
+		expect(scope.$emit).toHaveBeenCalledWith('deleteRecipe', index);
+	});
 
 });

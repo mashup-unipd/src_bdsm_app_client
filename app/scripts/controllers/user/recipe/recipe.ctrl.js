@@ -40,13 +40,11 @@
 
 		////////////////
 
-
 		// when an admin remove a recipe, we must remove the element in the listRecipes array
 		$scope.$on('deleteRecipe', function(event, data){
 			vm.listRecipes.splice(data,1);
 			vm.deleteRecipeSuccess = true;
 		});
-
 
 		////////////////
 

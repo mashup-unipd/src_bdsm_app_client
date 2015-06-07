@@ -28,13 +28,13 @@
 
 		vm.deleteRecipe = deleteRecipe;
 
-
-
 		////////////////
 
 		/**
-		 * TODO
+		 * This function calls deleteRecipe on the service and alerts parent that an element of recipe's
+		 * array was removed
 		 * @param idRecipe
+		 * @param index
 		 */
 		function deleteRecipe(idRecipe, index){
 
