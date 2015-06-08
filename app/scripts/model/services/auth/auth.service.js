@@ -55,8 +55,7 @@
 			loginCallPromise
 				.then(function(resp){
 
-						// TODO: change
-						if (resp.oauth_token !== undefined){
+					if (resp.oauth_token !== undefined){
 							// save some account's information
 							localStorageService.set('cred', resp);
 							// save token information
@@ -121,7 +120,7 @@
 
 		/**
 		 * This function retries user's account informations from localStorage
-		 * TODO (test):
+		 * TODO (test): should return data in a determinate format
 		 * @returns {*}
 		 */
 		function getAccountInformation(){
@@ -134,14 +133,17 @@
 		 */
 		function logout(){
 
-			$auth.signOut()
+			// set token to pass at the function
+			var idUser = {
+				'oauth_token': localStorageService.get('cred').oauth_token
+			};
 
+			$auth.signOut(idUser)
 				.then(function() {
 					// remove all data from localStorage when something exit to the system
 					localStorageService.clearAll();
 					$location.path('/login');
 				})
-
 				.catch(function(resp) {
 					// handle error response
 				});
