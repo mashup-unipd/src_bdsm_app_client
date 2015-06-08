@@ -114,7 +114,10 @@
 		 * @param credToChange
 		 */
 		function updateSettingsAccount(credToChange){
-			// $auth.updateAccount(credToChange);
+			$auth.updateAccount(credToChange)
+				.then(function(data){
+					console.log(data);
+				});
 		}
 
 

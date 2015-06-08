@@ -26,7 +26,6 @@
 	 * @param $authProvider
 	 */
 	function authConfig( $authProvider ){
-		// TODO: change value with back-end API url
 		$authProvider.configure({
 			apiUrl:                  'https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0',
 			tokenValidationPath:     '/auth/validate_token',

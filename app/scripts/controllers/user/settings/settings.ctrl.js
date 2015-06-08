@@ -39,7 +39,8 @@
 			newPassword: '',
 			confirmNewPassword: ''
 		};
-
+		vm.saveEditSuccess = false;
+		vm.confirmDeleteAccount = false;
 
 		vm.saveEdit = saveEdit;
 		vm.deleteAccount = deleteAccount;
@@ -59,23 +60,29 @@
 		/**
 		 * This function saves the account's modifies with a call to authService
 		 * TODO (test): should
-		 * @param settings
 		 *
 		 */
-		function saveEdit(settings){
+		function saveEdit(){
 
+			if (checkModifyFields(vm.settings)){
 
-			if (checkModifyFields(settings)){
 				var credToChange = {
-					email: vm.newPassword,
-					username: vm.email
+					oauth_token: authService.getAccountInformation().oauth_token,
+
+					username: vm.settings.username,
+					email: vm.settings.email,
+					pwd: vm.settings.oldPassword,
+					pwd_new: vm.settings.newPassword,
+					pwd_repeat: vm.settings.confirmNewPassword
 				};
 
 				authService.updateSettingsAccount(credToChange);
 				console.log('Modifiche salvate');
+			} else {
+
 			}
 
-				}
+		}
 
 		/**
 		 * TODO
@@ -92,6 +99,7 @@
 		 * @return {bool}
 		 */
 		function checkModifyFields( settings ){
+			return true;
 
 			if (settings.oldPassword !== '' || settings.newPassword !== '' || settings.confirmNewPassword !== '' || settings.username !== oldSettings.username
 				|| settings.email !== oldSettings.email){
