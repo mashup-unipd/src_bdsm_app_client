@@ -8,18 +8,30 @@
  * # FavouritesCtrl
  * Controller of the app
  */
-    var FavouritesCtrl = function(pieChartCreatorService){
+    var FavouritesCtrl = function(recipeService){
     
         var vm = this;
 
-    vm.dynamicGraph = pieChartCreatorService.chartGeneration();
+    vm.getGraph=[];
+    vm.testName = "";
+    vm.testGraph = "";
 
-    vm.testName = vm.dynamicGraph.desc;
-    vm.testGraph = vm.dynamicGraph.data;
+
+
+    var graphPromise= recipeService.generateViews();
+    graphPromise
+        .then(function(list){
+            vm.getGraph.push(list);
+
+            vm.testName = vm.getGraph[0].desc;
+            vm.testGraph = vm.getGraph[0].data;
+
+        });
+
 
     };
 
-    FavouritesCtrl.$inject = ['pieChartCreatorService'];
+    FavouritesCtrl.$inject = ['recipeService'];
 
     angular.module('app')
         .controller('FavouritesCtrl', FavouritesCtrl);
