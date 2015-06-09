@@ -110,14 +110,20 @@
 
 		/**
 		 * This function TODO
-		 * TODO (test):
+		 * TODO (test): should return a promise
 		 * @param credToChange
+		 * @return {*}
 		 */
 		function updateSettingsAccount(credToChange){
-			$auth.updateAccount(credToChange)
-				.then(function(data){
-					console.log(data);
+
+			var updateAccountPromise = $auth.updateAccount(credToChange);
+
+			updateAccountPromise
+				.then(function(resp){
+					localStorageService.set('cred', resp.data);
 				});
+
+			return updateAccountPromise;
 		}
 
 
@@ -138,7 +144,7 @@
 
 			// set token to pass at the function
 			var idUser = {
-				'oauth_token': localStorageService.get('cred').oauth_token
+				'oauth_token': localStorageService.get('token')
 			};
 
 			$auth.signOut(idUser)

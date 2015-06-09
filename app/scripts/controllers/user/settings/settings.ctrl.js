@@ -40,10 +40,12 @@
 			confirmNewPassword: ''
 		};
 		vm.saveEditSuccess = false;
-		vm.confirmDeleteAccount = false;
+		vm.confirmDeleteAccountSuccess = false;
 
 		vm.saveEdit = saveEdit;
 		vm.deleteAccount = deleteAccount;
+		vm.confirmDeleteAccount = confirmDeleteAccount;
+		vm.cancelDeleteAccount = cancelDeleteAccount;
 		vm.matchNewPassword = matchNewPassword;
 
 		/////////////////
@@ -76,8 +78,25 @@
 					pwd_repeat: vm.settings.confirmNewPassword
 				};
 
-				authService.updateSettingsAccount(credToChange);
-				console.log('Modifiche salvate');
+				authService.updateSettingsAccount(credToChange)
+					.then(function(){
+						vm.saveEditSuccess = true;
+
+						var cred = authService.getAccountInformation();
+						var username = cred.username;
+						var email = cred.email;
+
+						// reset password values and visualize those news
+						vm.settings = {
+							username: username,
+							email: email,
+							oldPassword: '',
+							newPassword: '',
+							confirmNewPassword: ''
+						};
+
+					});
+
 			} else {
 
 			}
@@ -89,7 +108,24 @@
 		 * TODO (test):
 		 */
 		function deleteAccount(){
+			vm.saveEditSuccess = false;
+			vm.confirmDeleteAccountSuccess = true;
+		}
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 */
+		function confirmDeleteAccount(){
 			authService.deleteAccount();
+		}
+
+		/**
+		 * TODO
+		 * TODO (test):
+		 */
+		function cancelDeleteAccount(){
+			vm.confirmDeleteAccountSuccess = false;
 		}
 
 		/**
