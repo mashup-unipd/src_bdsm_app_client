@@ -39,6 +39,9 @@
 			newPassword: '',
 			confirmNewPassword: ''
 		};
+
+		vm.confirmDeletePwd = '';
+
 		vm.saveEditSuccess = false;
 		vm.confirmDeleteAccountSuccess = false;
 
@@ -117,7 +120,13 @@
 		 * TODO (test):
 		 */
 		function confirmDeleteAccount(){
-			authService.deleteAccount();
+
+			var info = {
+				oauth_token: authService.getAccountInformation().oauth_token,
+				pwd: vm.confirmDeletePwd
+			};
+
+			authService.deleteAccount(info);
 		}
 
 		/**

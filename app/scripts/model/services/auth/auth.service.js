@@ -83,11 +83,15 @@
 
 		/**
 		 * This function TODO
+		 * @param info
 		 * TODO (test)
 		 */
-		function deleteAccount(){
-			console.log('Deleted');
-			$location.path('/login');
+		function deleteAccount(info){
+
+			$auth.destroyAccount(info)
+				.then(function(){
+					$location.path('/login');
+				});
 		}
 
 		/**

@@ -158,6 +158,10 @@ h2 {
     box-shadow: 3px;
 }
 
+.confirm-form{
+    margin-bottom: 3em;
+}
+
 .breadcrumb{
     margin-top: 0.5em;
 }
@@ -172,8 +176,6 @@ h2 {
     background-color: black;
     outline: none !important;
 }
-
-
 
 .btn-margin{
     margin-bottom: 0.5em;

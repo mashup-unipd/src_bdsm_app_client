@@ -32,7 +32,7 @@
 			signOutUrl:              '/oauth/logout',
 			emailRegistrationPath:   '/users',
 			accountUpdatePath:       '/users',
-			accountDeletePath:       '/auth',
+			accountDeletePath:       '/users/delete',
 			confirmationSuccessUrl:  window.location.href,
 			passwordResetPath:       '/auth/password',
 			passwordUpdatePath:      '/auth/password',
