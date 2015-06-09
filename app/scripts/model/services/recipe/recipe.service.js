@@ -26,14 +26,15 @@
 	 */
 
 
-	function recipeService(dataManagerService){
+	function recipeService(dataManagerService, barChartCreatorService, lineChartCreatorService, radarChartCreatorService, pieChartCreatorService){
 
 		var factory = {
 			getRecipesList: getRecipesList,
 			getMetricsList: getMetricsList,
 			getMetricType: getMetricType,
 			createRecipeRequest: createRecipeRequest,
-			getMetricTypeNode: getMetricTypeNode
+			getMetricTypeNode: getMetricTypeNode,
+			generateViews: generateViews
 		};
 
 		return factory;
@@ -142,6 +143,19 @@
 		}
 
 		/**
+		 * This function generates the HTML code for the Graphs from  one ore more metrics
+		 * @param metric : metrics for the generation
+		 */
+		function generateViews(metric){
+
+			var call = dataManagerService.getRestCall("fb/pages/TheColorRunItalia/trend");
+
+
+			return pieChartCreatorService.chartGeneration(call,"Today's Likes and Talking abouts on the page");
+
+		}
+
+		/**
 		 * This function inserts a new recipe request created in the back-end
 		 * TODO (test):
 		 * @param recipeReq : recipe request to insert
@@ -155,7 +169,7 @@
 	}
 
 
-	recipeService.$inject = ['dataManagerService'];
+	recipeService.$inject = ['dataManagerService','barChartCreatorService','lineChartCreatorService','radarChartCreatorService','pieChartCreatorService'];
 
 	angular
 		.module('app.recipe.services.module')

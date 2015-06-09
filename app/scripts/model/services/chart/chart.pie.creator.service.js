@@ -19,25 +19,20 @@
 
         var pie = Object.create(chartCreatorService);
 
-        pie.dataFormat= function(){
+        pie.dataFormat= function(data, info){
 
             return '\n<script>\n' +
                 'var gIDPLACEHOLDERData = [' +
-            '{'+
-                'value: 300,'+
+                '{'+
+                'value:'+ data[0].likes +','+
                 'color:"#F7464A",'+
-               ' label: "Red"'+
-            '},'+
-            '{'+
-            '    value: 50,'+
+                ' label: "Likes"'+
+                '},'+
+                '{'+
+                'value:'+ data[0].talking_about +','+
                 'color: "#46BFBD",'+
-                'label: "Green"'+
-            '},'+
-            '{'+
-                'value: 100,'+
-                'color: "#FDB45C",'+
-                'label: "Yellow"'+
-            '}];\n'+
+                'label: "Talking About"'+
+                '}];\n'+
                 'var gIDPLACEHOLDERGraph = document.getElementById(\'gIDPLACEHOLDERCanvas\').getContext(\'2d\');\n'+
                 'new Chart(gIDPLACEHOLDERGraph).Pie(gIDPLACEHOLDERData);'+
                 '</script>';

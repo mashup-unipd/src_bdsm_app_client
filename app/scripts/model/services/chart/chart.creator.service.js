@@ -15,7 +15,7 @@
 	 *
 	 */
 
-	function chartCreatorService($sce){
+	function chartCreatorService($sce,$q){
 
 
 		var factory = {
@@ -31,29 +31,46 @@
 
 		function chartGeneration(data, info){
 
-			//to generate always different ids simply uses a timestamp (also adds a random part in the case two ids are generated in the same millisecond)
-			var id = (Date.now().toString() + Math.ceil(Math.random()*1000));
+			var sv= this;
+
+			var graph = $q.defer();
+
+			var callResults= [];
+			data
+				.then(function(list){
+					var array = list.items;
+					array.forEach(function(element){
+						callResults.push(element);
+					});
+
+					//to generate always different ids simply uses a timestamp (also adds a random part in the case two ids are generated in the same millisecond)
+					var id = (Date.now().toString() + Math.ceil(Math.random()*1000));
 
 
-			var result = '<canvas id="g'+id + 'Canvas" width="600" height="400"></canvas>';
+					var canvas = '<canvas id="g'+id + 'Canvas" width="600" height="400"></canvas>';
 
 
-			var format= this.dataFormat();
-			result += format.replace(/IDPLACEHOLDER/g,id);
+					var format= sv.dataFormat(callResults, info);
+					canvas += format.replace(/IDPLACEHOLDER/g,id);
 
-			return {
-					desc: "Likes on the page over time (monthly)",
-					data: $sce.trustAsHtml(result)
-			};
+					var result= {
+						desc: info,
+						data: $sce.trustAsHtml(canvas)
+					};
+					graph.resolve(result);
+
+				});
+
+			return graph.promise;
 
 		}
-		function dataFormat(){
+		function dataFormat(data, info){
 				//To be implemented in child services
 		}
 
 	}
 
-	chartCreatorService.$inject = ['$sce'];
+	chartCreatorService.$inject = ['$sce','$q'];
 
 	angular
 			.module('app.chart.creator.services.module')

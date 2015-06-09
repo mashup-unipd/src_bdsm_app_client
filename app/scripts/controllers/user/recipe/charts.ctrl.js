@@ -22,7 +22,7 @@
 	 * Controller of the app
 	 */
 
-	var ChartsCtrl = function ($stateParams,lineChartCreatorService) {
+	var ChartsCtrl = function ($stateParams,recipeService) {
 
 		var vm = this;
 
@@ -31,15 +31,19 @@
 		vm.metric3 = $stateParams.metric3;
 		vm.cat = $stateParams.cat;
 		vm.type = $stateParams.type;
+		vm.getGraph=[];
 
-		vm.getGraph=[lineChartCreatorService.chartGeneration()];
+		var graphPromise= recipeService.generateViews();
+		graphPromise
+			.then(function(list){
+					vm.getGraph.push(list);
 
-
+			});
 
 
 	};
 
-	ChartsCtrl.$inject = ['$stateParams','lineChartCreatorService'];
+	ChartsCtrl.$inject = ['$stateParams','recipeService'];
 
 	angular.module('app').controller('ChartsCtrl', ChartsCtrl);
 

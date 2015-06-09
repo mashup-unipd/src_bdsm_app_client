@@ -54,7 +54,7 @@
 
 			var localCallData;
 
-			// no entry it's founded entry or time is expired
+			// no entry is found or time is expired
 			if (typeof restTime === 'undefined' || restTime < Date.now() - 10800000) {
 
 				apiCallPromise = httpGetRequest(url);
