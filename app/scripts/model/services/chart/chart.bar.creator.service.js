@@ -19,16 +19,11 @@
 
         var bar = Object.create(chartCreatorService);
 
-        bar.dataFormat= function(){
+        bar.dataFormat= function(data){
 
             return '\n<script>\n' +
-                'var gIDPLACEHOLDERData = {' +
-                'labels : ["January","February","March","April","May"],\n'+
-                'datasets : ['+
-                '{fillColor : "rgba(172,194,132,0.4)",\n' +
-                'strokeColor : "rgba(172,194,132,1)",\n' +
-                'pointColor : "rgba(172,194,132,1)",\n'+
-                'data : [104023,106390,106448,107982,108219]}]};\n'+
+                'var gIDPLACEHOLDERData = ' + JSON.stringify(data,null,2) +
+                ';\n'+
                 'var gIDPLACEHOLDERGraph = document.getElementById(\'gIDPLACEHOLDERCanvas\').getContext(\'2d\');\n'+
                 'new Chart(gIDPLACEHOLDERGraph).Bar(gIDPLACEHOLDERData);'+
                 '</script>';

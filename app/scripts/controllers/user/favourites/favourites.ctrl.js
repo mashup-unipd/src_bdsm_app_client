@@ -16,12 +16,16 @@
     vm.testName = "";
     vm.testGraph = "";
 
+    var parameter= {
+        cat: "Facebook",
+        type: "event",
+        value: "744734845634041"
+    };
 
-
-    var graphPromise= recipeService.generateViews();
+    var graphPromise= recipeService.generateViews(parameter);
     graphPromise
         .then(function(list){
-            vm.getGraph.push(list);
+            vm.getGraph = list;
 
             vm.testName = vm.getGraph[0].desc;
             vm.testGraph = vm.getGraph[0].data;

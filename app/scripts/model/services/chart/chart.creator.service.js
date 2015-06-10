@@ -35,6 +35,7 @@
 
 			var graph = $q.defer();
 
+
 			var callResults= [];
 			data
 				.then(function(list){
@@ -49,12 +50,13 @@
 
 					var canvas = '<canvas id="g'+id + 'Canvas" width="600" height="400"></canvas>';
 
+					var specificInfo= info(callResults);
 
-					var format= sv.dataFormat(callResults, info);
+					var format= sv.dataFormat(specificInfo.dataSet);
 					canvas += format.replace(/IDPLACEHOLDER/g,id);
 
 					var result= {
-						desc: info,
+						desc: specificInfo.desc,
 						data: $sce.trustAsHtml(canvas)
 					};
 					graph.resolve(result);

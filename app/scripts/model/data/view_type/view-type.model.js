@@ -25,7 +25,7 @@
             if (conf) {
         //  ------ WIEWS DI CONFRONTO -----------------//
                 switch (cat) {
-                    case 'facebook':
+                    case 'Facebook':
                         if (type == 'page') {
                             graphs = [
                                 {
@@ -54,7 +54,7 @@
                             ]
                         }
                         break;
-                    case 'twitter':
+                    case 'Twitter':
                         if (type == 'hashtag') {
                             graphs = [
                                 {
@@ -89,7 +89,7 @@
                             ]
                         }
                         break;
-                    case 'instagram':
+                    case 'Instagram':
                         if (type == 'hashtag') {
                             graphs = [
                                 {
@@ -130,103 +130,195 @@
         //  ------ WIEWS GENERATE DA METRICA SINGOLA --//
             }else{
                 switch (cat) {
-                    case 'facebook':
+                    case 'Facebook':
                         if (type == 'page') {
-                            graphs = [
-                                {
-                                    kind: 'line',
-                                    time: 'weekly',
-                                    data: ['likes', 'talking-about'],
-                                    desc: 'Likes and Talking About the page '+ val +' over time (weekly)'
-                                },
-                                {
-                                    kind: 'bar',
-                                    time: 'weekly',
-                                    data: ['average-comments'],
-                                    desc: 'Average comments per post on the page '+val+' over time (weekly)'
+                            graphs = [function(call){
+                                if (call=="outside"){
+                                    return {
+                                        kind: 'pie',
+                                        source: 'media'
+                                    }
                                 }
-                                // TODO: add all the other views
-                            ]
+                                return {
+
+                                    dataSet: [
+                                        {
+                                            value: call[0].admin_comments,
+                                            color: "#F7464A",
+                                            label: "Page comments"
+                                        },
+                                        {
+                                            value: call[0].comments,
+                                            color: "#46BFBD",
+                                            label: "Other people comments"
+                                        }
+                                    ],
+                                    desc: 'Comments on the page '+ val + ' over the last three days'
+                                }
+                            }
+                            ];
                         } else {
-                            graphs = [
-                                {
-                                    kind: 'pie',
-                                    time: 'now',
-                                    data: ['join', 'maybe', 'decline'],
+                            graphs = [function(call){
+                                if (call=="outside"){
+                                    return {
+                                        kind: 'pie',
+                                        source: 'trend'
+                                    }
+                                }
+                                return {
+
+                                    dataSet: [
+                                        {
+                                            value: call[0].attending,
+                                            color: "#F7464A",
+                                            label: "Attending"
+                                        },
+                                        {
+                                            value: call[0].maybe,
+                                            color: "#46BFBD",
+                                            label: "Maybe"
+                                        },
+                                        {
+                                            value: call[0].declined,
+                                            color: "#FDB45C",
+                                            label: "Declined"
+                                        }
+                                    ],
                                     desc: 'People who marked "join", "maybe" or "decline" for the event '+ val
                                 }
-                                // TODO: add all the other views
-                            ]
+                            }
+                            ];
+                            // TODO: add all the other views
                         }
                         break;
-                    case 'twitter':
+                    case 'Twitter':
                         if (type == 'hashtag') {
-                            graphs = [
-                                {
-                                    kind: 'line',
-                                    time: 'weekly',
-                                    data: ['tweets'],
-                                    desc: 'Number of tweets having the hashtag '+ val +' over time (weekly)'
-                                },
-                                {
-                                    kind: 'radar',
-                                    time: 'hours',
-                                    data: ['tweets'],
-                                    desc: 'Posting time of tweets having the hashtag '+ val
+                            graphs = [function(call){
+                                if (call=="outside"){
+                                    return {
+                                        kind: 'pie',
+                                        source: 'media'
+                                    }
                                 }
-                                // TODO: add all the other views
-                            ]
+                                return {
+
+                                    dataSet: [
+                                        {
+                                            value: 12,
+                                            color: "#F7464A",
+                                            label: "Foo"
+                                        },
+                                        {
+                                            value: 14,
+                                            color: "#46BFBD",
+                                            label: "Foo"
+                                        },
+                                        {
+                                            value: 15,
+                                            color: "#FDB45C",
+                                            label: "Foo"
+                                        }
+                                    ],
+                                    desc: 'Foo Graph'
+                                }
+                            }
+                            ];
                         } else {
-                            graphs = [
-                                {
-                                    kind: 'line',
-                                    time: 'weekly',
-                                    data: ['tweets', 'followers'],
-                                    desc: 'Tweets and Followers of the user '+ val +' over time (weekly)'
-                                },
-                                {
-                                    kind: 'pie',
-                                    time: 'now',
-                                    data: ['tweets', 'preferred', 'retweets'],
-                                    desc: 'Tweets, preferred and retweets of the user '+ val
+                            graphs = [function(call){
+                                if (call=="outside"){
+                                    return {
+                                        kind: 'pie',
+                                        source: 'trend'
+                                    }
                                 }
-                                // TODO: add all the other views
-                            ]
+                                return {
+
+                                    dataSet: [
+                                        {
+                                            value: call[0].tweets_count,
+                                            color: "#F7464A",
+                                            label: "Tweets"
+                                        },
+                                        {
+                                            value: call[0].followers_count,
+                                            color: "#46BFBD",
+                                            label: "Folowers"
+                                        },
+                                        {
+                                            value: call[0].favourites_count,
+                                            color: "#FDB45C",
+                                            label: "Favourites"
+                                        }
+                                    ],
+                                    desc: 'Number of '+val+'\'s tweets, followers and favourites'
+                                }
+                            }
+                            ];
                         }
                         break;
-                    case 'instagram':
+                    case 'Instagram':
                         if (type == 'hashtag') {
-                            graphs = [
-                                {
-                                    kind: 'line',
-                                    time: 'weekly',
-                                    data: ['posts', 'users'],
-                                    desc: 'Posts and users using the hashtag '+ val +' over time (weekly)'
-                                },
-                                {
-                                    kind: 'line',
-                                    time: 'weekly',
-                                    data: ['likes', 'comments'],
-                                    desc: 'Likes and comments received by post having the hashtag '+ val +' over time (weekly)'
+                            graphs = [function(call){
+                                if (call=="outside"){
+                                    return {
+                                        kind: 'pie',
+                                        source: 'media'
+                                    }
                                 }
-                                // TODO: add all the other views
-                            ]
+                                return {
+
+                                    dataSet: [
+                                        {
+                                            value: 12,
+                                            color: "#F7464A",
+                                            label: "Foo"
+                                        },
+                                        {
+                                            value: 14,
+                                            color: "#46BFBD",
+                                            label: "Foo"
+                                        },
+                                        {
+                                            value: 15,
+                                            color: "#FDB45C",
+                                            label: "Foo"
+                                        }
+                                    ],
+                                    desc: 'Foo Graph'
+                                }
+                            }
+                            ];
                         } else {
-                            graphs = [
-                                {
-                                    kind: 'bar',
-                                    time: 'posts',
-                                    data: ['likes', 'comments'],
-                                    desc: 'Likes and comments received by each post of the user '+ val
-                                },
-                                {
-                                    kind: 'line',
-                                    time: 'weekly',
-                                    data: ['followers', 'posts'],
-                                    desc: 'Followers and posts of the user '+ val +' over time (weekly)'
+                            graphs = [function(call){
+                                if (call=="outside"){
+                                    return {
+                                        kind: 'pie',
+                                        source: 'trend'
+                                    }
                                 }
-                                // TODO: add all the other views
-                            ]
+                                return {
+
+                                    dataSet: [
+                                        {
+                                            value: 12,
+                                            color: "#F7464A",
+                                            label: "Foo"
+                                        },
+                                        {
+                                            value: 14,
+                                            color: "#46BFBD",
+                                            label: "Foo"
+                                        },
+                                        {
+                                            value: 15,
+                                            color: "#FDB45C",
+                                            label: "Foo"
+                                        }
+                                    ],
+                                    desc: 'Foo Graph'
+                                }
+                            }
+                            ];
                         }
                         break;
                     default :

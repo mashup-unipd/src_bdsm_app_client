@@ -33,10 +33,18 @@
 		vm.type = $stateParams.type;
 		vm.getGraph=[];
 
-		var graphPromise= recipeService.generateViews();
+		var parameter= {
+			cat: vm.cat,
+			type: vm.type,
+			value: vm.metric
+		};
+
+
+		var graphPromise= recipeService.generateViews(parameter);
+
 		graphPromise
 			.then(function(list){
-					vm.getGraph.push(list);
+					vm.getGraph=list;
 
 			});
 

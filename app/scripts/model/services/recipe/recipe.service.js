@@ -19,14 +19,13 @@
 
 	/**
 	 * @ngdoc service
-	 * @name app.recipe.services.module.userService
+	 * @name app.recipe.services.module
 	 * @description
 	 * # recipeService
 	 * Factory in the app.recipe.services.module
 	 */
 
-
-	function recipeService(dataManagerService, barChartCreatorService, lineChartCreatorService, radarChartCreatorService, pieChartCreatorService){
+	function recipeService($q, dataManagerService, viewTypeModel, barChartCreatorService, lineChartCreatorService, radarChartCreatorService, pieChartCreatorService){
 
 		var factory = {
 			getRecipesList: getRecipesList,
@@ -148,10 +147,66 @@
 		 */
 		function generateViews(metric){
 
-			var call = dataManagerService.getRestCall("fb/pages/TheColorRunItalia/trend");
+			var main;
+			var media;
+			var trend;
+			//var events;
+			var graphPromises=[];
 
+			switch (metric.cat) {
+				case 'Facebook':
+					if (metric.type == 'page') {
+						main = dataManagerService.getRestCall("fb/pages/"+ metric.value);
+						media = dataManagerService.getRestCall("fb/pages/"+ metric.value +"/posts");
+						trend = dataManagerService.getRestCall("fb/pages/"+ metric.value +"/trend");
+						//events = dataManagerService.getRestCall(  TODO  );
+					} else {
+						main = dataManagerService.getRestCall("fb/events/"+ metric.value);
+						media = dataManagerService.getRestCall("fb/events/"+ metric.value +"/posts");
+						trend = dataManagerService.getRestCall("fb/events/"+ metric.value +"/trend");
+					}
+					break;
+				case 'Twitter':
+					if (metric.type == 'hashtag') {
+						media = dataManagerService.getRestCall("tw/users/"+ metric.value +"/tweets");
+					} else {
+						main = dataManagerService.getRestCall("tw/users/"+ metric.value);
+						media = dataManagerService.getRestCall("tw/users/"+ metric.value +"/tweets");
+						trend = dataManagerService.getRestCall("tw/users/"+ metric.value +"/trend");
+					}
+					break;
+				case 'Instagram':
+					if (metric.type == 'hashtag') {
+						media = dataManagerService.getRestCall("ig/hashtags/"+ metric.value +"/media");
+						trend = dataManagerService.getRestCall("ig/hashtags/"+ metric.value +"/trend");
+					} else {
+						main = dataManagerService.getRestCall("ig/users/"+ metric.value);
+						media = dataManagerService.getRestCall("ig/users/"+ metric.value +"/media");
+						trend = dataManagerService.getRestCall("ig/users/"+ metric.value +"/trend");
+					}
+					break;
 
-			return pieChartCreatorService.chartGeneration(call,"Today's Likes and Talking abouts on the page");
+			}
+
+			var info = viewTypeModel(false, metric.cat, metric.type, metric.value);
+
+			angular.forEach(info,function(value){
+				var parameters = value("outside");
+				var call={trend: trend, media: media, main: main};
+
+				switch (parameters.kind) {
+					case 'pie': graphPromises.push(pieChartCreatorService.chartGeneration(call[parameters.source],value));
+						break;
+					case 'line': graphPromises.push(lineChartCreatorService.chartGeneration(call[parameters.source],value));
+						break;
+					case 'bar': graphPromises.push(barChartCreatorService.chartGeneration(call[parameters.source],value));
+						break;
+					case 'radar': graphPromises.push(radarChartCreatorService.chartGeneration(call[parameters.source],value));
+						break;
+				}
+			});
+
+			return $q.all(graphPromises);
 
 		}
 
@@ -169,7 +224,7 @@
 	}
 
 
-	recipeService.$inject = ['dataManagerService','barChartCreatorService','lineChartCreatorService','radarChartCreatorService','pieChartCreatorService'];
+	recipeService.$inject = ['$q','dataManagerService','viewTypeModel','barChartCreatorService','lineChartCreatorService','radarChartCreatorService','pieChartCreatorService'];
 
 	angular
 		.module('app.recipe.services.module')
