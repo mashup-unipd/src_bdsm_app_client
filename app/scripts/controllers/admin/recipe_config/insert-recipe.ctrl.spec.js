@@ -121,7 +121,70 @@ describe('Controller: InsertRecipeCtrl', function() {
 			expect(element.value).toBeDefined();
 		});
 
+	});
 
+	it('should metrics array must be length +1 after a successful metric insert', function(){
+		scope.sc.tempMetrics = [
+			{
+				id: '#test',
+				category: 'twitter',
+				category_type: 'hashtag'
+			}
+		];
+
+		var length = scope.sc.tempMetrics.length;
+		scope.sc.addMetric('facebook', 'page', 'TestOfficial');
+
+		expect(scope.sc.tempMetrics.length).toBe(length + 1);
+
+		expect(scope.sc.insertMetricSuccess).toBeTruthy();
+		expect(scope.sc.insertMetricEmptyError).toBeFalsy();
+		expect(scope.sc.insertMetricDuplicateError).toBeFalsy();
+		expect(scope.sc.metricQuantityError).toBeFalsy();
+		expect(scope.sc.removeMetricSuccess).toBeFalsy();
+
+	});
+
+	it('should metrics array must be length as previous after a fail insert due to an undefined val', function(){
+		scope.sc.tempMetrics = [
+			{
+				id: '#test',
+				category: 'twitter',
+				category_type: 'hashtag'
+			}
+		];
+
+		var length = scope.sc.tempMetrics.length;
+
+		scope.sc.addMetric(undefined, 'page', 'TestOfficial');
+		expect(scope.sc.tempMetrics.length).toBe(length);
+		expect(scope.sc.insertMetricEmptyError).toBeTruthy();
+
+		scope.sc.addMetric('facebook', undefined, 'TestOfficial');
+		expect(scope.sc.tempMetrics.length).toBe(length);
+		expect(scope.sc.insertMetricEmptyError).toBeTruthy();
+
+
+		scope.sc.addMetric('facebook', 'page', undefined);
+		expect(scope.sc.tempMetrics.length).toBe(length);
+		expect(scope.sc.insertMetricEmptyError).toBeTruthy();
+
+	});
+
+	it('should metrics array must be length as previous after a fail insert due to a duplicate metric', function(){
+		scope.sc.tempMetrics = [
+			{
+				id: '#test',
+				category: 'twitter',
+				category_type: 'hashtag'
+			}
+		];
+
+		var length = scope.sc.tempMetrics.length;
+
+		scope.sc.addMetric('twitter', 'hashtag', '#test');
+		expect(scope.sc.tempMetrics.length).toBe(length);
+		expect(scope.sc.insertMetricDuplicateError).toBeTruthy();
 	});
 
 });
