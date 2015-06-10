@@ -56,6 +56,7 @@
 		vm.updateTypeMetric = updateTypeMetric;
 		vm.addMetric = addMetric;
 		vm.removeMetric = removeMetric;
+		vm.checkMetricsQuantity = checkMetricsQuantity;
 
 		///////////////////
 
@@ -76,7 +77,7 @@
 				var value = {
 					'title': vm.titleRecipe,
 					'desc': vm.descRecipe,
-					'admin_id': '352324643657457',
+					'admin_id': authService.getAccountInformation().oauth_token,
 					'metrics': vm.metrics
 				};
 
@@ -150,7 +151,6 @@
 
 		/**
 		 * This function removes an added metric from the temporary array that contains all added metrics
-		 * TODO (test):
 		 * @param indexMetric
 		 */
 		function removeMetric(indexMetric){
@@ -175,7 +175,6 @@
 
 		/**
 		 * This function checks if there are at least two metrics in the Recipe
-		 * TODO (test): should return true if metrics array is length 2 or more, else false
 		 * @returns {boolean} true if there are almost two else false
 		 */
 		function checkMetricsQuantity(){
@@ -184,15 +183,15 @@
 		}
 
 		/**
-		 * TODO
+		 * This function checks if a metric is already insert in the global array for the metrics
 		 * TODO (test):
-		 * @param metric :
-		 * @return {bool} :
+		 * @param metric : metric that we want check
+		 * @return {bool} : true if the metric is finded in array, else false
 		 */
 		function checkMetricDuplicate(metric){
 			var findMetric = false;
 
-			angular.copy(vm.tempMetrics).forEach(function(element){
+			vm.tempMetrics.forEach(function(element){
 				if (element.id === metric.id && element.category === metric.category && element.category_type === metric.category_type){
 					findMetric = true;
 
