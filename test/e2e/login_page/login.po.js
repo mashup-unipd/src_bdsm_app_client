@@ -14,13 +14,22 @@
  */
 
 var AngularLoginPage = function(){
-
-	// TODO: variables that get element from page
+	/*
+	var emailInput = element(by.model(lc.credentials.email));
+	var passwordInput = element(by.model(lc.credentials.password));
 
 	this.get = function(){
 		browser.get('http://mashup-unipd.github.io');
-	}
+	};
 
+	this.setEmail = function(name){
+		emailInput.sendKeys(name);
+	};
+
+	this.setPassword = function(name){
+		passwordInput.sendKeys(name);
+	};
+	*/
 };
 
 module.exports = AngularLoginPage;

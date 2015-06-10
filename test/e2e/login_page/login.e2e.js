@@ -21,10 +21,11 @@ var AngularLoginPage = require('./login.po.js');
 describe('Login interaction', function() {
 
     it('should check if redirect works with a correct input ', function() {
-		var angularLoginPage = new AngularLoginPage();
-		angularLoginPage.get();
-
-        /* TODO: refactor */
-
+			var angularLoginPage = new AngularLoginPage();
+			/*
+			angularLoginPage.get();
+			angularLoginPage.setEmail('info@mashup-unipd.it');
+			angularLoginPage.setPassword('gruppoSWE2014');
+			*/
     });
 });
