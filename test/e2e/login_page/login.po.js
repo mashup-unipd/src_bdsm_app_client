@@ -14,9 +14,11 @@
  */
 
 var AngularLoginPage = function(){
-	/*
-	var emailInput = element(by.model(lc.credentials.email));
-	var passwordInput = element(by.model(lc.credentials.password));
+
+	var emailInput = element(by.model('lc.credentials.email'));
+	var passwordInput = element(by.model('lc.credentials.pwd'));
+	var loginBtn = element(by.css('.btn'));
+
 
 	this.get = function(){
 		browser.get('http://mashup-unipd.github.io');
@@ -29,7 +31,12 @@ var AngularLoginPage = function(){
 	this.setPassword = function(name){
 		passwordInput.sendKeys(name);
 	};
-	*/
+
+	this.loginClick = function(){
+		loginBtn.click();
+	};
+
+
 };
 
 module.exports = AngularLoginPage;
