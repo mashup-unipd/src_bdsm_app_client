@@ -39,9 +39,11 @@
 			var callResults= [];
 			data
 				.then(function(list){
-					var array = list.items;
-					array.forEach(function(element){
-						callResults.push(element);
+
+					//var array = list;
+
+					list.forEach(function(element){
+						callResults.push(element.items);
 					});
 
 					//to generate always different ids simply uses a timestamp (also adds a random part in the case two ids are generated in the same millisecond)

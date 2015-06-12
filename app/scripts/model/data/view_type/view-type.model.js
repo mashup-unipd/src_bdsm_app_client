@@ -143,12 +143,12 @@
 
                                     dataSet: [
                                         {
-                                            value: call[0].admin_comments,
+                                            value: call[0][0].admin_comments,
                                             color: "#F7464A",
                                             label: "Page comments"
                                         },
                                         {
-                                            value: call[0].comments,
+                                            value: call[0][0].comments,
                                             color: "#46BFBD",
                                             label: "Other people comments"
                                         }
@@ -169,17 +169,17 @@
 
                                     dataSet: [
                                         {
-                                            value: call[0].attending,
+                                            value: call[0][0].attending,
                                             color: "#F7464A",
                                             label: "Attending"
                                         },
                                         {
-                                            value: call[0].maybe,
+                                            value: call[0][0].maybe,
                                             color: "#46BFBD",
                                             label: "Maybe"
                                         },
                                         {
-                                            value: call[0].declined,
+                                            value: call[0][0].declined,
                                             color: "#FDB45C",
                                             label: "Declined"
                                         }
@@ -235,17 +235,17 @@
 
                                     dataSet: [
                                         {
-                                            value: call[0].tweets_count,
+                                            value: call[0][0].tweets_count,
                                             color: "#F7464A",
                                             label: "Tweets"
                                         },
                                         {
-                                            value: call[0].followers_count,
+                                            value: call[0][0].followers_count,
                                             color: "#46BFBD",
-                                            label: "Folowers"
+                                            label: "Followers"
                                         },
                                         {
-                                            value: call[0].favourites_count,
+                                            value: call[0][0].favourites_count,
                                             color: "#FDB45C",
                                             label: "Favourites"
                                         }

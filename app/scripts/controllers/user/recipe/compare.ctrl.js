@@ -70,6 +70,7 @@
          * @param typeCat : type of the category
          * @param val : value of the category
          */
+
         function addMetric(cat, typeCat, val){
 
             var metric = {
@@ -106,6 +107,7 @@
 
             recipeService.getMetricsList($stateParams.title)
 				.then(function(data){
+                    vm.metrics=[];
 					var arrayMetrics = data.metrics;
 					arrayMetrics.forEach(function(element){
 						if(element.category === category && element.category_type === type){

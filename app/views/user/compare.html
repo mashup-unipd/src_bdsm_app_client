@@ -44,7 +44,8 @@
                     <label for="metrics">Metrics</label>
                     <select class="form-control" id="metrics"
                             data-ng-options="metric.id for metric in cc.metrics"
-                            data-ng-model="metric.key" required>
+                            data-ng-model="metric.key"
+                            required>
                     </select>
                 </div>
             </div>
@@ -52,7 +53,7 @@
             <div class="row">
                 <div class="col-md-5">
                     <button class="btn btn-primary" type="button"
-                            data-ng-click="cc.addMetric(category.key.key, type.key.key, metric.key.name)"
+                            data-ng-click="cc.addMetric(category.key.key, type.key.key, metric.key.id)"
                             data-ng-disabled="cc.maxReached || compareForm.$invalid">
                         Add metric <i class="fa fa-plus"></i>
                     </button>
@@ -75,7 +76,7 @@
             </div>
             <div class="row">
                 <div class="col-md-5">
-                    <button class="btn btn-primary" type="submit" data-ng-disabled="cc.notEnough" >
+                    <button class="btn btn-primary" data-ui-sref="dashboard.charts({cat: cc.tempMetrics[0].category, type: cc.tempMetrics[0].typeCategory, metric: cc.tempMetrics[0].value, metric2: cc.tempMetrics[1].value, metric3: cc.tempMetrics[2].value})" data-ng-disabled="cc.notEnough" >
                         Generate Charts <span class="fa fa-save"></span>
                     </button>
                 </div>
@@ -85,7 +86,7 @@
                 <div data-ng-repeat="metric in cc.tempMetrics">
                     <div class="table-responsive">
                         <table class="table table-hover table-bordered">
-                            <caption>Metric added to compare</caption>
+                            <caption>Metrics to compare</caption>
                             <thead>
                             <tr>
                                 <th>Option</th>

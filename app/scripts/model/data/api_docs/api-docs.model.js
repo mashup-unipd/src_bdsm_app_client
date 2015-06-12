@@ -35,6 +35,11 @@
 
 			return [
 				{
+					req: "https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/",
+					type: 'Base path',
+					desc: 'This is the base path you have to include in every REST call'
+				},
+				{
 					req: "recipes",
 					type: 'GET',
 					desc: 'Get the list of the available recipes'
@@ -96,7 +101,7 @@
 					desc: 'Get all the data of a Twitter user\'s tweets'
 				},
 				{
-					req: "tw/users/{hashtag_name}/tweets",
+					req: "tw/hashtags/{hashtag_name}/tweets",
 					type: 'GET',
 					desc: 'Get all the data of Twitter tweets having a certain hashtag'
 				},

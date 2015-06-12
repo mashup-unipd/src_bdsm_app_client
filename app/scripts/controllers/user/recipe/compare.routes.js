@@ -42,7 +42,8 @@
 
     angular
         .module('app.user.compare.routes', [
-            'ui.router'
+            'ui.router',
+            'app.user.metrics.charts.routes'
         ])
 
         .config(['$stateProvider', CompareRoutes]);

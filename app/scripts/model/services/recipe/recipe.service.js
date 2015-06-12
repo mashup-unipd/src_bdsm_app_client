@@ -33,7 +33,8 @@
 			getMetricType: getMetricType,
 			createRecipeRequest: createRecipeRequest,
 			getMetricTypeNode: getMetricTypeNode,
-			generateViews: generateViews
+			generateViews: generateViews,
+			generateCompare: generateCompare
 		};
 
 		return factory;
@@ -156,39 +157,112 @@
 			switch (metric.cat) {
 				case 'Facebook':
 					if (metric.type == 'page') {
-						main = dataManagerService.getRestCall("fb/pages/"+ metric.value);
-						media = dataManagerService.getRestCall("fb/pages/"+ metric.value +"/posts");
-						trend = dataManagerService.getRestCall("fb/pages/"+ metric.value +"/trend");
+						main = dataManagerService.getRestCall("fb/pages/"+ encodeURIComponent(metric.value));
+						media = dataManagerService.getRestCall("fb/pages/"+ encodeURIComponent(metric.value) +"/posts");
+						trend = dataManagerService.getRestCall("fb/pages/"+ encodeURIComponent(metric.value) +"/trend");
 						//events = dataManagerService.getRestCall(  TODO  );
 					} else {
-						main = dataManagerService.getRestCall("fb/events/"+ metric.value);
-						media = dataManagerService.getRestCall("fb/events/"+ metric.value +"/posts");
-						trend = dataManagerService.getRestCall("fb/events/"+ metric.value +"/trend");
+						main = dataManagerService.getRestCall("fb/events/"+ encodeURIComponent(metric.value));
+						media = dataManagerService.getRestCall("fb/events/"+ encodeURIComponent(metric.value) +"/posts");
+						trend = dataManagerService.getRestCall("fb/events/"+ encodeURIComponent(metric.value) +"/trend");
 					}
 					break;
 				case 'Twitter':
 					if (metric.type == 'hashtag') {
-						media = dataManagerService.getRestCall("tw/users/"+ metric.value +"/tweets");
+						media = dataManagerService.getRestCall("tw/hashtags/"+ encodeURIComponent(metric.value) +"/tweets");
 					} else {
-						main = dataManagerService.getRestCall("tw/users/"+ metric.value);
-						media = dataManagerService.getRestCall("tw/users/"+ metric.value +"/tweets");
-						trend = dataManagerService.getRestCall("tw/users/"+ metric.value +"/trend");
+						main = dataManagerService.getRestCall("tw/users/"+ encodeURIComponent(metric.value));
+						media = dataManagerService.getRestCall("tw/users/"+ encodeURIComponent(metric.value) +"/tweets");
+						trend = dataManagerService.getRestCall("tw/users/"+ encodeURIComponent(metric.value) +"/trend");
 					}
 					break;
 				case 'Instagram':
 					if (metric.type == 'hashtag') {
-						media = dataManagerService.getRestCall("ig/hashtags/"+ metric.value +"/media");
-						trend = dataManagerService.getRestCall("ig/hashtags/"+ metric.value +"/trend");
+						media = dataManagerService.getRestCall("ig/hashtags/"+ encodeURIComponent(metric.value) +"/media");
+						trend = dataManagerService.getRestCall("ig/hashtags/"+ encodeURIComponent(metric.value) +"/trend");
 					} else {
-						main = dataManagerService.getRestCall("ig/users/"+ metric.value);
-						media = dataManagerService.getRestCall("ig/users/"+ metric.value +"/media");
-						trend = dataManagerService.getRestCall("ig/users/"+ metric.value +"/trend");
+						main = dataManagerService.getRestCall("ig/users/"+ encodeURIComponent(metric.value));
+						media = dataManagerService.getRestCall("ig/users/"+ encodeURIComponent(metric.value) +"/media");
+						trend = dataManagerService.getRestCall("ig/users/"+ encodeURIComponent(metric.value) +"/trend");
 					}
 					break;
 
 			}
 
 			var info = viewTypeModel(false, metric.cat, metric.type, metric.value);
+
+			angular.forEach(info,function(value){
+				var parameters = value("outside");
+				var call={trend: trend, media: media, main: main};
+
+				switch (parameters.kind) {
+					case 'pie': graphPromises.push(pieChartCreatorService.chartGeneration($q.all([call[parameters.source]]),value));
+						break;
+					case 'line': graphPromises.push(lineChartCreatorService.chartGeneration($q.all([call[parameters.source]]),value));
+						break;
+					case 'bar': graphPromises.push(barChartCreatorService.chartGeneration($q.all([call[parameters.source]]),value));
+						break;
+					case 'radar': graphPromises.push(radarChartCreatorService.chartGeneration($q.all([call[parameters.source]]),value));
+						break;
+				}
+			});
+
+			return $q.all(graphPromises);
+
+		}
+
+		function generateCompare(metrics){
+
+			var main;
+			var media;
+			var trend;
+			//var events;
+			var graphPromises=[];
+
+			var callList= function(call,metrics){
+				var result=[];
+				angular.forEach(metrics, function(value){
+					result.push(dataManagerService.getRestCall(call.replace("{metric}",value)));
+				});
+				return $q.all(result);
+			};
+
+			switch (metrics.cat) {
+				case 'Facebook':
+					if (metrics.type == 'page') {
+						main = callList("fb/pages/{metric}",metrics.value);
+						media = callList("fb/pages/{metric}/posts",metrics.value);
+						trend = callList("fb/pages/{metric}/trend",metrics.value);
+						//events = (  TODO  );
+					} else {
+						main = callList("fb/events/{metric}",metrics.value);
+						media = callList("fb/events/{metric}/posts",metrics.value);
+						trend = callList("fb/events/{metric}/trend",metrics.value);
+					}
+					break;
+				case 'Twitter':
+					if (metrics.type == 'hashtag') {
+						media = callList("tw/hashtags/{metric}/tweets",metrics.value);
+					} else {
+						main = callList("tw/users/{metric}",metrics.value);
+						media = callList("tw/users/{metric}/tweets",metrics.value);
+						trend = callList("tw/users/{metric}/trend",metrics.value);
+					}
+					break;
+				case 'Instagram':
+					if (metrics.type == 'hashtag') {
+						media = callList("ig/hashtags/{metric}/media",metrics.value);
+						trend = callList("ig/hashtags/{metric}/trend",metrics.value);
+					} else {
+						main = callList("ig/users/{metric}",metrics.value);
+						media = callList("ig/users/{metric}/media",metrics.value);
+						trend = callList("ig/users/{metric}/trend",metrics.value);
+					}
+					break;
+
+			}
+
+			var info = viewTypeModel(true, metrics.cat, metrics.type, metrics.value);
 
 			angular.forEach(info,function(value){
 				var parameters = value("outside");

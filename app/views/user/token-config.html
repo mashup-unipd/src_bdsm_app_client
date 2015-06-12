@@ -50,14 +50,6 @@
 
     <div ng-controller="TokenConfigCtrl as tcc">
 
-        <div class="panel panel-default">
-            <div class="panel-heading"><span class="label label-primary">Base path</span>
-                <code>https://bdsm-app-alpha.appspot.com/_ah/api/bdsmapp_api/1.0/</code>
-            </div>
-            <div class="panel-body">
-                <p>This is the base path to do a REST call</p>
-            </div>
-        </div>
 
         <div class="panel panel-default" data-ng-repeat="service in tcc.restServices">
             <div class="panel-heading"><span class="label label-primary" data-ng-bind="service.type"></span>

@@ -32,15 +32,28 @@
 		vm.cat = $stateParams.cat;
 		vm.type = $stateParams.type;
 		vm.getGraph=[];
+		var parameter;
+		var graphPromise;
 
-		var parameter= {
-			cat: vm.cat,
-			type: vm.type,
-			value: vm.metric
-		};
+		if (vm.metric2 == "") {
 
+			parameter = {
+				cat: vm.cat,
+				type: vm.type,
+				value: vm.metric
+			};
 
-		var graphPromise= recipeService.generateViews(parameter);
+			graphPromise = recipeService.generateViews(parameter);
+		}
+		else{
+			parameter = {
+				cat: vm.cat,
+				type: vm.type,
+				value: vm.metric3 == "" ? [vm.metric,vm.metric2] : [vm.metric, vm.metric2, vm.metric3]
+			};
+
+			graphPromise = recipeService.generateCompare(parameter);
+		}
 
 		graphPromise
 			.then(function(list){
