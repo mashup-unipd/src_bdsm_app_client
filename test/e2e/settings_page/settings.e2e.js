@@ -14,7 +14,7 @@
  */
 
 // the keyword require returns an object, which references the value of module.exports for a given file
-var AngularSetttingsPage = require('./settings.po.js');
+var AngularSettingsPage = require('./settings.po.js');
 
 
 describe('Settings interaction', function() {

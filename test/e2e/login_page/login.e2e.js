@@ -20,11 +20,44 @@ var AngularLoginPage = require('./login.po.js');
 
 describe('Login interaction', function() {
 
-    it('should check if redirect works with a correct input ', function() {
-		var angularLoginPage = new AngularLoginPage();
-		angularLoginPage.get();
+		var angularLoginPage;
 
-        /* TODO: refactor */
+		beforeEach(function(){
+			angularLoginPage = new AngularLoginPage();
+		});
+
+    it('should check if redirect works with a correct input', function() {
+
+			angularLoginPage.get();
+
+			angularLoginPage.setEmail('info@mashup-unipd.it');
+			angularLoginPage.setPassword('gruppoSWE2014');
+			angularLoginPage.loginClick();
 
     });
+
+	it('should check if redirect works with a incorrect input due by email', function() {
+
+		angularLoginPage.get();
+
+		angularLoginPage.setEmail('infowrong@mashup-unipd.it');
+		angularLoginPage.setPassword('gruppoSWE2014');
+		angularLoginPage.loginClick();
+
+		expect(angularLoginPage.showLoginError()).toBe('Fail login operation.');
+
+	});
+
+	it('should check if redirect works with a incorrect input due by password', function() {
+
+		angularLoginPage.get();
+
+		angularLoginPage.setEmail('infowrong@mashup-unipd.it');
+		angularLoginPage.setPassword('gruppoSWE2014wrong');
+		angularLoginPage.loginClick();
+
+		expect(angularLoginPage.showLoginError()).toBe('Fail login operation.');
+
+	});
+
 });

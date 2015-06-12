@@ -56,6 +56,7 @@
 		vm.updateTypeMetric = updateTypeMetric;
 		vm.addMetric = addMetric;
 		vm.removeMetric = removeMetric;
+		vm.checkMetricsQuantity = checkMetricsQuantity;
 
 		///////////////////
 
@@ -70,13 +71,12 @@
 
 			// if the Admin had insert almost two metrics, he can inserts a new Recipe
 			if (checkMetricsQuantity()){
-				// TODO: use AdminModel or authService to retrieve necessary data, maybe it's possible do this thing with the token stored in local
 
 				// create an object that represents a recipe request
 				var value = {
 					'title': vm.titleRecipe,
 					'desc': vm.descRecipe,
-					'admin_id': '352324643657457',
+					'admin_id': authService.getAccountInformation().oauth_token,
 					'metrics': vm.metrics
 				};
 
@@ -103,8 +103,6 @@
 		/**
 		 * This function create a local object with the value of a metric
 		 * and insert it in a temporary array that stores all locals metric object
-		 * TODO (test): should metrics array must be length +1 after a successful insert
-		 * TODO (test): should metrics array must be length as previous after a fail insert
 		 * @param cat : category of the metric
 		 * @param typeCat : type of the category
 		 * @param val : value of the category
@@ -150,7 +148,6 @@
 
 		/**
 		 * This function removes an added metric from the temporary array that contains all added metrics
-		 * TODO (test):
 		 * @param indexMetric
 		 */
 		function removeMetric(indexMetric){
@@ -175,7 +172,6 @@
 
 		/**
 		 * This function checks if there are at least two metrics in the Recipe
-		 * TODO (test): should return true if metrics array is length 2 or more, else false
 		 * @returns {boolean} true if there are almost two else false
 		 */
 		function checkMetricsQuantity(){
@@ -184,15 +180,15 @@
 		}
 
 		/**
-		 * TODO
+		 * This function checks if a metric is already insert in the global array for the metrics
 		 * TODO (test):
-		 * @param metric :
-		 * @return {bool} :
+		 * @param metric : metric that we want check
+		 * @return {bool} : true if the metric is finded in array, else false
 		 */
 		function checkMetricDuplicate(metric){
 			var findMetric = false;
 
-			angular.copy(vm.tempMetrics).forEach(function(element){
+			vm.tempMetrics.forEach(function(element){
 				if (element.id === metric.id && element.category === metric.category && element.category_type === metric.category_type){
 					findMetric = true;
 

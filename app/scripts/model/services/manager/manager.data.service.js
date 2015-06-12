@@ -173,6 +173,7 @@
 		 * @param id : title of the element to delete
 		 * @param indexElement : index of the element to delete present in the localStorage array
 		 */
+
 		function deleteRestCall(restCall, id, indexElement){
 			var url = api.API_BASE + restCall + '/' + id; // url to use to call back-end API in $http
 			var apiCallPromise;
