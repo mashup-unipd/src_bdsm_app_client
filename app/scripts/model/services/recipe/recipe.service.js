@@ -222,8 +222,8 @@
 
 			var callList= function(call,metrics){
 				var result=[];
-				angular.forEach(metrics, function(value){
-					result.push(dataManagerService.getRestCall(call.replace("{metric}",value)));
+				angular.forEach(metrics, function(metric){
+					result.push(dataManagerService.getRestCall(call.replace("{metric}",metric)));
 				});
 				return $q.all(result);
 			};
@@ -260,7 +260,6 @@
 						trend = callList("ig/users/{metric}/trend",metrics.value);
 					}
 					break;
-
 			}
 
 
