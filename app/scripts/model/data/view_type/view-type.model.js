@@ -129,7 +129,7 @@
                 }
         //  ------ WIEWS GENERATE DA METRICA SINGOLA --//
             }else{
-                switch (cat) {
+                switch (cat.toLowerCase()) {
                     case 'facebook':
                         if (type == 'page') {
                             graphs = [function(call){
@@ -322,7 +322,7 @@
                         }
                         break;
                     default :
-                        graphs = []
+                        graphs = [];
                 }
             }
             return graphs;

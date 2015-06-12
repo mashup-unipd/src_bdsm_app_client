@@ -75,8 +75,8 @@
 				// i dati sono freschi
 				localCallData = getLocalItem('data/' + restCall);
 
-				// if data record was loosed even if there is time record
-				if (typeof localCallData === 'undefined'){
+				// if data record was lost even if there is time record
+				if (typeof localCallData === 'null'){
 
 					apiCallPromise = httpGetRequest(url);
 					apiCallPromise

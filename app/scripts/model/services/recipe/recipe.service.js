@@ -189,7 +189,8 @@
 
 			}
 
-			var info = viewTypeModel(true, metric.cat, metric.type, metric.value);
+			var info = viewTypeModel(false, metric.cat, metric.type, metric.value);
+
 
 			angular.forEach(info,function(value){
 				var parameters = value("outside");
