@@ -154,8 +154,8 @@
 			//var events;
 			var graphPromises=[];
 
-			switch (metric.cat) {
-				case 'Facebook':
+			switch (metric.cat.toLowerCase()) {
+				case 'facebook':
 					if (metric.type == 'page') {
 						main = dataManagerService.getRestCall("fb/pages/"+ encodeURIComponent(metric.value));
 						media = dataManagerService.getRestCall("fb/pages/"+ encodeURIComponent(metric.value) +"/posts");
@@ -167,7 +167,7 @@
 						trend = dataManagerService.getRestCall("fb/events/"+ encodeURIComponent(metric.value) +"/trend");
 					}
 					break;
-				case 'Twitter':
+				case 'twitter':
 					if (metric.type == 'hashtag') {
 						media = dataManagerService.getRestCall("tw/hashtags/"+ encodeURIComponent(metric.value) +"/tweets");
 					} else {
@@ -176,7 +176,7 @@
 						trend = dataManagerService.getRestCall("tw/users/"+ encodeURIComponent(metric.value) +"/trend");
 					}
 					break;
-				case 'Instagram':
+				case 'instagram':
 					if (metric.type == 'hashtag') {
 						media = dataManagerService.getRestCall("ig/hashtags/"+ encodeURIComponent(metric.value) +"/media");
 						trend = dataManagerService.getRestCall("ig/hashtags/"+ encodeURIComponent(metric.value) +"/trend");
@@ -189,7 +189,7 @@
 
 			}
 
-			var info = viewTypeModel(false, metric.cat, metric.type, metric.value);
+			var info = viewTypeModel(true, metric.cat, metric.type, metric.value);
 
 			angular.forEach(info,function(value){
 				var parameters = value("outside");
@@ -227,8 +227,8 @@
 				return $q.all(result);
 			};
 
-			switch (metrics.cat) {
-				case 'Facebook':
+			switch (metrics.cat.toLowerCase()) {
+				case 'facebook':
 					if (metrics.type == 'page') {
 						main = callList("fb/pages/{metric}",metrics.value);
 						media = callList("fb/pages/{metric}/posts",metrics.value);
@@ -240,7 +240,7 @@
 						trend = callList("fb/events/{metric}/trend",metrics.value);
 					}
 					break;
-				case 'Twitter':
+				case 'twitter':
 					if (metrics.type == 'hashtag') {
 						media = callList("tw/hashtags/{metric}/tweets",metrics.value);
 					} else {
@@ -249,7 +249,7 @@
 						trend = callList("tw/users/{metric}/trend",metrics.value);
 					}
 					break;
-				case 'Instagram':
+				case 'instagram':
 					if (metrics.type == 'hashtag') {
 						media = callList("ig/hashtags/{metric}/media",metrics.value);
 						trend = callList("ig/hashtags/{metric}/trend",metrics.value);
@@ -262,20 +262,21 @@
 
 			}
 
+
 			var info = viewTypeModel(true, metrics.cat, metrics.type, metrics.value);
 
-			angular.forEach(info,function(value){
-				var parameters = value("outside");
+			angular.forEach(info,function(func){
+				var parameters = func("outside");
 				var call={trend: trend, media: media, main: main};
 
 				switch (parameters.kind) {
-					case 'pie': graphPromises.push(pieChartCreatorService.chartGeneration(call[parameters.source],value));
+					case 'pie': graphPromises.push(pieChartCreatorService.chartGeneration(call[parameters.source],func));
 						break;
-					case 'line': graphPromises.push(lineChartCreatorService.chartGeneration(call[parameters.source],value));
+					case 'line': graphPromises.push(lineChartCreatorService.chartGeneration(call[parameters.source],func));
 						break;
-					case 'bar': graphPromises.push(barChartCreatorService.chartGeneration(call[parameters.source],value));
+					case 'bar': graphPromises.push(barChartCreatorService.chartGeneration(call[parameters.source],func));
 						break;
-					case 'radar': graphPromises.push(radarChartCreatorService.chartGeneration(call[parameters.source],value));
+					case 'radar': graphPromises.push(radarChartCreatorService.chartGeneration(call[parameters.source],func));
 						break;
 				}
 			});

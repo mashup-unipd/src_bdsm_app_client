@@ -81,6 +81,8 @@
 
             vm.tempMetrics.push(metric);
 
+            vm.updateMetrics(cat, typeCat);
+
             // once one metric is inserted, the user can't change the category or the type anymore
             vm.oneInserted = true;
             if(vm.tempMetrics.length == 2) {vm.notEnough = false;}
@@ -105,13 +107,18 @@
 		 */
         function updateMetrics( category, type ){
 
+            var alreadyPresent = [];
+            vm.tempMetrics.forEach(function(element){
+                alreadyPresent.push(element.value);
+            });
+
             recipeService.getMetricsList($stateParams.title)
 				.then(function(data){
                     vm.metrics=[];
 					var arrayMetrics = data.metrics;
 					arrayMetrics.forEach(function(element){
-						if(element.category === category && element.category_type === type){
-							vm.metrics.push(element);
+						if(element.category === category && element.category_type === type && alreadyPresent.indexOf(element.id) === -1 ){
+                            vm.metrics.push(element);
 						}
 					});
 

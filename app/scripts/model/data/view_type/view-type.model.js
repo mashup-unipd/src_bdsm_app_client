@@ -24,8 +24,8 @@
             var graphs;
             if (conf) {
         //  ------ WIEWS DI CONFRONTO -----------------//
-                switch (cat) {
-                    case 'Facebook':
+                switch (cat.toLowerCase()) {
+                    case 'facebook':
                         if (type == 'page') {
                             graphs = [
                                 {
@@ -54,7 +54,7 @@
                             ]
                         }
                         break;
-                    case 'Twitter':
+                    case 'twitter':
                         if (type == 'hashtag') {
                             graphs = [
                                 {
@@ -89,7 +89,7 @@
                             ]
                         }
                         break;
-                    case 'Instagram':
+                    case 'instagram':
                         if (type == 'hashtag') {
                             graphs = [
                                 {
@@ -130,7 +130,7 @@
         //  ------ WIEWS GENERATE DA METRICA SINGOLA --//
             }else{
                 switch (cat) {
-                    case 'Facebook':
+                    case 'facebook':
                         if (type == 'page') {
                             graphs = [function(call){
                                 if (call=="outside"){
@@ -191,7 +191,7 @@
                             // TODO: add all the other views
                         }
                         break;
-                    case 'Twitter':
+                    case 'twitter':
                         if (type == 'hashtag') {
                             graphs = [function(call){
                                 if (call=="outside"){
@@ -256,7 +256,7 @@
                             ];
                         }
                         break;
-                    case 'Instagram':
+                    case 'instagram':
                         if (type == 'hashtag') {
                             graphs = [function(call){
                                 if (call=="outside"){
