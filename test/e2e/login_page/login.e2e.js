@@ -44,6 +44,8 @@ describe('Login interaction', function() {
 		angularLoginPage.setPassword('gruppoSWE2014');
 		angularLoginPage.loginClick();
 
+		expect(angularLoginPage.showLoginError()).toBe('Fail login operation.');
+
 	});
 
 	it('should check if redirect works with a incorrect input due by password', function() {
@@ -53,6 +55,8 @@ describe('Login interaction', function() {
 		angularLoginPage.setEmail('infowrong@mashup-unipd.it');
 		angularLoginPage.setPassword('gruppoSWE2014wrong');
 		angularLoginPage.loginClick();
+
+		expect(angularLoginPage.showLoginError()).toBe('Fail login operation.');
 
 	});
 

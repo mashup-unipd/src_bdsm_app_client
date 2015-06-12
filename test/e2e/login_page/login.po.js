@@ -17,6 +17,9 @@ var AngularLoginPage = function(){
 
 	var emailInput = element(by.model('lc.credentials.email'));
 	var passwordInput = element(by.model('lc.credentials.pwd'));
+
+	var loginError = element(by.css('.text-danger'));
+
 	var loginBtn = element(by.css('.btn'));
 
 
@@ -34,6 +37,10 @@ var AngularLoginPage = function(){
 
 	this.loginClick = function(){
 		loginBtn.click();
+	};
+
+	this.showLoginError = function(){
+		return loginError.getText();
 	};
 
 
