@@ -24,13 +24,14 @@
                 </div>
                 <br />
                 <div class="confirm-form">
-                    <div class="col-sm-12 col-md-4">
-                        <input type="password" placeholder="Password" data-ng-model="sc.confirmDeletePwd">
+                    <div class="form-group has-feedback col-xs-12 col-sm-4 col-md-4"> <!-- input password -->
+                        <input type="password" placeholder="Password" class="form-control input-sm data-ng-model="sc.confirmDeletePwd">
                     </div>
-                    <div class="col-sm-12 col-md-3">
+
+                    <div class="form-group col-xs-12 col-sm-4 col-md-3">
                         <button class="btn btn-md btn-block btn-red" type="button" data-ng-click="sc.confirmDeleteAccount()">Confirm</button>
                     </div>
-                    <div class="col-sm-12 col-md-3">
+                    <div class="form-group col-xs-12 col-sm-4 col-md-3">
                         <button class="btn btn-md btn-block btn-red" type="button" data-ng-click="sc.cancelDeleteAccount()">Cancel</button>
                     </div>
                 </div>
