@@ -16,11 +16,20 @@
 describe('Service: dataManagerService', function() {
 	'use strict';
 
+	var factory = undefined;
+
+	var localStorageService = undefined;
+	var $httpBackend = undefined;
+
 	beforeEach(function () {
 
 		angular.mock.module('app.manager.data.services.module');
+		// angular.mock.module('app');
 
 		angular.mock.inject(function () {
+
+			// factory = _dataManagerService_;
+			// $httpBackend = _$httpBackend_;
 
 		});
 
@@ -30,6 +39,15 @@ describe('Service: dataManagerService', function() {
 
 	it('should have dataManagerService factory', function(){
 		// TODO
+
 	});
+
+	it('should have dataManagerService factory', function(){
+		// TODO
+
+		// $httpBackend.flush();
+	});
+
+
 
 });

@@ -22,6 +22,27 @@ describe('Service: recipeService', function() {
 	var idRecipeCorrect = 'Test';
 	// var idRecipeIncorrect = '';
 
+
+	var metricsRequestCorrect = [
+		{
+			id: 'TheColorRunItalia',
+			category: 'facebook',
+			category_type: 'page'
+		},
+		{
+			id: 'TheColorRunItalia2',
+			category: 'facebook',
+			category_type: 'page'
+		}
+	];
+
+	var recipeRequestCorrect = {
+		'title': 'Title',
+		'desc': 'This is a desc of a recipe',
+		'admin_id': 'mashup',
+		'metrics': metricsRequestCorrect
+	};
+
 	///////////////
 
 	beforeEach(function () {
@@ -36,6 +57,7 @@ describe('Service: recipeService', function() {
 			deferred = _$q_.defer();
 
 			spyOn(dataManagerService, 'getRestCall').and.returnValue(deferred.promise);
+			spyOn(dataManagerService, 'postRestCall').and.returnValue(deferred.promise);
 
 		});
 
@@ -149,11 +171,18 @@ describe('Service: recipeService', function() {
 	});
 
 	it('should createRecipeRequest is defined and calls dataManagerService', function(){
-		// TODO [opzionale]
+		// defined
+		expect(factory.createRecipeRequest()).toBeDefined();
+
+		// and calls dataManagerService
+		factory.createRecipeRequest(recipeRequestCorrect);
+		expect(dataManagerService.postRestCall).toHaveBeenCalled();
+
 	});
 
 	it('should createRecipeRequest return a promise', function(){
-		// TODO [opzionale]
+		var promise = factory.createRecipeRequest(recipeRequestCorrect);
+		expect(promise.then()).toBeDefined();
 	});
 
 

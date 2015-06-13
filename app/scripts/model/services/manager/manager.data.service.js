@@ -156,7 +156,8 @@
 		}
 
 		/**
-		 * TODO: implement
+		 * TODO: [not implemente because not used]
+		 * This function calls an http put request
 		 * TODO (test):
 		 * @param restCall
 		 * @param value
@@ -199,7 +200,7 @@
 		}
 
 		/**
-		 * TODO
+		 * This function calls an http delete request and remove credentials data from the local storage
 		 * TODO (test):
 		 * @param restCall
 		 */
@@ -305,26 +306,26 @@
 		/////////////// Private localStorage functions
 
 		/**
-		 * TODO
-		 * @param key
-		 * @returns {*}
+		 * This function retries an items with a particular key from the local storage
+		 * @param key : identifiers of the item that we want retries
+		 * @returns {*} : item with the specify key
 		 */
 		function getLocalItem(key){
 			return localStorageService.get(key);
 		}
 
 		/**
-		 * TODO
-		 * @param key
-		 * @param value
+		 * This function sets an item with a particular key in the local storage
+		 * @param key : identifiers of the item that we want set
+		 * @param value : value that we want storage associated to the key
 		 */
 		function setLocalItem(key, value){
 			localStorageService.set(key, value);
 		}
 
 		/**
-		 *
-		 * @param key
+		 * This function removes an item with a particular key in the local storage
+		 * @param key : identifiers of the item that we want remove
 		 */
 		function removeLocalItem(key){
 			localStorageService.remove(key);

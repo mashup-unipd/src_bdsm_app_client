@@ -185,5 +185,5 @@ describe('Controller: RecipeRequestCtrl', function() {
 		expect(scope.sc.tempMetrics.length).toBe(length);
 		expect(scope.sc.insertMetricDuplicateError).toBeTruthy();
 	});
-	
+
 });

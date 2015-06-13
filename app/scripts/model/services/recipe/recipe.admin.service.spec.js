@@ -36,7 +36,7 @@ describe('Service: recipeAdminService', function() {
 	var recipeCorrect = {
 		'title': 'Title',
 		'desc': 'This is a desc of a recipe',
-		'admin_id': '352324643657457',
+		'user': 'ptesser',
 		'metrics': metricsCorrect
 	};
 
@@ -67,21 +67,33 @@ describe('Service: recipeAdminService', function() {
 	});
 
 	it('should getRecipesListAll is defined and calls dataManagerService', function(){
-		// TODO [opzionale]
+		// defined
+		expect(factory.getRecipesListAll()).toBeDefined();
+
+		// and calls dataManagerService
+		factory.getRecipesListAll();
+		expect(dataManagerService.getRestCall).toHaveBeenCalled();
 
 	});
 
 	it('should getRecipesListAll return a promise', function(){
-		// TODO [opzionale]
+		var promise = factory.getRecipesListAll();
+		expect(promise.then()).toBeDefined();
 	});
 
 	it('should getListOfRecipesRequest is defined and calls dataManagerService', function(){
-		// TODO [opzionale]
+		// defined
+		expect(factory. getListOfRecipesRequest()).toBeDefined();
+
+		// and calls dataManagerService
+		factory.getListOfRecipesRequest();
+		expect(dataManagerService.getRestCall).toHaveBeenCalled();
 
 	});
 
 	it('should getListOfRecipesRequest return a promise', function(){
-		// TODO [opzionale]
+		var promise = factory.getListOfRecipesRequest();
+		expect(promise.then()).toBeDefined();
 	});
 
 	it('should createRecipe is defined and calls dataManagerService', function(){
