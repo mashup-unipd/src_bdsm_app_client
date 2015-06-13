@@ -34,7 +34,7 @@
 			logout: logout,
 			register: register,
 			deleteAccount: deleteAccount,
-			isLogged: isLogged,
+			isNotLogged: isNotLogged,
 			isAdmin: isAdmin,
 			updateSettingsAccount: updateSettingsAccount,
 			getAccountInformation: getAccountInformation
@@ -98,9 +98,10 @@
 		 * This function TODO
 		 * TODO (test):
 		 */
-		function isLogged(){
-			// TODO: use ng-auth
-			// example: $auth.validateUser();
+		function isNotLogged(){
+			if (localStorageService.get('cred').oauth_token === undefined){
+				$location.path('/login');
+			}
 		}
 
 
@@ -165,7 +166,7 @@
 
 	}
 
-	authService.$inject = ['$location', '$auth', 'localStorageService'];
+	authService.$inject = ['$location', '$auth', 'localStorageService', '$window'];
 
 	angular
 		.module('app.auth.services.module')

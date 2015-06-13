@@ -27,6 +27,11 @@
                 controller: 'SettingsCtrl',
                 templateUrl:'views/user/settings.html',
                 resolve: {
+
+										login: function(authService){
+											authService.isNotLogged();
+										},
+
                     loadMyFiles: function($ocLazyLoad) {
                         return $ocLazyLoad.load({
                             name:'app',
@@ -39,10 +44,10 @@
             });
     };
 
-
     angular
         .module('app.user.settings.routes', [
-            'ui.router'
+					'ui.router',
+					'app.auth.services.module'
         ])
 
         .config(['$stateProvider', SettingsConfigRoutes]);

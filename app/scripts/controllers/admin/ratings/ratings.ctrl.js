@@ -41,10 +41,13 @@
 
 			listRecipes
 				.then(function(data){
+
 					var arrayUsers = data.items;
-					console.log(arrayUsers);
 					arrayUsers.forEach(function(element){
-						vm.listRecipes.push(element);
+
+						if (element.rating !== -1){
+							vm.listRecipes.push(element);
+						}
 					});
 				});
 		}

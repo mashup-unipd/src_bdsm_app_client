@@ -29,6 +29,10 @@
 				abstract: true,
 				templateUrl: '../../../views/user/home.html',
 				resolve: {
+					login: function(authService){
+						authService.isNotLogged();
+					},
+
 					loadMyFiles: function($ocLazyLoad){
 						return $ocLazyLoad.load(
 							{

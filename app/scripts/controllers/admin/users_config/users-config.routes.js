@@ -27,6 +27,10 @@
 				templateUrl: 'views/admin/users-config.html',
 				url: '/users-config',
 				resolve: {
+					login: function(authService){
+						authService.isNotLogged();
+					},
+
 					loadMyFiles: function($ocLazyLoad) {
 						return $ocLazyLoad.load({
 							name:'app',

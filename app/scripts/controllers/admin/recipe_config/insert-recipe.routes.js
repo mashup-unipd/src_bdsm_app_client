@@ -24,14 +24,17 @@
     var InsertRecipeRoutes = function($stateProvider) {
 
         $stateProvider
-
             .state('dashboard.new-recipe',{
                 templateUrl:'views/admin/new-recipe.html',
                 url:'/new-recipe',
                 resolve: {
+										login: function(authService){
+											authService.isNotLogged();
+										},
+
                     loadMyFiles: function($ocLazyLoad) {
                         return $ocLazyLoad
-							.load({
+													.load({
                             	name:'app',
                             	files:[
                                 	'scripts/controllers/admin/recipe_config/insert-recipe.ctrl.js'

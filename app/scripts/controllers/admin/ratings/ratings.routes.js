@@ -27,6 +27,10 @@
 				templateUrl: 'views/admin/ratings.html',
 				url: '/ratings',
 				resolve: {
+					login: function(authService){
+						authService.isNotLogged();
+					},
+
 					loadMyFiles: function($ocLazyLoad) {
 						return $ocLazyLoad.load({
 							name:'app',

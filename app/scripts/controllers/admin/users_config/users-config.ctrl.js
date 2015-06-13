@@ -24,7 +24,7 @@
 	 * Controller of the app
 	 */
 
-	var UsersConfigCtrl = function(userAdminService, $q){
+	var UsersConfigCtrl = function(userAdminService, authService){
 
 		var vm = this;
 
@@ -42,13 +42,16 @@
 		function getUsers(){
 
 			var listUsers = userAdminService.getListOfUsers();
+			var localUser = authService.getAccountInformation().email;
 
 			// it's a promise
 			listUsers
 				.then(function(data){
 					var arrayUsers = data.items;
 					arrayUsers.forEach(function(element){
-						vm.usersList.push(element);
+						if (localUser !== element.email){
+							vm.usersList.push(element);
+						}
 					});
 				});
 
@@ -97,7 +100,7 @@
 
 	};
 
-	UsersConfigCtrl.$inject = ['userAdminService', '$q'];
+	UsersConfigCtrl.$inject = ['userAdminService', 'authService'];
 
 	angular
 		.module('app')

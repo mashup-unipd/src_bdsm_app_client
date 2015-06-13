@@ -27,6 +27,10 @@
 				templateUrl: '../../../../views/admin/recipe-request-list.html',
 				url: '/request-list',
 				resolve: {
+					login: function(authService){
+						authService.isNotLogged();
+					},
+
 					loadMyFiles: function($ocLazyLoad) {
 						return $ocLazyLoad.load({
 							name:'app',
