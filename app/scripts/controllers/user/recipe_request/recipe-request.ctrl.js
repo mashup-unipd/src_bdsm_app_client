@@ -162,7 +162,6 @@
 
 				/**
 				 * This function update the option field for type of metric in the insert recipe form
-				 * TODO (test): should types array must be length like the number of the array returned from service
 				 * @param category : object that contains a key and a value, and we want the key for choose what array choose
 				 */
 				function updateTypeMetric(category) {
@@ -181,7 +180,6 @@
 
 				/**
 				 * This function checks if a metric is already insert in the global array for the metrics
-				 * TODO (test):
 				 * @param metric : metric that we want check
 				 * @return {bool} : true if the metric is finded in array, else false
 				 */

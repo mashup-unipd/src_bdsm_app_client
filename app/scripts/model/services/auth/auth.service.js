@@ -85,7 +85,6 @@
 		/**
 		 * This function call ng-auth service to destroy personal account and redirect to login page
 		 * @param info : info about user that wants delete his/her personal's account
-		 * TODO (test):
 		 */
 		function deleteAccount(info){
 
@@ -127,7 +126,6 @@
 
 		/**
 		 * This function updates account's settings with a call to ng-auth service
-		 * TODO (test): should return a promise
 		 * @param credToChange
 		 * @return {*}
 		 */
@@ -146,7 +144,6 @@
 
 		/**
 		 * This function retries user's account informations from localStorage
-		 * TODO (test): should return data in a determinate format
 		 * @returns {*}
 		 */
 		function getAccountInformation(){
@@ -155,7 +152,7 @@
 
 		/**
 		 * This function call ng-auth service to remove cookies with access data and localStorage data created
-		 * TODO (test):
+		 *
 		 */
 		function logout(){
 
