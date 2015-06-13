@@ -35,21 +35,27 @@
 		////////////////
 
 		/**
-		 * TODO Stub
 		 * This function retries all requests of new recipe that users create
 		 * TODO (test):
 		 */
 		function getRequestList(){
-			var arrayRequest = recipeAdminService.getListOfRecipesRequest();
-			arrayRequest.forEach(function(element){
-				vm.requestList.push(element);
-			});
+			var requestPromise = recipeAdminService.getListOfRecipesRequest();
+			requestPromise
+				.then(function(data){
+
+					var arrayRequest = data.items;
+
+					arrayRequest.forEach(function(element){
+						console.log(element);
+						vm.requestList.push(element);
+					});
+				});
+
 		}
 
 
 		/**
 		 * This function removes a request from the local list and call service to delete it in the server
-		 * TODO (test):
 		 * @param idReqRecipe : identifiers of the recipe request to discard
 		 */
 		function discardRequest( idReqRecipe ){
@@ -58,7 +64,6 @@
 
 		/**
 		 * This function add a request from the local list and call service to add it in the server
-		 * TODO (test):
 		 * @param idReqRecipe
 		 */
 		function approveRequest( idReqRecipe ){

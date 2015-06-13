@@ -83,9 +83,9 @@
 		}
 
 		/**
-		 * This function TODO
-		 * @param info
-		 * TODO (test)
+		 * This function call ng-auth service to destroy personal account and redirect to login page
+		 * @param info : info about user that wants delete his/her personal's account
+		 * TODO (test):
 		 */
 		function deleteAccount(info){
 
@@ -96,8 +96,8 @@
 		}
 
 		/**
-		 * This function TODO
-		 * TODO (test):
+		 * This function see if user is effectivly logged in the system, if not it redirects to login page
+		 *
 		 */
 		function isNotLogged(){
 			if (localStorageService.get('cred').oauth_token === undefined){
@@ -106,6 +106,7 @@
 		}
 
 		/**
+		 * This function see if user is effectivly logged in the system, if is logged, block login and register page
 		 *
 		 */
 		function isLogged(){
@@ -116,7 +117,8 @@
 
 
 		/**
-		 *
+		 * This function checks if an user is an administrator
+		 * @return {bool} : true if user is an admin, else false
 		 */
 		function isAdmin(){
 			return localStorageService.get('cred').permission === 'admin'
@@ -124,7 +126,7 @@
 		}
 
 		/**
-		 * This function TODO
+		 * This function updates account's settings with a call to ng-auth service
 		 * TODO (test): should return a promise
 		 * @param credToChange
 		 * @return {*}

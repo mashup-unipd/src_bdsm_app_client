@@ -35,7 +35,6 @@
 			getListOfRecipesRequest: getListOfRecipesRequest,
 			createRecipe: createRecipe,
 			deleteRecipe: deleteRecipe,
-			setRecipeRating: setRecipeRating,
 			discardRecipeRequest: discardRecipeRequest,
 			approveRecipeRequest: approveRecipeRequest
 		};
@@ -54,28 +53,12 @@
 		}
 
 		/**
-		 * TODO: [opzionale] Stub
 		 * This function retries all recipes request from back-end and returns them in a promise
 		 * TODO (test): should return a promise
 		 * @returns {*[]}
 		 */
 		function getListOfRecipesRequest(){
-
-			return [
-				{
-					idRequestRecipe: 42,
-					titleRecipe: 'Adidas Sport',
-					descRecipe: 'Recipe about Adidas trends',
-					emailUser: 'p.tesser921@gmail.com'
-				},
-				{
-					idRequestRecipe: 43,
-					titleRecipe: 'H-farm Zing',
-					descRecipe: 'Recipe about Zing trends',
-					emailUser: 'dav.santucci@zing.com'
-				}
-			];
-
+			return dataManagerService.getRestCall('requests');
 		}
 
 		/**
@@ -94,16 +77,6 @@
 		 */
 		function deleteRecipe(idRecipe, indexElement){
 			return dataManagerService.deleteRestCall('recipes', idRecipe, indexElement);
-		}
-
-		/**
-		 *
-		 * This function sets the rating's value gives from a User to a Recipe
-		 * TODO (test): should return a promise
-		 * @param idRecipe
-		 */
-		function setRecipeRating( idRecipe ){
-			// TODO: call back-end API (POST)
 		}
 
 

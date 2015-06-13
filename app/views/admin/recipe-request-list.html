@@ -7,17 +7,6 @@
 </div> <!-- ./page-header -->
 
 <div class="container-fluid" id="recipes-request-container" data-ng-controller="RequestListCtrl as rlc">
-    <div class="row">
-        <div class="center-form panel col-md-12 text-danger">
-            <p>Work in progress</p>
-        </div>
-    </div>
-
-    <div class="row">
-        <div class="center-form panel col-md-12 text-danger">
-            <p>This page shows something thanks to a Stub</p>
-        </div>
-    </div>
 
     <div class="row">
 
@@ -29,18 +18,18 @@
                 <div data-ng-switch-when="false">
                     <div class="col-lg-6 col-sm-12 norightpad yesleftpad">
                         <div class="panel panel-default">
-                            <div class="panel-heading" data-ng-bind="request.titleRecipe"></div>
+                            <div class="panel-heading" data-ng-bind="request.title"></div>
                             <div class="panel-body">
-                                <p>Request from: <span data-ng-bind="request.emailUser"></span></p>
-                                <p data-ng-bind="request.descRecipe"></p>
+                                <p>Request from: <span data-ng-bind="request.email"></span></p>
+                                <p data-ng-bind="request.desc"></p>
                                 <div class="col-xs-12 col-md-4">
                                     <button class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> See Details</button>
                                 </div>
                                 <div class="col-xs-12 col-md-4">
-                                    <button class="btn btn-primary" data-ng-click="rlc.discardRequest(request.idRequestRecipe)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Discard</button>
+                                    <button class="btn btn-primary" data-ng-click="rlc.discardRequest(request.id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Discard</button>
                                 </div>
                                 <div class="col-xs-12 col-md-4">
-                                    <button class="btn btn-primary" data-ng-click="rlc.approvedRequest(request.idRequestRecipe)"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Approve</button>
+                                    <button class="btn btn-primary" data-ng-click="rlc.approvedRequest(request.id)"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Approve</button>
                                 </div>
                             </div>
                         </div>
@@ -50,18 +39,18 @@
                 <div data-ng-switch-when="true">
                     <div class="col-lg-6 col-sm-12 noleftpad yesrightpad">
                         <div class="panel panel-default">
-                            <div class="panel-heading" data-ng-bind="request.titleRecipe"></div>
+                            <div class="panel-heading" data-ng-bind="request.title"></div>
                             <div class="panel-body">
-                                <p>Request from: <span data-ng-bind="request.emailUser"></span></p>
-                                <p data-ng-bind="request.descRecipe"></p>
+                                <p>Request from: <span data-ng-bind="request.email"></span></p>
+                                <p data-ng-bind="request.desc"></p>
                                 <div class="col-xs-12 col-md-4">
                                     <button class="btn btn-primary"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span> See Details</button>
                                 </div>
                                 <div class="col-xs-12 col-md-4">
-                                    <button class="btn btn-primary" data-ng-click="rlc.discardRequest(request.idRequestRecipe)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Discard</button>
+                                    <button class="btn btn-primary" data-ng-click="rlc.discardRequest(request.id)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span> Discard</button>
                                 </div>
                                 <div class="col-xs-12 col-md-4">
-                                    <button class="btn btn-primary" data-ng-click="rlc.approvedRequest(request.idRequestRecipe)"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Approve</button>
+                                    <button class="btn btn-primary" data-ng-click="rlc.approvedRequest(request.id)"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Approve</button>
                                 </div>
                             </div>
                         </div>
