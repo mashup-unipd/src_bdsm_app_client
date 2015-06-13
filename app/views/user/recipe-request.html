@@ -9,9 +9,151 @@
     </div> <!-- ./page-header -->
 
     <div class="container-fluid">
-        <div class="row">
-            <div class="center-form panel col-md-12 text-danger">
-                <p>Work in progress</p>
+        <div class="center-form panel col-md-12">
+
+            <div class="row" data-ng-show="rrc.insertSuccess">
+                <div class="col-md-12">
+                    <p class="alert-success">Recipe request sent!</p>
+                </div>
+            </div>
+            <div class="row" data-ng-show="rrc.insertError">
+                <div class="col-md-12">
+                    <p class="alert-danger">Failed to insert recipe request!</p>
+                </div>
+            </div>
+
+            <div class="row" data-ng-show="rrc.insertMetricSuccess">
+                <div class="col-md-12">
+                    <p class="alert-success">Metric added to the request!</p>
+                </div>
+            </div>
+            <div class="row" data-ng-show="rrc.removeMetricSuccess">
+                <div class="col-md-12">
+                    <p class="alert-success">Metric removed to the request!</p>
+                </div>
+            </div>
+            <div class="row" data-ng-show="rrc.insertMetricEmptyError">
+                <div class="col-md-12">
+                    <p class="alert-danger">Failed to insert metric. Some field is empty!</p>
+                </div>
+            </div>
+            <div class="row" data-ng-show="rrc.insertMetricDuplicateError">
+                <div class="col-md-12">
+                    <p class="alert-danger">Failed to insert metric. A same metric is already added!</p>
+                </div>
+            </div>
+
+            <div class="row">
+
+                <form name="newRecipeForm" method="post" data-role="form" data-ng-submit="rrc.insertRecipeRequest()">
+                    <div class="row">
+                        <div class="form-group col-md-4">
+                            <label>Recipe title</label>
+                            <input class="form-control" type="text" data-ng-model="rrc.titleRecipe"
+                                   placeholder="Insert title" required>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="form-group col-md-8">
+                            <label for="desc-recipe">Recipe description</label>
+                            <textarea class="form-control" data-ng-model="rrc.descRecipe" rows="4" id="desc-recipe"
+                                      placeholder="Insert a description of the Recipe">
+                            </textarea>
+                        </div>
+                    </div>
+
+                    <div id="metrics-container">
+
+                        <div id="metric-container">
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="category">Category</label>
+                                    <select class="form-control" id="category"
+                                            data-ng-options="category.value for category in rrc.categories"
+                                            data-ng-model="category.key" data-ng-change="rrc.updateTypeMetric(category)">
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="form-group col-md-4">
+                                    <label for="type-node">Metric type</label>
+                                    <select class="form-control" id="type-node"
+                                            data-ng-options="type.value for type in rrc.types"
+                                            data-ng-model="type.key">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="form-group col-md-5">
+                                    <label for="id-nodo">Value</label>
+                                    <input class="form-control" id="id-nodo" type="text" name="idNodo"
+                                           data-ng-model="rrc.valueMetric" placeholder="Metric value">
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <button class="btn btn-primary" type="button"
+                                            data-ng-click="rrc.addMetric(category.key.key, type.key.key, newRecipeForm.idNodo.$modelValue)"
+                                            data-ng-disabled="">
+                                        Add metric <i class="fa fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="help-block text-danger" data-ng-if="rrc.metricError">
+                                    You have to insert at least two metrics.
+                                </div>
+                            </div>
+
+                        </div> <!-- #/metric-container -->
+
+                    </div> <!-- #/metric-container -->
+
+                    <div class="row">
+                        <div class="col-md-5">
+                            <button class="btn btn-primary" type="submit" data-ng-disabled="newRecipeForm.$invalid" >
+                                Insert Recipe <span class="fa fa-save"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="row" id="metrics-add-list">
+                        <div data-ng-repeat="metric in rrc.tempMetrics">
+                            <p class="sr-only">Metrics added to the Recipe<p>
+
+                            <div class="row">
+                                <button class="btn btn-margin btn-red" type="button"
+                                        data-ng-click="rrc.removeMetric($index)">
+                                    Remove metric
+                                </button>
+                            </div>
+
+                            <div class="table-responsive">
+                                <table class="table table-hover table-bordered">
+                                    <caption class="sr-only">Metric added to the Recipe</caption>
+
+                                    <thead>
+                                    <tr>
+                                        <th>Option</th>
+                                        <th>Value</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr data-ng-repeat="(key, value) in metric">
+                                        <td data-ng-bind="key"></td>
+                                        <td data-ng-bind="value"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div> <!-- #/metrics-add-list -->
+
+                </form>
+
             </div>
 
         </div>

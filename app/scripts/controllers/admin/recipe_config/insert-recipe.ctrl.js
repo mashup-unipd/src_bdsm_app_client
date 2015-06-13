@@ -76,7 +76,7 @@
 				var value = {
 					'title': vm.titleRecipe,
 					'desc': vm.descRecipe,
-					'admin_id': authService.getAccountInformation().oauth_token,
+					'admin_id': authService.getAccountInformation().username,
 					'metrics': vm.metrics
 				};
 
@@ -90,11 +90,16 @@
 
 						vm.insertSuccess = true;
 						vm.metricError = false;
+						vm.insertMetricSuccess = false;
+						vm.removeMetricSuccess = false;
+						vm.insertMetricEmptyError = false;
+						vm.insertMetricDuplicateError = false;
+
 					});
 
 
 			} else {
-				console.log("Devi inserire almeno due metriche");
+				console.log('Devi inserire almeno due metriche');
 			}
 
 		}

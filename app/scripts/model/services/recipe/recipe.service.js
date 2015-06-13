@@ -291,7 +291,8 @@
 		 * @param recipeReq : recipe request to insert
 		 */
 		function createRecipeRequest( recipeReq ){
-			// TODO: call POST API to back-e
+			console.log(recipeReq);
+			return dataManagerService.postRestCall('requests', recipeReq);
 		}
 
 

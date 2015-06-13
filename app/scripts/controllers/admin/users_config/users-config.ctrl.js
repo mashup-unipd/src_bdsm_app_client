@@ -58,7 +58,7 @@
 		}
 
 		/**
-		 * TODO
+		 * TODO [opzionale]
 		 * TODO (test): should value in the usersList array must be modify after this method
 		 * @param idUser
 		 * @param index
@@ -68,7 +68,7 @@
 			/*
 			userAdminService.editUserPermissions(idUser, permission)
 				.then(function(){
-					// TODO: insert next lines in this space
+
 				});
 			*/
 
@@ -78,7 +78,7 @@
 		}
 
 		/**
-		 * TODO
+		 * TODO [opzionale]
 		 * TODO (test): should usersList array must be length -1 after this method
 		 * @param idUser
 		 * @param index
@@ -87,7 +87,7 @@
 			/*
 			userAdminService.deleteUserAccount(idUser)
 				.then(function(){
-					// TODO: insert next lines in this space
+
 				});
 			*/
 
