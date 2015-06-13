@@ -45,7 +45,6 @@
 
 		/**
 		 * This function retries all recipes from back-end and returns them in a promise
-		 * TODO (test): should return a promise
 		 * @returns {*[]} : list of all recipes
 		 */
 		function getRecipesListAll(){
@@ -54,7 +53,6 @@
 
 		/**
 		 * This function retries all recipes request from back-end and returns them in a promise
-		 * TODO (test): should return a promise
 		 * @returns {*[]}
 		 */
 		function getListOfRecipesRequest(){
@@ -71,7 +69,6 @@
 
 		/**
 		 * This function deletes a recipe in the back-end
-		 * TODO (test): should return a promise
 		 * @param idRecipe : recipe to delete
 		 * @param indexElement : index of the element that we want delete
 		 */
@@ -82,20 +79,20 @@
 
 		/**
 		 * TODO [opzionale]
-		 * TODO (test):
-		 * @param idRecipeRequest
+		 * This function call back-end to discard a request and remove it from the requests
+		 * @param idRecipeRequest : identifiers of the request that we want discard
 		 */
 		function discardRecipeRequest(idRecipeRequest){
-			// TODO: call back-end API (DELETE)
+
 		}
 
 		/**
-		 * TODO [opzionale]
-		 * TODO (test):
-		 * @param idRecipeRequest
+		 * TODO: [opzionale]
+		 * This function call back-end to convalidate a request and insert it as a new recipe
+		 * @param idRecipeRequest : identifiers of the request that we want convalidate
 		 */
 		function approveRecipeRequest(idRecipeRequest){
-			// TODO: call back-end API (POST)
+
 		}
 
 	}

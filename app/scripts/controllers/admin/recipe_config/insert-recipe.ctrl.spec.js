@@ -60,7 +60,9 @@ describe('Controller: InsertRecipeCtrl', function() {
 
 	beforeEach(function(){
 		$controller('InsertRecipeCtrl as sc', {
-			$scope: scope
+			$scope: scope,
+			recipeService: recipeService,
+			recipeAdminService: recipeAdminService
 		});
 	});
 

@@ -127,7 +127,6 @@
 
 		/**
 		 * This function updates account's settings with a call to ng-auth service
-		 * TODO (test): should return a promise
 		 * @param credToChange
 		 * @return {*}
 		 */
@@ -155,7 +154,7 @@
 
 		/**
 		 * This function call ng-auth service to remove cookies with access data and localStorage data created
-		 * TODO (test):
+		 *
 		 */
 		function logout(){
 
