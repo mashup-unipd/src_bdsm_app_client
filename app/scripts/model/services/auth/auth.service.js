@@ -35,6 +35,7 @@
 			register: register,
 			deleteAccount: deleteAccount,
 			isNotLogged: isNotLogged,
+			isLogged: isLogged,
 			isAdmin: isAdmin,
 			updateSettingsAccount: updateSettingsAccount,
 			getAccountInformation: getAccountInformation
@@ -101,6 +102,15 @@
 		function isNotLogged(){
 			if (localStorageService.get('cred').oauth_token === undefined){
 				$location.path('/login');
+			}
+		}
+
+		/**
+		 *
+		 */
+		function isLogged(){
+			if (localStorageService.get('cred') !== undefined){
+				$location.path('/recipe');
 			}
 		}
 

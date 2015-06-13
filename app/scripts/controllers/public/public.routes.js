@@ -31,7 +31,6 @@
 
       $urlRouterProvider.otherwise('/login');
 
-
     };
 
 
@@ -41,9 +40,8 @@
           'app.public.login.routes',
           'app.public.register.routes',
           'app.public.about.routes',
-          'app.public.api-docs.routes'
-
-
+          'app.public.api-docs.routes',
+					'app.auth.services.module'
       ])
 
       .config(['$stateProvider', '$urlRouterProvider', '$ocLazyLoadProvider', PublicConfigRoutes]);

@@ -27,6 +27,10 @@
                 templateUrl:'views/public/login.html',
                 url:'/login',
                 resolve: {
+										sign: function(authService){
+											// authService.isLogged();
+										},
+
                     loadMyFiles: function($ocLazyLoad) {
                         return $ocLazyLoad.load({
                             name:'app',
@@ -42,7 +46,8 @@
 
     angular
         .module('app.public.login.routes', [
-            'ui.router'
+            'ui.router',
+						'app.auth.services.module'
         ])
 
         .config(['$stateProvider', LoginConfigRoutes]);

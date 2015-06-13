@@ -27,6 +27,10 @@
                 templateUrl:'views/public/register.html',
                 url:'/register',
                 resolve: {
+										sign: function(authService){
+											// authService.isLogged();
+										},
+
                     loadMyFiles: function($ocLazyLoad) {
                         return $ocLazyLoad.load({
                             name:'app',
@@ -43,7 +47,8 @@
 
     angular
         .module('app.public.register.routes', [
-            'ui.router'
+            'ui.router',
+						'app.auth.services.module'
         ])
 
         .config(['$stateProvider', RegisterConfigRoutes]);
