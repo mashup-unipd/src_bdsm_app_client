@@ -223,7 +223,7 @@
 			var callList= function(call,metrics){
 				var result=[];
 				angular.forEach(metrics, function(metric){
-					result.push(dataManagerService.getRestCall(call.replace("{metric}",metric)));
+					result.push(dataManagerService.getRestCall(call.replace("{metric}", encodeURIComponent(metric))));
 				});
 				return $q.all(result);
 			};

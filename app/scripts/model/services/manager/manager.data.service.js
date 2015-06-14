@@ -55,7 +55,7 @@
 			var localCallData;
 
 			// no entry is found or time is expired
-			if (typeof restTime === 'undefined' || restTime < Date.now() - 10800000) {
+			if (restTime === null || restTime === undefined || restTime < Date.now() - 10800000) {
 
 				apiCallPromise = httpGetRequest(url);
 				apiCallPromise
@@ -76,7 +76,7 @@
 				localCallData = getLocalItem('data/' + restCall);
 
 				// if data record was lost even if there is time record
-				if (typeof localCallData === 'null'){
+				if (localCallData === undefined || localCallData  === null){
 
 					apiCallPromise = httpGetRequest(url);
 					apiCallPromise
