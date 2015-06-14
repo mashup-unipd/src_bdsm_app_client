@@ -7,6 +7,11 @@
 </div> <!-- ./page-header -->
 
 <div class="container-fluid" id="users-config-container" data-ng-controller="UsersConfigCtrl as uc">
+    <div class="row" data-ng-show="uc.errorChangePermission">
+        <div class="col-md-12">
+            <p class="alert-danger">Failed to change permission. Try again later!</p>
+        </div>
+    </div>
 
     <div class="row">
         <div data-ng-repeat="user in uc.usersList">
@@ -20,7 +25,7 @@
                                 <div data-ng-if="user.permission === 'user'">
                                     <div class="col-xs-12 col-md-3 col-lg-5">
                                         <button class="btn btn-primary"
-                                                data-ng-click="uc.editPermissions(user.access_token, $index, 'admin')">
+                                                data-ng-click="uc.editPermissions(user.username, $index, 'admin')">
                                             Change to Admin
                                         </button>
                                     </div>
@@ -28,14 +33,14 @@
                                 <div data-ng-if="user.permission === 'admin'">
                                     <div class="col-xs-12 col-md-3 col-lg-5">
                                         <button class="btn btn-primary"
-                                                data-ng-click="uc.editPermissions(user.access_token, $index, 'user')">
+                                                data-ng-click="uc.editPermissions(user.username, $index, 'user')">
                                             Change to User
                                         </button>
                                     </div>
                                 </div>
 
                                 <div class="col-xs-12 col-md-3 col-lg-5">
-                                    <button class="btn btn-red" data-ng-click="uc.deleteAccount(user.access_token, $index)">Delete</button>
+                                    <button class="btn btn-red" data-ng-click="uc.deleteAccount(user.username, $index)">Delete</button>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +56,7 @@
                                 <div data-ng-if="user.permission === 'user'">
                                     <div class="col-xs-12 col-md-3 col-lg-5">
                                         <button class="btn btn-primary"
-                                                data-ng-click="uc.editPermissions(user.access_token, $index, 'admin')">
+                                                data-ng-click="uc.editPermissions(user.username, $index, 'admin')">
                                             Change to Admin
                                         </button>
                                     </div>
@@ -59,14 +64,14 @@
                                 <div data-ng-if="user.permission === 'admin'">
                                     <div class="col-xs-12 col-md-3 col-lg-5">
                                         <button class="btn btn-primary"
-                                                data-ng-click="uc.editPermissions(user.access_token, $index, 'user')">
+                                                data-ng-click="uc.editPermissions(user.username, $index, 'user')">
                                             Change to User
                                         </button>
                                     </div>
                                 </div>
 
                                 <div class="col-xs-12 col-md-3 col-lg-5">
-                                    <button class="btn btn-red" data-ng-click="uc.deleteAccount(user.access_token, $index)">Delete</button>
+                                    <button class="btn btn-red" data-ng-click="uc.deleteAccount(user.username, $index)">Delete</button>
                                 </div>
                             </div>
                         </div>

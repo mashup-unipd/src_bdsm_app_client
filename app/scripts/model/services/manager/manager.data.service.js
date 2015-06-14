@@ -163,8 +163,17 @@
 		 * @param value
 		 */
 		function putRestCall(restCall, value){
+
 			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
-			console.log(url);
+
+			var apiCallPromise = httpPutRequest(url, value);
+			apiCallPromise
+				.then(function(){
+					console.log('change permission');
+				});
+
+			return apiCallPromise;
+
 		}
 
 		/**
@@ -262,6 +271,32 @@
 
 			var configRequestHttp = {
 				method: 'POST',
+				responseType: 'json',
+				timeout: 2000
+			};
+
+			$http.post(url, value, configRequestHttp)
+				.success(function(data){
+					deferred.resolve(data);
+				})
+				.error(function(data, status) {
+					deferred.reject(status);
+				});
+
+			return deferred.promise;
+		}
+
+		/**
+		 * This function TODO
+		 * @param url
+		 * @param value
+		 * @returns {*}
+		 */
+		function httpPutRequest(url, value){
+			var deferred = $q.defer();
+
+			var configRequestHttp = {
+				method: 'PUT',
 				responseType: 'json',
 				timeout: 2000
 			};
