@@ -156,15 +156,32 @@
 		}
 
 		/**
-		 * TODO: [not implemente because not used]
+		 * TODO: [not implement because not used]
 		 * This function calls an http put request
 		 * TODO (test):
-		 * @param restCall
+		 * @param restCallFix
+		 * @param restCallVar
 		 * @param value
+		 * @param index : identifiers of the element to modify
 		 */
-		function putRestCall(restCall, value){
-			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
-			console.log(url);
+		function putRestCall(restCallFix, restCallVar, value, index, data){
+
+			var url = api.API_BASE + restCallFix + restCallVar; // url to use to call back-end API in $http
+
+			var apiCallPromise = httpPutRequest(url, value);
+			apiCallPromise
+				.then(function(){
+					var key = 'data/' + restCallFix;
+					// takes old local value without add and save it in a temporary array
+					var tempVal = getLocalItem(key);
+					removeLocalItem(key);
+					tempVal.items.items[index] = data;
+					setLocalItem(key, tempVal);
+
+				});
+
+			return apiCallPromise;
+
 		}
 
 		/**
@@ -267,6 +284,32 @@
 			};
 
 			$http.post(url, value, configRequestHttp)
+				.success(function(data){
+					deferred.resolve(data);
+				})
+				.error(function(data, status) {
+					deferred.reject(status);
+				});
+
+			return deferred.promise;
+		}
+
+		/**
+		 * This function TODO
+		 * @param url
+		 * @param value
+		 * @returns {*}
+		 */
+		function httpPutRequest(url, value){
+			var deferred = $q.defer();
+
+			var configRequestHttp = {
+				method: 'PUT',
+				responseType: 'json',
+				timeout: 2000
+			};
+
+			$http.put(url, value, configRequestHttp)
 				.success(function(data){
 					deferred.resolve(data);
 				})

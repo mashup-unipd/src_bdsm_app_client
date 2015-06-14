@@ -112,11 +112,19 @@ describe('Service: recipeAdminService', function() {
 	});
 
 	it('should deleteRecipe is defined and calls dataManagerService', function(){
-		// TODO
+		// defined
+		var idRecipe = 'StarWarsITA';
+
+		expect(factory.deleteRecipe(idRecipe)).toBeDefined();
+
+		// and calls dataManagerService
+		factory.deleteRecipe(idRecipe);
+		expect(dataManagerService.deleteRestCall).toHaveBeenCalled();
 	});
 
 	it('should deleteRecipe return a promise', function(){
-		// TODO
+		var promise = factory.deleteRecipe();
+		expect(promise.then()).toBeDefined();
 	});
 
 	it('should discardRecipeRequest is defined and calls dataManagerService', function(){

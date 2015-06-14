@@ -38,31 +38,26 @@
 
 
 		/**
-		 * This function
-		 * TODO (test): should return a promise
+		 * This function retries the list of the users register to the system
+		 *
 		 */
 		function getListOfUsers(){
 			return dataManagerService.getRestCall('users');
 		}
 
 		/**
-		 * TODO
-		 * TODO (test): should return a promise
+		 * This function changes the permission of a user
 		 * @param idUser : id of the User that we want change account permissions
 		 */
-		function editUserPermissions( idUser ){
-			console.log('Permessi modificati per l\'account' + idUser);
-			// TODO change with a back-end API call (PUT)
-			// here return in a promise
+		function editUserPermissions( idUser , permission, index, data){
+			return dataManagerService.putRestCall('users', '/' + idUser + '/permission', permission, index, data);
 		}
 
 		/**
-		 * TODO
-		 * TODO (test): should return a promise
+		 * TODO [opzionale]
 		 * @param idUser : id of the User that we want delete account
 		 */
 		function deleteUserAccount( idUser ){
-			console.log('Account ' + idUser + ' rimosso');
 			// TODO change with a back-end API call (DELETE)
 
 		}

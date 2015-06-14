@@ -29,6 +29,8 @@
 		var vm = this;
 
 		vm.usersList = [];
+		vm.errorChangePermission = false;
+
 		getUsers(); // active function for retry all users when ctrl is loaded
 		vm.editPermissions = editPermissions;
 		vm.deleteAccount = deleteUserAccount;
@@ -58,23 +60,26 @@
 		}
 
 		/**
-		 * TODO [opzionale]
-		 * TODO (test): should value in the usersList array must be modify after this method
+		 *
 		 * @param idUser
 		 * @param index
 		 * @param permission
 		 */
 		function editPermissions( idUser, index, permission ){
-			/*
-			userAdminService.editUserPermissions(idUser, permission)
+
+			var tempNewValue = vm.usersList[index];
+			tempNewValue.permission = permission;
+
+			userAdminService.editUserPermissions(idUser, permission, index, tempNewValue)
 				.then(function(){
+					// change permission for user in the controller user array
+					vm.usersList[index].permission = permission;
+					vm.errorChangePermission = false;
+				}, function(){
+					vm.errorChangePermission = true;
+				}
+			);
 
-				});
-			*/
-
-			console.log('Changed permission in ' + permission + ' for ' + idUser + ' user.');
-			// change permission for user in the controller user array
-			vm.usersList[index].permission = permission;
 		}
 
 		/**
