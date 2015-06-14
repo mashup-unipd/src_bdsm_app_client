@@ -46,12 +46,11 @@
 		}
 
 		/**
-		 * TODO
-		 * TODO (test): should return a promise
+		 * This function changes the permission of a user
 		 * @param idUser : id of the User that we want change account permissions
 		 */
-		function editUserPermissions( idUser , permission){
-			return dataManagerService.postRestCall('users/' + idUser + '/permission', permission);
+		function editUserPermissions( idUser , permission, index, data){
+			return dataManagerService.putRestCall('users', '/' + idUser + '/permission', permission, index, data);
 		}
 
 		/**

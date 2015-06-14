@@ -156,20 +156,28 @@
 		}
 
 		/**
-		 * TODO: [not implemente because not used]
+		 * TODO: [not implement because not used]
 		 * This function calls an http put request
 		 * TODO (test):
-		 * @param restCall
+		 * @param restCallFix
+		 * @param restCallVar
 		 * @param value
+		 * @param index : identifiers of the element to modify
 		 */
-		function putRestCall(restCall, value){
+		function putRestCall(restCallFix, restCallVar, value, index, data){
 
-			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
+			var url = api.API_BASE + restCallFix + restCallVar; // url to use to call back-end API in $http
 
 			var apiCallPromise = httpPutRequest(url, value);
 			apiCallPromise
 				.then(function(){
-					console.log('change permission');
+					var key = 'data/' + restCallFix;
+					// takes old local value without add and save it in a temporary array
+					var tempVal = getLocalItem(key);
+					removeLocalItem(key);
+					tempVal.items.items[index] = data;
+					setLocalItem(key, tempVal);
+
 				});
 
 			return apiCallPromise;
@@ -301,7 +309,7 @@
 				timeout: 2000
 			};
 
-			$http.post(url, value, configRequestHttp)
+			$http.put(url, value, configRequestHttp)
 				.success(function(data){
 					deferred.resolve(data);
 				})

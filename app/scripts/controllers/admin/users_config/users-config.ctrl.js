@@ -67,11 +67,14 @@
 		 */
 		function editPermissions( idUser, index, permission ){
 
-			userAdminService.editUserPermissions(idUser, permission)
+			var tempNewValue = vm.usersList[index];
+			tempNewValue.permission = permission;
+
+			userAdminService.editUserPermissions(idUser, permission, index, tempNewValue)
 				.then(function(){
 					// change permission for user in the controller user array
 					vm.usersList[index].permission = permission;
-					vm.errorChangePermission = true;
+					vm.errorChangePermission = false;
 				}, function(){
 					vm.errorChangePermission = true;
 				}
