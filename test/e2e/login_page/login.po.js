@@ -23,20 +23,29 @@ var AngularLoginPage = function(){
 	var loginBtn = element(by.css('.btn'));
 
 
+
+	// getter
 	this.get = function(){
 		browser.get('http://mashup-unipd.github.io');
 	};
 
+	this.getLoginBtn = function(){
+		return loginBtn;
+	};
+
+	// Setter
 	this.setEmail = function(name){
-		emailInput.sendKeys(name);
+		return emailInput.sendKeys(name);
 	};
 
 	this.setPassword = function(name){
-		passwordInput.sendKeys(name);
+		return passwordInput.sendKeys(name);
 	};
 
+
+
 	this.loginClick = function(){
-		loginBtn.click();
+		return loginBtn.click();
 	};
 
 	this.showLoginError = function(){
