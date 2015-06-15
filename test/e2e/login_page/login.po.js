@@ -1,5 +1,5 @@
 /**
- * Name: test/e2e/login.e2e.js
+ * Name: test/e2e/login.po.js
  * Author: MashUp
  * Mail: info@mashup-unipd.it
  *
