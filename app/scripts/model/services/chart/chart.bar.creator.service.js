@@ -25,7 +25,7 @@
                 'var gIDPLACEHOLDERData = ' + JSON.stringify(data,null,2) +
                 ';\n'+
                 'var gIDPLACEHOLDERGraph = document.getElementById(\'gIDPLACEHOLDERCanvas\').getContext(\'2d\');\n'+
-                'new Chart(gIDPLACEHOLDERGraph).Bar(gIDPLACEHOLDERData);'+
+                'new Chart(gIDPLACEHOLDERGraph).Bar(gIDPLACEHOLDERData, {animation: false});'+
                 '</script>';
 
         };
