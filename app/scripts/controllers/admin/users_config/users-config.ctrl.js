@@ -64,7 +64,7 @@
 		}
 
 		/**
-		 *
+		 * This function edits permission of an user with a call to the manager service
 		 * @param idUser
 		 * @param index
 		 * @param permission
@@ -105,8 +105,7 @@
 		}
 
 		/**
-		 * TODO [opzionale]
-		 * TODO (test): should usersList array must be length -1 after this method
+		 * This function deletes an user with a call to the manager service
 		 * @param idUser
 		 * @param index
 		 */
