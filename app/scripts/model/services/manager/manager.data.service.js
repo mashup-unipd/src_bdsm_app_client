@@ -156,7 +156,7 @@
 		}
 
 		/**
-		 * TODO: [not implement because not used]
+		 *
 		 * This function calls an http put request
 		 * TODO (test):
 		 * @param restCallFix
@@ -175,8 +175,13 @@
 					// takes old local value without add and save it in a temporary array
 					var tempVal = getLocalItem(key);
 					removeLocalItem(key);
+					console.log(index);
+					console.log(tempVal.items.items[index]);
+
 					tempVal.items.items[index] = data;
+					console.log(tempVal.items.items[index]);
 					setLocalItem(key, tempVal);
+					console.log(getLocalItem(key));
 
 				});
 

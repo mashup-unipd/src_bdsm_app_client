@@ -56,9 +56,10 @@
 		/**
 		 * TODO [opzionale]
 		 * @param idUser : id of the User that we want delete account
+		 * @param index
 		 */
-		function deleteUserAccount( idUser ){
-			// TODO change with a back-end API call (DELETE)
+		function deleteUserAccount( idUser , index){
+			return dataManagerService.deleteRestCall('users', 'delete_by_id/' + idUser, index);
 
 		}
 

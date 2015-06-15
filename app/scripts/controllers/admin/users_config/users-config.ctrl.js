@@ -8,7 +8,7 @@
 	 * Modify
 	 * Version  Date        Author          Desc
 	 * ==========================================================
-	 * 0.0.1    2015-05-10  Tesser Paolo    code module
+	 * 0.0.1  2015-05-10  Tesser Paolo  code module
 	 * -----------------------------------------------------------
 	 * 0.0.2	2015-05-14	Tesser Paolo	insert and inject service for user
 	 * -----------------------------------------------------------
@@ -37,9 +37,11 @@
 
 		///////////////////
 
+		var indexActiveUser = 0;
+
 		/**
 		 * This function retries all users from a user service
-		 * TODO (test): should usersList array must be empty if there aren't users, else it must be length
+		 *
 		 */
 		function getUsers(){
 
@@ -50,9 +52,11 @@
 			listUsers
 				.then(function(data){
 					var arrayUsers = data.items;
-					arrayUsers.forEach(function(element){
+					arrayUsers.forEach(function(element, index){
 						if (localUser !== element.email){
 							vm.usersList.push(element);
+						}else{
+							indexActiveUser = index;
 						}
 					});
 				});
@@ -67,14 +71,32 @@
 		 */
 		function editPermissions( idUser, index, permission ){
 
+			if(indexActiveUser === index){
+				index = index +1;
+			}
+
 			var tempNewValue = vm.usersList[index];
 			tempNewValue.permission = permission;
 
 			userAdminService.editUserPermissions(idUser, permission, index, tempNewValue)
 				.then(function(){
 					// change permission for user in the controller user array
-					vm.usersList[index].permission = permission;
-					vm.errorChangePermission = false;
+					vm.usersList = [];
+
+					userAdminService.getListOfUsers()
+						.then(function(data){
+
+							var arrayUsers = data.items;
+							var localUser = authService.getAccountInformation().email;
+							vm.errorChangePermission = false;
+
+							arrayUsers.forEach(function(element){
+								if (localUser !== element.email){
+									vm.usersList.push(element);
+								}
+							});
+						});
+
 				}, function(){
 					vm.errorChangePermission = true;
 				}
@@ -89,17 +111,16 @@
 		 * @param index
 		 */
 		function deleteUserAccount( idUser, index ){
-			/*
-			userAdminService.deleteUserAccount(idUser)
+
+			if(indexActiveUser === index){
+				index = index +1;
+			}
+
+			userAdminService.deleteUserAccount(idUser, index)
 				.then(function(){
-
+					// remove user in the controller user array
+					vm.usersList.splice(index, 1);
 				});
-			*/
-
-			console.log('Delete account for ' + idUser + ' user.');
-			// remove user in the controller user array
-			vm.usersList.splice(index, 1);
-
 
 		}
 
