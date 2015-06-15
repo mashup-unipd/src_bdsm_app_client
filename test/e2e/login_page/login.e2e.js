@@ -36,7 +36,8 @@ describe('Login interaction', function() {
 			angularLoginPage.setPassword('GruppoSWE2014')
 				.then(function(){
 					// console.log(angularLoginPage.getLoginBtn());
-					// expect(true).elementToBeClickable(angularLoginPage.getLoginBtn());
+					// var EC = protractor.ExpectedConditions;
+					// EC.elementToBeClickable(angularLoginPage.getLoginBtn());
 					expect(angularLoginPage.getLoginBtn().isEnabled()).toBe(true);
 				});
 

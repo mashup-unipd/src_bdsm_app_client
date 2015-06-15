@@ -25,7 +25,7 @@
 
 			.state('dashboard.charts',{
 				templateUrl:'views/user/charts.html',
-				url:'/charts/:cat/:type/:metric/:metric2/:metric3',
+				url:'recipe/:title/charts/:cat/:type/:metric/:metric2/:metric3',
 				params: {
 					metric2: "",
 					metric3: ""
@@ -49,6 +49,19 @@
 			'ui.router'
 		])
 
-		.config(['$stateProvider', ChartsRoutes]);
+		.config(['$stateProvider', ChartsRoutes])
+
+		.run(['$rootScope', function($rootScope){
+
+			$rootScope.$on('$stateChangeSuccess',
+				function(event, toState, toParams, fromState, fromParams){
+					// event.preventDefault();
+					// transitionTo() promise will be rejected with
+					// a 'transition prevented' error
+					console.log('test');
+					$state.href(fromState, fromParams);
+				})
+
+		}]);
 
 })();
