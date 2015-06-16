@@ -191,7 +191,6 @@
 
 			var info = viewTypeModel(false, metric.cat, metric.type, metric.value);
 
-
 			angular.forEach(info,function(value){
 				var parameters = value("outside");
 				var call={trend: trend, media: media, main: main};
