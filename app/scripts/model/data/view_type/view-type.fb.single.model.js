@@ -149,7 +149,7 @@
                     var talk = [];
                     var index = 0;
                     values.forEach(function (element) {
-                        if (index % 10 == 0) {
+                        if (index % 10 === 0) {
                             lab.splice(0, 0, element.date_create.substring(0, 10));
                             index++;
                         } else {
@@ -265,7 +265,7 @@
                     var averageComments = [];
                     var index = 0;
                     values.forEach(function (element) {
-                        if (index % 10 == 0) {
+                        if (index % 10 === 0) {
                             lab.splice(0, 0, element.date_create.substring(0, 10));
                             index++;
                         } else {

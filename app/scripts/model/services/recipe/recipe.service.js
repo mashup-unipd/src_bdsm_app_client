@@ -25,7 +25,7 @@
 	 * Factory in the app.recipe.services.module
 	 */
 
-	function recipeService($q, dataManagerService, viewTypeModel, barChartCreatorService, lineChartCreatorService, radarChartCreatorService, pieChartCreatorService){
+	function recipeService($q, dataManagerService, viewTypeModel,mapChartCreatorService, barChartCreatorService, lineChartCreatorService, radarChartCreatorService, pieChartCreatorService){
 
 		var factory = {
 			getRecipesList: getRecipesList,
@@ -151,7 +151,6 @@
 			var main;
 			var media;
 			var trend;
-			//var events;
 			var graphPromises=[];
 
 			switch (metric.cat.toLowerCase()) {
@@ -160,7 +159,6 @@
 						main = dataManagerService.getRestCall("fb/pages/"+ encodeURIComponent(metric.value));
 						media = dataManagerService.getRestCall("fb/pages/"+ encodeURIComponent(metric.value) +"/posts");
 						trend = dataManagerService.getRestCall("fb/pages/"+ encodeURIComponent(metric.value) +"/trend");
-						//events = dataManagerService.getRestCall(  TODO  );
 					} else {
 						main = dataManagerService.getRestCall("fb/events/"+ encodeURIComponent(metric.value));
 						media = dataManagerService.getRestCall("fb/events/"+ encodeURIComponent(metric.value) +"/posts");
@@ -216,7 +214,6 @@
 			var main;
 			var media;
 			var trend;
-			//var events;
 			var graphPromises=[];
 
 			var callList= function(call,metrics){
@@ -233,7 +230,6 @@
 						main = callList("fb/pages/{metric}",metrics.value);
 						media = callList("fb/pages/{metric}/posts",metrics.value);
 						trend = callList("fb/pages/{metric}/trend",metrics.value);
-						//events = (  TODO  );
 					} else {
 						main = callList("fb/events/{metric}",metrics.value);
 						media = callList("fb/events/{metric}/posts",metrics.value);
@@ -286,7 +282,7 @@
 
 		/**
 		 * This function inserts a new recipe request created in the back-end
-		 * TODO (test):
+		 *
 		 * @param recipeReq : recipe request to insert
 		 */
 		function createRecipeRequest( recipeReq ){
@@ -299,7 +295,7 @@
 	}
 
 
-	recipeService.$inject = ['$q','dataManagerService','viewTypeModel','barChartCreatorService','lineChartCreatorService','radarChartCreatorService','pieChartCreatorService'];
+	recipeService.$inject = ['$q','dataManagerService','viewTypeModel','mapChartCreatorService','barChartCreatorService','lineChartCreatorService','radarChartCreatorService','pieChartCreatorService'];
 
 	angular
 		.module('app.recipe.services.module')

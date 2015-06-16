@@ -74,11 +74,24 @@
                         }
                         else if (type == 'hashtag') {
                             graphs = [
-                                viewTypeIgConfModel(val,'instagramHashtag01')
+                                viewTypeIgSingleModel(val,'instagramHashtag01'),
+                                viewTypeIgSingleModel(val,'instagramHashtag02'),
+                                viewTypeIgSingleModel(val,'instagramHashtag03'),
+                                viewTypeIgSingleModel(val,'instagramHashtag04'),
+                                viewTypeIgSingleModel(val,'instagramHashtag05'),
+                                viewTypeIgSingleModel(val,'instagramHashtag06')
                             ];
                         } else {
                             graphs = [
-                                viewTypeIgConfModel(val,'instagramUser01')
+                                viewTypeIgConfModel(val,'instagramUser01'),
+                                viewTypeIgConfModel(val,'instagramUser02'),
+                                viewTypeIgConfModel(val,'instagramUser03'),
+                                viewTypeIgConfModel(val,'instagramUser04'),
+                                viewTypeIgConfModel(val,'instagramUser05'),
+                                viewTypeIgConfModel(val,'instagramUser06'),
+                                viewTypeIgConfModel(val,'instagramUser07'),
+                                viewTypeIgConfModel(val,'instagramUser08'),
+                                viewTypeIgConfModel(val,'instagramUser09')
                             ];
                         }
                         break;
