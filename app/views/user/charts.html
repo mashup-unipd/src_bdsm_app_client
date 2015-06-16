@@ -7,6 +7,12 @@
 </div> <!-- ./page-header -->
 
 <div id="recipes-container" class="container-fluid" data-ng-controller="ChartsCtrl as cc">
+    <div class="row" data-ng-show="cc.noGraphData">
+        <div class="col-md-12">
+            <p class="alert-danger">No charts generated yet. The system is still getting the metric's data, check later!</p>
+        </div>
+    </div>
+
     <div class="row">
         <div class="col-lg-12 col-sm-12 noleftpad norightpad" id="base-chart" ng-repeat="graph in cc.getGraph">
             <div class="panel panel-default">

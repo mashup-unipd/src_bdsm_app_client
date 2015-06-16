@@ -32,7 +32,9 @@
 		vm.metric3 = $stateParams.metric3;
 		vm.cat = $stateParams.cat;
 		vm.type = $stateParams.type;
-		vm.getGraph=[];
+		vm.getGraph = [];
+		vm.noGraphData = false;
+
 		var parameter;
 		var graphPromise;
 
@@ -76,8 +78,13 @@
 
 		graphPromise
 			.then(function(list){
-					vm.getGraph=list;
-
+					console.log(list);
+					vm.getGraph = list;
+			}, function(){
+				// console.log(vm.getGraph);
+				// vm.noGraphData = vm.getGraph.length === 0;
+			}, function(){
+				vm.noGraphData = vm.getGraph.length === 0;
 			});
 
 

@@ -19,11 +19,7 @@ var AngularRegisterPage = require('./register.po.js');
 
 describe('Register interaction', function() {
 
-	it('should check if redirect works with a correct input ', function() {
 
-		var angularRegisterPage = new AngularRegisterPage();
 
-		// TODO
 
-	});
 });

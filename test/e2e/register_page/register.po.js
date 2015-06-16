@@ -31,23 +31,29 @@ var AngularRegisterPage = function(){
 	};
 
 	this.setUsername = function(name){
-		usernameInput.sendKeys(name);
+		return usernameInput.sendKeys(name);
 	};
 
 	this.setEmail = function(name){
-		emailInput.sendKeys(name);
+		return emailInput.sendKeys(name);
 	};
 
 	this.setPassword = function(name){
-		passwordInput.sendKeys(name);
+		return passwordInput.sendKeys(name);
 	};
 
 	this.setPasswordRepeat = function(name){
-		passwordRepeatInput.sendKeys(name);
+		return passwordRepeatInput.sendKeys(name);
 	};
 
+
+
+
+
+
+
 	this.registerClick = function(){
-		registerBtn.click();
+		return registerBtn.click();
 	};
 
 	this.showRegisterError = function(){
