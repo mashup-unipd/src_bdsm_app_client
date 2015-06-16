@@ -26,7 +26,7 @@ var AngularLoginPage = function(){
 
 	// getter
 	this.get = function(){
-		browser.get('http://mashup-unipd.github.io');
+		browser.get('https://mashup-unipd.github.io');
 	};
 
 	this.getLoginBtn = function(){

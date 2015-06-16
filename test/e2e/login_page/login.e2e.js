@@ -17,39 +17,38 @@
 var AngularLoginPage = require('./login.po.js');
 
 
-
 describe('Login interaction', function() {
 
-		var angularLoginPage;
+	var angularLoginPage;
 
-		beforeEach(function(){
-			angularLoginPage = new AngularLoginPage();
-		});
+	beforeEach(function(){
+		angularLoginPage = new AngularLoginPage();
+	});
 
-    it('should check if redirect works with a correct input', function() {
+	it('should check if redirect works with a correct input', function() {
 
-			angularLoginPage.get();
+		angularLoginPage.get();
 
-			expect(browser.getLocationAbsUrl()).toBe('/login');
+		expect(browser.getLocationAbsUrl()).toBe('/login');
 
-			angularLoginPage.setEmail('info@mashup-unipd.it');
-			angularLoginPage.setPassword('GruppoSWE2014')
-				.then(function(){
-					// console.log(angularLoginPage.getLoginBtn());
-					// var EC = protractor.ExpectedConditions;
-					// EC.elementToBeClickable(angularLoginPage.getLoginBtn());
-					expect(angularLoginPage.getLoginBtn().isEnabled()).toBe(true);
-				});
-
-
-			angularLoginPage.loginClick()
-				.then(function(){
-					expect(browser.getLocationAbsUrl()).toBe('/recipe');
-				});
+		angularLoginPage.setEmail('info@mashup-unipd.it');
+		angularLoginPage.setPassword('GruppoSWE2014')
+			.then(function(){
+				// console.log(angularLoginPage.getLoginBtn());
+				// var EC = protractor.ExpectedConditions;
+				// EC.elementToBeClickable(angularLoginPage.getLoginBtn());
+				expect(angularLoginPage.getLoginBtn().isEnabled()).toBe(true);
+			});
 
 
+		angularLoginPage.loginClick()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/recipe');
+			});
 
-    });
+
+
+	});
 
 	it('should check if redirect works with a incorrect input due by email', function() {
 
@@ -100,7 +99,6 @@ describe('Login interaction', function() {
 			});
 
 	});
-
 
 
 });

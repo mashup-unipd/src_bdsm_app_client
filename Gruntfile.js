@@ -399,7 +399,7 @@ module.exports = function (grunt) {
 		},
 
 		// e2e test settings
-
+		/*
 		protractor: {
 				options: {
 						keepAlive: true,
@@ -412,24 +412,26 @@ module.exports = function (grunt) {
 				run: {}
 
 		}
-		/*
+		*/
 		protractor: {
 			options: {
-				configFile: 'test/protractor.conf.js', // Default config file
+				configFile: './node_modules/protractor/example/conf.js', // Default config file
 				keepAlive: true, // If false, the grunt process stops when the test fails.
 				noColor: false, // If true, protractor will not use colors in its output.
 				args: {
+					seleniumServerJar: './node_modules/protractor/selenium/selenium-server-standalone-2.45.0.jar',
+					chromeDriver: './node_modules/protractor/selenium/chromedriver'
 					// Arguments passed to the command
 				}
 			},
 			your_target: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
 				options: {
-					configFile: "e2e.conf.js", // Target-specific config file
+					configFile: 'test/protractor.conf.js', // Target-specific config file
 					args: {} // Target-specific arguments
 				}
 			}
 		}
-		*/
+
   });
 
 

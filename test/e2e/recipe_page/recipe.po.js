@@ -13,6 +13,9 @@
 
 var AngularRecipePage = function(){
 
+	var emailInput = element(by.model('lc.credentials.email'));
+
+
 
 
 };

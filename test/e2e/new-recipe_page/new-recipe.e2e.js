@@ -13,15 +13,38 @@
 
 // the keyword require returns an object, which references the value of module.exports for a given file
 var AngularNewRecipePage = require('./new-recipe.po.js');
+var AngularLoginPage = require('../login_page/login.po.js');
 
 
 describe('Insert new recipe interaction', function() {
 
+	var angularNewRecipePage;
+	var angularLoginPage;
+
+	beforeEach(function(){
+		angularNewRecipePage = new AngularNewRecipePage();
+		angularLoginPage = new AngularLoginPage();
+
+		angularLoginPage.get();
+		angularLoginPage.setEmail('info@mashup-unipd.it');
+		angularLoginPage.setPassword('GruppoSWE2014');
+
+		angularLoginPage.loginClick()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/recipe');
+			});
+
+	});
+
 	it('should check if redirect works with a correct input ', function() {
 
-		// var angularNewRecipePage = new AngularNewRecipePage();
+
 
 		// TODO
 
 	});
+
+
+
+
 });

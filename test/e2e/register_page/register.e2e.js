@@ -18,7 +18,7 @@ var AngularRegisterPage = require('./register.po.js');
 
 
 describe('Register interaction', function() {
-
+	/*
 	var angularRegisterPage;
 
 	beforeEach(function(){
@@ -88,5 +88,5 @@ describe('Register interaction', function() {
 
 	});
 
-
+	*/
 });

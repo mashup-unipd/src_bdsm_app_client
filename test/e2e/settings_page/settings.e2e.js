@@ -15,13 +15,31 @@
 
 // the keyword require returns an object, which references the value of module.exports for a given file
 var AngularSettingsPage = require('./settings.po.js');
-
+var AngularLoginPage = require('../login_page/login.po.js');
 
 describe('Settings interaction', function() {
 
+	var angularSettingsPage;
+	var angularLoginPage;
+
+	beforeEach(function(){
+		angularSettingsPage = new AngularSettingsPage();
+		angularLoginPage = new AngularLoginPage();
+
+		angularLoginPage.get();
+		angularLoginPage.setEmail('info@mashup-unipd.it');
+		angularLoginPage.setPassword('GruppoSWE2014');
+
+		angularLoginPage.loginClick()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/recipe');
+			});
+
+	});
+
 	it('should check if redirect works with a correct input ', function() {
 
-		var angularSettingsPage = new AngularSettingsPage();
+
 
 		// TODO
 

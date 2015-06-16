@@ -20,12 +20,17 @@ exports.config = {
 
     maxSession: 1,
 
+		capabilities: {
+			browserName: 'firefox',
+			count: 1
+		},
+	/*
     multiCapabilities: [{
         'browserName': 'firefox'
     }, {
         'browserName': 'chrome'
     }],
-
+		*/
 
     // A base URL for your application under test. Calls to protractor.get()
     // with relative paths will be prepended with this. 'http://localhost:8000'
