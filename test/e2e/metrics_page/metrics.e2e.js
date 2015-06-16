@@ -1,5 +1,5 @@
 /**
- * Name: test/e2e/recipe.e2e.js
+ * Name: test/e2e/new-recipe.e2e.js
  * Author: MashUp
  * Mail: info@mashup-unipd.it
  *
@@ -12,20 +12,20 @@
  */
 
 // the keyword require returns an object, which references the value of module.exports for a given file
-var AngularRecipePage = require('./recipe.po.js');
+var AngularMetricsPage = require('./metrics.po.js');
 
 
-describe('Recipe interaction', function() {
+describe('Insert new recipe interaction', function() {
 
-	var angularRecipePage;
+	var angularMetricsPage;
 
 	beforeEach(function(){
-		angularRecipePage = new AngularRecipePage();
+		angularMetricsPage = new AngularMetricsPage();
 	});
 
 	it('should check if redirect works with a correct input ', function() {
 
-		// var angularRecipePage = new AngularRecipePage();
+		// var AngularMetricsPage = new AngularMetricsPage();
 
 		// TODO
 

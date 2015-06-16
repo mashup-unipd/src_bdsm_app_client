@@ -399,6 +399,7 @@ module.exports = function (grunt) {
 		},
 
 		// e2e test settings
+
 		protractor: {
 				options: {
 						keepAlive: true,
@@ -409,61 +410,80 @@ module.exports = function (grunt) {
 						}
 				},
 				run: {}
-		}
 
+		}
+		/*
+		protractor: {
+			options: {
+				configFile: 'test/protractor.conf.js', // Default config file
+				keepAlive: true, // If false, the grunt process stops when the test fails.
+				noColor: false, // If true, protractor will not use colors in its output.
+				args: {
+					// Arguments passed to the command
+				}
+			},
+			your_target: {   // Grunt requires at least one target to run so you can simply put 'all: {}' here too.
+				options: {
+					configFile: "e2e.conf.js", // Target-specific config file
+					args: {} // Target-specific arguments
+				}
+			}
+		}
+		*/
   });
 
 
-	grunt.loadNpmTasks('grunt-html-angular-validate');
-	grunt.loadNpmTasks('grunt-istanbul-coverage');
+	// grunt.loadNpmTasks('grunt-html-angular-validate');
+	// grunt.loadNpmTasks('grunt-istanbul-coverage');
+	grunt.loadNpmTasks('grunt-protractor-runner');
 
-    grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
-        if (target === 'dist') {
-          return grunt.task.run(['build', 'connect:dist:keepalive']);
-        }
+	grunt.registerTask('serve', 'Compile then start a connect web server', function (target) {
+			if (target === 'dist') {
+				return grunt.task.run(['build', 'connect:dist:keepalive']);
+			}
 
-        grunt.task.run([
-          'clean:server',
-          'concurrent:server',
-          'autoprefixer',
-          'connect:livereload',
-          'watch'
-        ]);
-    });
+			grunt.task.run([
+				'clean:server',
+				'concurrent:server',
+				'autoprefixer',
+				'connect:livereload',
+				'watch'
+			]);
+	});
 
-    grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
-        grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
-        grunt.task.run(['serve:' + target]);
-    });
-
-
-    /* [repo] new task for run e2e tests */
-    grunt.registerTask('test-e2e',[
-        'protractor:run'
-    ]);
-
-    grunt.registerTask('test-unit', [
-        'clean:server',
-        'concurrent:test',
-        'autoprefixer',
-        'connect:test',
-        'karma'
-    ]);
+	grunt.registerTask('server', 'DEPRECATED TASK. Use the "serve" task instead', function (target) {
+			grunt.log.warn('The `server` task has been deprecated. Use `grunt serve` to start a server.');
+			grunt.task.run(['serve:' + target]);
+	});
 
 
-    grunt.registerTask('build', [
-        'clean:dist',
-        'concurrent:dist',
-        'copy:dist',
-        'cssmin',
-        'ngAnnotate',
-        'uglify',
-        'htmlmin'
-    ]);
+	/* [repo] new task for run e2e tests */
+	grunt.registerTask('test-e2e',[
+			'protractor:run'
+	]);
 
-    grunt.registerTask('default', [
-        'newer:jshint',
-        'test',
-        'build'
-    ]);
+	grunt.registerTask('test-unit', [
+			'clean:server',
+			'concurrent:test',
+			'autoprefixer',
+			'connect:test',
+			'karma'
+	]);
+
+
+	grunt.registerTask('build', [
+			'clean:dist',
+			'concurrent:dist',
+			'copy:dist',
+			'cssmin',
+			'ngAnnotate',
+			'uglify',
+			'htmlmin'
+	]);
+
+	grunt.registerTask('default', [
+			'newer:jshint',
+			'test',
+			'build'
+	]);
 };

@@ -29,11 +29,62 @@ describe('Register interaction', function() {
 		angularRegisterPage.get();
 		expect(browser.getLocationAbsUrl()).toBe('/register');
 
+		angularRegisterPage.setUsername('correctuser');
+		angularRegisterPage.setEmail('test@gmail.com');
+		angularRegisterPage.setPassword('testpwd');
+		angularRegisterPage.setPasswordRepeat('testpwd')
+			.then(function(){
+				expect(angularRegisterPage.getRegisterBtn().isEnabled()).toBe(true);
+			});
+
+		angularRegisterPage.registerClick()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/register');
+			});
+
 	});
 
-	it('should check if show a failure message with a incorrect input', function() {
+	it('should check if register button is enabled with a incorrect input', function() {
 		angularRegisterPage.get();
 		expect(browser.getLocationAbsUrl()).toBe('/register');
+
+		angularRegisterPage.setUsername('');
+		angularRegisterPage.setEmail('test@gmail.com');
+		angularRegisterPage.setPassword('testpwd');
+		angularRegisterPage.setPasswordRepeat('testpwd')
+			.then(function(){
+				expect(angularRegisterPage.getRegisterBtn().isEnabled()).toBe(false);
+				expect(browser.getLocationAbsUrl()).toBe('/register');
+			});
+
+	});
+
+	it('should check if register button is enabled with a incorrect input', function() {
+		angularRegisterPage.get();
+		expect(browser.getLocationAbsUrl()).toBe('/register');
+
+		angularRegisterPage.setUsername('correctuser');
+		angularRegisterPage.setEmail('');
+		angularRegisterPage.setPassword('testpwd');
+		angularRegisterPage.setPasswordRepeat('testpwd')
+			.then(function(){
+				expect(angularRegisterPage.getRegisterBtn().isEnabled()).toBe(false);
+				expect(browser.getLocationAbsUrl()).toBe('/register');
+			});
+
+	});
+
+	it('should check if register button is enabled with a incorrect input', function() {
+		angularRegisterPage.get();
+		expect(browser.getLocationAbsUrl()).toBe('/register');
+
+		angularRegisterPage.setUsername('correctuser');
+		angularRegisterPage.setEmail('test@gmail.com');
+		angularRegisterPage.setPassword('');
+		angularRegisterPage.setPasswordRepeat('testpwd')
+			.then(function(){
+				expect(angularRegisterPage.getRegisterBtn().isEnabled()).toBe(false);
+			});
 
 	});
 

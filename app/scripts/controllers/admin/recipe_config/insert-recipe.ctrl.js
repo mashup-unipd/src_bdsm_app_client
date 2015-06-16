@@ -89,6 +89,7 @@
 						vm.metrics = [];
 
 						vm.insertSuccess = true;
+
 						vm.metricError = false;
 						vm.insertMetricSuccess = false;
 						vm.removeMetricSuccess = false;

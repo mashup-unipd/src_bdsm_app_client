@@ -30,6 +30,11 @@ var AngularRegisterPage = function(){
 		browser.get('http://mashup-unipd.github.io/register');
 	};
 
+	this.getRegisterBtn = function(){
+		return registerBtn;
+	};
+
+
 	this.setUsername = function(name){
 		return usernameInput.sendKeys(name);
 	};
