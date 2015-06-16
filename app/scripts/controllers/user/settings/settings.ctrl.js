@@ -144,17 +144,9 @@
 		 * @return {bool}
 		 */
 		function checkModifyFields( settings ){
-			return true;
 
-			if (settings.oldPassword !== '' || settings.newPassword !== '' || settings.confirmNewPassword !== '' || settings.username !== oldSettings.username
-				|| settings.email !== oldSettings.email){
-
-				// TODO
-				return true;
-
-			} else {
-				return false;
-			}
+			return (settings.oldPassword !== '' || settings.newPassword !== '' || settings.confirmNewPassword !== '' || settings.username !== oldSettings.username
+				|| settings.email !== oldSettings.email);
 
 		}
 

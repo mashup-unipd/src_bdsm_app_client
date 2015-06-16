@@ -28,6 +28,8 @@
 		var vm = this;
 
 		vm.requestList = [];
+		vm.noRequestError = false;
+
 		getRequestList();
 		vm.discardRequest = discardRequest;
 		vm.approvedRequest = approveRequest;
@@ -44,11 +46,17 @@
 				.then(function(data){
 
 					var arrayRequest = data.items;
+					if (arrayRequest === undefined){
+						vm.noRequestError = true;
+					}else{
+						arrayRequest.forEach(function(element){
+							console.log(element);
+							vm.requestList.push(element);
+						});
 
-					arrayRequest.forEach(function(element){
-						console.log(element);
-						vm.requestList.push(element);
-					});
+						vm.noRequestError = false;
+					}
+
 				});
 
 		}

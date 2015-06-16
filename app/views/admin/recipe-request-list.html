@@ -7,9 +7,13 @@
 </div> <!-- ./page-header -->
 
 <div class="container-fluid" id="recipes-request-container" data-ng-controller="RequestListCtrl as rlc">
+    <div class="row" data-ng-show="rlc.noRequestError">
+        <div class="col-md-12">
+            <p class="alert-danger">No request found!</p>
+        </div>
+    </div>
 
     <div class="row">
-
         <div data-ng-repeat="request in rlc.requestList">
 
             <!-- TODO: insert a row each two recipe -->
