@@ -63,6 +63,8 @@
 					};
 					graph.resolve(result);
 
+				}, function(error){
+					graph.reject(error);
 				});
 
 			return graph.promise;

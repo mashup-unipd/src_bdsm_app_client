@@ -78,13 +78,12 @@
 
 		graphPromise
 			.then(function(list){
-					console.log(list);
-					vm.getGraph = list;
-			}, function(){
-				// console.log(vm.getGraph);
-				// vm.noGraphData = vm.getGraph.length === 0;
-			}, function(){
-				vm.noGraphData = vm.getGraph.length === 0;
+				vm.getGraph = list;
+				vm.noGraphData = false;
+
+			}, function(error, response){
+				console.log(error + ' ' + JSON.stringify(response));
+				vm.noGraphData = true;
 			});
 
 

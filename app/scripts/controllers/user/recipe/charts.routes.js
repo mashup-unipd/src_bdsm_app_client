@@ -52,7 +52,7 @@
 		.config(['$stateProvider', ChartsRoutes])
 
 		.run(['$rootScope', function($rootScope){
-
+			/*
 			$rootScope.$on('$stateChangeSuccess',
 				function(event, toState, toParams, fromState, fromParams){
 					// event.preventDefault();
@@ -61,7 +61,7 @@
 					console.log('test');
 					$state.href(fromState, fromParams);
 				})
-
+			*/
 		}]);
 
 })();

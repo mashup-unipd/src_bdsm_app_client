@@ -19,7 +19,23 @@ var AngularRegisterPage = require('./register.po.js');
 
 describe('Register interaction', function() {
 
+	var angularRegisterPage;
 
+	beforeEach(function(){
+		angularRegisterPage = new angularRegisterPage();
+	});
+
+	it('should check if show a successful message with a correct input', function() {
+		angularRegisterPage.get();
+		expect(browser.getLocationAbsUrl()).toBe('/register');
+
+	});
+
+	it('should check if show a failure message with a incorrect input', function() {
+		angularRegisterPage.get();
+		expect(browser.getLocationAbsUrl()).toBe('/register');
+
+	});
 
 
 });
