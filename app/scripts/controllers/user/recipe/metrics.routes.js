@@ -23,23 +23,22 @@
      */
     var MetricsConfigRoutes = function($stateProvider) {
 
-        $stateProvider
-
-            .state('dashboard.metrics',{
-				url: 'recipe/:title',
-                templateUrl:'views/user/metrics.html',
-				controller: 'MetricsCtrl',
-                resolve: {
-                    loadMyFiles: function($ocLazyLoad) {
-                        return $ocLazyLoad.load({
-                            name:'app',
-                            files:[
-                                'scripts/controllers/user/recipe/metrics.ctrl.js'
-                            ]
-                        });
-                    }
-                }
-            });
+			$stateProvider
+				.state('dashboard.metrics',{
+					url: 'recipe/:title',
+					templateUrl:'views/user/metrics.html',
+					controller: 'MetricsCtrl',
+					resolve: {
+							loadMyFiles: function($ocLazyLoad) {
+									return $ocLazyLoad.load({
+											name:'app',
+											files:[
+													'scripts/controllers/user/recipe/metrics.ctrl.js'
+											]
+									});
+							}
+					}
+				});
     };
 
 

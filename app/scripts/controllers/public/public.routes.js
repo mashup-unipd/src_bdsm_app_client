@@ -29,7 +29,7 @@
           events: true
       });
 
-      $urlRouterProvider.otherwise('/login');
+      $urlRouterProvider.otherwise('/recipe');
 
     };
 

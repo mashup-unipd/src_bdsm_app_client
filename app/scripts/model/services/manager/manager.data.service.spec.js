@@ -18,8 +18,8 @@ describe('Service: dataManagerService', function() {
 
 	var factory = undefined;
 
-	var localStorageService = undefined;
-	var $httpBackend = undefined;
+	// var localStorageService = undefined;
+	// var $httpBackend = undefined;
 
 	beforeEach(function () {
 

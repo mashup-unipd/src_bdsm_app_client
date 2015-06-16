@@ -30,9 +30,24 @@ describe('Login interaction', function() {
 
 			angularLoginPage.get();
 
+			expect(browser.getLocationAbsUrl()).toBe('/login');
+
 			angularLoginPage.setEmail('info@mashup-unipd.it');
-			angularLoginPage.setPassword('gruppoSWE2014');
-			angularLoginPage.loginClick();
+			angularLoginPage.setPassword('GruppoSWE2014')
+				.then(function(){
+					// console.log(angularLoginPage.getLoginBtn());
+					// var EC = protractor.ExpectedConditions;
+					// EC.elementToBeClickable(angularLoginPage.getLoginBtn());
+					expect(angularLoginPage.getLoginBtn().isEnabled()).toBe(true);
+				});
+
+
+			angularLoginPage.loginClick()
+				.then(function(){
+					expect(browser.getLocationAbsUrl()).toBe('/recipe');
+				});
+
+
 
     });
 
@@ -41,8 +56,15 @@ describe('Login interaction', function() {
 		angularLoginPage.get();
 
 		angularLoginPage.setEmail('infowrong@mashup-unipd.it');
-		angularLoginPage.setPassword('gruppoSWE2014');
-		angularLoginPage.loginClick();
+		angularLoginPage.setPassword('GruppoSWE2014')
+			.then(function(){
+				expect(angularLoginPage.getLoginBtn().isEnabled()).toBe(true);
+			});
+
+		angularLoginPage.loginClick()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/login');
+			});
 
 		expect(angularLoginPage.showLoginError()).toBe('Fail login operation.');
 
@@ -53,11 +75,32 @@ describe('Login interaction', function() {
 		angularLoginPage.get();
 
 		angularLoginPage.setEmail('infowrong@mashup-unipd.it');
-		angularLoginPage.setPassword('gruppoSWE2014wrong');
-		angularLoginPage.loginClick();
+		angularLoginPage.setPassword('GruppoSWE2014wrong')
+			.then(function(){
+				expect(angularLoginPage.getLoginBtn().isEnabled()).toBe(true);
+			});
+
+		angularLoginPage.loginClick()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/login');
+			});
 
 		expect(angularLoginPage.showLoginError()).toBe('Fail login operation.');
 
 	});
+
+	it('should check if redirect works with a incorrect input due by empty password and email', function() {
+
+		angularLoginPage.get();
+
+		angularLoginPage.setEmail('');
+		angularLoginPage.setPassword('')
+			.then(function(){
+				expect(angularLoginPage.getLoginBtn().isEnabled()).toBe(false);
+			});
+
+	});
+
+
 
 });
