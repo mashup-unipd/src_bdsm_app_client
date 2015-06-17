@@ -9,9 +9,9 @@
 <div id="favourites-container" class="container-fluid" data-ng-controller="FavouritesCtrl as fc">
 
 
-    <div class="row" data-ng-show="fc.noFavs">
+    <div class="row" ng-show="!fc.getGraph.length">
         <div class="col-md-12">
-            <p class="alert-danger">No charts starred yet. Click the button "Star" near any graph from the Recipe section ti see it here! </p>
+            <p class="alert-info">No charts starred yet. Click the button "Star" near any graph from the Recipe section to see it here! </p>
         </div>
     </div>
 

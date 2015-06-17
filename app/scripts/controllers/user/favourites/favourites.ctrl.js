@@ -26,7 +26,7 @@
             vm.favourites=list.items;
             if(vm.favourites.length === 0){
                 vm.noFavs=true;
-            }else {
+            } else {
                 graphPromise = recipeService.generateFavourites(vm.favourites);
 
                 graphPromise
