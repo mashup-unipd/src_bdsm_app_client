@@ -16,6 +16,7 @@
 
     angular
         .module('app.routes',[
+						'app.public.login.routes',
             'app.public.routes', /* modulo che incapsula i moduli di routing dell'utente non autenticato */
             'app.user.routes', /* modulo che incapsula i moduli di routing dell'utente normale */
             'app.admin.routes' /* modulo che incapsula i moduli di routing dell'amministratore */

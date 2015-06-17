@@ -26,7 +26,7 @@
 	 */
 
 
-	function authService($location, $auth, localStorageService){
+	function authService($location, $auth, localStorageService, $window){
 
 		// use module reveal pattern when it's not necessary update primitive values
 		var factory = {
@@ -100,6 +100,7 @@
 		 */
 		function isNotLogged(){
 			if (localStorageService.get('cred').oauth_token === undefined){
+				console.log('test');
 				$location.path('/login');
 			}
 		}
@@ -109,7 +110,7 @@
 		 *
 		 */
 		function isLogged(){
-			if (localStorageService.get('cred') !== undefined){
+			if (localStorageService.get('cred') !== null){
 				$location.path('/recipe');
 			}
 		}

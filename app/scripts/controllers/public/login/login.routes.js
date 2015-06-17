@@ -28,7 +28,7 @@
                 url:'/login',
                 resolve: {
 										sign: function(authService){
-											// authService.isLogged();
+											authService.isLogged();
 										},
 
                     loadMyFiles: function($ocLazyLoad) {

@@ -30,6 +30,7 @@
 				templateUrl: '../../../views/user/home.html',
 				resolve: {
 					login: function(authService){
+						console.log('test');
 						authService.isNotLogged();
 					},
 
