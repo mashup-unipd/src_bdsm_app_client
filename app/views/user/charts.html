@@ -25,18 +25,47 @@
     </div>
 
     <div class="row">
-        <div class="col-lg-12 col-sm-12 noleftpad norightpad" id="base-chart" ng-repeat="graph in cc.getGraph">
-            <div class="panel panel-default">
-                <div class="panel-heading"span ng-bind="graph.desc">
-                    </div>
-                <div class="panel-body">
-                    <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="cc.addToFavourites(graph.info)">
-                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-                        Star
-                    </button>
-                    <div ng-bind-html="graph.data">
+        <div class="" id="base-chart" ng-repeat="graph in cc.getGraph">
+
+            <div data-ng-switch="$index % 2 == 0">
+
+                <div data-ng-switch-when="false">
+                    <div class="col-lg-6 col-sm-12 norightpad yesleftpad">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"span ng-bind="graph.desc">
+                                </div>
+                            <div class="panel-body">
+                                <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="cc.addToFavourites(graph.info)">
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    Star
+                                </button>
+                                <div ng-bind-html="graph.data">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
+
+                <div data-ng-switch-when="true">
+                    <div class="col-lg-6 col-sm-12 noleftpad yesrightpad">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"span ng-bind="graph.desc">
+                            </div>
+                            <div class="panel-body">
+                                <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="cc.addToFavourites(graph.info)">
+                                    <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                                    Star
+                                </button>
+                                <div ng-bind-html="graph.data">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
             </div>
         </div>
     </div>
