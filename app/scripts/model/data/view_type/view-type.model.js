@@ -74,12 +74,12 @@
                         }
                         else if (type == 'hashtag') {
                             graphs = [
-                                viewTypeIgSingleModel(val,'instagramHashtag01'),
-                                viewTypeIgSingleModel(val,'instagramHashtag02'),
-                                viewTypeIgSingleModel(val,'instagramHashtag03'),
-                                viewTypeIgSingleModel(val,'instagramHashtag04'),
-                                viewTypeIgSingleModel(val,'instagramHashtag05'),
-                                viewTypeIgSingleModel(val,'instagramHashtag06')
+                                viewTypeIgConfModel(val,'instagramHashtag01'),
+                                viewTypeIgConfModel(val,'instagramHashtag02'),
+                                viewTypeIgConfModel(val,'instagramHashtag03'),
+                                viewTypeIgConfModel(val,'instagramHashtag04'),
+                                viewTypeIgConfModel(val,'instagramHashtag05'),
+                                viewTypeIgConfModel(val,'instagramHashtag06')
                             ];
                         } else {
                             graphs = [

@@ -25,11 +25,12 @@
 	 * Factory in the app.user.services.module
 	 */
 
-	function userService(dataManagerService){
+	function userService(dataManagerService,authService, localStorageService){
 
 		var factory = {
 			getFavourites: getFavourites,
 			addFavourite: addFavourite,
+			deleteFavourite: deleteFavourite,
 			getAccessToken: getAccessToken,
 			deleteAccessToken: deleteAccessToken
 		};
@@ -42,20 +43,67 @@
 		/**
 		 * TODO
 		 * TODO (test):
-		 * @param idUser
+		 *
 		 */
-		function getFavourites( idUser ){
+		function getFavourites(){
 
-			// TODO: it musts returns an array of object
+			var cred = authService.getAccountInformation();
+			var username = cred.username;
+
+			return dataManagerService.getRestCall("favourites/"+ username +"/get");
+
+		}
+
+		function deleteFavourite(id){
+			var cred = authService.getAccountInformation();
+			var username = cred.username;
+
+			localStorageService.remove('data/favourites/'+ username +"/get");
+
+			return dataManagerService.deleteRestCall("favourites/"+ id +"/delete");
+
+
 
 		}
 
 		/**
 		 * TODO: add some params to identify the type of graph that's we want save
 		 * TODO (test):
-		 * @param idUser
+		 *
 		 */
-		function addFavourite( idUser ){
+		function addFavourite(metrics, info){
+
+
+			var cate=metrics.cat;
+			var type=metrics.type;
+			var val=metrics.value;
+			var metricsToSend=[];
+			if (val.constructor === Array){
+			val.forEach(function(el){
+				metricsToSend.push({
+					category: cate,
+					category_type: type,
+					id: el
+				})
+			});}
+			else{
+				metricsToSend.push({
+						category: cate,
+						category_type: type,
+						id: val
+					})
+			}
+			var value ={
+				metric: metricsToSend,
+				chart_type: info
+			};
+
+			var cred = authService.getAccountInformation();
+			var username = cred.username;
+
+			localStorageService.remove('data/favourites/'+ username +"/get");
+
+			return dataManagerService.postRestCall("favourites/"+ username +"/add" ,value);
 
 		}
 
@@ -80,7 +128,7 @@
 	}
 
 
-	userService.$inject = ['dataManagerService'];
+	userService.$inject = ['dataManagerService','authService','localStorageService'];
 
 	angular
 		.module('app.user.services.module')

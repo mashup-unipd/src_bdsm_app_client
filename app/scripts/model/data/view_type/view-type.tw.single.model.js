@@ -48,7 +48,8 @@
                                 }
                             ]
                         },
-                        desc: 'Tweets containing the hashtag ' +val + ' over the last week'
+                        type: 'twitterHashtag01',
+                         desc:  'Tweets containing the hashtag ' +val + ' over the last week'
                     }
                 },
                 twitterHashtag02 : function(call){
@@ -85,7 +86,8 @@
                                 }
                             ]
                         },
-                        desc: 'Tweets containing the hashtag ' +val + ' over the last month'
+                        type: 'twitterHashtag02',
+                         desc:  'Tweets containing the hashtag ' +val + ' over the last month'
                     }
                 },
                 twitterHashtag03 : function(call){
@@ -122,7 +124,8 @@
                                 }
                             ]
                         },
-                        desc: 'Tweets containing the hashtag ' +val + ' over the last year'
+                        type: 'twitterHashtag03',
+                         desc:  'Tweets containing the hashtag ' +val + ' over the last year'
                     }
                 },
                 twitterHashtag04 : function(call){
@@ -146,7 +149,8 @@
                     });
                     return {
                         dataSet: result,
-                        desc: 'Platform used for the Tweets containing the hashtag ' +val + ' over the last three days'
+                        type: 'twitterHashtag04',
+                         desc:  'Platform used for the Tweets containing the hashtag ' +val + ' over the last three days'
                     }
                 },
                 twitterPage01 : function(call){
@@ -175,7 +179,8 @@
                                 label: "Favourites"
                             }
                         ],
-                        desc: 'Number of '+val+'\'s tweets, followers and favourites'
+                        type: 'twitterPage01',
+                         desc:  'Number of '+val+'\'s tweets, followers and favourites'
                     }
                 },
                 twitterPage02 : function(call){
@@ -206,7 +211,8 @@
                                 }
                             ]
                         },
-                        desc: val+'\'s tweets and followers'
+                        type: 'twitterPage02',
+                         desc:  val+'\'s tweets and followers'
                     }
                 },
                 twitterPage03 : function(call){
@@ -245,7 +251,8 @@
                                 }
                             ]
                         },
-                        desc: val + '\'s tweets and followers over the last week'
+                        type: 'twitterPage03',
+                         desc:  val + '\'s tweets and followers over the last week'
                     }
                 },
                 twitterPage04 : function(call){
@@ -291,7 +298,8 @@
                                 }
                             ]
                         },
-                        desc: val + '\'s tweets and followers over the last month'
+                        type: 'twitterPage04',
+                         desc:  val + '\'s tweets and followers over the last month'
                     }
                 },
                 twitterPage05 : function(call){
@@ -337,7 +345,8 @@
                                 }
                             ]
                         },
-                        desc: val + '\'s tweets and followers over the last year'
+                        type: 'twitterPage05',
+                         desc:  val + '\'s tweets and followers over the last year'
                     }
                 }
             };

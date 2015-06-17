@@ -48,7 +48,8 @@
                                 label: "Other people comments"
                             }
                         ],
-                        desc: 'Comments on the page ' + val + ' over the last three days'
+                        type: 'facebookPage01',
+                        desc:  'Comments on the page ' + val + ' over the last three days'
                     }
                 },
                 facebookPage02: function (call) {
@@ -87,7 +88,8 @@
                                 }
                             ]
                         },
-                        desc: 'Likes and talking abouts of the page ' + val + ' over the last week'
+                        type: 'facebookPage02',
+                        desc:  'Likes and talking abouts of the page ' + val + ' over the last week'
                     }
                 },
                 facebookPage03: function (call) {
@@ -133,7 +135,8 @@
                                 }
                             ]
                         },
-                        desc: 'Likes and talking abouts of the page ' + val + ' over the last month'
+                        type: 'facebookPage03',
+ desc:  'Likes and talking abouts of the page ' + val + ' over the last month'
                     }
                 },
                 facebookPage04: function (call) {
@@ -179,7 +182,8 @@
                                 }
                             ]
                         },
-                        desc: 'Likes and talking abouts of the page ' + val + ' over the last year'
+                        type: 'facebookPage04',
+ desc:    'Likes and talking abouts of the page ' + val + ' over the last year'
                     }
                 },
                 facebookPage05: function (call) {
@@ -211,7 +215,8 @@
                                 }
                             ]
                         },
-                        desc: 'Average comments on each post of the page ' + val + ' over the last week'
+                        type: 'facebookPage05',
+ desc:   'Average comments on each post of the page ' + val + ' over the last week'
                     }
                 },
                 facebookPage06: function (call) {
@@ -250,7 +255,8 @@
                                 }
                             ]
                         },
-                        desc: 'Average comments on each post of the page ' + val + ' over the last month'
+                        type: 'facebookPage06',
+ desc:   'Average comments on each post of the page ' + val + ' over the last month'
                     }
                 },
                 facebookPage07: function (call) {
@@ -289,7 +295,8 @@
                                 }
                             ]
                         },
-                        desc: 'Average comments on each post of the page ' + val + ' over the last year'
+                        type: 'facebookPage07',
+ desc:   'Average comments on each post of the page ' + val + ' over the last year'
                     }
                 },
                 facebookEvent01: function (call) {
@@ -318,7 +325,8 @@
                                 label: "Declined"
                             }
                         ],
-                        desc: 'People who marked "join", "maybe" or "decline" for the event ' + val
+                        type: 'facebookEvent01',
+                        desc:   'People who marked "join", "maybe" or "decline" for the event ' + val
                     }
                 },
                 facebookEvent02: function (call) {
@@ -346,7 +354,8 @@
                                 label: "Other people comments"
                             }
                         ],
-                        desc: 'Comments on the event ' + val + ' over the last three days'
+                        type: 'facebookEvent02',
+                        desc:   'Comments on the event ' + val + ' over the last three days'
                     }
                 }
             };

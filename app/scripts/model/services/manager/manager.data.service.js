@@ -117,7 +117,7 @@
 			apiCallPromise = httpPostRequest(url, value);
 			apiCallPromise
 				.then(function(data){
-
+					if(data != null) {
 						var key = 'data/' + restCall;
 						// takes old local value without add and save it in a temporary array
 						var tempVal = getLocalItem(key);
@@ -127,7 +127,7 @@
 						tempVal.items.items.push(value);
 						// storage new temporary array in the localStorage
 						setLocalItem(key, tempVal);
-
+					}
 				});
 
 			return apiCallPromise;
@@ -198,23 +198,31 @@
 		 */
 
 		function deleteRestCall(restCall, id, indexElement){
-			var url = api.API_BASE + restCall + '/' + id; // url to use to call back-end API in $http
+			var url;
+			if(id == null ) {
+				url = api.API_BASE + restCall; // url to use to call back-end API in $http
+			}else{
+				url = api.API_BASE + restCall + '/' + id; // url to use to call back-end API in $http
+
+			}
 			var apiCallPromise;
 			// here in then status of a promise, we must edit or delete the element from the datastore
 
 
 			apiCallPromise = httpDeleteRequest(url);
 			apiCallPromise
-				.then(function(){
-					var key = 'data/' + restCall;
-					// takes old local value without add and save it in a temporary array
-					var tempVal = getLocalItem(key);
-					// remove local old from localStorage
-					removeLocalItem(key);
-					// remove element to the temporary array
-					tempVal.items.items.splice(indexElement, 1);
-					// storage new temporary array in the localStorage
-					setLocalItem(key, tempVal);
+				.then(function(result){
+					if(result) {
+						var key = 'data/' + restCall;
+						// takes old local value without add and save it in a temporary array
+						var tempVal = getLocalItem(key);
+						// remove local old from localStorage
+						removeLocalItem(key);
+						// remove element to the temporary array
+						tempVal.items.items.splice(indexElement, 1);
+						// storage new temporary array in the localStorage
+						setLocalItem(key, tempVal);
+					}
 				});
 
 			return apiCallPromise;
@@ -259,7 +267,7 @@
 			var configRequestHttp = {
 				method: 'GET',
 				responseType: 'json',
-				timeout: 2000
+				timeout: 20000
 			};
 
 			$http.get(url, configRequestHttp)
@@ -285,7 +293,7 @@
 			var configRequestHttp = {
 				method: 'POST',
 				responseType: 'json',
-				timeout: 2000
+				timeout: 20000
 			};
 
 			$http.post(url, value, configRequestHttp)
@@ -311,7 +319,7 @@
 			var configRequestHttp = {
 				method: 'PUT',
 				responseType: 'json',
-				timeout: 2000
+				timeout: 20000
 			};
 
 			$http.put(url, value, configRequestHttp)
@@ -335,7 +343,7 @@
 			var configRequestHttp = {
 				method: 'DELETE',
 				responseType: 'json',
-				timeout: 2000
+				timeout: 20000
 			};
 
 			$http.delete(url, configRequestHttp)

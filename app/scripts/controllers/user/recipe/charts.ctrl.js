@@ -22,7 +22,7 @@
 	 * Controller of the app
 	 */
 
-	var ChartsCtrl = function ($stateParams,recipeService) {
+	var ChartsCtrl = function ($stateParams, recipeService, userService) {
 
 		var vm = this;
 
@@ -34,6 +34,9 @@
 		vm.type = $stateParams.type;
 		vm.getGraph = [];
 		vm.noGraphData = false;
+		vm.addedFavourite = false;
+		vm.failedAdd = false;
+		vm.addToFavourites = addToFavourites;
 
 		var parameter;
 		var graphPromise;
@@ -87,9 +90,18 @@
 			});
 
 
+		function addToFavourites(info){
+			var promise= userService.addFavourite(parameter,info);
+			promise
+				.then(function(){
+					vm.addedFavourite = true;
+				},function(){
+					vm.failedAdd = true;
+				})
+		}
 	};
 
-	ChartsCtrl.$inject = ['$stateParams','recipeService'];
+	ChartsCtrl.$inject = ['$stateParams','recipeService','userService'];
 
 	angular.module('app').controller('ChartsCtrl', ChartsCtrl);
 

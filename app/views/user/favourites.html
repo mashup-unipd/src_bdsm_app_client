@@ -7,12 +7,36 @@
 </div> <!-- ./page-header -->
 
 <div id="favourites-container" class="container-fluid" data-ng-controller="FavouritesCtrl as fc">
+
+
+    <div class="row" data-ng-show="fc.noFavs">
+        <div class="col-md-12">
+            <p class="alert-danger">No charts starred yet. Click the button "Star" near any graph from the Recipe section ti see it here! </p>
+        </div>
+    </div>
+
+    <div class="row" data-ng-show="fc.deleted">
+        <div class="col-md-12">
+            <p class="alert-success">Deleted favourite! (Reload the page)</p>
+        </div>
+    </div>
+    <div class="row" data-ng-show="fc.failedDelete">
+        <div class="col-md-12">
+            <p class="alert-danger">Failed to delete favourite! (check your connection)</p>
+        </div>
+    </div>
+
     <div class="row">
-        <div class="col-lg-12 col-sm-12 noleftpad norightpad" id="base-chart">
+        <div class="col-lg-12 col-sm-12 noleftpad norightpad" id="base-chart" ng-repeat="graph in fc.getGraph">
             <div class="panel panel-default">
-                <div class="panel-heading" ng-bind="fc.testName"></div>
+                <div class="panel-heading"span ng-bind="graph.graphData.desc">
+                </div>
                 <div class="panel-body">
-                    <div ng-bind-html="fc.testGraph">
+                    <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="fc.deleteFavourite(graph.id)">
+                        <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+                        Unstar
+                    </button>
+                    <div ng-bind-html="graph.graphData.data">
                     </div>
                 </div>
             </div>

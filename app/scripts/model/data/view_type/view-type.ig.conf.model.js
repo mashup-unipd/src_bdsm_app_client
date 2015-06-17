@@ -94,7 +94,8 @@
                                 }
                             ]
                         },
-                        desc: 'Photos and videos containing the hashtags ' +val + ' over the last week'
+                        type: 'instagramHashtag01',
+                         desc: 'Photos and videos containing the hashtags ' +val + ' over the last week'
                     }
                 },
                 instagramHashtag02 : function(call){
@@ -172,7 +173,8 @@
                                 }
                             ]
                         },
-                        desc: 'Photos and videos containing the hashtag ' +val + ' tweets and followers over the last month'
+                        type: 'instagramHashtag02',
+                         desc: 'Photos and videos containing the hashtag ' +val + ' tweets and followers over the last month'
                     }
                 },
                 instagramHashtag03 : function(call){
@@ -250,7 +252,8 @@
                                 }
                             ]
                         },
-                        desc: 'Photos and videos containing the hashtag ' +val + ' over the last year'
+                        type: 'instagramHashtag03',
+                         desc: 'Photos and videos containing the hashtag ' +val + ' over the last year'
                     }
                 },
                 instagramHashtag04 : function(call){
@@ -325,7 +328,8 @@
                                 }
                             ]
                         },
-                        desc: 'Likes and comments of the posts containing the hashtag ' +val + ' over the last week'
+                        type: 'instagramHashtag04',
+                         desc: 'Likes and comments of the posts containing the hashtag ' +val + ' over the last week'
                     }
                 },
                 instagramHashtag05 : function(call){
@@ -403,7 +407,8 @@
                                 }
                             ]
                         },
-                        desc: 'Likes and comments of the posts containing the hashtag ' +val + ' tweets and followers over the last month'
+                        type: 'instagramHashtag05',
+                         desc: 'Likes and comments of the posts containing the hashtag ' +val + ' tweets and followers over the last month'
                     }
                 },
                 instagramHashtag06 : function(call){
@@ -480,7 +485,8 @@
                                 }
                             ]
                         },
-                        desc: 'Likes and comments of the posts containing the hashtag ' +val + ' over the last year'
+                        type: 'instagramHashtag06',
+                         desc: 'Likes and comments of the posts containing the hashtag ' +val + ' over the last year'
                     }
                 },
                 instagramUser01 : function(call){
@@ -553,7 +559,8 @@
                                 }
                             ]
                         },
-                        desc: val + '\'s posts and followers over the last week'
+                        type: 'instagramUser01',
+                         desc: val + '\'s posts and followers over the last week'
                     }
                 },
                 instagramUser02 : function(call){
@@ -630,7 +637,8 @@
                                 }
                             ]
                         },
-                        desc: val + '\'s posts and followers over the last month'
+                        type: 'instagramUser02',
+                         desc: val + '\'s posts and followers over the last month'
                     }
                 },
                 instagramUser03 : function(call){
@@ -707,7 +715,8 @@
                                 }
                             ]
                         },
-                        desc: val + '\'s posts and followers over the last year'
+                        type: 'instagramUser03',
+                         desc: val + '\'s posts and followers over the last year'
                     }
                 },
                 instagramUser04 : function(call){
@@ -782,7 +791,8 @@
                                 }
                             ]
                         },
-                        desc: val +'\'s likes and comments over the last week'
+                        type: 'instagramUser04',
+                         desc: val +'\'s likes and comments over the last week'
                     }
                 },
                 instagramUser05 : function(call){
@@ -859,7 +869,8 @@
                                 }
                             ]
                         },
-                        desc: val +'\'s likes and comments over the last month'
+                        type: 'instagramUser05',
+                         desc: val +'\'s likes and comments over the last month'
                     }
                 },
                 instagramUser06 : function(call){
@@ -936,7 +947,8 @@
                                 }
                             ]
                         },
-                        desc: val +'\'s likes and comments over the last year'
+                        type: 'instagramUser06',
+                         desc: val +'\'s likes and comments over the last year'
                     }
                 },
                 instagramUser07 : function(call){
@@ -1011,7 +1023,8 @@
                                 }
                             ]
                         },
-                        desc: val +'\'s likes and comments divided by the average daily posts over the last week'
+                        type: 'instagramUser07',
+                         desc: val +'\'s likes and comments divided by the average daily posts over the last week'
                     }
                 },
                 instagramUser08 : function(call){
@@ -1089,7 +1102,8 @@
                                 }
                             ]
                         },
-                        desc: val +'\'s likes and comments divided by the average daily posts over the last month'
+                        type: 'instagramUser08',
+                         desc: val +'\'s likes and comments divided by the average daily posts over the last month'
                     }
                 },
                 instagramUser09 : function(call){
@@ -1167,7 +1181,8 @@
                                 }
                             ]
                         },
-                        desc: val +'\'s likes and comments divided by the average daily posts over the last year'
+                        type: 'instagramUser09',
+                         desc: val +'\'s likes and comments divided by the average daily posts over the last year'
                     }
                 }
 

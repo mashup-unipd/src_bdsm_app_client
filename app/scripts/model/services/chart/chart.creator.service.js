@@ -40,7 +40,6 @@
 			data
 				.then(function(list){
 
-					//var array = list;
 
 					list.forEach(function(element){
 						callResults.push(element.items);
@@ -59,7 +58,8 @@
 
 					var result= {
 						desc: specificInfo.desc,
-						data: $sce.trustAsHtml(canvas)
+						data: $sce.trustAsHtml(canvas),
+						info: specificInfo.type
 					};
 					graph.resolve(result);
 

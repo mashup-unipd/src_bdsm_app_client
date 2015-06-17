@@ -34,7 +34,8 @@
 			createRecipeRequest: createRecipeRequest,
 			getMetricTypeNode: getMetricTypeNode,
 			generateViews: generateViews,
-			generateCompare: generateCompare
+			generateCompare: generateCompare,
+			generateFavourites: generateFavourites
 		};
 
 		return factory;
@@ -146,8 +147,9 @@
 		 * This function generates the HTML code for the Graphs from  one ore more metrics
 		 * @param metric : metrics for the generation
 		 */
-		function generateViews(metric){
+		function generateViews(metric,viewType){
 
+			var type='';
 			var main;
 			var media;
 			var trend;
@@ -187,7 +189,11 @@
 
 			}
 
-			var info = viewTypeModel(false, metric.cat, metric.type, metric.value);
+			if(viewType!== undefined && viewType !== null){
+				type=viewType;
+			}
+
+			var info = viewTypeModel(false, metric.cat, metric.type, metric.value, type);
 
 			angular.forEach(info,function(value){
 				var parameters = value("outside");
@@ -209,8 +215,9 @@
 
 		}
 
-		function generateCompare(metrics){
+		function generateCompare(metrics,viewType){
 
+			var type='';
 			var main;
 			var media;
 			var trend;
@@ -257,8 +264,11 @@
 					break;
 			}
 
+			if(viewType!== undefined && viewType !== null){
+				type=viewType;
+			}
 
-			var info = viewTypeModel(true, metrics.cat, metrics.type, metrics.value);
+			var info = viewTypeModel(true, metrics.cat, metrics.type, metrics.value, type);
 
 			angular.forEach(info,function(func){
 				var parameters = func("outside");
@@ -273,6 +283,40 @@
 						break;
 					case 'radar': graphPromises.push(radarChartCreatorService.chartGeneration(call[parameters.source],func));
 						break;
+				}
+			});
+
+			return $q.all(graphPromises);
+
+		}
+
+		function generateFavourites(favouritesList){
+
+			var graphPromises=[];
+
+			favouritesList.forEach(function(fav){
+				if(fav.metric != null) {
+					if (fav.metric.length >= 2) {
+						var values = [];
+						fav.metric.forEach(function (metric) {
+								values.push(metric.id);
+							}
+						);
+						var metricToCompare = {
+							cat: fav.metric[0].category,
+							type: fav.metric[0].category_type,
+							value: values
+						};
+
+						graphPromises.push(generateCompare(metricToCompare, fav.chart_type));
+					} else {
+						var metricToView = {
+							cat: fav.metric[0].category,
+							type: fav.metric[0].category_type,
+							value: fav.metric[0].id
+						};
+						graphPromises.push(generateViews(metricToView, fav.chart_type));
+					}
 				}
 			});
 

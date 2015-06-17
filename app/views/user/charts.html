@@ -9,15 +9,31 @@
 <div id="recipes-container" class="container-fluid" data-ng-controller="ChartsCtrl as cc">
     <div class="row" data-ng-show="cc.noGraphData">
         <div class="col-md-12">
-            <p class="alert-danger">No charts generated yet. The system is still getting the metric's data, check later!</p>
+            <p class="alert-danger">No charts generated.
+                This was either caused by a server or connectivity error, or the system is still getting the metric's data, so you might have to wait.</p>
+        </div>
+    </div>
+    <div class="row" data-ng-show="cc.addedFavourite">
+        <div class="col-md-12">
+            <p class="alert-success">Added to favourites!</p>
+        </div>
+    </div>
+    <div class="row" data-ng-show="cc.failedAdd">
+        <div class="col-md-12">
+            <p class="alert-danger">Failed to add favourite! (check your connection)</p>
         </div>
     </div>
 
     <div class="row">
         <div class="col-lg-12 col-sm-12 noleftpad norightpad" id="base-chart" ng-repeat="graph in cc.getGraph">
             <div class="panel panel-default">
-                <div class="panel-heading" ng-bind="graph.desc"></div>
+                <div class="panel-heading"span ng-bind="graph.desc">
+                    </div>
                 <div class="panel-body">
+                    <button type="button" class="btn btn-primary btn-sm pull-right" ng-click="cc.addToFavourites(graph.info)">
+                        <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+                        Star
+                    </button>
                     <div ng-bind-html="graph.data">
                     </div>
                 </div>

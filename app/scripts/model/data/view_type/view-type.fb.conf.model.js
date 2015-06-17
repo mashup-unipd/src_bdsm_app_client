@@ -92,6 +92,7 @@
                                 }
                             ]
                         },
+                        type: 'facebookPage02',
                         desc: 'Likes and talking abouts of the pages ' + val + ' over the last week'
                     }
                 },
@@ -171,6 +172,7 @@
                                 }
                             ]
                         },
+                        type: 'facebookPage03',
                         desc: 'Likes and talking abouts of the pages ' + val + ' over the last month'
                     }
                 },
@@ -250,6 +252,7 @@
                                 }
                             ]
                         },
+                        type: 'facebookPage04',
                         desc: 'Likes and talking abouts of the pages ' + val + ' over the last year'
                     }
                 },
@@ -303,6 +306,7 @@
                                 }
                             ]
                         },
+                        type: 'facebookPage05',
                         desc: 'Average comments on each post of the pages ' + val + ' over the last week'
                     }
                 },
@@ -361,7 +365,8 @@
                                 }
                             ]
                         },
-                        desc: 'Average comments on each post of the pages ' + val + ' over the last month'
+                        type: 'facebookPage06',
+                         desc: 'Average comments on each post of the pages ' + val + ' over the last month'
                     }
                 },
                 facebookPage07: function (call) {
@@ -419,7 +424,8 @@
                                 }
                             ]
                         },
-                        desc: 'Average comments on each post of the pages ' + val + ' over the last year'
+                        type: 'facebookPage07',
+                         desc: 'Average comments on each post of the pages ' + val + ' over the last year'
                     }
                 },
 
@@ -486,7 +492,8 @@
                             }
 
                         ],
-                        desc: 'People who marked "join", "maybe" or "decline" for the events ' + val
+                        type: 'facebookEvent01',
+                         desc: 'People who marked "join", "maybe" or "decline" for the events ' + val
                     }
                 }
             };
