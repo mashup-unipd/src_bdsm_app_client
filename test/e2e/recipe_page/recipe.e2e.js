@@ -36,7 +36,5 @@ describe('Recipe interaction', function() {
 			});
 
 
-		// TODO
-
 	});
 });

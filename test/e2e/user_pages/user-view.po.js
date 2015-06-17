@@ -13,7 +13,34 @@
 
 var AngularUsersPages = function(){
 
-	// TODO: variables that get element from page
+	var linkRecipe = element(by.linkText('Recipe'));
+	var linkFavourites = element(by.linkText('Favourites'));
+	var linkRecipeRequest = element(by.linkText('Recipe Request'));
+
+
+	this.getLinkRecipe = function(){
+		return linkRecipe;
+	};
+
+	this.getLinkFavourites = function(){
+		return linkFavourites;
+	};
+
+	this.getLinkRecipeRequest = function(){
+		return linkRecipeRequest;
+	};
+
+	this.clickLinkRecipe = function(){
+		return linkRecipe.click();
+	};
+
+	this.clickLinkFavourites = function(){
+		return linkFavourites.click();
+	};
+
+	this.clickLinkRecipeRequest = function(){
+		return linkRecipeRequest.click();
+	}
 
 
 };

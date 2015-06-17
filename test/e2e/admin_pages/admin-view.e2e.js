@@ -36,8 +36,52 @@ describe('Admin view', function() {
 	});
 
 	it('should check if menu is show correctly', function() {
+		angularAdminPages.clickLinkRecipe()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/recipe');
+			});
 
-		// TODO
+		angularAdminPages.clickLinkFavourites()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/favourites');
+			});
+
+		angularAdminPages.clickLinkRecipeRequest()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/recipe-request');
+			});
+
+		angularAdminPages.clickLinkInsertRecipe()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/new-recipe');
+			});
+
+		angularAdminPages.clickLinkRecipeRequest()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/request-list');
+			});
+
+		angularAdminPages.clickLinkListRequest()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/ratings');
+			});
+
+		angularAdminPages.clickLinkRecipesRatings()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/users-config');
+			});
 
 	});
+
+	it('should click links are enable', function(){
+		expect(angularAdminPages.getLinkRecipe().elementToBeClickable).toBe(true);
+		expect(angularAdminPages.getLinkFavourites().elementToBeClickable).toBe(true);
+		expect(angularAdminPages.getLinkRecipeRequest().elementToBeClickable).toBe(true);
+		expect(angularAdminPages.getLinkInsertRecipe().elementToBeClickable).toBe(true);
+		expect(angularAdminPages.getLinkListRequest().elementToBeClickable).toBe(true);
+		expect(angularAdminPages.getLinkRecipesRatings().elementToBeClickable).toBe(true);
+		expect(angularAdminPages.getLinkUsersConfig().elementToBeClickable).toBe(true);
+
+	});
+	
 });

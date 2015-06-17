@@ -36,10 +36,28 @@ describe('Users view', function() {
 	});
 
 	it('should check if menu is show correctly', function() {
+		angularUsersPage.clickLinkRecipe()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/recipe');
+			});
 
+		angularUsersPage.clickLinkFavourites()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/favourites');
+			});
 
-
-		// TODO
+		angularUsersPage.clickLinkRecipeRequest()
+			.then(function(){
+				expect(browser.getLocationAbsUrl()).toBe('/recipe-request');
+			});
 
 	});
+
+	it('should click links are enable', function(){
+		expect(angularUsersPage.getLinkRecipe().elementToBeClickable).toBe(true);
+		expect(angularUsersPage.getLinkFavourites().elementToBeClickable).toBe(true);
+		expect(angularUsersPage.getLinkRecipeRequest().elementToBeClickable).toBe(true);
+
+	});
+
 });
