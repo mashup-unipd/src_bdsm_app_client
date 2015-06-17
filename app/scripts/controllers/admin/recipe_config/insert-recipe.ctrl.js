@@ -180,7 +180,7 @@
 		 * @returns {boolean} true if there are almost two else false
 		 */
 		function checkMetricsQuantity(){
-			vm.metricQuantityError = true;
+			vm.metricQuantityError = !(vm.tempMetrics.length >= 2);
 			return (vm.tempMetrics.length >= 2);
 		}
 
