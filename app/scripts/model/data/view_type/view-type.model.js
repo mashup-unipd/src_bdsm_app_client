@@ -147,7 +147,6 @@
                         break;
                     case 'instagram':
                         if (defaultView !== ''){
-                            alert("noo");
                             graphs = [viewTypeIgSingleModel(val,defaultView)];
                         }
                         else if (type == 'hashtag') {
