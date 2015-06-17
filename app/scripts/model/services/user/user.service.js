@@ -60,7 +60,7 @@
 
 			localStorageService.remove('data/favourites/'+ username +"/get");
 
-			return dataManagerService.deleteRestCall("favourites/"+ id +"/delete");
+			return dataManagerService.deleteFavRestCall("favourites/"+ id +"/delete");
 
 
 
@@ -103,7 +103,7 @@
 
 			localStorageService.remove('data/favourites/'+ username +"/get");
 
-			return dataManagerService.postRestCall("favourites/"+ username +"/add" ,value);
+			return dataManagerService.postFavRestCall("favourites/"+ username +"/add" ,value);
 
 		}
 

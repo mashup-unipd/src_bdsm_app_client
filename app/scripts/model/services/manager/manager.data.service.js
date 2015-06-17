@@ -30,6 +30,8 @@
 			postCredRestCall: postCredRestCall,
 			putRestCall: putRestCall,
 			deleteRestCall: deleteRestCall,
+			postFavRestCall: postFavRestCall,
+			deleteFavRestCall: deleteFavRestCall,
 			deleteCredRestCall: deleteCredRestCall
 		};
 
@@ -117,7 +119,6 @@
 			apiCallPromise = httpPostRequest(url, value);
 			apiCallPromise
 				.then(function(data){
-					if(data != null) {
 						var key = 'data/' + restCall;
 						// takes old local value without add and save it in a temporary array
 						var tempVal = getLocalItem(key);
@@ -127,8 +128,19 @@
 						tempVal.items.items.push(value);
 						// storage new temporary array in the localStorage
 						setLocalItem(key, tempVal);
-					}
 				});
+
+			return apiCallPromise;
+		}
+
+
+		function postFavRestCall(restCall, value){
+
+			var url = api.API_BASE + restCall; // url to use to call back-end API in $http
+			var apiCallPromise;
+			// here in then status of a promise, we must edit or delete the element from the datastore
+
+			apiCallPromise = httpPostRequest(url, value);
 
 			return apiCallPromise;
 		}
@@ -212,7 +224,6 @@
 			apiCallPromise = httpDeleteRequest(url);
 			apiCallPromise
 				.then(function(result){
-					if(result) {
 						var key = 'data/' + restCall;
 						// takes old local value without add and save it in a temporary array
 						var tempVal = getLocalItem(key);
@@ -222,8 +233,26 @@
 						tempVal.items.items.splice(indexElement, 1);
 						// storage new temporary array in the localStorage
 						setLocalItem(key, tempVal);
-					}
+
 				});
+
+			return apiCallPromise;
+
+		}
+
+		function deleteFavRestCall(restCall, id){
+			var url;
+			if(id == null ) {
+				url = api.API_BASE + restCall; // url to use to call back-end API in $http
+			}else{
+				url = api.API_BASE + restCall + '/' + id; // url to use to call back-end API in $http
+
+			}
+			var apiCallPromise;
+			// here in then status of a promise, we must edit or delete the element from the datastore
+
+
+			apiCallPromise = httpDeleteRequest(url);
 
 			return apiCallPromise;
 
